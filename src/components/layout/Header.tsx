@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.jpg";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -17,6 +18,7 @@ const navLinks = [
   },
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -46,20 +48,22 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-soft py-3"
-          : "bg-transparent py-5"
+          ? "bg-card/95 backdrop-blur-md shadow-soft py-2"
+          : "bg-transparent py-4"
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xl">G</span>
-            </div>
+            <img 
+              src={logo} 
+              alt="GD Pro Academy Logo" 
+              className="h-12 w-auto object-contain"
+            />
             <div className="flex flex-col">
               <span className={cn(
-                "font-display font-bold text-lg leading-tight transition-colors",
+                "font-bold text-lg leading-tight transition-colors",
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               )}>
                 GD Pro Academy
@@ -141,14 +145,14 @@ export function Header() {
           {/* CTA & Contact */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:+919876543210"
+              href="tel:+918356837052"
               className={cn(
                 "flex items-center gap-2 text-sm font-medium transition-colors",
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               )}
             >
               <Phone className="w-4 h-4" />
-              <span className="hidden xl:inline">+91 98765 43210</span>
+              <span className="hidden xl:inline">+91 8356 837052</span>
             </a>
             <Button variant={isScrolled ? "hero" : "hero"} size="default" asChild>
               <Link to="/contact">Book Consultation</Link>
@@ -226,14 +230,14 @@ export function Header() {
             </nav>
             <div className="mt-4 pt-4 border-t border-border/20 flex flex-col gap-3">
               <a
-                href="tel:+919876543210"
+                href="tel:+918356837052"
                 className={cn(
                   "flex items-center gap-2 px-4 py-2 text-sm",
                   isScrolled ? "text-foreground" : "text-primary-foreground"
                 )}
               >
                 <Phone className="w-4 h-4" />
-                +91 98765 43210
+                +91 8356 837052
               </a>
               <Button variant="hero" size="lg" asChild className="mx-4">
                 <Link to="/contact">Book Free Consultation</Link>
