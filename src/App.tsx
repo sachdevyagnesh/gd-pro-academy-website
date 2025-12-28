@@ -12,6 +12,8 @@ import CorporateTraining from "./pages/CorporateTraining";
 import IndividualTraining from "./pages/IndividualTraining";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +33,8 @@ const App = () => (
           <Route path="/individual-training" element={<IndividualTraining />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <WhatsAppButton />

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building2, User, ArrowRight, Users, Briefcase, TrendingUp, MessageSquare } from "lucide-react";
+import { Building2, User, ArrowRight, Users, TrendingUp, MessageSquare, Target } from "lucide-react";
 
 const trainingPaths = [
   {
@@ -11,9 +11,9 @@ const trainingPaths = [
     subtitle: "For Teams & Organizations",
     description: "Transform your team's performance with customized training programs designed for organizational success.",
     features: [
-      { icon: Users, text: "Leadership Excellence Programs" },
-      { icon: TrendingUp, text: "Sales & Business Development" },
-      { icon: MessageSquare, text: "Team Building & Communication" },
+      { icon: TrendingUp, text: "Sales Excellence Training" },
+      { icon: MessageSquare, text: "Soft Skills & Communication" },
+      { icon: Users, text: "Campus to Corporate Programs" },
     ],
     cta: "Explore Corporate Programs",
     href: "/corporate-training",
@@ -27,8 +27,8 @@ const trainingPaths = [
     description: "Accelerate your career with personalized coaching and self-paced courses tailored to your goals.",
     features: [
       { icon: MessageSquare, text: "Communication Excellence" },
-      { icon: Briefcase, text: "Personal Branding Workshop" },
-      { icon: TrendingUp, text: "Career Advancement Coaching" },
+      { icon: TrendingUp, text: "Sales Skills Coaching" },
+      { icon: Target, text: "Career Advancement Coaching" },
     ],
     cta: "Explore Individual Programs",
     href: "/individual-training",
@@ -49,7 +49,7 @@ export function TrainingPathsSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="accent-line mx-auto mb-6" />
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Choose Your Training Path
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -78,7 +78,7 @@ export function TrainingPathsSection() {
                 <div className="space-y-4 mb-8">
                   <div>
                     <span className="text-sm font-medium text-secondary">{path.subtitle}</span>
-                    <h3 className="font-display text-2xl font-bold text-foreground mt-1">
+                    <h3 className="text-2xl font-bold text-foreground mt-1">
                       {path.title}
                     </h3>
                   </div>
@@ -114,7 +114,7 @@ export function TrainingPathsSection() {
         {/* Trust badge */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground text-sm">
-            Trusted by <span className="text-foreground font-semibold">500+ organizations</span> across India
+            Trusted by <span className="text-foreground font-semibold">leading organizations</span> across India
           </p>
         </div>
       </div>
