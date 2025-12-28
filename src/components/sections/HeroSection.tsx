@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Award, Users, Clock, Target } from "lucide-react";
+import { ArrowRight, Play, Award } from "lucide-react";
 import { useEffect, useState } from "react";
+import heroBg from "@/assets/hero-bg-1.jpg";
 
 const metrics = [
   { value: 75000, suffix: "+", label: "Training Hours" },
@@ -41,12 +42,20 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
+
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "4s" }} />
       </div>
 
       {/* Grid pattern overlay */}
@@ -72,14 +81,14 @@ export function HeroSection() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground mb-6 leading-tight animate-fade-in-up stagger-1">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground mb-6 leading-tight animate-fade-in-up stagger-1">
             Empowering Teams.{" "}
             <span className="text-gradient-gold">Transforming Businesses.</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-up stagger-2">
-            Customized Sales & Soft Skills Training for Professionals & Corporates with proven results and 12+ years of industry expertise.
+            Customized Sales & Soft Skills Training for Professionals & Corporates with proven results and 14+ years of industry expertise.
           </p>
 
           {/* CTAs */}
@@ -105,7 +114,7 @@ export function HeroSection() {
                 key={metric.label}
                 className="bg-primary-foreground/5 backdrop-blur-sm rounded-2xl p-6 border border-primary-foreground/10"
               >
-                <div className="font-display text-3xl md:text-4xl font-bold mb-2">
+                <div className="text-3xl md:text-4xl font-bold mb-2">
                   <AnimatedNumber value={metric.value} suffix={metric.suffix} />
                 </div>
                 <p className="text-primary-foreground/70 text-sm">{metric.label}</p>

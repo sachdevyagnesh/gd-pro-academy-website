@@ -7,7 +7,7 @@
    Color palette: Navy (authority), Gold (premium), Emerald (growth)
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -59,7 +59,7 @@
     --slate: 215 20% 65%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 60% 15%) 0%, hsl(220 50% 25%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 60% 15% / 0.85) 0%, hsl(220 50% 25% / 0.9) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(40 60% 55%) 0%, hsl(40 70% 65%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
     --gradient-section: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 25% 95%) 100%);
@@ -132,19 +132,32 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Poppins', system-ui, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold tracking-tight;
+    font-family: 'Montserrat', sans-serif;
+    @apply font-bold tracking-tight;
   }
 }
 
 @layer components {
   /* Hero section styles */
   .hero-gradient {
+    position: relative;
     background: var(--gradient-hero);
+  }
+
+  .hero-with-image {
+    position: relative;
+  }
+
+  .hero-with-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(220 60% 15% / 0.88) 0%, hsl(220 50% 25% / 0.85) 100%);
+    z-index: 1;
   }
 
   .gold-gradient {
@@ -172,7 +185,7 @@
   /* Metric counter animation */
   .metric-value {
     @apply font-bold;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   /* Section styling */
@@ -276,6 +289,44 @@
   .accent-dot {
     @apply w-2 h-2 rounded-full;
     background: hsl(var(--secondary));
+  }
+
+  /* Auto-scrolling testimonial */
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .auto-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .auto-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* WhatsApp floating button */
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 24px;
+    right: 24px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
   }
 }
 

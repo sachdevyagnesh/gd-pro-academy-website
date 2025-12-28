@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Linkedin, Instagram, Youtube, ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const footerLinks = {
   training: [
     { name: "Corporate Training", href: "/corporate-training" },
     { name: "Individual Training", href: "/individual-training" },
-    { name: "Leadership Programs", href: "/corporate-training#leadership" },
-    { name: "Sales Excellence", href: "/corporate-training#sales" },
+    { name: "Sales Training", href: "/corporate-training#sales" },
+    { name: "Soft Skills Training", href: "/corporate-training#softskills" },
   ],
   company: [
     { name: "About Us", href: "/about" },
     { name: "Our Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ],
   resources: [
     { name: "E-Courses", href: "/individual-training#courses" },
     { name: "FAQs", href: "/contact#faq" },
+    { name: "Privacy Policy", href: "/privacy" },
     { name: "Book Consultation", href: "/contact" },
   ],
 };
@@ -29,7 +32,7 @@ export function Footer() {
         <div className="container mx-auto px-4 py-12 md:py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h2 className="font-display text-2xl md:text-3xl font-semibold mb-2">
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2">
                 Ready to Transform Your Team?
               </h2>
               <p className="text-primary-foreground/70">
@@ -53,11 +56,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center">
-                <span className="text-secondary-foreground font-display font-bold text-2xl">G</span>
-              </div>
+              <img 
+                src={logo} 
+                alt="GD Pro Academy Logo" 
+                className="h-14 w-auto object-contain bg-white rounded-lg p-1"
+              />
               <div className="flex flex-col">
-                <span className="font-display font-bold text-xl leading-tight">
+                <span className="font-bold text-xl leading-tight">
                   GD Pro Academy
                 </span>
                 <span className="text-sm text-primary-foreground/60">
@@ -70,7 +75,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/grishma-sachdev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
@@ -78,7 +83,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/gdproacademy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
@@ -86,7 +91,7 @@ export function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://youtube.com/@gdproacademy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
@@ -98,7 +103,7 @@ export function Footer() {
 
           {/* Training Links */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Training</h4>
+            <h4 className="font-semibold text-lg mb-4">Training</h4>
             <ul className="space-y-3">
               {footerLinks.training.map((link) => (
                 <li key={link.name}>
@@ -115,7 +120,7 @@ export function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Company</h4>
+            <h4 className="font-semibold text-lg mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -132,24 +137,24 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Contact</h4>
+            <h4 className="font-semibold text-lg mb-4">Contact</h4>
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+918356837052"
                   className="flex items-start gap-3 text-primary-foreground/70 hover:text-secondary transition-colors"
                 >
                   <Phone className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>+91 98765 43210</span>
+                  <span>+91 8356 837052</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@gdproacademy.in"
+                  href="mailto:gdpro.academy@gmail.com"
                   className="flex items-start gap-3 text-primary-foreground/70 hover:text-secondary transition-colors"
                 >
                   <Mail className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>info@gdproacademy.in</span>
+                  <span>gdpro.academy@gmail.com</span>
                 </a>
               </li>
               <li className="flex items-start gap-3 text-primary-foreground/70">

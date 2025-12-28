@@ -57,7 +57,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Extended brand colors
         navy: {
           DEFAULT: "hsl(var(--navy))",
           light: "hsl(var(--navy-light))",
@@ -76,8 +75,8 @@ export default {
         slate: "hsl(var(--slate))",
       },
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Montserrat', 'sans-serif'],
+        body: ['Poppins', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
