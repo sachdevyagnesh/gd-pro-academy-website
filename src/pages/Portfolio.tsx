@@ -4,7 +4,9 @@ import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, Users, TrendingUp, Award, Star, Quote, ArrowRight } from "lucide-react";
+import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu } from "lucide-react";
+import { useRef, useState } from "react";
+import heroBg from "@/assets/about-portrait1.jpg";
 
 const caseStudies = [
   {
@@ -19,10 +21,10 @@ const caseStudies = [
   {
     company: "IT Services Firm",
     industry: "Information Technology",
-    program: "Leadership Development",
+    program: "Soft Skills Development",
     participants: "35 Team Managers",
     result: "Improved team engagement scores by 45%",
-    quote: "Grishma's leadership program helped our managers develop strategic thinking and better team management skills.",
+    quote: "Grishma's program helped our managers develop strategic thinking and better team management skills.",
     author: "HR Director",
   },
   {
@@ -35,43 +37,65 @@ const caseStudies = [
     author: "Operations Manager",
   },
   {
-    company: "Fintech Startup",
-    industry: "Financial Technology",
-    program: "Communication Skills",
-    participants: "50 Employees",
-    result: "Enhanced client communication and retention",
-    quote: "The communication training was practical and immediately applicable. Our team collaboration has improved significantly.",
-    author: "CEO",
+    company: "Educational Institute",
+    industry: "Education",
+    program: "Campus to Corporate",
+    participants: "200+ Students",
+    result: "85% placement rate improvement",
+    quote: "Students walked out more confident and job-ready after Grishma's sessions! The transformation was visible.",
+    author: "Placement Head",
+  },
+  {
+    company: "Insurance Provider",
+    industry: "Insurance",
+    program: "Sales Excellence Training",
+    participants: "50 Sales Agents",
+    result: "35% increase in policy closures",
+    quote: "Her sales mastery workshop helped our team close deals faster than ever!",
+    author: "Training Head",
+  },
+  {
+    company: "Retail Chain",
+    industry: "Retail",
+    program: "Customer Service Excellence",
+    participants: "100+ Staff",
+    result: "Customer satisfaction up by 40%",
+    quote: "Grishma connects instantly with participants and delivers real results.",
+    author: "Operations Head",
   },
 ];
 
 const industries = [
-  { name: "Banking & Finance", icon: Building2 },
-  { name: "Information Technology", icon: TrendingUp },
-  { name: "Manufacturing", icon: Users },
-  { name: "Healthcare", icon: Award },
-  { name: "Retail", icon: Star },
-  { name: "Startups", icon: TrendingUp },
+  { name: "BFSI & Insurance", icon: Landmark },
+  { name: "Information Technology", icon: Cpu },
+  { name: "Manufacturing", icon: Factory },
+  { name: "Education & EdTech", icon: GraduationCap },
+  { name: "Retail", icon: ShoppingBag },
+  { name: "Corporate & Startups", icon: Briefcase },
 ];
 
 const stats = [
-  { value: "500+", label: "Organizations Trained" },
-  { value: "46,000+", label: "Professionals Developed" },
+  { value: "75,000+", label: "Training Hours" },
+  { value: "46,000+", label: "Professionals Trained" },
+  { value: "1,300+", label: "Sessions Delivered" },
   { value: "98%", label: "Satisfaction Rate" },
-  { value: "15+", label: "Industries Served" },
 ];
 
 export default function Portfolio() {
+  const [isPaused, setIsPaused] = useState(false);
+  const duplicatedCaseStudies = [...caseStudies, ...caseStudies];
+
   return (
     <div className="min-h-screen">
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 hero-gradient relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-          </div>
+        <section className="pt-32 pb-20 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
@@ -81,7 +105,7 @@ export default function Portfolio() {
                   Our Portfolio
                 </span>
               </div>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
                 Proven <span className="text-gradient-gold">Success Stories</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
@@ -98,7 +122,7 @@ export default function Portfolio() {
               {stats.map((stat) => (
                 <Card key={stat.label} variant="elevated" className="text-center">
                   <CardContent className="p-6">
-                    <p className="font-display text-3xl font-bold text-foreground mb-1">{stat.value}</p>
+                    <p className="text-3xl font-bold text-foreground mb-1">{stat.value}</p>
                     <p className="text-sm text-muted-foreground">{stat.label}</p>
                   </CardContent>
                 </Card>
@@ -107,30 +131,39 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Case Studies */}
-        <section className="section-padding bg-muted">
+        {/* Scrolling Case Studies */}
+        <section className="section-padding bg-muted overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <div className="accent-line mx-auto mb-6" />
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Case Studies
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Real results from real organizations we've partnered with.
               </p>
             </div>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {caseStudies.map((study, index) => (
-                <Card key={index} variant="elevated" className="overflow-hidden">
+          <div 
+            className="relative overflow-hidden"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div 
+              className={`flex gap-6 ${isPaused ? '' : 'auto-scroll'}`}
+              style={{ width: 'max-content' }}
+            >
+              {duplicatedCaseStudies.map((study, index) => (
+                <Card key={index} variant="elevated" className="w-[400px] shrink-0 overflow-hidden">
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary" />
-                  <CardContent className="p-8">
+                  <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <p className="text-sm text-secondary font-medium">{study.industry}</p>
-                        <h3 className="font-display text-xl font-bold text-foreground">{study.company}</h3>
+                        <h3 className="text-lg font-bold text-foreground">{study.company}</h3>
                       </div>
-                      <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                      <div className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
                         {study.program}
                       </div>
                     </div>
@@ -142,19 +175,19 @@ export default function Portfolio() {
                       </span>
                     </div>
 
-                    <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 mb-6">
-                      <p className="text-accent font-semibold flex items-center gap-2">
-                        <TrendingUp className="w-5 h-5" />
+                    <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 mb-4">
+                      <p className="text-accent font-semibold flex items-center gap-2 text-sm">
+                        <TrendingUp className="w-4 h-4" />
                         {study.result}
                       </p>
                     </div>
 
                     <div className="relative">
-                      <Quote className="w-8 h-8 text-muted-foreground/20 absolute -top-2 -left-1" />
-                      <blockquote className="text-muted-foreground italic pl-6">
+                      <Quote className="w-6 h-6 text-muted-foreground/20 absolute -top-1 -left-1" />
+                      <blockquote className="text-muted-foreground italic pl-5 text-sm">
                         "{study.quote}"
                       </blockquote>
-                      <p className="text-sm font-medium text-foreground mt-3 pl-6">
+                      <p className="text-sm font-medium text-foreground mt-2 pl-5">
                         — {study.author}
                       </p>
                     </div>
@@ -168,14 +201,11 @@ export default function Portfolio() {
         {/* Industries */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <div className="accent-line mx-auto mb-6" />
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Industries We Serve
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Our training expertise spans across multiple sectors and domains.
-              </p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-4xl mx-auto">

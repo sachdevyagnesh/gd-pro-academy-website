@@ -1,33 +1,33 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowRight, Clock, Award, Users, TrendingUp, MessageSquare, Briefcase, Target } from "lucide-react";
+import { ArrowRight, Clock, Award, Users, TrendingUp, MessageSquare, Target, Briefcase } from "lucide-react";
 
 const corporatePrograms = [
   {
-    icon: Users,
-    title: "Leadership Excellence Program",
-    description: "Develop confident leaders who inspire teams and deliver results.",
-    features: ["Strategic decisions", "Team motivation", "Delegation", "Performance coaching"],
-    duration: "3 Days",
-    price: "₹25,000",
+    icon: TrendingUp,
+    title: "Sales Excellence Training",
+    description: "Boost conversions with modern selling strategies and objection handling.",
+    features: ["Rapport building", "Closing techniques", "Negotiation", "Pipeline"],
+    duration: "2 Days",
+    price: "₹18,000",
     popular: true,
   },
   {
-    icon: TrendingUp,
-    title: "Sales Excellence Training",
-    description: "Boost conversions and win rates with modern selling strategies.",
-    features: ["Advanced techniques", "Relationships", "Closing", "Pipeline"],
+    icon: MessageSquare,
+    title: "Soft Skills Development",
+    description: "Communication, time management, and customer service excellence.",
+    features: ["Communication", "Email etiquette", "Problem-solving", "Teamwork"],
     duration: "2 Days",
-    price: "₹18,000",
+    price: "₹15,000",
     popular: false,
   },
   {
-    icon: MessageSquare,
-    title: "Team Building & Communication",
-    description: "Improve collaboration, productivity, and trust across teams.",
-    features: ["Collaboration", "Communication", "Conflict resolution", "Goal alignment"],
-    duration: "1 Day",
+    icon: Users,
+    title: "Campus to Corporate",
+    description: "Prepare fresh graduates for the corporate world.",
+    features: ["Professional etiquette", "Interview prep", "Workplace skills", "Resume"],
+    duration: "1-2 Days",
     price: "₹12,000",
     popular: false,
   },
@@ -37,23 +37,23 @@ const individualPrograms = [
   {
     icon: MessageSquare,
     title: "Communication Excellence",
-    description: "Master professional communication, presentations, and confident speaking.",
+    description: "Master professional communication and confident speaking.",
     duration: "4 Hours",
     price: "₹8,000",
     type: "1-on-1",
   },
   {
-    icon: Briefcase,
-    title: "Personal Branding Workshop",
-    description: "Build a powerful personal brand that sets you apart in your industry.",
+    icon: TrendingUp,
+    title: "Sales Skills Coaching",
+    description: "Personal coaching to enhance your sales abilities.",
     duration: "6 Hours",
     price: "₹12,000",
     type: "1-on-1",
   },
   {
     icon: Target,
-    title: "Career Advancement Coaching",
-    description: "Strategic career planning and skill development for professional growth.",
+    title: "Career Advancement",
+    description: "Strategic career planning and skill development.",
     duration: "8 Hours",
     price: "₹15,000",
     type: "1-on-1",
@@ -72,7 +72,7 @@ export function ProgramsSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="accent-line mx-auto mb-6" />
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Our Training Programs
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -83,7 +83,7 @@ export function ProgramsSection() {
         {/* Corporate Programs */}
         <div className="mb-20">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-display text-2xl font-bold text-foreground">Corporate Training</h3>
+            <h3 className="text-2xl font-bold text-foreground">Corporate Training</h3>
             <Button variant="ghost" asChild className="group">
               <Link to="/corporate-training">
                 View All
@@ -127,7 +127,7 @@ export function ProgramsSection() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-2xl font-bold text-foreground">{program.price}</span>
+                    <span className="text-2xl font-bold text-foreground">{program.price}</span>
                     <Button variant="navy" size="sm" asChild>
                       <Link to="/contact">Book Now</Link>
                     </Button>
@@ -141,7 +141,7 @@ export function ProgramsSection() {
         {/* Individual Programs */}
         <div>
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-display text-2xl font-bold text-foreground">Individual Training</h3>
+            <h3 className="text-2xl font-bold text-foreground">Individual Training</h3>
             <Button variant="ghost" asChild className="group">
               <Link to="/individual-training">
                 View All
@@ -171,7 +171,7 @@ export function ProgramsSection() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-2xl font-bold text-foreground">{program.price}</span>
+                    <span className="text-2xl font-bold text-foreground">{program.price}</span>
                     <Button variant="accent" size="sm" asChild>
                       <Link to="/contact">Book Session</Link>
                     </Button>

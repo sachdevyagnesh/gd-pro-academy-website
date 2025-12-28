@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, ChevronDown } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -15,27 +15,28 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import heroBg from "@/assets/map-cover.jpg";
 
 const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 98765 43210",
-    href: "tel:+919876543210",
+    value: "+91 8356 837052",
+    href: "tel:+918356837052",
     description: "Mon-Sat 9am-6pm IST",
   },
   {
     icon: Mail,
     title: "Email",
-    value: "info@gdproacademy.in",
-    href: "mailto:info@gdproacademy.in",
+    value: "gdpro.academy@gmail.com",
+    href: "mailto:gdpro.academy@gmail.com",
     description: "We reply within 24 hours",
   },
   {
     icon: MessageCircle,
     title: "WhatsApp",
-    value: "+91 98765 43210",
-    href: "https://wa.me/919876543210",
+    value: "+91 8356 837052",
+    href: "https://wa.me/918356837052",
     description: "Quick response guaranteed",
   },
   {
@@ -50,7 +51,7 @@ const contactInfo = [
 const faqs = [
   {
     question: "What types of training do you offer?",
-    answer: "We offer both corporate training programs for teams and organizations, as well as individual coaching and development programs. Our specializations include sales training, leadership development, communication skills, and professional soft skills.",
+    answer: "We offer both corporate training programs for teams and organizations, as well as individual coaching and development programs. Our specializations include sales training, soft skills development, communication skills, campus to corporate, and team building.",
   },
   {
     question: "Do you provide online training?",
@@ -62,7 +63,7 @@ const faqs = [
   },
   {
     question: "What is your training methodology?",
-    answer: "Our training approach is highly interactive and practical, focusing on real-world applications. We use case studies, role-playing, group discussions, and hands-on exercises to ensure effective learning and skill transfer.",
+    answer: "Our training approach follows '30% Learning, 70% Doing' - we use role-plays, simulation training, case studies, experiential learning, and gamification to ensure effective learning and real-world skill transfer.",
   },
   {
     question: "Do you provide certificates?",
@@ -70,7 +71,7 @@ const faqs = [
   },
   {
     question: "What are your training fees?",
-    answer: "Training fees vary based on the program type, duration, and customization level. Corporate programs start from ₹12,000 per day, while individual sessions start from ₹8,000. Contact us for a detailed quote.",
+    answer: "Training fees vary based on the program type, duration, and customization level. Corporate programs start from ₹12,000 per day, while individual sessions start from ₹5,000. Contact us for a detailed quote.",
   },
 ];
 
@@ -114,14 +115,16 @@ export default function Contact() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 hero-gradient relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-float" />
-          </div>
+        <section className="pt-32 pb-20 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
                 Let's <span className="text-gradient-gold">Connect</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
@@ -166,7 +169,7 @@ export default function Contact() {
               {/* Form */}
               <div>
                 <div className="accent-line mb-6" />
-                <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl font-bold text-foreground mb-4">
                   Send Us a Message
                 </h2>
                 <p className="text-muted-foreground mb-8">
@@ -209,7 +212,7 @@ export default function Contact() {
                       <Input
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 8356 837052"
                         className="bg-card"
                       />
                     </div>
@@ -269,7 +272,7 @@ export default function Contact() {
               {/* FAQ */}
               <div id="faq">
                 <div className="accent-line mb-6" />
-                <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl font-bold text-foreground mb-4">
                   Frequently Asked Questions
                 </h2>
                 <p className="text-muted-foreground mb-8">

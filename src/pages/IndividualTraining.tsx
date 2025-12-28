@@ -4,13 +4,14 @@ import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { MessageSquare, Briefcase, Target, Clock, User, CheckCircle, ArrowRight, Video, Gift, Sparkles } from "lucide-react";
+import { MessageSquare, Target, Clock, User, CheckCircle, ArrowRight, Video, Gift, Sparkles, TrendingUp, Presentation } from "lucide-react";
+import heroBg from "@/assets/about-hero.jpg";
 
 const livePrograms = [
   {
     icon: MessageSquare,
     title: "Communication Excellence",
-    description: "Master professional communication, presentations, and confident speaking.",
+    description: "Master professional communication, presentations, and confident speaking for career success.",
     features: [
       "Public speaking & presentations",
       "Professional communication",
@@ -22,14 +23,14 @@ const livePrograms = [
     type: "1-on-1",
   },
   {
-    icon: Briefcase,
-    title: "Personal Branding Workshop",
-    description: "Build a powerful personal brand that sets you apart in your industry.",
+    icon: TrendingUp,
+    title: "Sales Skills Coaching",
+    description: "Personal coaching to enhance your sales abilities and boost your career in sales.",
     features: [
-      "Personal brand strategy",
-      "LinkedIn profile optimization",
-      "Professional networking",
-      "Online presence management",
+      "Objection handling mastery",
+      "Building client relationships",
+      "Closing techniques",
+      "Confidence in sales calls",
     ],
     duration: "6 Hours",
     price: "₹12,000",
@@ -49,6 +50,20 @@ const livePrograms = [
     price: "₹15,000",
     type: "1-on-1",
   },
+  {
+    icon: Presentation,
+    title: "Interview Preparation",
+    description: "Comprehensive interview coaching to help you land your dream job.",
+    features: [
+      "Mock interviews with feedback",
+      "Common question preparation",
+      "Body language coaching",
+      "Confidence building",
+    ],
+    duration: "3 Hours",
+    price: "₹5,000",
+    type: "1-on-1",
+  },
 ];
 
 const eCourses = [
@@ -66,16 +81,16 @@ const eCourses = [
     price: "₹2,999",
   },
   {
-    title: "Personal Branding Blueprint",
-    description: "Step-by-step guide to building your personal brand and online presence.",
+    title: "Sales Skills Blueprint",
+    description: "Step-by-step guide to mastering sales techniques and building confidence.",
     features: [
-      "20 Video Lessons (3+ hours)",
-      "Personal Brand Workbook",
-      "LinkedIn Profile Templates",
-      "Content Calendar Template",
+      "30 Video Lessons (5+ hours)",
+      "Sales Scripts & Templates",
+      "Objection Handling Guide",
+      "Role-play Exercises",
       "90-day Action Plan",
     ],
-    videos: "20 Videos",
+    videos: "30 Videos",
     price: "₹3,499",
   },
   {
@@ -99,11 +114,12 @@ export default function IndividualTraining() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 hero-gradient relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-          </div>
+        <section className="pt-32 pb-20 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
@@ -113,7 +129,7 @@ export default function IndividualTraining() {
                   Individual Training Solutions
                 </span>
               </div>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
                 Accelerate Your{" "}
                 <span className="text-gradient-gold">Career Growth</span>
               </h1>
@@ -140,7 +156,7 @@ export default function IndividualTraining() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <div className="accent-line mx-auto mb-6" />
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Live Training Sessions
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -148,22 +164,22 @@ export default function IndividualTraining() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {livePrograms.map((program) => (
                 <Card key={program.title} variant="program" className="flex flex-col">
                   <CardHeader>
                     <div className="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center mb-4">
                       <program.icon className="w-7 h-7 text-accent" />
                     </div>
-                    <CardTitle className="text-2xl">{program.title}</CardTitle>
-                    <CardDescription className="text-base">{program.description}</CardDescription>
+                    <CardTitle className="text-xl">{program.title}</CardTitle>
+                    <CardDescription className="text-sm">{program.description}</CardDescription>
                   </CardHeader>
                   <CardContent className="flex-1 flex flex-col">
-                    <ul className="space-y-3 mb-6 flex-1">
+                    <ul className="space-y-2 mb-6 flex-1">
                       {program.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{feature}</span>
+                        <li key={feature} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                          <span className="text-sm text-muted-foreground">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -178,9 +194,9 @@ export default function IndividualTraining() {
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <p className="font-display text-2xl font-bold text-foreground">{program.price}</p>
-                        <Button variant="accent" asChild>
-                          <Link to="/contact">Book Session</Link>
+                        <p className="text-xl font-bold text-foreground">{program.price}</p>
+                        <Button variant="accent" size="sm" asChild>
+                          <Link to="/contact">Book</Link>
                         </Button>
                       </div>
                     </div>
@@ -196,7 +212,7 @@ export default function IndividualTraining() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <div className="accent-line mx-auto mb-6" />
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Online E-Courses
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -232,7 +248,7 @@ export default function IndividualTraining() {
                         <span>Self-paced</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <p className="font-display text-2xl font-bold text-foreground">{course.price}</p>
+                        <p className="text-2xl font-bold text-foreground">{course.price}</p>
                         <Button variant="navy" asChild>
                           <Link to="/contact">Buy Course</Link>
                         </Button>
@@ -252,7 +268,7 @@ export default function IndividualTraining() {
                     BEST VALUE
                   </span>
                 </div>
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                   Complete Professional Bundle
                 </h3>
                 <p className="text-muted-foreground mb-6">
@@ -261,7 +277,7 @@ export default function IndividualTraining() {
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   {[
                     "All 3 Complete Courses",
-                    "75+ Video Lessons (12+ hours)",
+                    "85+ Video Lessons (14+ hours)",
                     "All Templates & Resources",
                     "Bonus: 1-hour Live Q&A Session",
                   ].map((feature) => (
@@ -274,7 +290,7 @@ export default function IndividualTraining() {
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="flex items-baseline gap-3">
                     <span className="text-muted-foreground line-through text-xl">₹11,497</span>
-                    <span className="font-display text-4xl font-bold text-foreground">₹7,999</span>
+                    <span className="text-4xl font-bold text-foreground">₹7,999</span>
                     <span className="bg-accent text-accent-foreground px-2 py-1 rounded text-sm font-semibold">
                       SAVE 30%
                     </span>
