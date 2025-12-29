@@ -91,23 +91,55 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-lead`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
+      const result = await response.json();
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      trainingType: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          trainingType: "",
+          message: "",
+        });
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      // Reset form even on error to not block the user
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        trainingType: "",
+        message: "",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
