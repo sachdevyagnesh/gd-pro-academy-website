@@ -6,8 +6,8 @@ const footerLinks = {
   training: [
     { name: "Corporate Training", href: "/corporate-training" },
     { name: "Individual Training", href: "/individual-training" },
-    { name: "Sales Training", href: "/corporate-training#sales" },
-    { name: "Soft Skills Training", href: "/corporate-training#softskills" },
+    { name: "Sales Training", href: "/services" },
+    { name: "Soft Skills Training", href: "/services" },
   ],
   company: [
     { name: "About Us", href: "/about" },
@@ -20,7 +20,6 @@ const footerLinks = {
     { name: "E-Courses", href: "/individual-training#courses" },
     { name: "FAQs", href: "/contact#faq" },
     { name: "Privacy Policy", href: "/privacy" },
-    { name: "Book Consultation", href: "/contact" },
   ],
 };
 
@@ -32,18 +31,18 @@ export function Footer() {
         <div className="container mx-auto px-4 py-12 md:py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+              <h2 className="font-display text-2xl md:text-3xl font-semibold mb-2">
                 Ready to Transform Your Team?
               </h2>
               <p className="text-primary-foreground/70">
-                Book a free consultation and discover the right training solution for you.
+                Let's discuss the right training solution for your organization.
               </p>
             </div>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 transition-all shadow-gold group"
             >
-              Book Free Consultation
+              Get in Touch
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -59,10 +58,10 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="GD Pro Academy Logo" 
-                className="h-14 w-auto object-contain bg-white rounded-lg p-1"
+                className="h-14 w-auto object-contain rounded-lg"
               />
               <div className="flex flex-col">
-                <span className="font-bold text-xl leading-tight">
+                <span className="font-display font-bold text-xl leading-tight">
                   GD Pro Academy
                 </span>
                 <span className="text-sm text-primary-foreground/60">
@@ -71,7 +70,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm leading-relaxed">
-              Empowering professionals and organizations with practical, result-driven training in sales, leadership, and soft skills.
+              Empowering professionals and organizations with practical, result-driven training in sales, communication, and soft skills.
             </p>
             <div className="flex gap-4">
               <a
@@ -79,6 +78,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -87,6 +87,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -95,6 +96,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
+                aria-label="YouTube"
               >
                 <Youtube className="w-5 h-5" />
               </a>
@@ -103,7 +105,7 @@ export function Footer() {
 
           {/* Training Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Training</h4>
+            <h4 className="font-display font-semibold text-lg mb-4">Training</h4>
             <ul className="space-y-3">
               {footerLinks.training.map((link) => (
                 <li key={link.name}>
@@ -120,7 +122,7 @@ export function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Company</h4>
+            <h4 className="font-display font-semibold text-lg mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -137,7 +139,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Contact</h4>
+            <h4 className="font-display font-semibold text-lg mb-4">Contact</h4>
             <ul className="space-y-4">
               <li>
                 <a
@@ -150,11 +152,11 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:gdpro.academy@gmail.com"
+                  href="mailto:info@gdproacademy.in"
                   className="flex items-start gap-3 text-primary-foreground/70 hover:text-secondary transition-colors"
                 >
                   <Mail className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>gdpro.academy@gmail.com</span>
+                  <span>info@gdproacademy.in</span>
                 </a>
               </li>
               <li className="flex items-start gap-3 text-primary-foreground/70">
@@ -174,9 +176,6 @@ export function Footer() {
             <div className="flex gap-6">
               <Link to="/privacy" className="hover:text-primary-foreground transition-colors">
                 Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-primary-foreground transition-colors">
-                Terms of Service
               </Link>
             </div>
           </div>

@@ -26,7 +26,15 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const location = useLocation();
+
+  // Preload logo
+  useEffect(() => {
+    const img = new Image();
+    img.src = logo;
+    img.onload = () => setImageLoaded(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,16 +62,25 @@ export function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <img 
-              src={logo} 
-              alt="GD Pro Academy Logo" 
-              className="h-12 w-auto object-contain"
-            />
+          {/* Logo - fixed width to prevent layout shift */}
+          <Link to="/" className="flex items-center gap-3 group min-w-[200px]">
+            <div className="h-12 w-12 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center shrink-0">
+              {imageLoaded ? (
+                <img 
+                  src={logo} 
+                  alt="GD Pro Academy Logo" 
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <span className={cn(
+                  "font-display font-bold text-lg",
+                  isScrolled ? "text-primary" : "text-primary-foreground"
+                )}>GD</span>
+              )}
+            </div>
             <div className="flex flex-col">
               <span className={cn(
-                "font-bold text-lg leading-tight transition-colors",
+                "font-display font-bold text-lg leading-tight transition-colors",
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               )}>
                 GD Pro Academy
@@ -154,8 +171,8 @@ export function Header() {
               <Phone className="w-4 h-4" />
               <span className="hidden xl:inline">+91 8356 837052</span>
             </a>
-            <Button variant={isScrolled ? "hero" : "hero"} size="default" asChild>
-              <Link to="/contact">Book Consultation</Link>
+            <Button variant={isScrolled ? "navy" : "hero"} size="default" asChild>
+              <Link to="/contact">Get in Touch</Link>
             </Button>
           </div>
 
@@ -163,6 +180,7 @@ export function Header() {
           <button
             className="lg:hidden p-2 rounded-lg"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
               <X className={cn("w-6 h-6", isScrolled ? "text-foreground" : "text-primary-foreground")} />
@@ -240,7 +258,7 @@ export function Header() {
                 +91 8356 837052
               </a>
               <Button variant="hero" size="lg" asChild className="mx-4">
-                <Link to="/contact">Book Free Consultation</Link>
+                <Link to="/contact">Get in Touch</Link>
               </Button>
             </div>
           </div>
