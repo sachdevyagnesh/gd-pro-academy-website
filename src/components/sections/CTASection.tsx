@@ -38,7 +38,7 @@ export function CTASection() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="hero" size="xl" asChild className="group">
-              <Link to="/contact">
+              <Link to="/book-consultation">
                 <Calendar className="w-5 h-5" />
                 Book Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

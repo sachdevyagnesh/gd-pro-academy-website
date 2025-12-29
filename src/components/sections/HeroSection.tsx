@@ -8,7 +8,7 @@ const metrics = [
   { value: 75000, suffix: "+", label: "Training Hours" },
   { value: 46000, suffix: "+", label: "Participants Trained" },
   { value: 1300, suffix: "+", label: "Sessions Delivered" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: 4.8, suffix: "/5", label: "Client Rating" },
 ];
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
@@ -26,7 +26,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
         setCount(value);
         clearInterval(timer);
       } else {
-        setCount(Math.floor(current));
+        setCount(Number.isInteger(value) ? Math.floor(current) : Math.round(current * 10) / 10);
       }
     }, duration / steps);
 
@@ -94,7 +94,7 @@ export function HeroSection() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up stagger-3">
             <Button variant="hero" size="xl" asChild className="group">
-              <Link to="/contact">
+              <Link to="/book-consultation">
                 Book Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
