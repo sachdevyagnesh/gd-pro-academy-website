@@ -2,13 +2,12 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTASection } from "@/components/sections/CTASection";
 import { TrainingMethodologyVideo } from "@/components/sections/TrainingMethodologyVideo";
-import { CalendlyEmbed } from "@/components/sections/CalendlyEmbed";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { 
   TrendingUp, Users, MessageSquare, Briefcase, Target, 
-  Lightbulb, Presentation, Award, CheckCircle, ArrowRight, X
+  Lightbulb, Presentation, Award, CheckCircle, ArrowRight
 } from "lucide-react";
 import { useState } from "react";
 import {
@@ -213,7 +212,7 @@ export default function Services() {
           </div>
         </section>
 
-        {/* Our Approach */}
+        {/* Our Approach - Fixed alignment */}
         <section className="section-padding bg-muted">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
@@ -226,21 +225,21 @@ export default function Services() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              {approach.map((item, index) => (
-                <div key={item.step} className="relative">
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground font-display text-2xl font-bold flex items-center justify-center mx-auto mb-6">
+            <div className="relative max-w-5xl mx-auto">
+              {/* Connecting line - desktop only */}
+              <div className="hidden lg:block absolute top-8 left-[calc(12.5%+32px)] right-[calc(12.5%+32px)] h-0.5 bg-border" />
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {approach.map((item) => (
+                  <div key={item.step} className="relative text-center">
+                    <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground font-display text-2xl font-bold flex items-center justify-center mx-auto mb-6 relative z-10">
                       {item.step}
                     </div>
                     <h3 className="font-display font-semibold text-foreground mb-3">{item.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                   </div>
-                  {index < approach.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-[calc(100%_-_8px)] w-[calc(100%_-_32px)] h-0.5 bg-border" />
-                  )}
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -258,7 +257,7 @@ export default function Services() {
                   {[
                     { title: "Industry Experience", desc: "14+ years in BFSI and corporate training" },
                     { title: "Customized Solutions", desc: "Programs tailored to your specific needs" },
-                    { title: "Proven Results", desc: "98% client satisfaction rate" },
+                    { title: "Proven Results", desc: "4.8/5 average client satisfaction rating" },
                     { title: "Pan-India Reach", desc: "Training delivered across the country" },
                   ].map((item) => (
                     <div key={item.title} className="flex gap-4">
@@ -296,9 +295,6 @@ export default function Services() {
 
         {/* Training Methodology Video Section */}
         <TrainingMethodologyVideo />
-
-        {/* Calendly Booking Section */}
-        <CalendlyEmbed />
 
         <CTASection />
       </main>

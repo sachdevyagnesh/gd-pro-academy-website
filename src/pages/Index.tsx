@@ -2,10 +2,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TrainingPathsSection } from "@/components/sections/TrainingPathsSection";
-import { AboutSection } from "@/components/sections/AboutSection";
-import { ProgramsSection } from "@/components/sections/ProgramsSection";
+import { MomentsSection } from "@/components/sections/MomentsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { CTASection } from "@/components/sections/CTASection";
 
 const Index = () => {
@@ -15,10 +13,8 @@ const Index = () => {
       <main>
         <HeroSection />
         <TrainingPathsSection />
-        <AboutSection />
-        <ProgramsSection />
+        <MomentsSection />
         <TestimonialsSection />
-        <CertificationsSection />
         <CTASection />
       </main>
       <Footer />

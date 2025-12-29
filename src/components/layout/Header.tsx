@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.jpg";
@@ -157,6 +157,23 @@ export function Header() {
                 )}
               </div>
             ))}
+            {/* Book Consultation Link */}
+            <Link
+              to="/book-consultation"
+              className={cn(
+                "px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
+                isActive("/book-consultation")
+                  ? isScrolled
+                    ? "bg-secondary text-secondary-foreground"
+                    : "bg-secondary text-secondary-foreground"
+                  : isScrolled
+                  ? "text-secondary hover:bg-secondary/10"
+                  : "text-secondary hover:bg-secondary/20"
+              )}
+            >
+              <Calendar className="w-4 h-4" />
+              Book Consultation
+            </Link>
           </nav>
 
           {/* CTA & Contact */}
@@ -245,6 +262,21 @@ export function Header() {
                   )}
                 </div>
               ))}
+              {/* Mobile Book Consultation */}
+              <Link
+                to="/book-consultation"
+                className={cn(
+                  "flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium",
+                  isActive("/book-consultation")
+                    ? "bg-secondary text-secondary-foreground"
+                    : isScrolled
+                    ? "text-secondary hover:bg-secondary/10"
+                    : "text-secondary hover:bg-secondary/20"
+                )}
+              >
+                <Calendar className="w-4 h-4" />
+                Book Consultation
+              </Link>
             </nav>
             <div className="mt-4 pt-4 border-t border-border/20 flex flex-col gap-3">
               <a
