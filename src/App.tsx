@@ -9,16 +9,17 @@ import { AIChatWidget } from "@/components/common/AIChatWidget";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import Moments from "./pages/Moments";
 import CorporateTraining from "./pages/CorporateTraining";
 import IndividualTraining from "./pages/IndividualTraining";
 import Portfolio from "./pages/Portfolio";
+import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import BookConsultation from "./pages/BookConsultation";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Refund from "./pages/Refund";
 import Shipping from "./pages/Shipping";
-import Blog from "./pages/Blog";
-import BookConsultation from "./pages/BookConsultation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,16 +35,17 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/moments" element={<Moments />} />
           <Route path="/corporate-training" element={<CorporateTraining />} />
           <Route path="/individual-training" element={<IndividualTraining />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/book-consultation" element={<BookConsultation />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/refund" element={<Refund />} />
           <Route path="/shipping" element={<Shipping />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/book-consultation" element={<BookConsultation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <WhatsAppButton />
@@ -53,4 +55,5 @@ const App = () => (
   </QueryClientProvider>
 );
 
+export default App;
 export default App;
