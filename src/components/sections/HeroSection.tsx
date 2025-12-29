@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Award } from "lucide-react";
 import { useEffect, useState } from "react";
 import heroBg from "@/assets/hero-bg-1.jpg";
+import { CalPopup } from "@/components/common/CalPopup";
 
 const metrics = [
   { value: 75000, suffix: "+", label: "Training Hours" },
@@ -93,12 +94,10 @@ export function HeroSection() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up stagger-3">
-            <Button variant="hero" size="xl" asChild className="group">
-              <Link to="/book-consultation">
-                Book Free Consultation
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
+            <CalPopup variant="hero" size="xl" className="group">
+              Book Free Consultation
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </CalPopup>
             <Button variant="heroOutline" size="xl" asChild>
               <Link to="/portfolio">
                 <Play className="w-5 h-5" />
