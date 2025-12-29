@@ -1,10 +1,11 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTASection } from "@/components/sections/CTASection";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Users, TrendingUp, MessageSquare, Clock, Award, CheckCircle, ArrowRight, Building2, Briefcase, Target } from "lucide-react";
+import { Users, TrendingUp, MessageSquare, Award, CheckCircle, ArrowRight, Building2, Briefcase, Target } from "lucide-react";
+import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/hero-bg-3.jpg";
 
 const programs = [
@@ -24,6 +25,18 @@ const programs = [
     price: "₹17,999",
     participants: "10-30 participants",
     popular: true,
+    // Learn More details
+    targetAudience: "Sales teams, business development executives, account managers, and sales managers looking to improve conversion rates.",
+    learningOutcomes: [
+      "Master objection handling with proven frameworks",
+      "Build rapport and trust with prospects quickly",
+      "Close deals using value-based selling techniques",
+      "Improve negotiation skills for better outcomes",
+      "Develop a consistent sales process",
+    ],
+    deliveryMethod: "In-person workshop or virtual live training",
+    prerequisites: "None - suitable for all experience levels",
+    certification: "Certificate of Completion + SHRM/HRCI PDCs eligible",
   },
   {
     icon: MessageSquare,
@@ -41,6 +54,17 @@ const programs = [
     price: "₹14,999",
     participants: "10-30 participants",
     popular: false,
+    targetAudience: "Professionals at all levels seeking to enhance their interpersonal and communication skills.",
+    learningOutcomes: [
+      "Communicate effectively in professional settings",
+      "Write clear and impactful business emails",
+      "Manage time efficiently using proven techniques",
+      "Handle difficult conversations with confidence",
+      "Deliver compelling presentations",
+    ],
+    deliveryMethod: "In-person workshop or virtual live training",
+    prerequisites: "None",
+    certification: "Certificate of Completion",
   },
   {
     icon: Users,
@@ -58,6 +82,17 @@ const programs = [
     price: "₹11,999",
     participants: "20-50 participants",
     popular: false,
+    targetAudience: "Fresh graduates, final-year students, and young professionals entering the corporate workforce.",
+    learningOutcomes: [
+      "Understand corporate culture and expectations",
+      "Present yourself professionally in interviews",
+      "Build a compelling resume and LinkedIn profile",
+      "Communicate effectively in workplace settings",
+      "Transition smoothly from campus to corporate life",
+    ],
+    deliveryMethod: "In-person workshop (campus or corporate venue)",
+    prerequisites: "None",
+    certification: "Certificate of Participation",
   },
   {
     icon: Target,
@@ -75,6 +110,17 @@ const programs = [
     price: "₹11,999",
     participants: "15-40 participants",
     popular: false,
+    targetAudience: "Teams seeking to improve collaboration, managers wanting to build cohesive teams.",
+    learningOutcomes: [
+      "Build stronger team relationships",
+      "Resolve conflicts constructively",
+      "Communicate effectively across functions",
+      "Give and receive feedback professionally",
+      "Align team goals with organizational objectives",
+    ],
+    deliveryMethod: "In-person workshop with interactive activities",
+    prerequisites: "None",
+    certification: "Team Certificate of Completion",
   },
 ];
 
@@ -115,7 +161,7 @@ export default function CorporateTraining() {
               <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 leading-relaxed">
                 Customized training programs designed to elevate your team's capabilities in sales, soft skills, and communication. Proven results with 14+ years of corporate experience.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <Button variant="hero" size="lg" asChild>
                   <Link to="/contact">
                     Request Corporate Proposal
@@ -123,7 +169,7 @@ export default function CorporateTraining() {
                   </Link>
                 </Button>
                 <Button variant="heroOutline" size="lg" asChild>
-                  <a href="tel:+918356837052">Schedule a Call</a>
+                  <Link to="/book-consultation">Schedule a Call</Link>
                 </Button>
               </div>
             </div>
@@ -145,51 +191,25 @@ export default function CorporateTraining() {
 
             <div className="grid lg:grid-cols-2 gap-8">
               {programs.map((program) => (
-                <Card key={program.title} variant="program" className="relative flex flex-col">
-                  {program.popular && (
-                    <div className="absolute -top-3 left-6 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-semibold">
-                      Most Popular
-                    </div>
-                  )}
-                  <CardHeader>
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
-                      <program.icon className="w-7 h-7 text-primary" />
-                    </div>
-                    <CardTitle className="text-2xl">{program.title}</CardTitle>
-                    <CardDescription className="text-base">{program.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex flex-col">
-                    <ul className="space-y-3 mb-6 flex-1">
-                      {program.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="space-y-4 pt-6 border-t">
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
-                        <span className="flex items-center gap-2">
-                          <Clock className="w-4 h-4" />
-                          {program.duration}
-                        </span>
-                        <span className="flex items-center gap-2">
-                          <Users className="w-4 h-4" />
-                          {program.participants}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <span className="text-sm text-muted-foreground">Starting at</span>
-                          <p className="text-2xl font-bold text-foreground">{program.price}</p>
-                        </div>
-                        <Button variant="navy" asChild>
-                          <Link to="/contact">Book Now</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <CourseCard
+                  key={program.title}
+                  icon={program.icon}
+                  title={program.title}
+                  description={program.description}
+                  features={program.features}
+                  duration={program.duration}
+                  price={program.price}
+                  participants={program.participants}
+                  popular={program.popular}
+                  targetAudience={program.targetAudience}
+                  learningOutcomes={program.learningOutcomes}
+                  deliveryMethod={program.deliveryMethod}
+                  prerequisites={program.prerequisites}
+                  certification={program.certification}
+                  ctaLabel="Book Now"
+                  ctaLink="/book-consultation"
+                  ctaVariant="navy"
+                />
               ))}
             </div>
 
@@ -243,7 +263,7 @@ export default function CorporateTraining() {
                       Contact us for a customized training proposal tailored to your organization's needs.
                     </p>
                     <Button variant="hero" size="lg" asChild className="w-full">
-                      <Link to="/contact">Request Proposal</Link>
+                      <Link to="/book-consultation">Book Free Consultation</Link>
                     </Button>
                   </div>
                 </Card>
