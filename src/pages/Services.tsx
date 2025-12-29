@@ -1,6 +1,8 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CTASection } from "@/components/sections/CTASection";
+import { TrainingMethodologyVideo } from "@/components/sections/TrainingMethodologyVideo";
+import { CalendlyEmbed } from "@/components/sections/CalendlyEmbed";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -291,6 +293,12 @@ export default function Services() {
             </div>
           </div>
         </section>
+
+        {/* Training Methodology Video Section */}
+        <TrainingMethodologyVideo />
+
+        {/* Calendly Booking Section */}
+        <CalendlyEmbed />
 
         <CTASection />
       </main>
