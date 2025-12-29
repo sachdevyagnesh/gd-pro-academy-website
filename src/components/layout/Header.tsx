@@ -3,20 +3,20 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-new.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { 
-    name: "Training", 
+    name: "Services", 
     href: "#",
     children: [
       { name: "Corporate Training", href: "/corporate-training" },
       { name: "Individual Training", href: "/individual-training" },
     ]
   },
-  { name: "Services", href: "/services" },
+  { name: "Moments", href: "/moments" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
@@ -49,6 +49,18 @@ export function Header() {
     setOpenDropdown(null);
   }, [location]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const isActive = (href: string) => location.pathname === href;
 
   return (
@@ -62,14 +74,14 @@ export function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo - fixed width to prevent layout shift */}
-          <Link to="/" className="flex items-center gap-3 group min-w-[200px]">
-            <div className="h-12 w-12 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center shrink-0">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group min-w-[180px]">
+            <div className="h-10 w-10 rounded-lg overflow-hidden bg-white flex items-center justify-center shrink-0">
               {imageLoaded ? (
                 <img 
                   src={logo} 
                   alt="GD Pro Academy Logo" 
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               ) : (
                 <span className={cn(
@@ -80,7 +92,7 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span className={cn(
-                "font-display font-bold text-lg leading-tight transition-colors",
+                "font-display font-bold text-base leading-tight transition-colors",
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               )}>
                 GD Pro Academy
@@ -102,7 +114,7 @@ export function Header() {
                   <>
                     <button
                       className={cn(
-                        "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                        "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                         isScrolled
                           ? "text-foreground hover:bg-muted"
                           : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
@@ -142,7 +154,7 @@ export function Header() {
                   <Link
                     to={link.href}
                     className={cn(
-                      "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                      "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                       isActive(link.href)
                         ? isScrolled
                           ? "bg-primary text-primary-foreground"
@@ -161,23 +173,21 @@ export function Header() {
             <Link
               to="/book-consultation"
               className={cn(
-                "px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
+                "px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
                 isActive("/book-consultation")
-                  ? isScrolled
-                    ? "bg-secondary text-secondary-foreground"
-                    : "bg-secondary text-secondary-foreground"
+                  ? "bg-secondary text-secondary-foreground"
                   : isScrolled
                   ? "text-secondary hover:bg-secondary/10"
                   : "text-secondary hover:bg-secondary/20"
               )}
             >
               <Calendar className="w-4 h-4" />
-              Book Consultation
+              Book Call
             </Link>
           </nav>
 
           {/* CTA & Contact */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:+918356837052"
               className={cn(
@@ -206,20 +216,46 @@ export function Header() {
             )}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-border/20 pt-4 animate-fade-in">
-            <nav className="flex flex-col gap-1">
+      {/* Mobile Menu - Full screen overlay */}
+      {isMobileMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          
+          {/* Menu Panel */}
+          <div className="fixed top-0 right-0 w-full max-w-xs h-full bg-card shadow-2xl z-50 lg:hidden overflow-y-auto animate-fade-in">
+            {/* Menu Header */}
+            <div className="flex items-center justify-between p-4 border-b">
+              <div className="flex items-center gap-2">
+                <img 
+                  src={logo} 
+                  alt="GD Pro Academy" 
+                  className="h-8 w-8 object-contain rounded-lg"
+                />
+                <span className="font-display font-bold text-foreground">Menu</span>
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5 text-foreground" />
+              </button>
+            </div>
+
+            {/* Menu Links */}
+            <nav className="p-4 space-y-1">
               {navLinks.map((link) => (
                 <div key={link.name}>
                   {link.children ? (
                     <>
                       <button
-                        className={cn(
-                          "w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium",
-                          isScrolled ? "text-foreground" : "text-primary-foreground"
-                        )}
+                        className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-foreground font-medium hover:bg-muted transition-colors"
                         onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
                       >
                         {link.name}
@@ -229,15 +265,18 @@ export function Header() {
                         )} />
                       </button>
                       {openDropdown === link.name && (
-                        <div className="pl-4 animate-fade-in">
+                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-muted pl-4">
                           {link.children.map((child) => (
                             <Link
                               key={child.name}
                               to={child.href}
                               className={cn(
-                                "block px-4 py-2.5 rounded-lg text-sm",
-                                isScrolled ? "text-muted-foreground hover:text-foreground" : "text-primary-foreground/80 hover:text-primary-foreground"
+                                "block px-4 py-2.5 rounded-lg text-sm transition-colors",
+                                isActive(child.href)
+                                  ? "bg-primary text-primary-foreground"
+                                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
                               )}
+                              onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {child.name}
                             </Link>
@@ -249,53 +288,48 @@ export function Header() {
                     <Link
                       to={link.href}
                       className={cn(
-                        "block px-4 py-3 rounded-lg text-sm font-medium",
+                        "block px-4 py-3 rounded-lg font-medium transition-colors",
                         isActive(link.href)
-                          ? "bg-secondary text-secondary-foreground"
-                          : isScrolled
-                          ? "text-foreground hover:bg-muted"
-                          : "text-primary-foreground hover:bg-primary-foreground/10"
+                          ? "bg-primary text-primary-foreground"
+                          : "text-foreground hover:bg-muted"
                       )}
+                      onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.name}
                     </Link>
                   )}
                 </div>
               ))}
-              {/* Mobile Book Consultation */}
+              
+              {/* Book Consultation */}
               <Link
                 to="/book-consultation"
-                className={cn(
-                  "flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium",
-                  isActive("/book-consultation")
-                    ? "bg-secondary text-secondary-foreground"
-                    : isScrolled
-                    ? "text-secondary hover:bg-secondary/10"
-                    : "text-secondary hover:bg-secondary/20"
-                )}
+                className="flex items-center gap-2 px-4 py-3 rounded-lg font-medium text-secondary hover:bg-secondary/10 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Calendar className="w-4 h-4" />
                 Book Consultation
               </Link>
             </nav>
-            <div className="mt-4 pt-4 border-t border-border/20 flex flex-col gap-3">
+
+            {/* Menu Footer */}
+            <div className="p-4 border-t mt-4 space-y-3">
               <a
                 href="tel:+918356837052"
-                className={cn(
-                  "flex items-center gap-2 px-4 py-2 text-sm",
-                  isScrolled ? "text-foreground" : "text-primary-foreground"
-                )}
+                className="flex items-center gap-2 px-4 py-2 text-foreground"
               >
                 <Phone className="w-4 h-4" />
                 +91 8356 837052
               </a>
-              <Button variant="hero" size="lg" asChild className="mx-4">
-                <Link to="/contact">Get in Touch</Link>
+              <Button variant="navy" size="lg" asChild className="w-full">
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  Get in Touch
+                </Link>
               </Button>
             </div>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </header>
   );
 }

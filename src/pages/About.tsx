@@ -1,18 +1,16 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Award, BookOpen, Users, Target, Lightbulb, Heart, CheckCircle, ArrowRight, Clock, MapPin, Briefcase } from "lucide-react";
+import { Award, BookOpen, Users, Target, Lightbulb, Heart, CheckCircle, MapPin } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
 import aboutPortrait from "@/assets/about-portrait.jpg";
 
 const milestones = [
-  { year: "2013", title: "Career Start", description: "Began career in BFSI sector as a banking professional" },
-  { year: "2016", title: "Training Role", description: "Transitioned to functional trainer at a leading company" },
-  { year: "2019", title: "GD Pro Academy", description: "Founded GD Pro Academy to help professionals thrive" },
-  { year: "2024", title: "Today", description: "75,000+ training hours delivered across India" },
+  { year: "2019", title: "Training Role Started", description: "Transitioned into professional training" },
+  { year: "2023", title: "Founded GD Pro Academy", description: "To help professionals thrive in sales" },
+  { year: "2026", title: "Today", description: "75,000+ training hours delivered globally" },
 ];
 
 const specializations = [
@@ -53,7 +51,7 @@ export default function About() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 relative overflow-hidden">
+        <section className="pt-28 pb-16 relative overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${aboutHero})` }}
@@ -76,20 +74,20 @@ export default function About() {
         {/* Trainer Profile */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Image */}
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              {/* Image - optimized size */}
               <div className="relative">
-                <div className="relative z-10">
-                  <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-elevated">
+                <div className="relative z-10 max-w-md mx-auto lg:mx-0">
+                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-elevated">
                     <img 
                       src={aboutPortrait} 
                       alt="Grishma Sachdev - Founder & Lead Trainer at GD Pro Academy"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
                 </div>
                 {/* Floating stats */}
-                <Card className="absolute -bottom-6 -right-6 lg:-right-12 z-20 shadow-elevated">
+                <Card className="absolute -bottom-4 right-0 lg:-right-8 z-20 shadow-elevated">
                   <CardContent className="p-4">
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
@@ -103,50 +101,53 @@ export default function About() {
                     </div>
                   </CardContent>
                 </Card>
-                <div className="absolute -top-4 -left-4 w-full h-full bg-secondary/20 rounded-3xl -z-10" />
+                <div className="absolute -top-4 -left-4 w-full h-full bg-secondary/20 rounded-2xl -z-10" />
               </div>
 
-              {/* Content - First person narrative */}
+              {/* Content - Updated bio */}
               <div>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
                   Hi, I'm Grishma Sachdev
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-8">
                   <p>
-                    With over 14 years of experience in BFSI and corporate training, I understand the challenges professionals face in sales-driven environments. My journey began in banking, where I discovered my passion for helping teams overcome their fear of targets and embrace confidence in their careers.
+                    I'm a passionate Sales & Soft Skills Trainer with over 14 years of experience in the BFSI and training industries. I understand the challenges professionals face in sales-driven environments.
                   </p>
                   <p>
-                    I believe in simplifying complex concepts and focusing on practical learning, people's behavior, and real-world applications. Motherhood has taught me patience and simplicity, which I integrate into my training approach to create meaningful and transformative experiences for my learners.
+                    I simplify complex concepts, focusing on practical learning, people's behavior, and real-world applications. Motherhood has taught me patience and simplicity, which I integrate into my training approach to create meaningful and transformative experiences for learners.
                   </p>
                   <p>
-                    Starting my career in 2013 in a profession that most people avoided—especially as a woman back then—I grew from an officer-level role to a managerial position, and eventually into a corporate functional trainer. I believe that with the right skills and mindset, anyone can thrive.
+                    I started my career in 2013 in a profession that most people avoid, especially back then as a woman. Yes, I'm talking about sales—a job that many people shy away from even today. I began in the BFSI (Banking, Financial Services, and Insurance) sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer level role to a managerial position.
                   </p>
                   <p>
-                    Today, through GD Pro Academy, I've had the privilege of training over 46,000 professionals across India, delivering 75,000+ training hours. My mission is simple: to help you unlock your potential and achieve the success you deserve.
+                    Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, earned respect, and everything seemed smooth. But something felt missing. I noticed that many people still don't want to work in sales. It's seen as a tough profession.
+                  </p>
+                  <p>
+                    I still remember sitting in a room full of people who hesitated to admit they worked in sales. That moment made me realize that this perception had to change. But I've always believed that with the right skills and mindset, anyone can thrive in it.
                   </p>
                 </div>
 
-                {/* Highlights */}
+                {/* Highlights - BOLD text */}
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   <div className="text-center p-4 bg-muted rounded-xl">
                     <BookOpen className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground">14+</p>
-                    <p className="text-xs text-muted-foreground">Years BFSI</p>
+                    <p className="font-display font-bold text-foreground">14+ years</p>
+                    <p className="text-xs text-muted-foreground"><strong>in BFSI</strong></p>
                   </div>
                   <div className="text-center p-4 bg-muted rounded-xl">
                     <Award className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground">Certified</p>
-                    <p className="text-xs text-muted-foreground">Trainer</p>
+                    <p className="font-display font-bold text-foreground"><strong>Certified</strong></p>
+                    <p className="text-xs text-muted-foreground"><strong>Trainer</strong></p>
                   </div>
                   <div className="text-center p-4 bg-muted rounded-xl">
                     <MapPin className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground">Pan-India</p>
-                    <p className="text-xs text-muted-foreground">& Global</p>
+                    <p className="font-display font-bold text-foreground"><strong>Pan-India</strong></p>
+                    <p className="text-xs text-muted-foreground"><strong>& Global</strong></p>
                   </div>
                 </div>
 
                 <Button variant="navy" size="lg" asChild>
-                  <Link to="/contact">Let's Connect</Link>
+                  <Link to="/book-consultation">Book a Consultation</Link>
                 </Button>
               </div>
             </div>
@@ -156,7 +157,7 @@ export default function About() {
         {/* Training Philosophy */}
         <section className="section-padding bg-muted">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <div className="accent-line mx-auto mb-6" />
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 My Training Philosophy
@@ -182,10 +183,10 @@ export default function About() {
           </div>
         </section>
 
-        {/* Specializations */}
+        {/* Specializations & Timeline */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
               <div>
                 <div className="accent-line mb-6" />
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -204,12 +205,13 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Timeline */}
+              {/* Timeline - Updated */}
               <div className="space-y-6">
+                <h3 className="font-display text-xl font-bold text-foreground mb-4">Career Journey</h3>
                 {milestones.map((milestone, index) => (
                   <div key={milestone.year} className="flex gap-4">
                     <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-sm">
                         {milestone.year.slice(-2)}
                       </div>
                       {index < milestones.length - 1 && (
@@ -228,7 +230,20 @@ export default function About() {
           </div>
         </section>
 
-        <CTASection />
+        {/* Simple CTA */}
+        <section className="py-12 bg-primary">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
+              Ready to Transform Your Career?
+            </h2>
+            <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
+              Let's discuss how GD Pro Academy can help you achieve your professional goals.
+            </p>
+            <Button variant="hero" size="lg" asChild>
+              <Link to="/book-consultation">Book Free Consultation</Link>
+            </Button>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
