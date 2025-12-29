@@ -14,11 +14,15 @@ import prepworksLogo from "@/assets/prepworks-logo.png";
 import kyteLogo from "@/assets/kyte-logo.jpg";
 import mahindraLogo from "@/assets/mahindra-pride.png";
 import proSpidersLogo from "@/assets/pro-spiders.png";
+import yesBankLogo from "@/assets/yes-bank.png";
+import wagonsLogo from "@/assets/wagons-learning.png";
+import veeflyLogo from "@/assets/veefly.png";
 
 // Import certification logos
 import cpdLogo from "@/assets/cpd-accredited.png";
 import hrciLogo from "@/assets/hrci-approved.png";
 import proTouchLogo from "@/assets/pro-touch.png";
+import shrmLogo from "@/assets/shrm-provider.png";
 
 const caseStudies = [
   {
@@ -100,12 +104,16 @@ const associations = [
   { name: "Kyte Enterprise", logo: kyteLogo },
   { name: "Pro Spiders", logo: proSpidersLogo },
   { name: "Mahindra Pride Classroom", logo: mahindraLogo },
+  { name: "Yes Bank", logo: yesBankLogo },
+  { name: "Wagons Learning", logo: wagonsLogo },
+  { name: "VeeFly", logo: veeflyLogo },
 ];
 
 const certifications = [
   { name: "CPD Accredited", description: "Continuing Professional Development", logo: cpdLogo },
   { name: "HRCI Approved Provider", description: "2024 Provider", logo: hrciLogo },
   { name: "Pro Touch Certified", description: "Training Excellence", logo: proTouchLogo },
+  { name: "SHRM Recertification Provider", description: "SHRM-CP | SHRM-SCP", logo: shrmLogo },
 ];
 
 export default function Portfolio() {
