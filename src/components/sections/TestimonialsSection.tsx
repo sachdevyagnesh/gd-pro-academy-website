@@ -103,14 +103,10 @@ export function TestimonialsSection() {
         </div>
 
         {/* Auto-scrolling Testimonials */}
-        <div 
-          className="relative overflow-hidden mb-16"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="relative overflow-hidden mb-16">
           <div 
             ref={scrollRef}
-            className={`flex gap-6 ${isPaused ? '' : 'auto-scroll'}`}
+            className="flex gap-6 auto-scroll hover:[animation-play-state:paused]"
             style={{ width: 'max-content' }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (

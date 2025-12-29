@@ -28,8 +28,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "gdpro.academy@gmail.com",
-    href: "mailto:gdpro.academy@gmail.com",
+    value: "info@gdproacademy.in",
+    href: "mailto:info@gdproacademy.in",
     description: "We reply within 24 hours",
   },
   {
