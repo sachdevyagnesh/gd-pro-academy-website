@@ -8,6 +8,7 @@ import aboutHero from "@/assets/about-hero.jpg";
 import aboutPortrait from "@/assets/about-portrait.jpg";
 
 const milestones = [
+  { year: "2013", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
   { year: "2019", title: "Training Role Started", description: "Transitioned into professional training" },
   { year: "2023", title: "Founded GD Pro Academy", description: "To help professionals thrive in sales" },
   { year: "2026", title: "Today", description: "75,000+ training hours delivered globally" },
@@ -71,11 +72,11 @@ export default function About() {
           </div>
         </section>
 
-        {/* Trainer Profile */}
+        {/* Trainer Profile - Redesigned Layout */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              {/* Image - optimized size */}
+              {/* Image with stats below */}
               <div className="relative">
                 <div className="relative z-10 max-w-md mx-auto lg:mx-0">
                   <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-elevated">
@@ -85,23 +86,24 @@ export default function About() {
                       className="w-full h-full object-cover object-top"
                     />
                   </div>
+                  
+                  {/* Stats Card - Below image */}
+                  <Card className="mt-6 shadow-elevated">
+                    <CardContent className="p-6">
+                      <div className="grid grid-cols-2 gap-6 text-center">
+                        <div>
+                          <p className="font-display text-3xl font-bold text-foreground">14+</p>
+                          <p className="text-sm text-muted-foreground">Years Experience</p>
+                        </div>
+                        <div>
+                          <p className="font-display text-3xl font-bold text-foreground">4.8/5</p>
+                          <p className="text-sm text-muted-foreground">Client Rating</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-                {/* Floating stats */}
-                <Card className="absolute -bottom-4 right-0 lg:-right-8 z-20 shadow-elevated">
-                  <CardContent className="p-4">
-                    <div className="grid grid-cols-2 gap-4 text-center">
-                      <div>
-                        <p className="font-display text-2xl font-bold text-foreground">14+</p>
-                        <p className="text-xs text-muted-foreground">Years Experience</p>
-                      </div>
-                      <div>
-                        <p className="font-display text-2xl font-bold text-foreground">4.8/5</p>
-                        <p className="text-xs text-muted-foreground">Client Rating</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                <div className="absolute -top-4 -left-4 w-full h-full bg-secondary/20 rounded-2xl -z-10" />
+                <div className="absolute -top-4 -left-4 w-full h-[calc(100%-80px)] bg-secondary/20 rounded-2xl -z-10 hidden lg:block" />
               </div>
 
               {/* Content - Updated bio */}
@@ -131,18 +133,24 @@ export default function About() {
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   <div className="text-center p-4 bg-muted rounded-xl">
                     <BookOpen className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground">14+ years</p>
-                    <p className="text-xs text-muted-foreground"><strong>in BFSI</strong></p>
+                    <p className="font-display font-bold text-foreground">
+                      <strong>14+ years</strong>
+                    </p>
+                    <p className="text-xs text-muted-foreground font-bold">in BFSI</p>
                   </div>
                   <div className="text-center p-4 bg-muted rounded-xl">
                     <Award className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground"><strong>Certified</strong></p>
-                    <p className="text-xs text-muted-foreground"><strong>Trainer</strong></p>
+                    <p className="font-display font-bold text-foreground">
+                      <strong>Certified</strong>
+                    </p>
+                    <p className="text-xs text-muted-foreground font-bold">Trainer</p>
                   </div>
                   <div className="text-center p-4 bg-muted rounded-xl">
                     <MapPin className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground"><strong>Pan-India</strong></p>
-                    <p className="text-xs text-muted-foreground"><strong>& Global</strong></p>
+                    <p className="font-display font-bold text-foreground">
+                      <strong>Pan-India</strong>
+                    </p>
+                    <p className="text-xs text-muted-foreground font-bold">& Global</p>
                   </div>
                 </div>
 
@@ -205,7 +213,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Timeline - Updated */}
+              {/* Timeline - Updated with 2013 */}
               <div className="space-y-6">
                 <h3 className="font-display text-xl font-bold text-foreground mb-4">Career Journey</h3>
                 {milestones.map((milestone, index) => (
