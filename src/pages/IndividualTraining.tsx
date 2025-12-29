@@ -18,7 +18,7 @@ const livePrograms = [
       "Conflict resolution",
     ],
     duration: "4 Hours",
-    price: "₹8,000",
+    price: "₹7,999",
     type: "1-on-1",
   },
   {
@@ -32,7 +32,7 @@ const livePrograms = [
       "Confidence in sales calls",
     ],
     duration: "6 Hours",
-    price: "₹12,000",
+    price: "₹11,999",
     type: "1-on-1",
   },
   {
@@ -46,7 +46,7 @@ const livePrograms = [
       "Salary negotiation",
     ],
     duration: "8 Hours",
-    price: "₹15,000",
+    price: "₹14,999",
     type: "1-on-1",
   },
   {
@@ -60,7 +60,7 @@ const livePrograms = [
       "Confidence building",
     ],
     duration: "3 Hours",
-    price: "₹5,000",
+    price: "₹4,999",
     type: "1-on-1",
   },
 ];
@@ -77,7 +77,7 @@ const eCourses = [
       "Lifetime Access",
     ],
     videos: "25 Videos",
-    price: "₹2,999",
+    price: "₹2,997",
   },
   {
     title: "Sales Skills Blueprint",
@@ -90,7 +90,7 @@ const eCourses = [
       "90-day Action Plan",
     ],
     videos: "30 Videos",
-    price: "₹3,499",
+    price: "₹3,497",
   },
   {
     title: "Career Growth Accelerator",
@@ -103,7 +103,7 @@ const eCourses = [
       "Salary Negotiation Scripts",
     ],
     videos: "30 Videos",
-    price: "₹4,999",
+    price: "₹4,997",
   },
 ];
 
@@ -288,8 +288,8 @@ export default function IndividualTraining() {
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="flex items-baseline gap-3">
-                    <span className="text-muted-foreground line-through text-xl">₹11,497</span>
-                    <span className="text-4xl font-bold text-foreground">₹7,999</span>
+                    <span className="text-muted-foreground line-through text-xl">₹11,491</span>
+                    <span className="text-4xl font-bold text-foreground">₹7,997</span>
                     <span className="bg-accent text-accent-foreground px-2 py-1 rounded text-sm font-semibold">
                       SAVE 30%
                     </span>
