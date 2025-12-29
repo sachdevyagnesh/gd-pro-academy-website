@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,14 +26,14 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const location = useLocation();
+  const logoRef = useRef<HTMLImageElement | null>(null);
 
-  // Preload logo
+  // Preload logo on mount - store in ref to prevent re-renders
   useEffect(() => {
     const img = new Image();
     img.src = logo;
-    img.onload = () => setImageLoaded(true);
+    logoRef.current = img;
   }, []);
 
   useEffect(() => {
@@ -69,30 +69,23 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-card/95 backdrop-blur-md shadow-soft py-2"
-          : "bg-transparent py-4"
+          : "bg-transparent py-3"
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group min-w-[180px]">
-            <div className="h-14 w-14 rounded-lg overflow-hidden bg-white flex items-center justify-center shrink-0">
-              {imageLoaded ? (
-                <img 
-                  src={logo} 
-                  alt="GD Pro Academy Logo" 
-                  className="h-full w-full object-contain"
-                />
-              ) : (
-                <span className={cn(
-                  "font-display font-bold text-lg",
-                  isScrolled ? "text-primary" : "text-primary-foreground"
-                )}>GD</span>
-              )}
+          {/* Logo - Larger and always visible */}
+          <Link to="/" className="flex items-center gap-3 group min-w-[200px]">
+            <div className="h-16 w-16 md:h-18 md:w-18 rounded-xl overflow-hidden bg-white shadow-md flex items-center justify-center shrink-0 border border-border/50">
+              <img 
+                src={logo} 
+                alt="GD Pro Academy Logo" 
+                className="h-full w-full object-contain p-1"
+              />
             </div>
             <div className="flex flex-col">
               <span className={cn(
-                "font-display font-bold text-base leading-tight transition-colors",
+                "font-display font-bold text-lg leading-tight transition-colors",
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               )}>
                 GD Pro Academy
@@ -235,7 +228,7 @@ export function Header() {
                 <img 
                   src={logo} 
                   alt="GD Pro Academy" 
-                  className="h-8 w-8 object-contain rounded-lg"
+                  className="h-12 w-12 object-contain rounded-lg bg-white p-1"
                 />
                 <span className="font-display font-bold text-foreground">Menu</span>
               </div>

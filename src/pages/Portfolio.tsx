@@ -4,8 +4,8 @@ import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu } from "lucide-react";
-import { useState } from "react";
+import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, ArrowLeft, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu, Fuel, HeartPulse } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import heroBg from "@/assets/about-portrait1.jpg";
 
 // Import association logos
@@ -82,12 +82,14 @@ const caseStudies = [
 ];
 
 const industries = [
-  { name: "BFSI & Insurance", icon: Landmark },
-  { name: "Information Technology", icon: Cpu },
-  { name: "Manufacturing", icon: Factory },
-  { name: "Education & EdTech", icon: GraduationCap },
-  { name: "Retail", icon: ShoppingBag },
-  { name: "Corporate & Startups", icon: Briefcase },
+  { name: "BFSI & Insurance", icon: Landmark, color: "bg-blue-500/10 text-blue-600" },
+  { name: "Information Technology", icon: Cpu, color: "bg-purple-500/10 text-purple-600" },
+  { name: "Manufacturing", icon: Factory, color: "bg-orange-500/10 text-orange-600" },
+  { name: "Education & EdTech", icon: GraduationCap, color: "bg-green-500/10 text-green-600" },
+  { name: "Retail", icon: ShoppingBag, color: "bg-pink-500/10 text-pink-600" },
+  { name: "Oil & Gas", icon: Fuel, color: "bg-amber-500/10 text-amber-600" },
+  { name: "Healthcare", icon: HeartPulse, color: "bg-red-500/10 text-red-600" },
+  { name: "Corporate & Startups", icon: Briefcase, color: "bg-indigo-500/10 text-indigo-600" },
 ];
 
 const stats = [
@@ -100,13 +102,20 @@ const stats = [
 // Key associations with actual logos
 const associations = [
   { name: "Kotak Bank", logo: kotakLogo },
+  { name: "Yes Bank", logo: yesBankLogo },
   { name: "Prepworks", logo: prepworksLogo },
   { name: "Kyte Enterprise", logo: kyteLogo },
   { name: "Pro Spiders", logo: proSpidersLogo },
   { name: "Mahindra Pride Classroom", logo: mahindraLogo },
-  { name: "Yes Bank", logo: yesBankLogo },
   { name: "Wagons Learning", logo: wagonsLogo },
   { name: "VeeFly", logo: veeflyLogo },
+];
+
+// Bank logos will be added when images are provided
+const bankLogos = [
+  { name: "ICICI Bank", placeholder: true },
+  { name: "HDFC Bank", placeholder: true },
+  { name: "Axis Bank", placeholder: true },
 ];
 
 const certifications = [
@@ -118,6 +127,76 @@ const certifications = [
 
 export default function Portfolio() {
   const [isPaused, setIsPaused] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Handle manual navigation
+  const scrollToIndex = (index: number) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    
+    const cardWidth = 424; // 400px card + 24px gap
+    const newIndex = Math.max(0, Math.min(index, caseStudies.length - 1));
+    setCurrentIndex(newIndex);
+    container.scrollTo({ left: newIndex * cardWidth, behavior: 'smooth' });
+  };
+
+  const handlePrev = () => {
+    scrollToIndex(currentIndex - 1);
+    resetAutoScrollDelay();
+  };
+
+  const handleNext = () => {
+    scrollToIndex(currentIndex + 1);
+    resetAutoScrollDelay();
+  };
+
+  // Reset auto-scroll with delay after user interaction
+  const resetAutoScrollDelay = () => {
+    setIsPaused(true);
+    if (autoScrollTimeoutRef.current) {
+      clearTimeout(autoScrollTimeoutRef.current);
+    }
+    autoScrollTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 3000);
+  };
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (isPaused) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => {
+        const next = prev + 1;
+        if (next >= caseStudies.length) {
+          return 0;
+        }
+        return next;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  // Scroll to current index when it changes
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || isPaused) return;
+    
+    const cardWidth = 424;
+    container.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
+  }, [currentIndex, isPaused]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (autoScrollTimeoutRef.current) {
+        clearTimeout(autoScrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -165,7 +244,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Scrolling Case Studies */}
+        {/* Case Studies Carousel - Improved */}
         <section className="section-padding bg-muted overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -179,18 +258,57 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden px-4">
+          {/* Carousel with controls */}
+          <div className="relative px-4">
+            {/* Navigation Buttons */}
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
+                className="rounded-full bg-card shadow-lg hover:bg-muted disabled:opacity-50"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </Button>
+            </div>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleNext}
+                disabled={currentIndex === caseStudies.length - 1}
+                className="rounded-full bg-card shadow-lg hover:bg-muted disabled:opacity-50"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </div>
+
             <div 
-              className={`flex gap-6 ${isPaused ? '' : 'auto-scroll'}`}
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-              style={{ width: 'max-content' }}
+              ref={scrollContainerRef}
+              className="flex gap-6 overflow-x-auto scrollbar-thin pb-4 scroll-smooth"
+              onMouseEnter={() => {
+                setIsPaused(true);
+                if (autoScrollTimeoutRef.current) {
+                  clearTimeout(autoScrollTimeoutRef.current);
+                }
+              }}
+              onMouseLeave={() => {
+                autoScrollTimeoutRef.current = setTimeout(() => {
+                  setIsPaused(false);
+                }, 2500);
+              }}
+              style={{ scrollSnapType: 'x mandatory' }}
             >
+              {/* Spacer for centering */}
+              <div className="shrink-0 w-[calc(50vw-212px)] hidden lg:block" />
+              
               {caseStudies.map((study, index) => (
                 <Card 
                   key={index} 
                   variant="elevated" 
-                  className="w-[400px] shrink-0 overflow-hidden hover:scale-[1.02] transition-transform cursor-pointer"
+                  className="w-[400px] shrink-0 overflow-hidden hover:shadow-xl transition-all cursor-pointer"
+                  style={{ scrollSnapAlign: 'center' }}
                 >
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary" />
                   <CardContent className="p-6">
@@ -230,6 +348,27 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               ))}
+              
+              {/* Spacer for centering */}
+              <div className="shrink-0 w-[calc(50vw-212px)] hidden lg:block" />
+            </div>
+
+            {/* Pagination dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {caseStudies.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    scrollToIndex(index);
+                    resetAutoScrollDelay();
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentIndex 
+                      ? 'bg-primary w-6' 
+                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </section>
@@ -252,13 +391,26 @@ export default function Portfolio() {
               {associations.map((company) => (
                 <div
                   key={company.name}
-                  className="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100 bg-white p-4 rounded-lg"
+                  className="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100 bg-white p-4 rounded-lg shadow-sm hover:shadow-md"
                 >
                   <img
                     src={company.logo}
                     alt={company.name}
                     className="h-12 md:h-16 w-auto object-contain"
                   />
+                </div>
+              ))}
+            </div>
+            
+            {/* Placeholder for additional bank logos */}
+            <div className="flex flex-wrap justify-center items-center gap-6 mt-8">
+              {bankLogos.map((bank) => (
+                <div
+                  key={bank.name}
+                  className="bg-muted/50 border border-dashed border-border p-4 rounded-lg flex items-center justify-center"
+                  style={{ width: '120px', height: '60px' }}
+                >
+                  <span className="text-xs text-muted-foreground text-center">{bank.name}</span>
                 </div>
               ))}
             </div>
@@ -279,7 +431,7 @@ export default function Portfolio() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {certifications.map((cert) => (
                 <Card 
                   key={cert.name} 
@@ -287,7 +439,7 @@ export default function Portfolio() {
                   className="text-center hover:shadow-lg transition-shadow"
                 >
                   <CardContent className="p-6">
-                    <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center mx-auto mb-4 p-2">
+                    <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center mx-auto mb-4 p-2 shadow-sm">
                       <img src={cert.logo} alt={cert.name} className="w-full h-full object-contain" />
                     </div>
                     <h3 className="font-semibold text-foreground mb-1">{cert.name}</h3>
@@ -299,7 +451,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Industries */}
+        {/* Industries - Redesigned with icons and colors */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -307,14 +459,23 @@ export default function Portfolio() {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Industries We Serve
               </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Delivering impactful training across diverse sectors
+              </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
               {industries.map((industry) => (
-                <Card key={industry.name} variant="outline" className="text-center hover:border-secondary transition-colors">
+                <Card 
+                  key={industry.name} 
+                  variant="elevated" 
+                  className="text-center hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group"
+                >
                   <CardContent className="p-6">
-                    <industry.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <p className="text-sm font-medium text-foreground">{industry.name}</p>
+                    <div className={`w-14 h-14 rounded-2xl ${industry.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                      <industry.icon className="w-7 h-7" />
+                    </div>
+                    <p className="text-sm font-semibold text-foreground">{industry.name}</p>
                   </CardContent>
                 </Card>
               ))}
