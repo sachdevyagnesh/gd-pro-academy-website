@@ -76,7 +76,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group min-w-[180px]">
-            <div className="h-10 w-10 rounded-lg overflow-hidden bg-white flex items-center justify-center shrink-0">
+            <div className="h-14 w-14 rounded-lg overflow-hidden bg-white flex items-center justify-center shrink-0">
               {imageLoaded ? (
                 <img 
                   src={logo} 
