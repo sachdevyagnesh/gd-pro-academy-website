@@ -1,30 +1,20 @@
 import { Award, Building2, GraduationCap } from "lucide-react";
 
-// Key associations - using public CDN logos
+// Key associations - using publicly available logos
 const associations = [
-  {
-    name: "Axis Bank",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Axis_Bank_logo.svg",
-  },
-  {
-    name: "Udemy",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg",
-  },
-  {
-    name: "ICICI Bank",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg",
-  },
-  {
-    name: "HDFC Bank",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg",
-  },
+  { name: "ICICI Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg" },
+  { name: "HDFC Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg" },
+  { name: "Kotak Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Kotak_Mahindra_Bank_logo.svg" },
+  { name: "Yes Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Yes_Bank_logo.svg" },
+  { name: "Axis Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Axis_Bank_logo.svg" },
+  { name: "Udemy", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg" },
 ];
 
 const certifications = [
+  "SHRM Recertification Provider",
+  "CPD Accredited Programs",
+  "HRCI Approved Provider",
   "Certified Corporate Trainer",
-  "L&D Professional Certification",
-  "Sales Training Specialist",
-  "Soft Skills Development Expert",
 ];
 
 export function CertificationsSection() {
@@ -47,7 +37,7 @@ export function CertificationsSection() {
             <Building2 className="w-5 h-5 text-primary" />
             <h3 className="font-semibold text-foreground">Key Associations</h3>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
             {associations.map((company) => (
               <div
                 key={company.name}
@@ -58,13 +48,13 @@ export function CertificationsSection() {
                   alt={company.name}
                   className="h-8 md:h-10 w-auto object-contain"
                   onError={(e) => {
-                    // Fallback to text if image fails
                     e.currentTarget.style.display = 'none';
                     e.currentTarget.parentElement!.innerHTML = `<span class="text-lg font-semibold text-muted-foreground">${company.name}</span>`;
                   }}
                 />
               </div>
             ))}
+            <span className="text-muted-foreground font-medium">and more...</span>
           </div>
         </div>
 
@@ -85,21 +75,6 @@ export function CertificationsSection() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {[
-            { value: "14+", label: "Years Experience" },
-            { value: "10,000+", label: "Professionals Trained" },
-            { value: "98%", label: "Client Satisfaction" },
-            { value: "Pan-India", label: "Reach" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</p>
-              <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>

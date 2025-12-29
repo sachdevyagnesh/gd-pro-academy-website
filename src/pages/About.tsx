@@ -9,7 +9,7 @@ import aboutHero from "@/assets/about-hero.jpg";
 import aboutPortrait from "@/assets/about-portrait.jpg";
 
 const milestones = [
-  { year: "2011", title: "Career Start", description: "Began career in BFSI sector as a banking professional" },
+  { year: "2013", title: "Career Start", description: "Began career in BFSI sector as a banking professional" },
   { year: "2016", title: "Training Role", description: "Transitioned to functional trainer at a leading company" },
   { year: "2019", title: "GD Pro Academy", description: "Founded GD Pro Academy to help professionals thrive" },
   { year: "2024", title: "Today", description: "75,000+ training hours delivered across India" },
@@ -97,8 +97,8 @@ export default function About() {
                         <p className="text-xs text-muted-foreground">Years Experience</p>
                       </div>
                       <div>
-                        <p className="font-display text-2xl font-bold text-foreground">98%</p>
-                        <p className="text-xs text-muted-foreground">Satisfaction</p>
+                        <p className="font-display text-2xl font-bold text-foreground">4.8/5</p>
+                        <p className="text-xs text-muted-foreground">Client Rating</p>
                       </div>
                     </div>
                   </CardContent>
@@ -119,7 +119,7 @@ export default function About() {
                     I believe in simplifying complex concepts and focusing on practical learning, people's behavior, and real-world applications. Motherhood has taught me patience and simplicity, which I integrate into my training approach to create meaningful and transformative experiences for my learners.
                   </p>
                   <p>
-                    Starting my career in 2011 in a profession that most people avoided—especially as a woman back then—I grew from an officer-level role to a managerial position, and eventually into a corporate functional trainer. I believe that with the right skills and mindset, anyone can thrive.
+                    Starting my career in 2013 in a profession that most people avoided—especially as a woman back then—I grew from an officer-level role to a managerial position, and eventually into a corporate functional trainer. I believe that with the right skills and mindset, anyone can thrive.
                   </p>
                   <p>
                     Today, through GD Pro Academy, I've had the privilege of training over 46,000 professionals across India, delivering 75,000+ training hours. My mission is simple: to help you unlock your potential and achieve the success you deserve.

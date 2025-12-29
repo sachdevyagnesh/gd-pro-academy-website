@@ -78,7 +78,7 @@ const stats = [
   { value: "75,000+", label: "Training Hours" },
   { value: "46,000+", label: "Professionals Trained" },
   { value: "1,300+", label: "Sessions Delivered" },
-  { value: "98%", label: "Satisfaction Rate" },
+  { value: "4.8/5", label: "Avg. Client Rating" },
 ];
 
 export default function Portfolio() {
@@ -145,16 +145,14 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div 
-            className="relative overflow-hidden"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
+          <div className="relative overflow-hidden">
             <div 
               className={`flex gap-6 ${isPaused ? '' : 'auto-scroll'}`}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
               style={{ width: 'max-content' }}
             >
-              {duplicatedCaseStudies.map((study, index) => (
+              {caseStudies.map((study, index) => (
                 <Card key={index} variant="elevated" className="w-[400px] shrink-0 overflow-hidden">
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary" />
                   <CardContent className="p-6">

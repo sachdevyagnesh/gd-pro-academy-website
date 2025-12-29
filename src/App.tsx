@@ -18,6 +18,7 @@ import Terms from "./pages/Terms";
 import Refund from "./pages/Refund";
 import Shipping from "./pages/Shipping";
 import Blog from "./pages/Blog";
+import BookConsultation from "./pages/BookConsultation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/refund" element={<Refund />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/book-consultation" element={<BookConsultation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <WhatsAppButton />

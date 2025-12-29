@@ -1,6 +1,5 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -122,7 +121,7 @@ export default function IndividualTraining() {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
           
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl">
+            <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
                 <User className="w-4 h-4 text-secondary" />
                 <span className="text-primary-foreground/90 text-sm font-medium">
@@ -136,9 +135,9 @@ export default function IndividualTraining() {
               <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 leading-relaxed">
                 Personalized coaching and self-paced courses designed to help you master essential professional skills and achieve your career goals.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="lg" asChild>
-                  <Link to="/contact">
+                  <Link to="/book-consultation">
                     Book Training Session
                     <ArrowRight className="w-5 h-5" />
                   </Link>
@@ -304,7 +303,35 @@ export default function IndividualTraining() {
           </div>
         </section>
 
-        <CTASection />
+        {/* CTA Section - Individual focused */}
+        <section className="relative py-20 md:py-28 overflow-hidden">
+          <div className="absolute inset-0 hero-gradient" />
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 right-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+                Ready to Accelerate Your{" "}
+                <span className="text-gradient-gold">Career?</span>
+              </h2>
+              <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
+                Book a free consultation call to discuss your goals and discover how personalized coaching can help you succeed.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button variant="hero" size="xl" asChild className="group">
+                  <Link to="/book-consultation">
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
