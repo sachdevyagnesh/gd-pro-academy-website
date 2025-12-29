@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { MessageSquare, Target, Clock, User, CheckCircle, ArrowRight, Video, Gift, Sparkles, TrendingUp, Presentation } from "lucide-react";
+import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/about-hero.jpg";
 
 const livePrograms = [
@@ -20,6 +21,16 @@ const livePrograms = [
     duration: "4 Hours",
     price: "₹7,999",
     type: "1-on-1",
+    targetAudience: "Professionals looking to improve their communication skills for career advancement.",
+    learningOutcomes: [
+      "Speak confidently in meetings and presentations",
+      "Communicate clearly and professionally",
+      "Handle difficult conversations with ease",
+      "Listen actively and respond effectively",
+    ],
+    deliveryMethod: "Online via Zoom or Google Meet",
+    prerequisites: "None",
+    certification: "Certificate of Completion",
   },
   {
     icon: TrendingUp,
@@ -34,6 +45,16 @@ const livePrograms = [
     duration: "6 Hours",
     price: "₹11,999",
     type: "1-on-1",
+    targetAudience: "Sales professionals, entrepreneurs, and anyone in client-facing roles.",
+    learningOutcomes: [
+      "Handle objections confidently and effectively",
+      "Build lasting relationships with clients",
+      "Close deals with proven techniques",
+      "Develop a winning sales mindset",
+    ],
+    deliveryMethod: "Online via Zoom or Google Meet (split into 2-3 sessions)",
+    prerequisites: "Basic sales experience preferred but not required",
+    certification: "Certificate of Completion",
   },
   {
     icon: Target,
@@ -48,6 +69,16 @@ const livePrograms = [
     duration: "8 Hours",
     price: "₹14,999",
     type: "1-on-1",
+    targetAudience: "Professionals seeking career growth, job changers, and those planning their next career move.",
+    learningOutcomes: [
+      "Create a clear career roadmap",
+      "Identify and fill skill gaps",
+      "Ace interviews with confidence",
+      "Negotiate better compensation packages",
+    ],
+    deliveryMethod: "Online via Zoom (split into 3-4 sessions over 2-4 weeks)",
+    prerequisites: "None",
+    certification: "Certificate of Completion + Career Action Plan",
   },
   {
     icon: Presentation,
@@ -62,6 +93,16 @@ const livePrograms = [
     duration: "3 Hours",
     price: "₹4,999",
     type: "1-on-1",
+    targetAudience: "Job seekers, fresh graduates, and professionals preparing for interviews.",
+    learningOutcomes: [
+      "Answer tough interview questions confidently",
+      "Present yourself professionally",
+      "Make a lasting first impression",
+      "Negotiate job offers effectively",
+    ],
+    deliveryMethod: "Online via Zoom or Google Meet",
+    prerequisites: "Have a target job or industry in mind",
+    certification: "Certificate of Completion",
   },
 ];
 
@@ -163,44 +204,26 @@ export default function IndividualTraining() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {livePrograms.map((program) => (
-                <Card key={program.title} variant="program" className="flex flex-col">
-                  <CardHeader>
-                    <div className="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center mb-4">
-                      <program.icon className="w-7 h-7 text-accent" />
-                    </div>
-                    <CardTitle className="text-xl">{program.title}</CardTitle>
-                    <CardDescription className="text-sm">{program.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex flex-col">
-                    <ul className="space-y-2 mb-6 flex-1">
-                      {program.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="space-y-4 pt-6 border-t">
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
-                        <span className="flex items-center gap-2">
-                          <Clock className="w-4 h-4" />
-                          {program.duration}
-                        </span>
-                        <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium">
-                          {program.type}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-xl font-bold text-foreground">{program.price}</p>
-                        <Button variant="accent" size="sm" asChild>
-                          <Link to="/contact">Book</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <CourseCard
+                  key={program.title}
+                  icon={program.icon}
+                  title={program.title}
+                  description={program.description}
+                  features={program.features}
+                  duration={program.duration}
+                  price={program.price}
+                  type={program.type}
+                  targetAudience={program.targetAudience}
+                  learningOutcomes={program.learningOutcomes}
+                  deliveryMethod={program.deliveryMethod}
+                  prerequisites={program.prerequisites}
+                  certification={program.certification}
+                  ctaLabel="Book"
+                  ctaLink="/book-consultation"
+                  ctaVariant="accent"
+                />
               ))}
             </div>
           </div>

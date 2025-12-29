@@ -17,6 +17,9 @@ import proSpidersLogo from "@/assets/pro-spiders.png";
 import yesBankLogo from "@/assets/yes-bank.png";
 import wagonsLogo from "@/assets/wagons-learning.png";
 import veeflyLogo from "@/assets/veefly.png";
+import iciciLogo from "@/assets/icici-bank.jpeg";
+import hdfcLogo from "@/assets/hdfc-bank.png";
+import axisLogo from "@/assets/axis-bank.jpg";
 
 // Import certification logos
 import cpdLogo from "@/assets/cpd-accredited.png";
@@ -99,7 +102,7 @@ const stats = [
   { value: "4.8/5", label: "Avg. Client Rating" },
 ];
 
-// Key associations with actual logos
+// Key associations with actual logos - displayed in color by default
 const associations = [
   { name: "Kotak Bank", logo: kotakLogo },
   { name: "Yes Bank", logo: yesBankLogo },
@@ -109,13 +112,9 @@ const associations = [
   { name: "Mahindra Pride Classroom", logo: mahindraLogo },
   { name: "Wagons Learning", logo: wagonsLogo },
   { name: "VeeFly", logo: veeflyLogo },
-];
-
-// Bank logos will be added when images are provided
-const bankLogos = [
-  { name: "ICICI Bank", placeholder: true },
-  { name: "HDFC Bank", placeholder: true },
-  { name: "Axis Bank", placeholder: true },
+  { name: "ICICI Bank", logo: iciciLogo },
+  { name: "HDFC Bank", logo: hdfcLogo },
+  { name: "Axis Bank", logo: axisLogo },
 ];
 
 const certifications = [
@@ -124,6 +123,7 @@ const certifications = [
   { name: "Pro Touch Certified", description: "Training Excellence", logo: proTouchLogo },
   { name: "SHRM Recertification Provider", description: "SHRM-CP | SHRM-SCP", logo: shrmLogo },
 ];
+
 
 export default function Portfolio() {
   const [isPaused, setIsPaused] = useState(false);
@@ -386,31 +386,18 @@ export default function Portfolio() {
               </p>
             </div>
 
-            {/* Logo associations */}
+            {/* Logo associations - displayed in full color */}
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
               {associations.map((company) => (
                 <div
                   key={company.name}
-                  className="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100 bg-white p-4 rounded-lg shadow-sm hover:shadow-md"
+                  className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all hover:scale-105"
                 >
                   <img
                     src={company.logo}
                     alt={company.name}
                     className="h-12 md:h-16 w-auto object-contain"
                   />
-                </div>
-              ))}
-            </div>
-            
-            {/* Placeholder for additional bank logos */}
-            <div className="flex flex-wrap justify-center items-center gap-6 mt-8">
-              {bankLogos.map((bank) => (
-                <div
-                  key={bank.name}
-                  className="bg-muted/50 border border-dashed border-border p-4 rounded-lg flex items-center justify-center"
-                  style={{ width: '120px', height: '60px' }}
-                >
-                  <span className="text-xs text-muted-foreground text-center">{bank.name}</span>
                 </div>
               ))}
             </div>
