@@ -48,8 +48,6 @@ export function CourseCard({
 }: CourseCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const hasLearnMore = targetAudience || learningOutcomes.length > 0 || deliveryMethod || prerequisites || certification;
-
   return (
     <Card variant="program" className="relative flex flex-col h-full">
       {popular && (
@@ -75,84 +73,100 @@ export function CourseCard({
           ))}
         </ul>
 
-        {/* Learn More Collapsible */}
-        {hasLearnMore && (
-          <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mb-6">
-            <CollapsibleTrigger asChild>
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="w-full justify-between text-primary hover:text-primary/80 hover:bg-primary/5"
-              >
-                <span className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" />
-                  Learn More
-                </span>
-                {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-              </Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="animate-accordion-down">
-              <div className="mt-4 p-4 bg-muted/50 rounded-lg space-y-4 text-sm">
-                {targetAudience && (
-                  <div>
-                    <div className="flex items-center gap-2 font-semibold text-foreground mb-1">
-                      <Target className="w-4 h-4 text-primary" />
-                      Target Audience
-                    </div>
-                    <p className="text-muted-foreground pl-6">{targetAudience}</p>
-                  </div>
-                )}
-                
-                {learningOutcomes.length > 0 && (
-                  <div>
-                    <div className="flex items-center gap-2 font-semibold text-foreground mb-2">
-                      <CheckCircle className="w-4 h-4 text-primary" />
-                      Key Learning Outcomes
-                    </div>
-                    <ul className="pl-6 space-y-1">
-                      {learningOutcomes.map((outcome, idx) => (
-                        <li key={idx} className="text-muted-foreground flex items-start gap-2">
-                          <span className="text-accent">•</span>
-                          {outcome}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {deliveryMethod && (
-                  <div>
-                    <div className="flex items-center gap-2 font-semibold text-foreground mb-1">
-                      <Clock className="w-4 h-4 text-primary" />
-                      Delivery Method
-                    </div>
-                    <p className="text-muted-foreground pl-6">{deliveryMethod}</p>
-                  </div>
-                )}
-
-                {prerequisites && (
-                  <div>
-                    <div className="flex items-center gap-2 font-semibold text-foreground mb-1">
-                      <BookOpen className="w-4 h-4 text-primary" />
-                      Prerequisites
-                    </div>
-                    <p className="text-muted-foreground pl-6">{prerequisites}</p>
-                  </div>
-                )}
-
-                {certification && (
-                  <div>
-                    <div className="flex items-center gap-2 font-semibold text-foreground mb-1">
-                      <Award className="w-4 h-4 text-primary" />
-                      Certification
-                    </div>
-                    <p className="text-muted-foreground pl-6">{certification}</p>
-                  </div>
-                )}
+        {/* Learn More Collapsible - Dynamic content based on title/description */}
+        <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mb-6">
+          <CollapsibleTrigger asChild>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="w-full justify-between text-primary hover:text-primary/80 hover:bg-primary/5"
+            >
+              <span className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                Learn More
+              </span>
+              {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="animate-accordion-down">
+            <div className="mt-4 p-4 bg-muted/50 rounded-lg space-y-4 text-sm">
+              {/* Dynamic About Section */}
+              <div>
+                <div className="flex items-center gap-2 font-semibold text-foreground mb-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  About This Program
+                </div>
+                <p className="text-muted-foreground pl-6">
+                  {description} This program is designed to provide practical, hands-on learning with real-world applications. 
+                  Participants will gain valuable skills through interactive sessions, case studies, and expert guidance from experienced trainers.
+                </p>
               </div>
-            </CollapsibleContent>
-          </Collapsible>
-        )}
+
+              {/* Target Audience */}
+              <div>
+                <div className="flex items-center gap-2 font-semibold text-foreground mb-1">
+                  <Target className="w-4 h-4 text-primary" />
+                  Who Should Attend
+                </div>
+                <p className="text-muted-foreground pl-6">
+                  {targetAudience || "Professionals looking to enhance their skills, teams seeking performance improvement, and individuals committed to professional growth."}
+                </p>
+              </div>
+              
+              {/* Key Takeaways - Auto-generated from features */}
+              <div>
+                <div className="flex items-center gap-2 font-semibold text-foreground mb-2">
+                  <CheckCircle className="w-4 h-4 text-primary" />
+                  Key Takeaways
+                </div>
+                <ul className="pl-6 space-y-1">
+                  {(learningOutcomes.length > 0 ? learningOutcomes : features.slice(0, 4)).map((item, idx) => (
+                    <li key={idx} className="text-muted-foreground flex items-start gap-2">
+                      <span className="text-accent">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Delivery Method */}
+              <div>
+                <div className="flex items-center gap-2 font-semibold text-foreground mb-1">
+                  <Clock className="w-4 h-4 text-primary" />
+                  Delivery Format
+                </div>
+                <p className="text-muted-foreground pl-6">
+                  {deliveryMethod || `${duration} of intensive training with a mix of theory and practical exercises. Available in both in-person and virtual formats.`}
+                </p>
+              </div>
+
+              {certification && (
+                <div>
+                  <div className="flex items-center gap-2 font-semibold text-foreground mb-1">
+                    <Award className="w-4 h-4 text-primary" />
+                    Certification
+                  </div>
+                  <p className="text-muted-foreground pl-6">{certification}</p>
+                </div>
+              )}
+
+              {/* CTA within Learn More */}
+              <div className="pt-4 border-t border-border/50">
+                <p className="text-foreground font-medium mb-3">
+                  Interested in this program?
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Button variant="navy" size="sm" asChild>
+                    <Link to="/book-consultation">Schedule a Call</Link>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <Link to="/contact">Send Inquiry</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
 
         {/* Footer */}
         <div className="space-y-4 pt-6 border-t">

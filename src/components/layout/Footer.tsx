@@ -37,7 +37,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="GD Pro Academy Logo" 
-                className="h-12 w-auto object-contain rounded-lg bg-white p-1"
+                className="h-20 w-20 object-contain drop-shadow-lg"
               />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl leading-tight">

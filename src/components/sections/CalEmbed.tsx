@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Calendar } from "lucide-react";
 
 interface CalEmbedProps {
@@ -6,27 +6,60 @@ interface CalEmbedProps {
 }
 
 export function CalEmbed({ calLink = "gdproacademy/consultation" }: CalEmbedProps) {
+  const calInitialized = useRef(false);
+  
   useEffect(() => {
+    // Prevent double initialization
+    if (calInitialized.current) return;
+    
+    // Clean up any existing Cal instances
+    if ((window as any).Cal) {
+      try {
+        (window as any).Cal("destroy");
+      } catch (e) {
+        // Ignore destroy errors
+      }
+    }
+
     // Load Cal.com embed script
+    const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
+    
+    if (existingScript) {
+      // Script already exists, just initialize
+      if ((window as any).Cal) {
+        (window as any).Cal("init", { origin: "https://cal.com" });
+        (window as any).Cal.ns = {};
+        (window as any).Cal("inline", {
+          elementOrSelector: "#cal-embed-container",
+          calLink: calLink,
+          layout: "month_view",
+        });
+        calInitialized.current = true;
+      }
+      return;
+    }
+
     const script = document.createElement("script");
     script.src = "https://app.cal.com/embed/embed.js";
     script.async = true;
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 
     script.onload = () => {
-      // Initialize Cal.com
-      if ((window as any).Cal) {
-        (window as any).Cal("init");
+      if ((window as any).Cal && !calInitialized.current) {
+        (window as any).Cal("init", { origin: "https://cal.com" });
+        (window as any).Cal("inline", {
+          elementOrSelector: "#cal-embed-container",
+          calLink: calLink,
+          layout: "month_view",
+        });
+        calInitialized.current = true;
       }
     };
 
     return () => {
-      const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
+      calInitialized.current = false;
     };
-  }, []);
+  }, [calLink]);
 
   return (
     <section className="section-padding bg-muted">
@@ -47,10 +80,9 @@ export function CalEmbed({ calLink = "gdproacademy/consultation" }: CalEmbedProp
 
         <div className="max-w-4xl mx-auto">
           <div className="bg-card rounded-2xl shadow-elevated overflow-hidden">
-            {/* Cal.com inline embed */}
+            {/* Cal.com inline embed container */}
             <div 
-              data-cal-link={calLink}
-              data-cal-config='{"layout":"month_view"}'
+              id="cal-embed-container"
               style={{ minWidth: "320px", height: "700px", overflow: "auto" }}
             />
             

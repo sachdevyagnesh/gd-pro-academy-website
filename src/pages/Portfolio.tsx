@@ -286,7 +286,7 @@ export default function Portfolio() {
 
             <div 
               ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-auto scrollbar-thin pb-4 scroll-smooth"
+              className="flex gap-6 overflow-x-auto scrollbar-thin pb-4 scroll-smooth px-4 lg:px-8"
               onMouseEnter={() => {
                 setIsPaused(true);
                 if (autoScrollTimeoutRef.current) {
@@ -300,15 +300,12 @@ export default function Portfolio() {
               }}
               style={{ scrollSnapType: 'x mandatory' }}
             >
-              {/* Spacer for centering */}
-              <div className="shrink-0 w-[calc(50vw-212px)] hidden lg:block" />
-              
               {caseStudies.map((study, index) => (
                 <Card 
                   key={index} 
                   variant="elevated" 
-                  className="w-[400px] shrink-0 overflow-hidden hover:shadow-xl transition-all cursor-pointer"
-                  style={{ scrollSnapAlign: 'center' }}
+                  className="w-[400px] shrink-0 overflow-hidden hover:shadow-xl transition-all cursor-pointer first:ml-0 last:mr-0"
+                  style={{ scrollSnapAlign: 'start' }}
                 >
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary" />
                   <CardContent className="p-6">
@@ -348,9 +345,6 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               ))}
-              
-              {/* Spacer for centering */}
-              <div className="shrink-0 w-[calc(50vw-212px)] hidden lg:block" />
             </div>
 
             {/* Pagination dots */}

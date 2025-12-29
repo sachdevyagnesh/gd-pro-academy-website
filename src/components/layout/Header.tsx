@@ -228,7 +228,7 @@ export function Header() {
                 <img 
                   src={logo} 
                   alt="GD Pro Academy" 
-                  className="h-16 w-16 object-contain"
+                  className="h-20 w-20 object-contain drop-shadow-lg"
                 />
                 <span className="font-display font-bold text-lg text-foreground">Menu</span>
               </div>
