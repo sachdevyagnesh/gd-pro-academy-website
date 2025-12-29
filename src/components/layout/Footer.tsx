@@ -20,6 +20,8 @@ const footerLinks = {
     { name: "E-Courses", href: "/individual-training#courses" },
     { name: "FAQs", href: "/contact#faq" },
     { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms & Conditions", href: "/terms" },
+    { name: "Refund Policy", href: "/refund" },
   ],
 };
 
@@ -173,9 +175,18 @@ export function Footer() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
             <p>© {new Date().getFullYear()} GD Pro Academy. All rights reserved.</p>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-6">
               <Link to="/privacy" className="hover:text-primary-foreground transition-colors">
                 Privacy Policy
+              </Link>
+              <Link to="/terms" className="hover:text-primary-foreground transition-colors">
+                Terms & Conditions
+              </Link>
+              <Link to="/refund" className="hover:text-primary-foreground transition-colors">
+                Refund Policy
+              </Link>
+              <Link to="/shipping" className="hover:text-primary-foreground transition-colors">
+                Shipping Policy
               </Link>
             </div>
           </div>

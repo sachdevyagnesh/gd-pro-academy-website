@@ -14,6 +14,9 @@ import IndividualTraining from "./pages/IndividualTraining";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Refund from "./pages/Refund";
+import Shipping from "./pages/Shipping";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 
@@ -35,6 +38,9 @@ const App = () => (
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/shipping" element={<Shipping />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
