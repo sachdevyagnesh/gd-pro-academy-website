@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { MessageSquare, Target, Clock, User, CheckCircle, ArrowRight, Video, Gift, Sparkles, TrendingUp, Presentation } from "lucide-react";
 import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/about-hero.jpg";
+import { CalPopup } from "@/components/common/CalPopup";
 
 const livePrograms = [
   {
@@ -177,12 +178,10 @@ export default function IndividualTraining() {
                 Personalized coaching and self-paced courses designed to help you master essential professional skills and achieve your career goals.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button variant="hero" size="lg" asChild>
-                  <Link to="/book-consultation">
-                    Book Training Session
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
+                <CalPopup variant="hero" size="lg" className="group">
+                  Book Training Session
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </CalPopup>
                 <Button variant="heroOutline" size="lg" asChild>
                   <a href="#courses">Browse E-Courses</a>
                 </Button>
@@ -345,12 +344,10 @@ export default function IndividualTraining() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button variant="hero" size="xl" asChild className="group">
-                  <Link to="/book-consultation">
-                    Book Free Consultation
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
+                <CalPopup variant="hero" size="xl" className="group">
+                  Book Free Consultation
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </CalPopup>
               </div>
             </div>
           </div>

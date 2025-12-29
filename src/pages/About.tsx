@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Award, BookOpen, Users, Target, Lightbulb, Heart, CheckCircle, MapPin } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
 import aboutPortrait from "@/assets/about-portrait.jpg";
+import { CalPopup } from "@/components/common/CalPopup";
 
 const milestones = [
   { year: "2013", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
@@ -72,46 +73,43 @@ export default function About() {
           </div>
         </section>
 
-        {/* Trainer Profile - Redesigned Layout */}
+        {/* Trainer Profile - Compact Layout */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* Image with stats below */}
-              <div className="relative">
-                <div className="relative z-10 max-w-md mx-auto lg:mx-0">
-                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-elevated">
-                    <img 
-                      src={aboutPortrait} 
-                      alt="Grishma Sachdev - Founder & Lead Trainer at GD Pro Academy"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  
-                  {/* Stats Card - Below image */}
-                  <Card className="mt-4 shadow-elevated">
-                    <CardContent className="p-4">
-                      <div className="grid grid-cols-2 gap-4 text-center">
-                        <div>
-                          <p className="font-display text-2xl font-bold text-foreground">14+</p>
-                          <p className="text-sm text-muted-foreground">Years Experience</p>
-                        </div>
-                        <div>
-                          <p className="font-display text-2xl font-bold text-foreground">4.8/5</p>
-                          <p className="text-sm text-muted-foreground">Client Rating</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+            <div className="grid lg:grid-cols-[auto_1fr] gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
+              {/* Image with stats below - compact */}
+              <div className="relative w-full max-w-xs mx-auto lg:mx-0">
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-elevated">
+                  <img 
+                    src={aboutPortrait} 
+                    alt="Grishma Sachdev - Founder & Lead Trainer at GD Pro Academy"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
-                <div className="absolute -top-4 -left-4 w-full h-[calc(100%-60px)] bg-secondary/20 rounded-2xl -z-10 hidden lg:block" />
+                
+                {/* Stats Card - Below image */}
+                <Card className="mt-3 shadow-elevated">
+                  <CardContent className="p-3">
+                    <div className="grid grid-cols-2 gap-3 text-center">
+                      <div>
+                        <p className="font-display text-xl font-bold text-foreground">14+</p>
+                        <p className="text-xs text-muted-foreground">Years Experience</p>
+                      </div>
+                      <div>
+                        <p className="font-display text-xl font-bold text-foreground">4.8/5</p>
+                        <p className="text-xs text-muted-foreground">Client Rating</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
               {/* Content - Updated bio */}
               <div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Hi, I'm Grishma Sachdev
                 </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed mb-8">
+                <div className="space-y-3 text-muted-foreground leading-relaxed mb-6 text-sm md:text-base">
                   <p>
                     I'm a passionate Sales & Soft Skills Trainer with over 14 years of experience in the BFSI and training industries. I understand the challenges professionals face in sales-driven environments.
                   </p>
@@ -130,33 +128,33 @@ export default function About() {
                 </div>
 
                 {/* Highlights - BOLD text */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  <div className="text-center p-4 bg-muted rounded-xl">
-                    <BookOpen className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground">
+                <div className="grid grid-cols-3 gap-3 mb-6">
+                  <div className="text-center p-3 bg-muted rounded-xl">
+                    <BookOpen className="w-5 h-5 text-secondary mx-auto mb-1" />
+                    <p className="font-display font-bold text-foreground text-sm">
                       <strong>14+ years</strong>
                     </p>
                     <p className="text-xs text-muted-foreground font-bold">in BFSI</p>
                   </div>
-                  <div className="text-center p-4 bg-muted rounded-xl">
-                    <Award className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground">
+                  <div className="text-center p-3 bg-muted rounded-xl">
+                    <Award className="w-5 h-5 text-secondary mx-auto mb-1" />
+                    <p className="font-display font-bold text-foreground text-sm">
                       <strong>Certified</strong>
                     </p>
                     <p className="text-xs text-muted-foreground font-bold">Trainer</p>
                   </div>
-                  <div className="text-center p-4 bg-muted rounded-xl">
-                    <MapPin className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-bold text-foreground">
+                  <div className="text-center p-3 bg-muted rounded-xl">
+                    <MapPin className="w-5 h-5 text-secondary mx-auto mb-1" />
+                    <p className="font-display font-bold text-foreground text-sm">
                       <strong>Pan-India</strong>
                     </p>
                     <p className="text-xs text-muted-foreground font-bold">& Global</p>
                   </div>
                 </div>
 
-                <Button variant="navy" size="lg" asChild>
-                  <Link to="/book-consultation">Book a Consultation</Link>
-                </Button>
+                <CalPopup variant="navy" size="lg">
+                  Book a Consultation
+                </CalPopup>
               </div>
             </div>
           </div>
@@ -247,9 +245,9 @@ export default function About() {
             <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
               Let's discuss how GD Pro Academy can help you achieve your professional goals.
             </p>
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/book-consultation">Book Free Consultation</Link>
-            </Button>
+            <CalPopup variant="hero" size="lg">
+              Book Free Consultation
+            </CalPopup>
           </div>
         </section>
       </main>

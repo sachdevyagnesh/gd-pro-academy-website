@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Phone } from "lucide-react";
+import { CalPopup } from "@/components/common/CalPopup";
 
 export function CTASection() {
   return (
@@ -37,15 +37,13 @@ export function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl" asChild className="group">
-              <Link to="/book-consultation">
-                <Calendar className="w-5 h-5" />
-                Book Free Consultation
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
+            <CalPopup variant="hero" size="xl" className="group">
+              <Calendar className="w-5 h-5" />
+              Book Free Consultation
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </CalPopup>
             <Button variant="heroOutline" size="xl" asChild>
-              <a href="tel:+919876543210">
+              <a href="tel:+918356837052">
                 <Phone className="w-5 h-5" />
                 Call Now
               </a>

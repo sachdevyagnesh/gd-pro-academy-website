@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Users, TrendingUp, MessageSquare, Award, CheckCircle, ArrowRight, Building2, Briefcase, Target } from "lucide-react";
 import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/hero-bg-3.jpg";
+import { CalPopup } from "@/components/common/CalPopup";
 
 const programs = [
   {
@@ -168,9 +169,9 @@ export default function CorporateTraining() {
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
-                <Button variant="heroOutline" size="lg" asChild>
-                  <Link to="/book-consultation">Schedule a Call</Link>
-                </Button>
+                <CalPopup variant="heroOutline" size="lg">
+                  Schedule a Call
+                </CalPopup>
               </div>
             </div>
           </div>
@@ -262,9 +263,9 @@ export default function CorporateTraining() {
                     <p className="text-primary-foreground/80 mb-6">
                       Contact us for a customized training proposal tailored to your organization's needs.
                     </p>
-                    <Button variant="hero" size="lg" asChild className="w-full">
-                      <Link to="/book-consultation">Book Free Consultation</Link>
-                    </Button>
+                    <CalPopup variant="hero" size="lg" className="w-full">
+                      Book Free Consultation
+                    </CalPopup>
                   </div>
                 </Card>
               </div>
