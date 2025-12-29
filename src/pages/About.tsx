@@ -75,7 +75,7 @@ export default function About() {
         {/* Trainer Profile - Redesigned Layout */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
               {/* Image with stats below */}
               <div className="relative">
                 <div className="relative z-10 max-w-md mx-auto lg:mx-0">
@@ -88,22 +88,22 @@ export default function About() {
                   </div>
                   
                   {/* Stats Card - Below image */}
-                  <Card className="mt-6 shadow-elevated">
-                    <CardContent className="p-6">
-                      <div className="grid grid-cols-2 gap-6 text-center">
+                  <Card className="mt-4 shadow-elevated">
+                    <CardContent className="p-4">
+                      <div className="grid grid-cols-2 gap-4 text-center">
                         <div>
-                          <p className="font-display text-3xl font-bold text-foreground">14+</p>
+                          <p className="font-display text-2xl font-bold text-foreground">14+</p>
                           <p className="text-sm text-muted-foreground">Years Experience</p>
                         </div>
                         <div>
-                          <p className="font-display text-3xl font-bold text-foreground">4.8/5</p>
+                          <p className="font-display text-2xl font-bold text-foreground">4.8/5</p>
                           <p className="text-sm text-muted-foreground">Client Rating</p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
                 </div>
-                <div className="absolute -top-4 -left-4 w-full h-[calc(100%-80px)] bg-secondary/20 rounded-2xl -z-10 hidden lg:block" />
+                <div className="absolute -top-4 -left-4 w-full h-[calc(100%-60px)] bg-secondary/20 rounded-2xl -z-10 hidden lg:block" />
               </div>
 
               {/* Content - Updated bio */}
