@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu } from "lucide-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import heroBg from "@/assets/about-portrait1.jpg";
 
 const caseStudies = [
@@ -81,9 +81,34 @@ const stats = [
   { value: "4.8/5", label: "Avg. Client Rating" },
 ];
 
+// Key associations
+const associations = [
+  { name: "ICICI Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg" },
+  { name: "HDFC Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg" },
+  { name: "Kotak Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Kotak_Mahindra_Bank_logo.svg" },
+  { name: "Yes Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Yes_Bank_logo.svg" },
+  { name: "Axis Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Axis_Bank_logo.svg" },
+  { name: "Udemy", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg" },
+];
+
+// Text-based associations (for those without easily accessible logos)
+const textAssociations = [
+  "Prepworks",
+  "Kyte Enterprise", 
+  "Pro Spiders",
+  "Wagons Learning",
+  "Mahindra Pride Classroom",
+];
+
+const certifications = [
+  { name: "SHRM Recertification Provider", description: "SHRM-CP | SHRM-SCP" },
+  { name: "CPD Accredited", description: "Continuing Professional Development" },
+  { name: "HRCI Approved Provider", description: "2024 Provider" },
+  { name: "Pro Touch Certified", description: "Training Excellence" },
+];
+
 export default function Portfolio() {
   const [isPaused, setIsPaused] = useState(false);
-  const duplicatedCaseStudies = [...caseStudies, ...caseStudies];
 
   return (
     <div className="min-h-screen">
@@ -145,7 +170,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden px-4">
             <div 
               className={`flex gap-6 ${isPaused ? '' : 'auto-scroll'}`}
               onMouseEnter={() => setIsPaused(true)}
@@ -153,7 +178,11 @@ export default function Portfolio() {
               style={{ width: 'max-content' }}
             >
               {caseStudies.map((study, index) => (
-                <Card key={index} variant="elevated" className="w-[400px] shrink-0 overflow-hidden">
+                <Card 
+                  key={index} 
+                  variant="elevated" 
+                  className="w-[400px] shrink-0 overflow-hidden hover:scale-[1.02] transition-transform cursor-pointer"
+                >
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary" />
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
@@ -189,6 +218,87 @@ export default function Portfolio() {
                         — {study.author}
                       </p>
                     </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Key Associations */}
+        <section className="section-padding bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <div className="accent-line mx-auto mb-6" />
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Key Associations
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Proud to have partnered with leading organizations across India
+              </p>
+            </div>
+
+            {/* Logo associations */}
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-8">
+              {associations.map((company) => (
+                <div
+                  key={company.name}
+                  className="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                >
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    className="h-8 md:h-10 w-auto object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement!.innerHTML = `<span class="text-lg font-semibold text-muted-foreground">${company.name}</span>`;
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Text associations */}
+            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+              {textAssociations.map((name) => (
+                <span 
+                  key={name} 
+                  className="text-muted-foreground font-medium hover:text-foreground transition-colors"
+                >
+                  {name}
+                </span>
+              ))}
+              <span className="text-muted-foreground font-medium">and more...</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section className="section-padding bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <div className="accent-line mx-auto mb-6" />
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Certifications & Credentials
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Recognized by leading professional bodies worldwide
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              {certifications.map((cert) => (
+                <Card 
+                  key={cert.name} 
+                  variant="elevated" 
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
+                  <CardContent className="p-6">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                      <Award className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="font-semibold text-foreground mb-1">{cert.name}</h3>
+                    <p className="text-xs text-muted-foreground">{cert.description}</p>
                   </CardContent>
                 </Card>
               ))}

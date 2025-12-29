@@ -58,8 +58,8 @@ export function AboutSection() {
                     <Award className="w-6 h-6 text-accent-foreground" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">98% Satisfaction</p>
-                    <p className="text-sm text-muted-foreground">Client Retention Rate</p>
+                    <p className="font-bold text-foreground">4.8/5 Rating</p>
+                    <p className="text-sm text-muted-foreground">Client Satisfaction</p>
                   </div>
                 </div>
               </CardContent>
