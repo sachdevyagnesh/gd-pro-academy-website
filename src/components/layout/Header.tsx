@@ -74,25 +74,25 @@ export function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Larger and always visible */}
-          <Link to="/" className="flex items-center gap-3 group min-w-[200px]">
-            <div className="h-16 w-16 md:h-18 md:w-18 rounded-xl overflow-hidden bg-white shadow-md flex items-center justify-center shrink-0 border border-border/50">
+          {/* Logo - Large, prominent, no background */}
+          <Link to="/" className="flex items-center gap-4 group min-w-[280px]">
+            <div className="h-20 w-20 md:h-24 md:w-24 shrink-0 drop-shadow-lg">
               <img 
                 src={logo} 
                 alt="GD Pro Academy Logo" 
-                className="h-full w-full object-contain p-1"
+                className="h-full w-full object-contain"
               />
             </div>
             <div className="flex flex-col">
               <span className={cn(
-                "font-display font-bold text-lg leading-tight transition-colors",
+                "font-display font-bold text-xl md:text-2xl leading-tight transition-colors",
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               )}>
                 GD Pro Academy
               </span>
               <span className={cn(
-                "text-xs font-medium transition-colors",
-                isScrolled ? "text-muted-foreground" : "text-primary-foreground/70"
+                "text-sm font-medium transition-colors",
+                isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
               )}>
                 Training Excellence
               </span>
@@ -224,13 +224,13 @@ export function Header() {
           <div className="fixed top-0 right-0 w-full max-w-xs h-full bg-card shadow-2xl z-50 lg:hidden overflow-y-auto animate-fade-in">
             {/* Menu Header */}
             <div className="flex items-center justify-between p-4 border-b">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <img 
                   src={logo} 
                   alt="GD Pro Academy" 
-                  className="h-12 w-12 object-contain rounded-lg bg-white p-1"
+                  className="h-16 w-16 object-contain"
                 />
-                <span className="font-display font-bold text-foreground">Menu</span>
+                <span className="font-display font-bold text-lg text-foreground">Menu</span>
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
