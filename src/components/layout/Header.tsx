@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown, Calendar } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-new.png";
@@ -99,7 +99,7 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Removed Book Call link */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <div key={link.name} className="relative group">
@@ -162,21 +162,6 @@ export function Header() {
                 )}
               </div>
             ))}
-            {/* Book Consultation Link */}
-            <Link
-              to="/book-consultation"
-              className={cn(
-                "px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
-                isActive("/book-consultation")
-                  ? "bg-secondary text-secondary-foreground"
-                  : isScrolled
-                  ? "text-secondary hover:bg-secondary/10"
-                  : "text-secondary hover:bg-secondary/20"
-              )}
-            >
-              <Calendar className="w-4 h-4" />
-              Book Call
-            </Link>
           </nav>
 
           {/* CTA & Contact */}
@@ -211,7 +196,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu - Full screen overlay */}
+      {/* Mobile Menu - Full screen overlay with proper styling */}
       {isMobileMenuOpen && (
         <>
           {/* Backdrop */}
@@ -220,15 +205,15 @@ export function Header() {
             onClick={() => setIsMobileMenuOpen(false)}
           />
           
-          {/* Menu Panel */}
-          <div className="fixed top-0 right-0 w-full max-w-xs h-full bg-card shadow-2xl z-50 lg:hidden overflow-y-auto animate-fade-in">
+          {/* Menu Panel - Fixed background color */}
+          <div className="fixed top-0 right-0 w-full max-w-xs h-full bg-background shadow-2xl z-50 lg:hidden overflow-y-auto animate-fade-in">
             {/* Menu Header */}
-            <div className="flex items-center justify-between p-4 border-b">
+            <div className="flex items-center justify-between p-4 border-b bg-background">
               <div className="flex items-center gap-3">
                 <img 
                   src={logo} 
                   alt="GD Pro Academy" 
-                  className="h-20 w-20 object-contain drop-shadow-lg"
+                  className="h-16 w-16 object-contain drop-shadow-lg"
                 />
                 <span className="font-display font-bold text-lg text-foreground">Menu</span>
               </div>
@@ -241,8 +226,8 @@ export function Header() {
               </button>
             </div>
 
-            {/* Menu Links */}
-            <nav className="p-4 space-y-1">
+            {/* Menu Links - All navigation items */}
+            <nav className="p-4 space-y-1 bg-background">
               {navLinks.map((link) => (
                 <div key={link.name}>
                   {link.children ? (
@@ -293,20 +278,10 @@ export function Header() {
                   )}
                 </div>
               ))}
-              
-              {/* Book Consultation */}
-              <Link
-                to="/book-consultation"
-                className="flex items-center gap-2 px-4 py-3 rounded-lg font-medium text-secondary hover:bg-secondary/10 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Calendar className="w-4 h-4" />
-                Book Consultation
-              </Link>
             </nav>
 
             {/* Menu Footer */}
-            <div className="p-4 border-t mt-4 space-y-3">
+            <div className="p-4 border-t mt-4 space-y-3 bg-background">
               <a
                 href="tel:+918356837052"
                 className="flex items-center gap-2 px-4 py-2 text-foreground"

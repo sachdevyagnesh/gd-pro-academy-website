@@ -1,6 +1,5 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -93,13 +92,6 @@ const industries = [
   { name: "Oil & Gas", icon: Fuel, color: "bg-amber-500/10 text-amber-600" },
   { name: "Healthcare", icon: HeartPulse, color: "bg-red-500/10 text-red-600" },
   { name: "Corporate & Startups", icon: Briefcase, color: "bg-indigo-500/10 text-indigo-600" },
-];
-
-const stats = [
-  { value: "75,000+", label: "Training Hours" },
-  { value: "46,000+", label: "Professionals Trained" },
-  { value: "1,300+", label: "Sessions Delivered" },
-  { value: "4.8/5", label: "Avg. Client Rating" },
 ];
 
 // Key associations with actual logos - displayed in color by default
@@ -228,23 +220,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="py-12 bg-background relative -mt-10 z-10">
-          <div className="container mx-auto px-4">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {stats.map((stat) => (
-                <Card key={stat.label} variant="elevated" className="text-center">
-                  <CardContent className="p-6">
-                    <p className="text-3xl font-bold text-foreground mb-1">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Case Studies Carousel - Improved */}
+        {/* Case Studies Carousel - Fixed dots to match case studies count */}
         <section className="section-padding bg-muted overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -304,7 +280,7 @@ export default function Portfolio() {
                 <Card 
                   key={index} 
                   variant="elevated" 
-                  className="w-[400px] shrink-0 overflow-hidden hover:shadow-xl transition-all cursor-pointer first:ml-0 last:mr-0"
+                  className="w-[400px] shrink-0 overflow-hidden hover:shadow-xl transition-all cursor-pointer"
                   style={{ scrollSnapAlign: 'start' }}
                 >
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary" />
@@ -347,7 +323,7 @@ export default function Portfolio() {
               ))}
             </div>
 
-            {/* Pagination dots */}
+            {/* Pagination dots - Now matches exactly the number of case studies */}
             <div className="flex justify-center gap-2 mt-6">
               {caseStudies.map((_, index) => (
                 <button
@@ -472,8 +448,6 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
-        <CTASection />
       </main>
       <Footer />
     </div>

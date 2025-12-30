@@ -62,6 +62,7 @@ const testimonials = [
   },
 ];
 
+// 4 video testimonial placeholders
 const videoTestimonials = [
   {
     id: 1,
@@ -74,6 +75,18 @@ const videoTestimonials = [
     name: "Campus to Corporate Journey",
     thumbnail: "/placeholder.svg",
     description: "Fresh graduates share their transformation",
+  },
+  {
+    id: 3,
+    name: "Corporate Training Impact",
+    thumbnail: "/placeholder.svg",
+    description: "A manufacturing company's training experience",
+  },
+  {
+    id: 4,
+    name: "Soft Skills Transformation",
+    thumbnail: "/placeholder.svg",
+    description: "Professionals share their growth stories",
   },
 ];
 
@@ -151,12 +164,12 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Video Testimonials Section */}
+        {/* Video Testimonials Section - 4 placeholders */}
         <div className="mt-16">
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">
             Video Testimonials
           </h3>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {videoTestimonials.map((video) => (
               <Card key={video.id} variant="elevated" className="overflow-hidden group cursor-pointer">
                 <div className="relative aspect-video bg-muted">
@@ -166,14 +179,14 @@ export function TestimonialsSection() {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-primary/60 flex items-center justify-center group-hover:bg-primary/70 transition-colors">
-                    <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play className="w-7 h-7 text-secondary-foreground ml-1" />
+                    <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play className="w-6 h-6 text-secondary-foreground ml-1" />
                     </div>
                   </div>
                 </div>
                 <CardContent className="p-4">
-                  <h4 className="font-semibold text-foreground">{video.name}</h4>
-                  <p className="text-sm text-muted-foreground">{video.description}</p>
+                  <h4 className="font-semibold text-foreground text-sm">{video.name}</h4>
+                  <p className="text-xs text-muted-foreground">{video.description}</p>
                 </CardContent>
               </Card>
             ))}

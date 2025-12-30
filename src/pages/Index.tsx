@@ -4,7 +4,6 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { TrainingPathsSection } from "@/components/sections/TrainingPathsSection";
 import { TrainingMethodologyVideo } from "@/components/sections/TrainingMethodologyVideo";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { CTASection } from "@/components/sections/CTASection";
 
 const Index = () => {
   return (
@@ -15,7 +14,6 @@ const Index = () => {
         <TrainingPathsSection />
         <TrainingMethodologyVideo />
         <TestimonialsSection />
-        <CTASection />
       </main>
       <Footer />
     </div>
