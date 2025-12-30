@@ -1,6 +1,5 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -331,8 +330,6 @@ export default function Contact() {
             </div>
           </div>
         </section>
-
-        <CTASection />
       </main>
       <Footer />
     </div>

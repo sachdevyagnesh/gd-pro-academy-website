@@ -3,11 +3,11 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { MessageSquare, Target, Clock, User, CheckCircle, ArrowRight, Video, Gift, Sparkles, TrendingUp, Presentation } from "lucide-react";
+import { MessageSquare, Target, Clock, User, CheckCircle, ArrowRight, Video, Gift, Sparkles, TrendingUp, Presentation, Users } from "lucide-react";
 import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/about-hero.jpg";
-import { CalPopup } from "@/components/common/CalPopup";
 
+// Updated to batch system (10-30 members) instead of 1-on-1
 const livePrograms = [
   {
     icon: MessageSquare,
@@ -19,9 +19,9 @@ const livePrograms = [
       "Active listening techniques",
       "Conflict resolution",
     ],
-    duration: "4 Hours",
+    duration: "1 Day",
     price: "₹7,999",
-    type: "1-on-1",
+    type: "Batch (10-30 Members)",
     targetAudience: "Professionals looking to improve their communication skills for career advancement.",
     learningOutcomes: [
       "Speak confidently in meetings and presentations",
@@ -29,23 +29,23 @@ const livePrograms = [
       "Handle difficult conversations with ease",
       "Listen actively and respond effectively",
     ],
-    deliveryMethod: "Online via Zoom or Google Meet",
+    deliveryMethod: "In-person batch training or virtual live session",
     prerequisites: "None",
     certification: "Certificate of Completion",
   },
   {
     icon: TrendingUp,
-    title: "Sales Skills Coaching",
-    description: "Personal coaching to enhance your sales abilities and boost your career in sales.",
+    title: "Sales Skills Training",
+    description: "Group coaching to enhance your sales abilities and boost your career in sales.",
     features: [
       "Objection handling mastery",
       "Building client relationships",
       "Closing techniques",
       "Confidence in sales calls",
     ],
-    duration: "6 Hours",
+    duration: "1-2 Days",
     price: "₹11,999",
-    type: "1-on-1",
+    type: "Batch (10-30 Members)",
     targetAudience: "Sales professionals, entrepreneurs, and anyone in client-facing roles.",
     learningOutcomes: [
       "Handle objections confidently and effectively",
@@ -53,13 +53,13 @@ const livePrograms = [
       "Close deals with proven techniques",
       "Develop a winning sales mindset",
     ],
-    deliveryMethod: "Online via Zoom or Google Meet (split into 2-3 sessions)",
+    deliveryMethod: "In-person batch training or virtual live session",
     prerequisites: "Basic sales experience preferred but not required",
     certification: "Certificate of Completion",
   },
   {
     icon: Target,
-    title: "Career Advancement Coaching",
+    title: "Career Advancement Program",
     description: "Strategic career planning and skill development for professional growth.",
     features: [
       "Career goal setting",
@@ -67,9 +67,9 @@ const livePrograms = [
       "Interview preparation",
       "Salary negotiation",
     ],
-    duration: "8 Hours",
-    price: "₹14,999",
-    type: "1-on-1",
+    duration: "1 Day",
+    price: "₹9,999",
+    type: "Batch (10-30 Members)",
     targetAudience: "Professionals seeking career growth, job changers, and those planning their next career move.",
     learningOutcomes: [
       "Create a clear career roadmap",
@@ -77,13 +77,13 @@ const livePrograms = [
       "Ace interviews with confidence",
       "Negotiate better compensation packages",
     ],
-    deliveryMethod: "Online via Zoom (split into 3-4 sessions over 2-4 weeks)",
+    deliveryMethod: "In-person batch training or virtual session",
     prerequisites: "None",
     certification: "Certificate of Completion + Career Action Plan",
   },
   {
     icon: Presentation,
-    title: "Interview Preparation",
+    title: "Interview Preparation Workshop",
     description: "Comprehensive interview coaching to help you land your dream job.",
     features: [
       "Mock interviews with feedback",
@@ -91,9 +91,9 @@ const livePrograms = [
       "Body language coaching",
       "Confidence building",
     ],
-    duration: "3 Hours",
+    duration: "Half Day",
     price: "₹4,999",
-    type: "1-on-1",
+    type: "Batch (10-30 Members)",
     targetAudience: "Job seekers, fresh graduates, and professionals preparing for interviews.",
     learningOutcomes: [
       "Answer tough interview questions confidently",
@@ -101,7 +101,7 @@ const livePrograms = [
       "Make a lasting first impression",
       "Negotiate job offers effectively",
     ],
-    deliveryMethod: "Online via Zoom or Google Meet",
+    deliveryMethod: "In-person workshop or virtual session",
     prerequisites: "Have a target job or industry in mind",
     certification: "Certificate of Completion",
   },
@@ -175,13 +175,15 @@ export default function IndividualTraining() {
                 <span className="text-gradient-gold">Career Growth</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 leading-relaxed">
-                Personalized coaching and self-paced courses designed to help you master essential professional skills and achieve your career goals.
+                Batch training programs (10-30 members) and self-paced courses designed to help you master essential professional skills. For 1-on-1 coaching, please contact us directly.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <CalPopup variant="hero" size="lg" className="group">
-                  Book Training Session
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </CalPopup>
+                <Button variant="hero" size="lg" asChild className="group">
+                  <Link to="/contact">
+                    Enroll in Batch Training
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
                 <Button variant="heroOutline" size="lg" asChild>
                   <a href="#courses">Browse E-Courses</a>
                 </Button>
@@ -190,16 +192,16 @@ export default function IndividualTraining() {
           </div>
         </section>
 
-        {/* Live Training Sessions */}
+        {/* Live Training Sessions - Now Batch Based */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <div className="accent-line mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Live Training Sessions
+                Batch Training Programs
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Personalized 1-on-1 coaching sessions tailored to your specific needs and goals.
+                Group training sessions with 10-30 participants for interactive learning and peer networking. For personalized 1-on-1 coaching, <Link to="/contact" className="text-primary underline">contact us</Link>.
               </p>
             </div>
 
@@ -219,11 +221,29 @@ export default function IndividualTraining() {
                   deliveryMethod={program.deliveryMethod}
                   prerequisites={program.prerequisites}
                   certification={program.certification}
-                  ctaLabel="Book"
-                  ctaLink="/book-consultation"
+                  ctaLabel="Enroll"
+                  ctaLink="/contact"
                   ctaVariant="accent"
                 />
               ))}
+            </div>
+
+            {/* 1-on-1 Note */}
+            <div className="mt-12 text-center">
+              <Card className="max-w-2xl mx-auto bg-primary/5 border-primary/20">
+                <CardContent className="p-6">
+                  <Users className="w-10 h-10 text-primary mx-auto mb-3" />
+                  <h3 className="text-lg font-bold text-foreground mb-2">
+                    Need 1-on-1 Personalized Coaching?
+                  </h3>
+                  <p className="text-muted-foreground mb-4 text-sm">
+                    For individual attention and customized coaching sessions tailored specifically to your needs, please reach out to us directly.
+                  </p>
+                  <Button variant="navy" asChild>
+                    <Link to="/contact">Contact for 1-on-1 Coaching</Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -340,14 +360,16 @@ export default function IndividualTraining() {
                 <span className="text-gradient-gold">Career?</span>
               </h2>
               <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-                Book a free consultation call to discuss your goals and discover how personalized coaching can help you succeed.
+                Contact us to discuss your goals and discover how our training programs can help you succeed.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <CalPopup variant="hero" size="xl" className="group">
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </CalPopup>
+                <Button variant="hero" size="xl" asChild className="group">
+                  <Link to="/contact">
+                    Get in Touch
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>

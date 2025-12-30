@@ -1,13 +1,11 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CTASection } from "@/components/sections/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Users, TrendingUp, MessageSquare, Award, CheckCircle, ArrowRight, Building2, Briefcase, Target } from "lucide-react";
 import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/hero-bg-3.jpg";
-import { CalPopup } from "@/components/common/CalPopup";
 
 const programs = [
   {
@@ -169,9 +167,6 @@ export default function CorporateTraining() {
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
-                <CalPopup variant="heroOutline" size="lg">
-                  Schedule a Call
-                </CalPopup>
               </div>
             </div>
           </div>
@@ -208,7 +203,7 @@ export default function CorporateTraining() {
                   prerequisites={program.prerequisites}
                   certification={program.certification}
                   ctaLabel="Book Now"
-                  ctaLink="/book-consultation"
+                  ctaLink="/contact"
                   ctaVariant="navy"
                 />
               ))}
@@ -263,17 +258,15 @@ export default function CorporateTraining() {
                     <p className="text-primary-foreground/80 mb-6">
                       Contact us for a customized training proposal tailored to your organization's needs.
                     </p>
-                    <CalPopup variant="hero" size="lg" className="w-full">
-                      Book Free Consultation
-                    </CalPopup>
+                    <Button variant="hero" size="lg" asChild className="w-full">
+                      <Link to="/contact">Book Free Consultation</Link>
+                    </Button>
                   </div>
                 </Card>
               </div>
             </div>
           </div>
         </section>
-
-        <CTASection />
       </main>
       <Footer />
     </div>

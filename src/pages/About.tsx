@@ -3,10 +3,9 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Award, BookOpen, Users, Target, Lightbulb, Heart, CheckCircle, MapPin } from "lucide-react";
+import { Award, BookOpen, Users, Target, Lightbulb, Heart, CheckCircle, MapPin, Eye, Crosshair } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
-import aboutPortrait from "@/assets/about-portrait.jpg";
-import { CalPopup } from "@/components/common/CalPopup";
+import aboutPortrait from "@/assets/about-portrait-new.jpg";
 
 const milestones = [
   { year: "2013", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
@@ -73,11 +72,11 @@ export default function About() {
           </div>
         </section>
 
-        {/* Trainer Profile - Compact Layout */}
+        {/* Trainer Profile */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-[auto_1fr] gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
-              {/* Image with stats below - compact */}
+            <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-6 items-start max-w-5xl mx-auto">
+              {/* Image with stats below */}
               <div className="relative w-full max-w-xs mx-auto lg:mx-0">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-elevated">
                   <img 
@@ -87,7 +86,6 @@ export default function About() {
                   />
                 </div>
                 
-                {/* Stats Card - Below image */}
                 <Card className="mt-3 shadow-elevated">
                   <CardContent className="p-3">
                     <div className="grid grid-cols-2 gap-3 text-center">
@@ -104,64 +102,84 @@ export default function About() {
                 </Card>
               </div>
 
-              {/* Content - Updated bio */}
+              {/* Content */}
               <div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
                   Hi, I'm Grishma Sachdev
                 </h2>
-                <div className="space-y-3 text-muted-foreground leading-relaxed mb-6 text-sm md:text-base">
+                <div className="space-y-2 text-muted-foreground leading-relaxed mb-4 text-sm">
                   <p>
-                    I'm a passionate Sales & Soft Skills Trainer with over 14 years of experience in the BFSI and training industries. I understand the challenges professionals face in sales-driven environments.
+                    I'm a passionate Sales & Soft Skills Trainer with over 14 years of experience in the BFSI and training industries. I simplify complex concepts, focusing on practical learning and real-world applications.
                   </p>
                   <p>
-                    I simplify complex concepts, focusing on practical learning, people's behavior, and real-world applications. Motherhood has taught me patience and simplicity, which I integrate into my training approach to create meaningful and transformative experiences for learners.
-                  </p>
-                  <p>
-                    I started my career in 2013 in a profession that most people avoid, especially back then as a woman. Yes, I'm talking about sales—a job that many people shy away from even today. I began in the BFSI (Banking, Financial Services, and Insurance) sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer level role to a managerial position.
-                  </p>
-                  <p>
-                    Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, earned respect, and everything seemed smooth. But something felt missing. I noticed that many people still don't want to work in sales. It's seen as a tough profession.
-                  </p>
-                  <p>
-                    I still remember sitting in a room full of people who hesitated to admit they worked in sales. That moment made me realize that this perception had to change. But I've always believed that with the right skills and mindset, anyone can thrive in it.
+                    I started my career in 2013 in sales—a profession many shy away from. I grew from an officer-level role to a managerial position in the BFSI sector, and eventually became a functional trainer. That journey taught me that with the right skills and mindset, anyone can thrive in sales.
                   </p>
                 </div>
 
-                {/* Highlights - BOLD text */}
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  <div className="text-center p-3 bg-muted rounded-xl">
-                    <BookOpen className="w-5 h-5 text-secondary mx-auto mb-1" />
-                    <p className="font-display font-bold text-foreground text-sm">
-                      <strong>14+ years</strong>
-                    </p>
-                    <p className="text-xs text-muted-foreground font-bold">in BFSI</p>
+                {/* Highlights */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  <div className="text-center p-2 bg-muted rounded-xl">
+                    <BookOpen className="w-4 h-4 text-secondary mx-auto mb-1" />
+                    <p className="font-display font-bold text-foreground text-xs">14+ years</p>
+                    <p className="text-[10px] text-muted-foreground">in BFSI</p>
                   </div>
-                  <div className="text-center p-3 bg-muted rounded-xl">
-                    <Award className="w-5 h-5 text-secondary mx-auto mb-1" />
-                    <p className="font-display font-bold text-foreground text-sm">
-                      <strong>Certified</strong>
-                    </p>
-                    <p className="text-xs text-muted-foreground font-bold">Trainer</p>
+                  <div className="text-center p-2 bg-muted rounded-xl">
+                    <Award className="w-4 h-4 text-secondary mx-auto mb-1" />
+                    <p className="font-display font-bold text-foreground text-xs">Certified</p>
+                    <p className="text-[10px] text-muted-foreground">Trainer</p>
                   </div>
-                  <div className="text-center p-3 bg-muted rounded-xl">
-                    <MapPin className="w-5 h-5 text-secondary mx-auto mb-1" />
-                    <p className="font-display font-bold text-foreground text-sm">
-                      <strong>Pan-India</strong>
-                    </p>
-                    <p className="text-xs text-muted-foreground font-bold">& Global</p>
+                  <div className="text-center p-2 bg-muted rounded-xl">
+                    <MapPin className="w-4 h-4 text-secondary mx-auto mb-1" />
+                    <p className="font-display font-bold text-foreground text-xs">Pan-India</p>
+                    <p className="text-[10px] text-muted-foreground">& Global</p>
                   </div>
                 </div>
 
-                <CalPopup variant="navy" size="lg">
-                  Book a Consultation
-                </CalPopup>
+                <Button variant="navy" size="default" asChild>
+                  <Link to="/contact">Book a Consultation</Link>
+                </Button>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Mission & Vision */}
+        <section className="py-12 bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <Card variant="elevated" className="border-l-4 border-l-primary">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Crosshair className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-display text-2xl font-bold text-foreground">My Mission</h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    To help people feel confident about working in sales. I believe everyone can excel in sales with the right training, mindset, and support.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card variant="elevated" className="border-l-4 border-l-secondary">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
+                      <Eye className="w-6 h-6 text-secondary" />
+                    </div>
+                    <h3 className="font-display text-2xl font-bold text-foreground">My Vision</h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    To prepare as many people as possible to be market-ready, to make sales a career they are proud of, and to help them succeed without fearing targets or challenges.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         {/* Training Philosophy */}
-        <section className="section-padding bg-muted">
+        <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <div className="accent-line mx-auto mb-6" />
@@ -190,7 +208,7 @@ export default function About() {
         </section>
 
         {/* Specializations & Timeline */}
-        <section className="section-padding bg-background">
+        <section className="section-padding bg-muted">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
               <div>
@@ -198,9 +216,6 @@ export default function About() {
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
                   Areas of Specialization
                 </h2>
-                <p className="text-muted-foreground mb-8">
-                  With deep expertise across key professional development areas, I deliver training that makes a real impact on careers and organizations.
-                </p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {specializations.map((spec) => (
                     <div key={spec} className="flex items-center gap-3">
@@ -211,7 +226,6 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Timeline - Updated with 2013 */}
               <div className="space-y-6">
                 <h3 className="font-display text-xl font-bold text-foreground mb-4">Career Journey</h3>
                 {milestones.map((milestone, index) => (
@@ -245,9 +259,9 @@ export default function About() {
             <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
               Let's discuss how GD Pro Academy can help you achieve your professional goals.
             </p>
-            <CalPopup variant="hero" size="lg">
-              Book Free Consultation
-            </CalPopup>
+            <Button variant="hero" size="lg" asChild>
+              <Link to="/contact">Book Free Consultation</Link>
+            </Button>
           </div>
         </section>
       </main>

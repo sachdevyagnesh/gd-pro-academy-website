@@ -16,16 +16,6 @@ export function GallerySection() {
   return (
     <section className="section-padding bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="accent-line mx-auto mb-6" />
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Moments from <span className="text-gradient-gold">GD Pro Sessions</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A glimpse into our transformative training experiences across India
-          </p>
-        </div>
-
         {/* Gallery Grid - Placeholder images */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {galleryPlaceholders.map((item) => (
