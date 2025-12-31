@@ -107,12 +107,21 @@ export default function About() {
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
                   Hi, I'm Grishma Sachdev
                 </h2>
-                <div className="space-y-2 text-muted-foreground leading-relaxed mb-4 text-sm">
+                <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
-                    I'm a passionate Sales & Soft Skills Trainer with over 14 years of experience in the BFSI and training industries. I simplify complex concepts, focusing on practical learning and real-world applications.
+                    I’m Grishma—a Sales &amp; Soft Skills Trainer with over 14 years of experience across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
                   </p>
                   <p>
-                    I started my career in 2013 in sales—a profession many shy away from. I grew from an officer-level role to a managerial position in the BFSI sector, and eventually became a functional trainer. That journey taught me that with the right skills and mindset, anyone can thrive in sales.
+                    I focus deeply on people’s behavior, communication, and day-to-day workplace realities. Motherhood has taught me patience and simplicity, and I bring that same calm, structured approach into every training room to create meaningful, transformative learning experiences.
+                  </p>
+                  <p>
+                    I started my career in 2013 in a profession that most people avoid—especially back then as a woman. Yes, I’m talking about sales. I began in the BFSI (Banking, Financial Services, and Insurance) sector. It wasn’t easy, but I worked hard, faced challenges, and grew from an officer-level role to a managerial position.
+                  </p>
+                  <p>
+                    Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, had earned respect, and everything felt smooth. But something still felt missing.
+                  </p>
+                  <p>
+                    I noticed that many people still don’t want to work in sales. It’s seen as a tough profession. I still remember sitting in a room full of people who hesitated to admit they worked in sales. That moment made me realize this perception had to change—and I’ve always believed that with the right skills and mindset, anyone can thrive in sales.
                   </p>
                 </div>
 
