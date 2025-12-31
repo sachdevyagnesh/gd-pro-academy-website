@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,13 +9,13 @@ import logo from "@/assets/logo-new.png";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { 
-    name: "Services", 
+  {
+    name: "Services",
     href: "#",
     children: [
       { name: "Corporate Training", href: "/corporate-training" },
       { name: "Individual Training", href: "/individual-training" },
-    ]
+    ],
   },
   { name: "Moments", href: "/moments" },
   { name: "Portfolio", href: "/portfolio" },
@@ -26,8 +27,13 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
   const location = useLocation();
   const logoRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Preload logo on mount - store in ref to prevent re-renders
   useEffect(() => {
@@ -49,17 +55,26 @@ export function Header() {
     setOpenDropdown(null);
   }, [location]);
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent background scroll when the mobile menu is open
   useEffect(() => {
+    if (!isMounted) return;
+
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = prevBodyOverflow || "";
+      document.documentElement.style.overflow = prevHtmlOverflow || "";
     }
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = prevBodyOverflow || "";
+      document.documentElement.style.overflow = prevHtmlOverflow || "";
     };
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, isMounted]);
 
   const isActive = (href: string) => location.pathname === href;
 
@@ -196,108 +211,110 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu - Full screen overlay with proper styling */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          
-          {/* Menu Panel - Fixed background color */}
-          <div className="fixed top-0 right-0 w-full max-w-xs h-full bg-background shadow-2xl z-50 lg:hidden overflow-y-auto animate-fade-in">
-            {/* Menu Header */}
-            <div className="flex items-center justify-between p-4 border-b bg-background">
-              <div className="flex items-center gap-3">
-                <img 
-                  src={logo} 
-                  alt="GD Pro Academy" 
-                  className="h-16 w-16 object-contain drop-shadow-lg"
-                />
-                <span className="font-display font-bold text-lg text-foreground">Menu</span>
-              </div>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 rounded-lg hover:bg-muted transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-5 h-5 text-foreground" />
-              </button>
-            </div>
+      {/* Mobile Menu - rendered in a portal to avoid stacking/scroll issues on mobile */}
+      {isMounted &&
+        isMobileMenuOpen &&
+        createPortal(
+          <>
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-black/50 z-[60] lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
 
-            {/* Menu Links - All navigation items */}
-            <nav className="p-4 space-y-1 bg-background">
-              {navLinks.map((link) => (
-                <div key={link.name}>
-                  {link.children ? (
-                    <>
-                      <button
-                        className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-foreground font-medium hover:bg-muted transition-colors"
-                        onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
+            {/* Menu Panel */}
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
+              className="fixed top-0 right-0 w-full max-w-xs h-[100dvh] bg-background shadow-2xl z-[70] lg:hidden overflow-y-auto animate-fade-in"
+            >
+              {/* Menu Header */}
+              <div className="flex items-center justify-between p-4 border-b bg-background">
+                <div className="flex items-center gap-3">
+                  <img src={logo} alt="GD Pro Academy" className="h-16 w-16 object-contain drop-shadow-lg" />
+                  <span className="font-display font-bold text-lg text-foreground">Menu</span>
+                </div>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 rounded-lg hover:bg-muted transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="w-5 h-5 text-foreground" />
+                </button>
+              </div>
+
+              {/* Menu Links */}
+              <nav className="p-4 space-y-1 bg-background">
+                {navLinks.map((link) => (
+                  <div key={link.name}>
+                    {link.children ? (
+                      <>
+                        <button
+                          className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-foreground font-medium hover:bg-muted transition-colors"
+                          onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
+                        >
+                          {link.name}
+                          <ChevronDown
+                            className={cn(
+                              "w-4 h-4 transition-transform",
+                              openDropdown === link.name && "rotate-180",
+                            )}
+                          />
+                        </button>
+                        {openDropdown === link.name && (
+                          <div className="ml-4 mt-1 space-y-1 border-l-2 border-muted pl-4">
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.name}
+                                to={child.href}
+                                className={cn(
+                                  "block px-4 py-2.5 rounded-lg text-sm transition-colors",
+                                  isActive(child.href)
+                                    ? "bg-primary text-primary-foreground"
+                                    : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                                )}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {child.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className={cn(
+                          "block px-4 py-3 rounded-lg font-medium transition-colors",
+                          isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
+                        )}
+                        onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.name}
-                        <ChevronDown className={cn(
-                          "w-4 h-4 transition-transform",
-                          openDropdown === link.name && "rotate-180"
-                        )} />
-                      </button>
-                      {openDropdown === link.name && (
-                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-muted pl-4">
-                          {link.children.map((child) => (
-                            <Link
-                              key={child.name}
-                              to={child.href}
-                              className={cn(
-                                "block px-4 py-2.5 rounded-lg text-sm transition-colors",
-                                isActive(child.href)
-                                  ? "bg-primary text-primary-foreground"
-                                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                              )}
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {child.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className={cn(
-                        "block px-4 py-3 rounded-lg font-medium transition-colors",
-                        isActive(link.href)
-                          ? "bg-primary text-primary-foreground"
-                          : "text-foreground hover:bg-muted"
-                      )}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </nav>
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </nav>
 
-            {/* Menu Footer */}
-            <div className="p-4 border-t mt-4 space-y-3 bg-background">
-              <a
-                href="tel:+918356837052"
-                className="flex items-center gap-2 px-4 py-2 text-foreground"
-              >
-                <Phone className="w-4 h-4" />
-                +91 8356 837052
-              </a>
-              <Button variant="navy" size="lg" asChild className="w-full">
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Get in Touch
-                </Link>
-              </Button>
+              {/* Menu Footer */}
+              <div className="p-4 border-t mt-4 space-y-3 bg-background">
+                <a href="tel:+918356837052" className="flex items-center gap-2 px-4 py-2 text-foreground">
+                  <Phone className="w-4 h-4" />
+                  +91 8356 837052
+                </a>
+                <Button variant="navy" size="lg" asChild className="w-full">
+                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    Get in Touch
+                  </Link>
+                </Button>
+              </div>
             </div>
-          </div>
-        </>
-      )}
+          </>,
+          document.body,
+        )}
+
     </header>
   );
 }
