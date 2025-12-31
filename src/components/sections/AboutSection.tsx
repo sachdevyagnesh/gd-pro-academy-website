@@ -75,16 +75,19 @@ export function AboutSection() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Meet Your Trainer
             </h2>
-            <div className="space-y-4 text-muted-foreground text-lg leading-relaxed mb-6">
+            <div className="space-y-4 text-muted-foreground leading-relaxed mb-6">
               <p>
-                "I'm Grishma, and I believe everyone deserves the confidence to excel in their career. With over 14 years in the BFSI industry, I've seen firsthand how the right training can transform lives."
+                I'm Grishma, a passionate Sales & Soft Skills Trainer with over 14 years of experience in the BFSI and training industries. I simplify complex concepts, focusing on practical learning, people's behavior, and real-world applications. Motherhood has taught me patience and simplicity, which I integrate into my training approach to create meaningful and transformative experiences for learners.
               </p>
               <p>
-                "I started my career in 2013 in sales — a field many avoided, especially as a woman back then. Through hard work and determination, I grew from an officer to a manager, and eventually became a corporate trainer."
+                I started my career in 2013 in a profession that most people avoid, especially back then as a woman. Yes, I'm talking about sales — a job that many people shy away from even today. I began in the BFSI (Banking, Financial Services, and Insurance) sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer level role to a managerial position.
+              </p>
+              <p>
+                Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good — I was earning well, earned respect, and everything seemed smooth. But something felt missing.
               </p>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-8 italic border-l-4 border-secondary pl-4">
-              "My mission is simple: to help people feel confident about working in sales and prepare them to be market-ready. Where connection fuels conversion."
+              I noticed that many people still don't want to work in sales. It's seen as a tough profession. I still remember sitting in a room full of people who hesitated to admit they worked in sales. That moment made me realize that this perception had to change — but I've always believed that with the right skills and mindset, anyone can thrive in it.
             </p>
 
             {/* Highlights */}
