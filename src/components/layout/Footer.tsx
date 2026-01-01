@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, Instagram } from "lucide-react";
 import logo from "@/assets/logo-new.png";
 
 const footerLinks = {
   services: [
-    { name: "For Corporates", href: "/corporate-training" },
-    { name: "For Professionals", href: "/individual-training" },
+    { name: "For Corporate's", href: "/corporate-training" },
+    { name: "For Professional's", href: "/individual-training" },
     { name: "Sales Training", href: "/corporate-training" },
     { name: "Soft Skills Training", href: "/individual-training" },
   ],
   company: [
     { name: "About Us", href: "/about" },
     { name: "Testimonials", href: "/moments" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
@@ -69,15 +70,6 @@ export function Footer() {
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://youtube.com/@gdproacademy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>

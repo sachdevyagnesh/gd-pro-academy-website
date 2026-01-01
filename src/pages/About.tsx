@@ -66,7 +66,7 @@ export default function About() {
                 About <span className="text-gradient-gold">GD Pro Academy</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
-                Empowering professionals and organizations with practical, result-driven training in sales, leadership, and soft skills for over 14 years.
+                Empowering professionals and organizations with practical, result-driven training in sales, leadership, and soft skills for over 12 years.
               </p>
             </div>
           </div>
@@ -86,20 +86,6 @@ export default function About() {
                   />
                 </div>
                 
-                <Card className="mt-3 shadow-elevated">
-                  <CardContent className="p-3">
-                    <div className="grid grid-cols-2 gap-3 text-center">
-                      <div>
-                        <p className="font-display text-xl font-bold text-foreground">14+</p>
-                        <p className="text-xs text-muted-foreground">Years Experience</p>
-                      </div>
-                      <div>
-                        <p className="font-display text-xl font-bold text-foreground">4.8/5</p>
-                        <p className="text-xs text-muted-foreground">Client Rating</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
 
               {/* Content */}
@@ -109,7 +95,7 @@ export default function About() {
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
-                    A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
+                    A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">12 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
                   </p>
                   <p>
                     I focus deeply on <strong className="text-foreground">people's behavior</strong>, <strong className="text-foreground">communication</strong>, and day-to-day workplace realities.
@@ -138,7 +124,7 @@ export default function About() {
                 <div className="grid grid-cols-3 gap-2 mb-4">
                   <div className="text-center p-2 bg-muted rounded-xl">
                     <BookOpen className="w-4 h-4 text-secondary mx-auto mb-1" />
-                    <p className="font-display font-bold text-foreground text-xs">14+ years</p>
+                    <p className="font-display font-bold text-foreground text-xs">12+ years</p>
                     <p className="text-[10px] text-muted-foreground">in BFSI</p>
                   </div>
                   <div className="text-center p-2 bg-muted rounded-xl">

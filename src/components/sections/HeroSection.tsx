@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import heroBg from "@/assets/hero-bg-1.jpg";
 
 const metrics = [
-  { value: 75000, suffix: "+", label: "Training Hours" },
-  { value: 46000, suffix: "+", label: "Participants Trained" },
-  { value: 1300, suffix: "+", label: "Sessions Delivered" },
+  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 24000, suffix: "+", label: "Training Hours" },
+  { value: 4500, suffix: "+", label: "Participants Trained" },
+  { value: 192, suffix: "+", label: "Sessions Delivered" },
 ];
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
@@ -87,7 +88,7 @@ export function HeroSection() {
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-up stagger-2">
-            Customized Sales & Soft Skills Training for Professionals & Corporates with proven results and 14+ years of industry expertise.
+            Customized Sales & Soft Skills Training for Professionals & Corporates with proven results
           </p>
 
           {/* CTA - Only Book Free Consultation linking to Contact page */}
@@ -101,7 +102,7 @@ export function HeroSection() {
           </div>
 
           {/* Metrics */}
-          <div className="grid grid-cols-3 gap-6 md:gap-8 animate-fade-in-up stagger-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 animate-fade-in-up stagger-4">
             {metrics.map((metric) => (
               <div
                 key={metric.label}

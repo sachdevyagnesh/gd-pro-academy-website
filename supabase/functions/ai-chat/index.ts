@@ -47,8 +47,8 @@ Or call: +91 8356 837052"
 - After info collected, answer any questions helpfully
 
 ## Quick Facts (only share AFTER lead capture)
-- 14+ years BFSI experience
-- 46,000+ professionals trained
+- 12+ years BFSI experience
+- 4,500+ professionals trained
 - Corporate: Sales, Soft Skills, Team Building
 - Individual: 1-on-1 coaching, E-courses
 - Contact: +91 8356 837052

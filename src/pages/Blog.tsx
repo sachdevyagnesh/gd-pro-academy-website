@@ -138,7 +138,7 @@ export default function Blog() {
               <div className="accent-line mx-auto mb-6" />
               <h2 className="font-display text-3xl font-bold text-foreground mb-4">Latest Articles</h2>
               <p className="text-muted-foreground">
-                Practical insights from 14+ years of training experience
+                Practical insights from 12+ years of training experience
               </p>
             </div>
 

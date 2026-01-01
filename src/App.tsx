@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Moments from "./pages/Moments";
+import Gallery from "./pages/Gallery";
 import CorporateTraining from "./pages/CorporateTraining";
 import IndividualTraining from "./pages/IndividualTraining";
 import Portfolio from "./pages/Portfolio";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/moments" element={<Moments />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/corporate-training" element={<CorporateTraining />} />
           <Route path="/individual-training" element={<IndividualTraining />} />
           <Route path="/portfolio" element={<Portfolio />} />

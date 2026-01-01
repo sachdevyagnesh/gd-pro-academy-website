@@ -255,7 +255,7 @@ export default function Services() {
                 </h2>
                 <div className="space-y-6">
                   {[
-                    { title: "Industry Experience", desc: "14+ years in BFSI and corporate training" },
+                    { title: "Industry Experience", desc: "12+ years in BFSI and corporate training" },
                     { title: "Customized Solutions", desc: "Programs tailored to your specific needs" },
                     { title: "Proven Results", desc: "4.8/5 average client satisfaction rating" },
                     { title: "Pan-India Reach", desc: "Training delivered across the country" },
