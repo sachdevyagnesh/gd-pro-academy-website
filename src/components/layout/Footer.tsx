@@ -5,7 +5,7 @@ import logo from "@/assets/logo-new.png";
 const footerLinks = {
   services: [
     { name: "For Corporate's", href: "/corporate-training" },
-    { name: "For Professional's", href: "/individual-training" },
+    { name: "For Professionals", href: "/individual-training" },
     { name: "Sales Training", href: "/corporate-training" },
     { name: "Soft Skills Training", href: "/individual-training" },
   ],

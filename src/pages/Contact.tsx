@@ -41,7 +41,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    value: "Thane, Maharashtra",
+    value: "Mumbai, Maharashtra",
     href: "#",
     description: "Pan-India & Global",
   },
@@ -148,7 +148,7 @@ export default function Contact() {
         {/* Hero */}
         <section className="pt-32 pb-20 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-[center_30%] bg-no-repeat"
             style={{ backgroundImage: `url(${heroBg})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />

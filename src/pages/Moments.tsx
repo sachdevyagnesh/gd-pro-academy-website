@@ -97,53 +97,8 @@ export default function Moments() {
           </div>
         </section>
 
-        {/* Written Testimonials */}
-        <section className="section-padding bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-4">
-                <Quote className="w-4 h-4 text-primary" />
-                <span className="text-primary font-medium text-sm">Written Reviews</span>
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Client Testimonials
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Hear directly from our clients about their training experiences
-              </p>
-            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-              {testimonials.map((testimonial, index) => (
-                <Card
-                  key={index}
-                  variant="elevated"
-                  className="group transition-all duration-300 hover:shadow-gold"
-                >
-                  <CardContent className="p-6">
-                    <Quote className="w-8 h-8 text-secondary/30 mb-3" />
-                    <p className="text-foreground leading-relaxed mb-4">
-                      "{testimonial.content}"
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                        <span className="text-primary-foreground font-semibold text-sm">
-                          {testimonial.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
-                        </span>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-foreground text-sm">{testimonial.name}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {testimonial.role}, {testimonial.company}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* Feedback Images */}
         <section className="section-padding bg-muted">
