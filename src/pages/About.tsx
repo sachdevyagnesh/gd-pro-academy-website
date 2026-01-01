@@ -76,7 +76,7 @@ export default function About() {
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-6 items-start max-w-5xl mx-auto">
-              {/* Image with stats below */}
+              {/* Image with Career Journey below */}
               <div className="relative w-full max-w-xs mx-auto lg:mx-0">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-elevated">
                   <img 
@@ -86,6 +86,29 @@ export default function About() {
                   />
                 </div>
                 
+                {/* Career Journey - vertical timeline below image */}
+                <div className="mt-6">
+                  <h3 className="font-display text-lg font-bold text-foreground mb-4">Career Journey</h3>
+                  <div className="space-y-0">
+                    {milestones.map((milestone, index) => (
+                      <div key={milestone.year} className="flex gap-3">
+                        <div className="flex flex-col items-center">
+                          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-xs">
+                            {milestone.year.slice(-2)}
+                          </div>
+                          {index < milestones.length - 1 && (
+                            <div className="w-0.5 h-full bg-border min-h-[40px]" />
+                          )}
+                        </div>
+                        <div className="pb-4">
+                          <p className="text-xs text-secondary font-medium">{milestone.year}</p>
+                          <h4 className="font-display font-semibold text-foreground text-sm">{milestone.title}</h4>
+                          <p className="text-xs text-muted-foreground">{milestone.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               {/* Content */}
@@ -142,22 +165,6 @@ export default function About() {
               </div>
             </div>
 
-            {/* Career Journey - below the profile */}
-            <div className="max-w-5xl mx-auto mt-12">
-              <h3 className="font-display text-xl font-bold text-foreground mb-6">Career Journey</h3>
-              <div className="flex flex-wrap justify-center gap-8">
-                {milestones.map((milestone) => (
-                  <div key={milestone.year} className="flex flex-col items-center text-center max-w-[180px]">
-                    <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-sm mb-3">
-                      {milestone.year.slice(-2)}
-                    </div>
-                    <p className="text-sm text-secondary font-medium">{milestone.year}</p>
-                    <h4 className="font-display font-semibold text-foreground text-sm">{milestone.title}</h4>
-                    <p className="text-xs text-muted-foreground">{milestone.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
