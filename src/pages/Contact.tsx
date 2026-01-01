@@ -14,7 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import heroBg from "@/assets/map-cover.jpg";
+import heroBg from "@/assets/about-hero.jpg";
 
 const contactInfo = [
   {
@@ -146,9 +146,9 @@ export default function Contact() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-28 pb-24 md:pt-32 md:pb-28 relative overflow-hidden min-h-[520px] md:min-h-[620px] flex items-center">
+        <section className="pt-28 pb-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${heroBg})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
