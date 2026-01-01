@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import aboutPortrait from "@/assets/about-portrait.jpg";
 
 const highlights = [
-  { icon: BookOpen, value: "14+", label: "Years BFSI & Corporate" },
+  { icon: BookOpen, value: "12+", label: "Years BFSI & Corporate" },
   { icon: Award, value: "Certified", label: "Corporate Trainer" },
   { icon: Target, value: "Pan-India", label: "& Global Reach" },
 ];
@@ -63,7 +63,7 @@ export function AboutSection() {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed mb-6">
               <p>
-                A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
+                A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">12 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
               </p>
               <p>
                 I focus deeply on <strong className="text-foreground">people's behavior</strong>, <strong className="text-foreground">communication</strong>, and day-to-day workplace realities.
