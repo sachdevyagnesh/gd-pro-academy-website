@@ -121,7 +121,7 @@ export default function About() {
                 </div>
 
                 {/* Highlights */}
-                <div className="grid grid-cols-3 gap-3 mb-5">
+                <div className="grid grid-cols-3 gap-3">
                   <div className="text-center p-4 bg-muted rounded-xl border border-border">
                     <BookOpen className="w-6 h-6 text-secondary mx-auto mb-2" />
                     <p className="font-display font-extrabold text-foreground text-lg">12+ Years</p>
@@ -139,6 +139,23 @@ export default function About() {
                   </div>
                 </div>
 
+              </div>
+            </div>
+
+            {/* Career Journey - below the profile */}
+            <div className="max-w-5xl mx-auto mt-12">
+              <h3 className="font-display text-xl font-bold text-foreground mb-6">Career Journey</h3>
+              <div className="flex flex-wrap justify-center gap-8">
+                {milestones.map((milestone) => (
+                  <div key={milestone.year} className="flex flex-col items-center text-center max-w-[180px]">
+                    <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-sm mb-3">
+                      {milestone.year.slice(-2)}
+                    </div>
+                    <p className="text-sm text-secondary font-medium">{milestone.year}</p>
+                    <h4 className="font-display font-semibold text-foreground text-sm">{milestone.title}</h4>
+                    <p className="text-xs text-muted-foreground">{milestone.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -208,42 +225,19 @@ export default function About() {
           </div>
         </section>
 
-        {/* Specializations & Timeline */}
+        {/* Specializations */}
         <section className="section-padding bg-muted">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
-              <div>
-                <div className="accent-line mb-6" />
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Areas of Specialization
-                </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {specializations.map((spec) => (
-                    <div key={spec} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-accent shrink-0" />
-                      <span className="text-foreground font-medium">{spec}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <h3 className="font-display text-xl font-bold text-foreground mb-4">Career Journey</h3>
-                {milestones.map((milestone, index) => (
-                  <div key={milestone.year} className="flex gap-4">
-                    <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-sm">
-                        {milestone.year.slice(-2)}
-                      </div>
-                      {index < milestones.length - 1 && (
-                        <div className="w-0.5 h-full bg-border mt-2" />
-                      )}
-                    </div>
-                    <div className="pb-6">
-                      <p className="text-sm text-secondary font-medium">{milestone.year}</p>
-                      <h4 className="font-display font-semibold text-foreground">{milestone.title}</h4>
-                      <p className="text-sm text-muted-foreground">{milestone.description}</p>
-                    </div>
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="accent-line mx-auto mb-6" />
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
+                Areas of Specialization
+              </h2>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {specializations.map((spec) => (
+                  <div key={spec} className="flex items-center justify-center gap-3 p-4 bg-background rounded-xl border border-border">
+                    <CheckCircle className="w-5 h-5 text-accent shrink-0" />
+                    <span className="text-foreground font-medium">{spec}</span>
                   </div>
                 ))}
               </div>
