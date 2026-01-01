@@ -4,14 +4,14 @@ import logo from "@/assets/logo-new.png";
 
 const footerLinks = {
   services: [
-    { name: "Corporate Training", href: "/corporate-training" },
-    { name: "Individual Training", href: "/individual-training" },
+    { name: "For Corporates", href: "/corporate-training" },
+    { name: "For Professionals", href: "/individual-training" },
     { name: "Sales Training", href: "/corporate-training" },
     { name: "Soft Skills Training", href: "/individual-training" },
   ],
   company: [
     { name: "About Us", href: "/about" },
-    { name: "Moments", href: "/moments" },
+    { name: "Testimonials", href: "/moments" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
@@ -140,7 +140,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-primary-foreground/70">
                 <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>Thane, Maharashtra, India</span>
+                <span>Mumbai, Maharashtra, India</span>
               </li>
             </ul>
           </div>

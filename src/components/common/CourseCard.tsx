@@ -239,7 +239,7 @@ export function CourseCard({
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t">
               <Button variant="navy" size="lg" asChild className="flex-1">
-                <Link to="/book-consultation">Book Free Consultation</Link>
+                <Link to="/contact">Book Free Consultation</Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="flex-1">
                 <Link to="/contact">Send Inquiry</Link>
