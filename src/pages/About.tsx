@@ -139,9 +139,6 @@ export default function About() {
                   </div>
                 </div>
 
-                <Button variant="navy" size="default" asChild>
-                  <Link to="/contact">Book a Consultation</Link>
-                </Button>
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ const navLinks = [
     href: "#",
     children: [
       { name: "For Corporate's", href: "/corporate-training" },
-      { name: "For Professional's", href: "/individual-training" },
+      { name: "For Professionals", href: "/individual-training" },
     ],
   },
   { name: "Testimonials", href: "/moments" },
