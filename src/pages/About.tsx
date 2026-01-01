@@ -109,19 +109,28 @@ export default function About() {
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
-                    I’m Grishma—a Sales &amp; Soft Skills Trainer with over 14 years of experience across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
+                    A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
                   </p>
                   <p>
-                    I focus deeply on people’s behavior, communication, and day-to-day workplace realities. Motherhood has taught me patience and simplicity, and I bring that same calm, structured approach into every training room to create meaningful, transformative learning experiences.
+                    I focus deeply on <strong className="text-foreground">people's behavior</strong>, <strong className="text-foreground">communication</strong>, and day-to-day workplace realities.
                   </p>
                   <p>
-                    I started my career in 2013 in a profession that most people avoid—especially back then as a woman. Yes, I’m talking about sales. I began in the BFSI (Banking, Financial Services, and Insurance) sector. It wasn’t easy, but I worked hard, faced challenges, and grew from an officer-level role to a managerial position.
+                    <strong className="text-foreground">Motherhood</strong> has taught me patience and simplicity, and I bring that same calm, structured approach into every training room to create meaningful, transformative learning experiences.
                   </p>
                   <p>
-                    Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, had earned respect, and everything felt smooth. But something still felt missing.
+                    I started my career in 2013 in a profession that most people avoid—especially back then as a woman. Yes, I'm talking about <strong className="text-foreground">sales</strong>.
                   </p>
                   <p>
-                    I noticed that many people still don’t want to work in sales. It’s seen as a tough profession. I still remember sitting in a room full of people who hesitated to admit they worked in sales. That moment made me realize this perception had to change—and I’ve always believed that with the right skills and mindset, anyone can thrive in sales.
+                    I began in the <strong className="text-foreground">BFSI (Banking, Financial Services, and Insurance)</strong> sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer-level role to a managerial position. Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, had earned respect, and everything felt smooth.
+                  </p>
+                  <p className="font-medium text-foreground">
+                    But something still felt missing.
+                  </p>
+                  <p>
+                    I noticed that many people still don't want to work in sales. It's seen as a tough profession. I still remember sitting in a room full of people who hesitated to admit they worked in sales.
+                  </p>
+                  <p className="italic border-l-4 border-secondary pl-4">
+                    That moment made me realize this perception had to change, and I've always believed that with the <strong className="text-foreground">right skills and mindset</strong>, anyone can thrive in sales.
                   </p>
                 </div>
 
