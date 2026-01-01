@@ -50,20 +50,6 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Floating card */}
-            <Card className="absolute -bottom-6 -right-6 lg:-right-12 z-20 shadow-elevated max-w-xs">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
-                    <Award className="w-6 h-6 text-accent-foreground" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">4.8/5 Rating</p>
-                    <p className="text-sm text-muted-foreground">Client Satisfaction</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Background decoration */}
             <div className="absolute -top-4 -left-4 w-full h-full bg-secondary/20 rounded-3xl -z-10" />
@@ -77,17 +63,29 @@ export function AboutSection() {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed mb-6">
               <p>
-                I'm Grishma, a passionate Sales & Soft Skills Trainer with over 14 years of experience in the BFSI and training industries. I simplify complex concepts, focusing on practical learning, people's behavior, and real-world applications. Motherhood has taught me patience and simplicity, which I integrate into my training approach to create meaningful and transformative experiences for learners.
+                A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
               </p>
               <p>
-                I started my career in 2013 in a profession that most people avoid, especially back then as a woman. Yes, I'm talking about sales — a job that many people shy away from even today. I began in the BFSI (Banking, Financial Services, and Insurance) sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer level role to a managerial position.
+                I focus deeply on <strong className="text-foreground">people's behavior</strong>, <strong className="text-foreground">communication</strong>, and day-to-day workplace realities.
               </p>
               <p>
-                Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good — I was earning well, earned respect, and everything seemed smooth. But something felt missing.
+                <strong className="text-foreground">Motherhood</strong> has taught me patience and simplicity, and I bring that same calm, structured approach into every training room to create meaningful, transformative learning experiences.
+              </p>
+              <p>
+                I started my career in 2013 in a profession that most people avoid—especially back then as a woman. Yes, I'm talking about <strong className="text-foreground">sales</strong>.
+              </p>
+              <p>
+                I began in the <strong className="text-foreground">BFSI (Banking, Financial Services, and Insurance)</strong> sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer-level role to a managerial position. Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, had earned respect, and everything felt smooth.
+              </p>
+              <p className="font-medium text-foreground">
+                But something still felt missing.
+              </p>
+              <p>
+                I noticed that many people still don't want to work in sales. It's seen as a tough profession. I still remember sitting in a room full of people who hesitated to admit they worked in sales.
               </p>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-8 italic border-l-4 border-secondary pl-4">
-              I noticed that many people still don't want to work in sales. It's seen as a tough profession. I still remember sitting in a room full of people who hesitated to admit they worked in sales. That moment made me realize that this perception had to change — but I've always believed that with the right skills and mindset, anyone can thrive in it.
+              That moment made me realize this perception had to change, and I've always believed that with the <strong className="text-foreground">right skills and mindset</strong>, anyone can thrive in sales.
             </p>
 
             {/* Highlights */}
