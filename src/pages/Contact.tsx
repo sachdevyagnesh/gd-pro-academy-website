@@ -146,9 +146,9 @@ export default function Contact() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 relative overflow-hidden">
+        <section className="pt-28 pb-24 md:pt-32 md:pb-28 relative overflow-hidden min-h-[520px] md:min-h-[620px] flex items-center">
           <div 
-            className="absolute inset-0 bg-cover bg-[center_70%] bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-top bg-no-repeat"
             style={{ backgroundImage: `url(${heroBg})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
@@ -166,6 +166,7 @@ export default function Contact() {
         </section>
 
         {/* Contact Cards */}
+
         <section className="py-12 bg-background relative -mt-10 z-10">
           <div className="container mx-auto px-4">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
