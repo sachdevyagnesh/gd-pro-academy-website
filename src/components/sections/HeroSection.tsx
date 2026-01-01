@@ -8,7 +8,6 @@ const metrics = [
   { value: 75000, suffix: "+", label: "Training Hours" },
   { value: 46000, suffix: "+", label: "Participants Trained" },
   { value: 1300, suffix: "+", label: "Sessions Delivered" },
-  { value: 4.8, suffix: "/5", label: "Client Rating" },
 ];
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
@@ -102,7 +101,7 @@ export function HeroSection() {
           </div>
 
           {/* Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 animate-fade-in-up stagger-4">
+          <div className="grid grid-cols-3 gap-6 md:gap-8 animate-fade-in-up stagger-4">
             {metrics.map((metric) => (
               <div
                 key={metric.label}
