@@ -54,7 +54,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com/in/grishma-sachdev"
+                href="https://www.linkedin.com/in/grishma-sachdev-051a8486?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
@@ -63,7 +63,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="https://instagram.com/gdproacademy"
+                href="https://www.instagram.com/gdproacademy?utm_source=qr&igsh=a3hjZmN4NzN6c28x"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"

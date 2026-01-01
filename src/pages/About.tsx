@@ -121,21 +121,21 @@ export default function About() {
                 </div>
 
                 {/* Highlights */}
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  <div className="text-center p-2 bg-muted rounded-xl">
-                    <BookOpen className="w-4 h-4 text-secondary mx-auto mb-1" />
-                    <p className="font-display font-bold text-foreground text-xs">12+ years</p>
-                    <p className="text-[10px] text-muted-foreground">in BFSI</p>
+                <div className="grid grid-cols-3 gap-3 mb-5">
+                  <div className="text-center p-4 bg-muted rounded-xl border border-border">
+                    <BookOpen className="w-6 h-6 text-secondary mx-auto mb-2" />
+                    <p className="font-display font-extrabold text-foreground text-lg">12+ Years</p>
+                    <p className="text-sm font-semibold text-muted-foreground">in BFSI</p>
                   </div>
-                  <div className="text-center p-2 bg-muted rounded-xl">
-                    <Award className="w-4 h-4 text-secondary mx-auto mb-1" />
-                    <p className="font-display font-bold text-foreground text-xs">Certified</p>
-                    <p className="text-[10px] text-muted-foreground">Trainer</p>
+                  <div className="text-center p-4 bg-muted rounded-xl border border-border">
+                    <Award className="w-6 h-6 text-secondary mx-auto mb-2" />
+                    <p className="font-display font-extrabold text-foreground text-lg">Certified</p>
+                    <p className="text-sm font-semibold text-muted-foreground">Trainer</p>
                   </div>
-                  <div className="text-center p-2 bg-muted rounded-xl">
-                    <MapPin className="w-4 h-4 text-secondary mx-auto mb-1" />
-                    <p className="font-display font-bold text-foreground text-xs">Pan-India</p>
-                    <p className="text-[10px] text-muted-foreground">& Global</p>
+                  <div className="text-center p-4 bg-muted rounded-xl border border-border">
+                    <MapPin className="w-6 h-6 text-secondary mx-auto mb-2" />
+                    <p className="font-display font-extrabold text-foreground text-lg">Pan-India</p>
+                    <p className="text-sm font-semibold text-muted-foreground">& Global</p>
                   </div>
                 </div>
 
