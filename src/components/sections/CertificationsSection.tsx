@@ -1,4 +1,5 @@
 import { Award, Building2, GraduationCap } from "lucide-react";
+import { useState } from "react";
 
 // Key associations - using publicly available logos
 const associations = [
@@ -18,6 +19,12 @@ const certifications = [
 ];
 
 export function CertificationsSection() {
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+
+  const handleImageError = (companyName: string) => {
+    setFailedImages(prev => new Set(prev).add(companyName));
+  };
+
   return (
     <section className="section-padding bg-muted">
       <div className="container mx-auto px-4">
@@ -43,15 +50,18 @@ export function CertificationsSection() {
                 key={company.name}
                 className="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
               >
-                <img
-                  src={company.logo}
-                  alt={company.name}
-                  className="h-8 md:h-10 w-auto object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = `<span class="text-lg font-semibold text-muted-foreground">${company.name}</span>`;
-                  }}
-                />
+                {failedImages.has(company.name) ? (
+                  <span className="text-lg font-semibold text-muted-foreground">
+                    {company.name}
+                  </span>
+                ) : (
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    className="h-8 md:h-10 w-auto object-contain"
+                    onError={() => handleImageError(company.name)}
+                  />
+                )}
               </div>
             ))}
             <span className="text-muted-foreground font-medium">and more...</span>
