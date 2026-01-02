@@ -15,6 +15,55 @@ const SAFE_ERROR_MESSAGES = {
   DEFAULT: 'An error occurred. Please try again later.',
 };
 
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 20; // 20 messages per minute per IP (allows for conversation)
+
+// In-memory rate limit store (resets on function cold start)
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+
+function getClientIp(req: Request): string {
+  // Get IP from various headers (in order of preference)
+  const forwardedFor = req.headers.get('x-forwarded-for');
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0].trim();
+  }
+  const realIp = req.headers.get('x-real-ip');
+  if (realIp) {
+    return realIp;
+  }
+  return 'unknown';
+}
+
+function checkRateLimit(clientIp: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const record = rateLimitStore.get(clientIp);
+  
+  // Clean up old entries periodically
+  if (rateLimitStore.size > 1000) {
+    for (const [ip, data] of rateLimitStore.entries()) {
+      if (now > data.resetTime) {
+        rateLimitStore.delete(ip);
+      }
+    }
+  }
+  
+  if (!record || now > record.resetTime) {
+    // New window - allow and set counter
+    rateLimitStore.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+  
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    // Rate limit exceeded
+    return { allowed: false, remaining: 0, resetIn: record.resetTime - now };
+  }
+  
+  // Increment counter
+  record.count++;
+  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - record.count, resetIn: record.resetTime - now };
+}
+
 // Input validation schema
 const MessageSchema = z.object({
   role: z.enum(['user', 'assistant', 'system']),
@@ -79,6 +128,26 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Get client IP for rate limiting
+  const clientIp = getClientIp(req);
+  
+  // Check rate limit
+  const rateLimit = checkRateLimit(clientIp);
+  if (!rateLimit.allowed) {
+    console.log(`Rate limit exceeded for IP: ${clientIp.substring(0, 8)}***`);
+    return new Response(
+      JSON.stringify({ error: SAFE_ERROR_MESSAGES.RATE_LIMIT }),
+      { 
+        status: 429, 
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json',
+          'Retry-After': Math.ceil(rateLimit.resetIn / 1000).toString(),
+        } 
+      }
+    );
+  }
+
   try {
     // Parse and validate input
     const requestData = await req.json();
@@ -105,7 +174,7 @@ serve(async (req) => {
       );
     }
 
-    console.log('AI Chat request received, message count:', messages?.length);
+    console.log('AI Chat request received, message count:', messages?.length, 'IP:', clientIp.substring(0, 8) + '***');
 
     const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',

@@ -10,8 +10,58 @@ const corsHeaders = {
 const SAFE_ERROR_MESSAGES = {
   VALIDATION_ERROR: 'Invalid input data. Please check your form and try again.',
   SERVICE_ERROR: 'Service temporarily unavailable. Please try again later.',
+  RATE_LIMIT: 'Too many submissions. Please try again in a few minutes.',
   DEFAULT: 'An error occurred. Please try again later.',
 };
+
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 5; // 5 submissions per minute per IP
+
+// In-memory rate limit store (resets on function cold start)
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+
+function getClientIp(req: Request): string {
+  // Get IP from various headers (in order of preference)
+  const forwardedFor = req.headers.get('x-forwarded-for');
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0].trim();
+  }
+  const realIp = req.headers.get('x-real-ip');
+  if (realIp) {
+    return realIp;
+  }
+  return 'unknown';
+}
+
+function checkRateLimit(clientIp: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const record = rateLimitStore.get(clientIp);
+  
+  // Clean up old entries periodically
+  if (rateLimitStore.size > 1000) {
+    for (const [ip, data] of rateLimitStore.entries()) {
+      if (now > data.resetTime) {
+        rateLimitStore.delete(ip);
+      }
+    }
+  }
+  
+  if (!record || now > record.resetTime) {
+    // New window - allow and set counter
+    rateLimitStore.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+  
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    // Rate limit exceeded
+    return { allowed: false, remaining: 0, resetIn: record.resetTime - now };
+  }
+  
+  // Increment counter
+  record.count++;
+  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - record.count, resetIn: record.resetTime - now };
+}
 
 // Input validation schema
 const LeadSchema = z.object({
@@ -22,6 +72,8 @@ const LeadSchema = z.object({
   trainingType: z.enum(['corporate', 'individual', 'e-course', 'other', '']).optional(),
   message: z.string().max(2000, 'Message too long').trim().optional().or(z.literal('')),
   service: z.string().max(200, 'Service field too long').optional().or(z.literal('')),
+  // Honeypot field - should always be empty
+  website: z.string().max(0, 'Invalid submission').optional().or(z.literal('')),
 });
 
 // Google Sheets API helper to append rows
@@ -126,6 +178,29 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Get client IP for rate limiting
+  const clientIp = getClientIp(req);
+  
+  // Check rate limit
+  const rateLimit = checkRateLimit(clientIp);
+  if (!rateLimit.allowed) {
+    console.log(`Rate limit exceeded for IP: ${clientIp}`);
+    return new Response(
+      JSON.stringify({ 
+        success: false, 
+        error: SAFE_ERROR_MESSAGES.RATE_LIMIT 
+      }),
+      { 
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json',
+          'Retry-After': Math.ceil(rateLimit.resetIn / 1000).toString(),
+        },
+        status: 429 
+      }
+    );
+  }
+
   try {
     // Parse and validate input
     const requestData = await req.json();
@@ -147,9 +222,26 @@ serve(async (req) => {
       );
     }
 
+    // Check honeypot - if filled, silently succeed (bot trap)
+    if (validatedData.website && validatedData.website.length > 0) {
+      console.log('Honeypot triggered, rejecting submission');
+      // Return success to fool bots, but don't actually submit
+      return new Response(
+        JSON.stringify({ 
+          success: true, 
+          message: 'Lead submitted successfully',
+          leadId: `WEB-${Date.now().toString(36).toUpperCase()}`
+        }),
+        { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 200 
+        }
+      );
+    }
+
     const { name, email, phone, company, trainingType, message, service } = validatedData;
 
-    console.log('Received validated lead submission:', { name, email: email.substring(0, 3) + '***', company, trainingType });
+    console.log('Received validated lead submission:', { name, email: email.substring(0, 3) + '***', company, trainingType, ip: clientIp.substring(0, 8) + '***' });
 
     // Format date as DD/MM/YYYY
     const now = new Date();
