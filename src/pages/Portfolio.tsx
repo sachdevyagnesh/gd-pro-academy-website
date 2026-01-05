@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, ArrowLeft, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu, Fuel, HeartPulse } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu, Fuel, HeartPulse, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 import heroBg from "@/assets/about-portrait1.jpg";
 
 // Import association logos
@@ -30,56 +30,68 @@ const caseStudies = [
   {
     company: "Leading BFSI Company",
     industry: "Banking & Financial Services",
+    icon: Landmark,
     program: "Sales Excellence Training",
     participants: "120+ Sales Executives",
     result: "40% increase in conversions within 3 months",
     quote: "The training transformed our team's approach completely. Our sales executives now have the confidence and skills to close deals effectively.",
     author: "Sales Head",
+    color: "from-blue-500 to-blue-600",
   },
   {
     company: "IT Services Firm",
     industry: "Information Technology",
+    icon: Cpu,
     program: "Soft Skills Development",
     participants: "35 Team Managers",
     result: "Improved team engagement scores by 45%",
     quote: "Grishma's program helped our managers develop strategic thinking and better team management skills.",
     author: "HR Director",
+    color: "from-purple-500 to-purple-600",
   },
   {
     company: "Manufacturing Company",
     industry: "Manufacturing",
+    icon: Factory,
     program: "Team Building & Communication",
     participants: "80+ Team Members",
     result: "Reduced inter-departmental conflicts by 60%",
     quote: "The cross-functional collaboration training was exactly what we needed. Our teams now work together seamlessly.",
     author: "Operations Manager",
+    color: "from-orange-500 to-orange-600",
   },
   {
     company: "Educational Institute",
     industry: "Education",
+    icon: GraduationCap,
     program: "Campus to Corporate",
     participants: "200+ Students",
     result: "85% placement rate improvement",
     quote: "Students walked out more confident and job-ready after Grishma's sessions! The transformation was visible.",
     author: "Placement Head",
+    color: "from-green-500 to-green-600",
   },
   {
     company: "Insurance Provider",
     industry: "Insurance",
+    icon: Briefcase,
     program: "Sales Excellence Training",
     participants: "50 Sales Agents",
     result: "35% increase in policy closures",
     quote: "Her sales mastery workshop helped our team close deals faster than ever!",
     author: "Training Head",
+    color: "from-indigo-500 to-indigo-600",
   },
   {
     company: "Retail Chain",
     industry: "Retail",
+    icon: ShoppingBag,
     program: "Customer Service Excellence",
     participants: "100+ Staff",
     result: "Customer satisfaction up by 40%",
     quote: "Grishma connects instantly with participants and delivers real results.",
     author: "Operations Head",
+    color: "from-pink-500 to-pink-600",
   },
 ];
 
@@ -94,7 +106,6 @@ const industries = [
   { name: "Corporate & Startups", icon: Briefcase, color: "bg-indigo-500/10 text-indigo-600" },
 ];
 
-// Key associations with actual logos - displayed in color by default
 const associations = [
   { name: "Kotak Bank", logo: kotakLogo },
   { name: "Yes Bank", logo: yesBankLogo },
@@ -118,77 +129,7 @@ const certifications = [
 
 
 export default function Portfolio() {
-  const [isPaused, setIsPaused] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Handle manual navigation
-  const scrollToIndex = (index: number) => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-    
-    const cardWidth = 424; // 400px card + 24px gap
-    const newIndex = Math.max(0, Math.min(index, caseStudies.length - 1));
-    setCurrentIndex(newIndex);
-    container.scrollTo({ left: newIndex * cardWidth, behavior: 'smooth' });
-  };
-
-  const handlePrev = () => {
-    scrollToIndex(currentIndex - 1);
-    resetAutoScrollDelay();
-  };
-
-  const handleNext = () => {
-    scrollToIndex(currentIndex + 1);
-    resetAutoScrollDelay();
-  };
-
-  // Reset auto-scroll with delay after user interaction
-  const resetAutoScrollDelay = () => {
-    setIsPaused(true);
-    if (autoScrollTimeoutRef.current) {
-      clearTimeout(autoScrollTimeoutRef.current);
-    }
-    autoScrollTimeoutRef.current = setTimeout(() => {
-      setIsPaused(false);
-    }, 3000);
-  };
-
-  // Auto-scroll effect
-  useEffect(() => {
-    if (isPaused) return;
-    
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => {
-        const next = prev + 1;
-        if (next >= caseStudies.length) {
-          return 0;
-        }
-        return next;
-      });
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  // Scroll to current index when it changes
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container || isPaused) return;
-    
-    const cardWidth = 424;
-    container.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
-  }, [currentIndex, isPaused]);
-
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (autoScrollTimeoutRef.current) {
-        clearTimeout(autoScrollTimeoutRef.current);
-      }
-    };
-  }, []);
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen">
@@ -220,8 +161,8 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Case Studies Carousel - Fixed dots to match case studies count */}
-        <section className="section-padding bg-muted overflow-hidden">
+        {/* Case Studies - Modern Card Grid */}
+        <section className="section-padding bg-muted">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <div className="accent-line mx-auto mb-6" />
@@ -232,113 +173,93 @@ export default function Portfolio() {
                 Real results from real organizations we've partnered with.
               </p>
             </div>
-          </div>
 
-          {/* Carousel with controls */}
-          <div className="relative px-4">
-            {/* Navigation Buttons */}
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handlePrev}
-                disabled={currentIndex === 0}
-                className="rounded-full bg-card shadow-lg hover:bg-muted disabled:opacity-50"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </Button>
-            </div>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleNext}
-                disabled={currentIndex === caseStudies.length - 1}
-                className="rounded-full bg-card shadow-lg hover:bg-muted disabled:opacity-50"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </div>
-
-            <div 
-              ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-auto scrollbar-thin pb-4 scroll-smooth px-4 lg:px-8"
-              onMouseEnter={() => {
-                setIsPaused(true);
-                if (autoScrollTimeoutRef.current) {
-                  clearTimeout(autoScrollTimeoutRef.current);
-                }
-              }}
-              onMouseLeave={() => {
-                autoScrollTimeoutRef.current = setTimeout(() => {
-                  setIsPaused(false);
-                }, 2500);
-              }}
-              style={{ scrollSnapType: 'x mandatory' }}
-            >
-              {caseStudies.map((study, index) => (
-                <Card 
-                  key={index} 
-                  variant="elevated" 
-                  className="w-[400px] shrink-0 overflow-hidden hover:shadow-xl transition-all cursor-pointer"
-                  style={{ scrollSnapAlign: 'start' }}
-                >
-                  <div className="h-2 bg-gradient-to-r from-primary to-secondary" />
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <p className="text-sm text-secondary font-medium">{study.industry}</p>
-                        <h3 className="text-lg font-bold text-foreground">{study.company}</h3>
+            {/* Modern Card Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {caseStudies.map((study, index) => {
+                const Icon = study.icon;
+                const isExpanded = expandedCard === index;
+                
+                return (
+                  <Card 
+                    key={index} 
+                    className="group overflow-hidden bg-card hover:shadow-xl transition-all duration-300 border-0"
+                  >
+                    {/* Gradient Header */}
+                    <div className={`h-2 bg-gradient-to-r ${study.color}`} />
+                    
+                    <CardContent className="p-6">
+                      {/* Icon & Industry */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${study.color} flex items-center justify-center`}>
+                          <Icon className="w-6 h-6 text-white" />
+                        </div>
+                        <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
+                          {study.industry}
+                        </span>
                       </div>
-                      <div className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+
+                      {/* Company & Program */}
+                      <h3 className="text-lg font-bold text-foreground mb-1">
+                        {study.company}
+                      </h3>
+                      <p className="text-sm text-primary font-medium mb-3">
                         {study.program}
-                      </div>
-                    </div>
+                      </p>
 
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                      <span className="flex items-center gap-1">
+                      {/* Participants */}
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                         <Users className="w-4 h-4" />
                         {study.participants}
-                      </span>
-                    </div>
+                      </div>
 
-                    <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 mb-4">
-                      <p className="text-accent font-semibold flex items-center gap-2 text-sm">
-                        <TrendingUp className="w-4 h-4" />
-                        {study.result}
-                      </p>
-                    </div>
+                      {/* Result - Always visible */}
+                      <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 mb-4">
+                        <p className="text-accent font-semibold flex items-center gap-2 text-sm">
+                          <TrendingUp className="w-4 h-4 shrink-0" />
+                          {study.result}
+                        </p>
+                      </div>
 
-                    <div className="relative">
-                      <Quote className="w-6 h-6 text-muted-foreground/20 absolute -top-1 -left-1" />
-                      <blockquote className="text-muted-foreground italic pl-5 text-sm">
-                        "{study.quote}"
-                      </blockquote>
-                      <p className="text-sm font-medium text-foreground mt-2 pl-5">
-                        — {study.author}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                      {/* Expandable Quote Section */}
+                      <button 
+                        onClick={() => setExpandedCard(isExpanded ? null : index)}
+                        className="w-full flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <span>Read testimonial</span>
+                        {isExpanded ? (
+                          <ChevronUp className="w-4 h-4" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4" />
+                        )}
+                      </button>
+
+                      {/* Collapsible Quote */}
+                      <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-40 mt-4' : 'max-h-0'}`}>
+                        <div className="relative pt-2">
+                          <Quote className="w-5 h-5 text-muted-foreground/20 absolute -top-1 -left-1" />
+                          <blockquote className="text-muted-foreground italic pl-4 text-sm">
+                            "{study.quote}"
+                          </blockquote>
+                          <p className="text-sm font-medium text-foreground mt-2 pl-4">
+                            — {study.author}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
 
-            {/* Pagination dots - Now matches exactly the number of case studies */}
-            <div className="flex justify-center gap-2 mt-6">
-              {caseStudies.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    scrollToIndex(index);
-                    resetAutoScrollDelay();
-                  }}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex 
-                      ? 'bg-primary w-6' 
-                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                  }`}
-                />
-              ))}
+            {/* CTA */}
+            <div className="text-center mt-12">
+              <Button variant="navy" size="lg" asChild>
+                <Link to="/contact">
+                  Start Your Success Story
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -356,7 +277,6 @@ export default function Portfolio() {
               </p>
             </div>
 
-            {/* Logo associations - displayed in full color */}
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
               {associations.map((company) => (
                 <div
@@ -408,7 +328,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Industries - Redesigned with icons and colors */}
+        {/* Industries */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -429,20 +349,39 @@ export default function Portfolio() {
                   className="text-center hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group"
                 >
                   <CardContent className="p-6">
-                    <div className={`w-14 h-14 rounded-2xl ${industry.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                    <div className={`w-14 h-14 rounded-2xl ${industry.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
                       <industry.icon className="w-7 h-7" />
                     </div>
-                    <p className="text-sm font-semibold text-foreground">{industry.name}</p>
+                    <p className="font-medium text-foreground text-sm">{industry.name}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
+          </div>
+        </section>
 
-            <div className="text-center mt-12">
-              <Button variant="navy" size="lg" asChild>
+        {/* CTA Section */}
+        <section className="relative py-20 md:py-28 overflow-hidden">
+          <div className="absolute inset-0 hero-gradient" />
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 right-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+                Ready to Transform{" "}
+                <span className="text-gradient-gold">Your Team?</span>
+              </h2>
+              <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
+                Let's discuss how we can help your organization achieve similar results.
+              </p>
+
+              <Button variant="hero" size="xl" asChild className="group">
                 <Link to="/contact">
-                  Discuss Your Requirements
-                  <ArrowRight className="w-5 h-5" />
+                  Get Started Today
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
             </div>

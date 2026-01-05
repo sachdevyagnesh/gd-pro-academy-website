@@ -1,22 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo-new.png";
+import logo from "@/assets/gd-pro-logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  {
-    name: "Services",
-    href: "#",
-    children: [
-      { name: "For Corporate's", href: "/corporate-training" },
-      { name: "For Professionals", href: "/individual-training" },
-    ],
-  },
+  { name: "Services", href: "/services" },
   { name: "Testimonials", href: "/moments" },
   { name: "Gallery", href: "/gallery" },
   { name: "Portfolio", href: "/portfolio" },
@@ -27,7 +20,6 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const location = useLocation();
   const logoRef = useRef<HTMLImageElement | null>(null);
@@ -53,7 +45,6 @@ export function Header() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setOpenDropdown(null);
   }, [location]);
 
   // Prevent background scroll when the mobile menu is open
@@ -115,68 +106,25 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation - Removed Book Call link */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <div key={link.name} className="relative group">
-                {link.children ? (
-                  <>
-                    <button
-                      className={cn(
-                        "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                        isScrolled
-                          ? "text-foreground hover:bg-muted"
-                          : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
-                      )}
-                      onMouseEnter={() => setOpenDropdown(link.name)}
-                      onMouseLeave={() => setOpenDropdown(null)}
-                    >
-                      {link.name}
-                      <ChevronDown className="w-4 h-4" />
-                    </button>
-                    <div
-                      className={cn(
-                        "absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-                      )}
-                      onMouseEnter={() => setOpenDropdown(link.name)}
-                      onMouseLeave={() => setOpenDropdown(null)}
-                    >
-                      <div className="bg-card rounded-xl shadow-elevated border p-2 min-w-[200px]">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.name}
-                            to={child.href}
-                            className={cn(
-                              "block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                              isActive(child.href)
-                                ? "bg-primary text-primary-foreground"
-                                : "text-foreground hover:bg-muted"
-                            )}
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    to={link.href}
-                    className={cn(
-                      "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                      isActive(link.href)
-                        ? isScrolled
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-primary-foreground/20 text-primary-foreground"
-                        : isScrolled
-                        ? "text-foreground hover:bg-muted"
-                        : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
-                    )}
-                  >
-                    {link.name}
-                  </Link>
+              <Link
+                key={link.name}
+                to={link.href}
+                className={cn(
+                  "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                  isActive(link.href)
+                    ? isScrolled
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-primary-foreground/20 text-primary-foreground"
+                    : isScrolled
+                    ? "text-foreground hover:bg-muted"
+                    : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
                 )}
-              </div>
+              >
+                {link.name}
+              </Link>
             ))}
           </nav>
 
@@ -248,54 +196,17 @@ export function Header() {
               {/* Menu Links */}
               <nav className="p-4 space-y-1 bg-background">
                 {navLinks.map((link) => (
-                  <div key={link.name}>
-                    {link.children ? (
-                      <>
-                        <button
-                          className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-foreground font-medium hover:bg-muted transition-colors"
-                          onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
-                        >
-                          {link.name}
-                          <ChevronDown
-                            className={cn(
-                              "w-4 h-4 transition-transform",
-                              openDropdown === link.name && "rotate-180",
-                            )}
-                          />
-                        </button>
-                        {openDropdown === link.name && (
-                          <div className="ml-4 mt-1 space-y-1 border-l-2 border-muted pl-4">
-                            {link.children.map((child) => (
-                              <Link
-                                key={child.name}
-                                to={child.href}
-                                className={cn(
-                                  "block px-4 py-2.5 rounded-lg text-sm transition-colors",
-                                  isActive(child.href)
-                                    ? "bg-primary text-primary-foreground"
-                                    : "text-muted-foreground hover:text-foreground hover:bg-muted",
-                                )}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                {child.name}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <Link
-                        to={link.href}
-                        className={cn(
-                          "block px-4 py-3 rounded-lg font-medium transition-colors",
-                          isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
-                        )}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </Link>
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={cn(
+                      "block px-4 py-3 rounded-lg font-medium transition-colors",
+                      isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
                     )}
-                  </div>
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
                 ))}
               </nav>
 
