@@ -8,13 +8,15 @@ import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 import { AIChatWidget } from "@/components/common/AIChatWidget";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Services from "./pages/Services";
+import ServicesLanding from "./pages/ServicesLanding";
 import Moments from "./pages/Moments";
 import Gallery from "./pages/Gallery";
 import CorporateTraining from "./pages/CorporateTraining";
 import IndividualTraining from "./pages/IndividualTraining";
 import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Assessment from "./pages/Assessment";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -34,13 +36,15 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<ServicesLanding />} />
           <Route path="/moments" element={<Moments />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/corporate-training" element={<CorporateTraining />} />
           <Route path="/individual-training" element={<IndividualTraining />} />
+          <Route path="/assessment/:type" element={<Assessment />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

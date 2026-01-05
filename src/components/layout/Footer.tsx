@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Linkedin, Instagram } from "lucide-react";
-import logo from "@/assets/logo-new.png";
+import logo from "@/assets/gd-pro-logo.png";
 
 const footerLinks = {
   services: [
-    { name: "For Corporate's", href: "/corporate-training" },
+    { name: "For Corporate", href: "/corporate-training" },
     { name: "For Professionals", href: "/individual-training" },
     { name: "Sales Training", href: "/corporate-training" },
     { name: "Soft Skills Training", href: "/individual-training" },
@@ -18,7 +18,6 @@ const footerLinks = {
     { name: "Contact", href: "/contact" },
   ],
   resources: [
-    { name: "E-Courses", href: "/individual-training#courses" },
     { name: "FAQs", href: "/contact#faq" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms & Conditions", href: "/terms" },

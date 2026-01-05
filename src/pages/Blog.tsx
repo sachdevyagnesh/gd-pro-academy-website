@@ -3,64 +3,13 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { PenLine, Clock, ArrowRight, Calendar, User } from "lucide-react";
+import { PenLine, Clock, ArrowRight, Calendar } from "lucide-react";
+import { blogPostsData } from "./BlogPost";
 import heroBg from "@/assets/hero-bg-3.jpg";
 
-const blogPosts = [
-  {
-    title: "5 Essential Sales Skills Every Professional Needs in 2024",
-    excerpt: "Discover the key skills that separate top performers from the rest in today's competitive market. From consultative selling to building lasting relationships.",
-    date: "December 15, 2024",
-    category: "Sales Training",
-    readTime: "6 min read",
-    author: "Grishma Sachdev",
-    featured: true,
-  },
-  {
-    title: "How to Successfully Transition from Campus to Corporate",
-    excerpt: "A comprehensive guide for fresh graduates entering the corporate world. Learn the unwritten rules, professional etiquette, and mindset shifts needed for success.",
-    date: "December 8, 2024",
-    category: "Career Development",
-    readTime: "8 min read",
-    author: "Grishma Sachdev",
-  },
-  {
-    title: "The Power of Effective Communication in the Workplace",
-    excerpt: "Learn how improving your communication skills can accelerate your career growth. Tips for presentations, emails, and difficult conversations.",
-    date: "November 28, 2024",
-    category: "Soft Skills",
-    readTime: "5 min read",
-    author: "Grishma Sachdev",
-  },
-  {
-    title: "Role-Play Training: Why It Works for Sales Teams",
-    excerpt: "Discover how simulation-based training helps sales professionals overcome objections and build confidence in real client situations.",
-    date: "November 15, 2024",
-    category: "Training Methodology",
-    readTime: "7 min read",
-    author: "Grishma Sachdev",
-  },
-  {
-    title: "Building High-Performance Teams: A Practical Guide",
-    excerpt: "Learn the key elements of team building that actually work. From trust exercises to communication frameworks that foster collaboration.",
-    date: "November 1, 2024",
-    category: "Team Building",
-    readTime: "6 min read",
-    author: "Grishma Sachdev",
-  },
-  {
-    title: "Overcoming the Fear of Targets: A Sales Professional's Journey",
-    excerpt: "Real strategies to help sales executives embrace targets as opportunities rather than stress. Mindset shifts that transform performance.",
-    date: "October 20, 2024",
-    category: "Sales Training",
-    readTime: "5 min read",
-    author: "Grishma Sachdev",
-  },
-];
-
 export default function Blog() {
-  const featuredPost = blogPosts.find(p => p.featured);
-  const regularPosts = blogPosts.filter(p => !p.featured);
+  const featuredPost = blogPostsData.find(p => p.featured);
+  const regularPosts = blogPostsData.filter(p => !p.featured);
 
   return (
     <div className="min-h-screen">
@@ -120,9 +69,11 @@ export default function Blog() {
                         {featuredPost.readTime}
                       </span>
                     </div>
-                    <Button variant="navy" className="self-start">
-                      Read Article
-                      <ArrowRight className="w-4 h-4" />
+                    <Button variant="navy" className="self-start" asChild>
+                      <Link to={`/blog/${featuredPost.slug}`}>
+                        Read Article
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
                     </Button>
                   </CardContent>
                 </div>
@@ -143,8 +94,8 @@ export default function Blog() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {regularPosts.map((post, index) => (
-                <Card key={index} variant="elevated" className="overflow-hidden group hover:shadow-gold transition-shadow">
+              {regularPosts.map((post) => (
+                <Card key={post.slug} variant="elevated" className="overflow-hidden group hover:shadow-gold transition-shadow">
                   <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center relative overflow-hidden">
                     <PenLine className="w-12 h-12 text-primary/30 group-hover:scale-110 transition-transform" />
                     <div className="absolute top-4 left-4">
@@ -170,9 +121,11 @@ export default function Blog() {
                         </span>
                       </div>
                     </div>
-                    <Button variant="ghost" size="sm" className="w-full mt-4 group">
-                      Read More
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <Button variant="ghost" size="sm" className="w-full mt-4 group" asChild>
+                      <Link to={`/blog/${post.slug}`}>
+                        Read More
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
