@@ -37,7 +37,8 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="GD Pro Academy Logo" 
-                className="h-20 w-20 object-contain drop-shadow-lg"
+                className="h-20 w-20 object-contain brightness-0 invert"
+                style={{ background: 'transparent' }}
               />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl leading-tight">

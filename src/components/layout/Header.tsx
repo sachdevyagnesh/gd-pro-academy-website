@@ -81,13 +81,14 @@ export function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Large, prominent, no background */}
+          {/* Logo - Large, prominent, transparent background */}
           <Link to="/" className="flex items-center gap-4 group min-w-[280px]">
-            <div className="h-20 w-20 md:h-24 md:w-24 shrink-0 drop-shadow-lg">
+            <div className="h-20 w-20 md:h-24 md:w-24 shrink-0">
               <img 
                 src={logo} 
                 alt="GD Pro Academy Logo" 
-                className="h-full w-full object-contain"
+                className="h-full w-full object-contain mix-blend-multiply dark:mix-blend-normal"
+                style={{ background: 'transparent' }}
               />
             </div>
             <div className="flex flex-col">
@@ -181,7 +182,7 @@ export function Header() {
               {/* Menu Header */}
               <div className="flex items-center justify-between p-4 border-b bg-background">
                 <div className="flex items-center gap-3">
-                  <img src={logo} alt="GD Pro Academy" className="h-16 w-16 object-contain drop-shadow-lg" />
+                  <img src={logo} alt="GD Pro Academy" className="h-16 w-16 object-contain mix-blend-multiply" style={{ background: 'transparent' }} />
                   <span className="font-display font-bold text-lg text-foreground">Menu</span>
                 </div>
                 <button
