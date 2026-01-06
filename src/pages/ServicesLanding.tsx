@@ -176,9 +176,33 @@ export default function ServicesLanding() {
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
+        {/* Stats + Why Choose Us Combined Section */}
         <section className="py-20 bg-muted">
           <div className="container mx-auto px-4">
+            {/* Stats Row */}
+            <div className="flex flex-wrap justify-center items-center gap-8 text-center mb-16 pb-12 border-b border-border">
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-primary">10,000+</p>
+                <p className="text-sm text-muted-foreground">Professionals Trained</p>
+              </div>
+              <div className="w-px h-12 bg-border hidden md:block" />
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-primary">100+</p>
+                <p className="text-sm text-muted-foreground">Corporate Clients</p>
+              </div>
+              <div className="w-px h-12 bg-border hidden md:block" />
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-primary">12+</p>
+                <p className="text-sm text-muted-foreground">Years Experience</p>
+              </div>
+              <div className="w-px h-12 bg-border hidden md:block" />
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-primary">4.8/5</p>
+                <p className="text-sm text-muted-foreground">Client Rating</p>
+              </div>
+            </div>
+            
+            {/* Why Choose Us */}
             <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
               Why Choose <span className="text-primary">GD Pro Academy</span>
             </h2>

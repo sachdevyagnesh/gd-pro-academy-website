@@ -37,9 +37,9 @@ export interface QuestionnaireConfig {
 // Corporate Questionnaire
 export const corporateQuestionnaire: QuestionnaireConfig = {
   id: "corporate",
-  title: "Corporate Training Assessment",
-  subtitle: "Assess Your Team's Training Needs",
-  description: "Answer these questions to help us understand your organization's training priorities and recommend the best program.",
+  title: "Training Needs Discovery",
+  subtitle: "Let's Understand Your Team's Development Goals",
+  description: "As your training partner, we'd like to understand your organization's current capabilities and goals. This helps us recommend the most effective program for your team.",
   targetAudience: "HR Managers, Team Leaders, Business Owners",
   maxScore: 10,
   questions: [
