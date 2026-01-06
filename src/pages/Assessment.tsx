@@ -8,14 +8,16 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Building2, User, ArrowRight, ArrowLeft, ClipboardCheck } from "lucide-react";
 import { Questionnaire } from "@/components/assessment/Questionnaire";
 import { AssessmentResult } from "@/components/assessment/AssessmentResult";
+import { EmailReportDialog } from "@/components/assessment/EmailReportDialog";
 import { 
   corporateQuestionnaire, 
   individualQuestionnaire, 
   salesConfidenceTest,
   ScoreRange 
 } from "@/config/questionnaire";
+import { downloadPDF } from "@/lib/pdfGenerator";
+import { toast } from "sonner";
 import heroBg from "@/assets/hero-bg-2.jpg";
-import logo from "@/assets/gd-pro-logo.png";
 
 type AssessmentStep = "intro" | "name" | "questions" | "result" | "sales-test";
 type AssessmentType = "corporate" | "individual";
@@ -32,6 +34,7 @@ export default function Assessment() {
   const { type } = useParams<{ type: AssessmentType }>();
   const navigate = useNavigate();
   const [step, setStep] = useState<AssessmentStep>("intro");
+  const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const [state, setState] = useState<AssessmentState>({
     userName: "",
     score: 0,
@@ -80,19 +83,42 @@ export default function Assessment() {
     setSalesTestResult(result);
   };
 
-  const handleDownloadPDF = () => {
-    // Generate and download PDF
-    const pdfContent = generatePDFContent();
-    downloadPDF(pdfContent, `GD-Pro-Academy-Assessment-${state.userName || "Report"}.pdf`);
+  const getCurrentResult = () => {
+    return step === "sales-test" && salesTestResult ? salesTestResult : state;
+  };
+
+  const getCurrentConfig = () => {
+    return step === "sales-test" ? salesConfidenceTest : config;
+  };
+
+  const handleDownloadPDF = async () => {
+    const result = getCurrentResult();
+    const testConfig = getCurrentConfig();
+    
+    try {
+      await downloadPDF(
+        {
+          title: "GD Pro Academy Assessment Report",
+          date: new Date().toLocaleDateString(),
+          userName: state.userName,
+          testType: testConfig.title,
+          score: result.score,
+          maxScore: testConfig.id === "sales-confidence" ? "100%" : "10",
+          result: result.range?.title || "",
+          description: result.range?.description || "",
+          recommendation: result.range?.recommendation || "",
+          program: result.range?.program || "",
+        },
+        `GD-Pro-Academy-Assessment-${state.userName || "Report"}.pdf`
+      );
+      toast.success("PDF downloaded successfully!");
+    } catch {
+      toast.error("Failed to generate PDF. Please try again.");
+    }
   };
 
   const handleEmailPDF = () => {
-    // For now, redirect to contact with pre-filled message
-    const subject = encodeURIComponent("Assessment Report Request");
-    const body = encodeURIComponent(
-      `Hi,\n\nPlease send my assessment report to this email.\n\nName: ${state.userName}\nScore: ${state.score}/${config.id === "sales-confidence" ? "100%" : "10"}\nResult: ${state.range?.title}\n\nThank you!`
-    );
-    window.location.href = `mailto:info@gdproacademy.in?subject=${subject}&body=${body}`;
+    setEmailDialogOpen(true);
   };
 
   const handleTakeSalesTest = () => {
@@ -103,80 +129,19 @@ export default function Assessment() {
     navigate(redirectPath);
   };
 
-  // Simple PDF generation (text-based)
-  const generatePDFContent = () => {
-    const result = step === "sales-test" && salesTestResult ? salesTestResult : state;
-    const testConfig = step === "sales-test" ? salesConfidenceTest : config;
-    
+  const getReportData = () => {
+    const result = getCurrentResult();
+    const testConfig = getCurrentConfig();
     return {
-      title: "GD Pro Academy Assessment Report",
-      date: new Date().toLocaleDateString(),
-      userName: state.userName,
       testType: testConfig.title,
       score: result.score,
       maxScore: testConfig.id === "sales-confidence" ? "100%" : "10",
       result: result.range?.title || "",
-      description: result.range?.description || "",
       recommendation: result.range?.recommendation || "",
       program: result.range?.program || "",
     };
   };
 
-  const downloadPDF = (content: ReturnType<typeof generatePDFContent>, filename: string) => {
-    // Create a simple text-based PDF download
-    const text = `
-═══════════════════════════════════════════════════════════
-                    GD PRO ACADEMY
-              PROFESSIONAL SKILLS ASSESSMENT
-═══════════════════════════════════════════════════════════
-
-Date: ${content.date}
-Name: ${content.userName}
-Assessment: ${content.testType}
-
-───────────────────────────────────────────────────────────
-                       YOUR SCORE
-───────────────────────────────────────────────────────────
-
-Score: ${content.score} / ${content.maxScore}
-
-Result: ${content.result}
-
-${content.description}
-
-───────────────────────────────────────────────────────────
-                    RECOMMENDATION
-───────────────────────────────────────────────────────────
-
-${content.recommendation}
-
-Recommended Program: ${content.program}
-
-───────────────────────────────────────────────────────────
-                      NEXT STEPS
-───────────────────────────────────────────────────────────
-
-Contact us to enroll:
-📧 Email: info@gdproacademy.in
-📞 Phone: +91 8356 837052
-🌐 Website: gdproacademy.in
-
-═══════════════════════════════════════════════════════════
-         This report is generated by GD Pro Academy
-              © ${new Date().getFullYear()} All Rights Reserved
-═══════════════════════════════════════════════════════════
-    `.trim();
-
-    const blob = new Blob([text], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename.replace(".pdf", ".txt");
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="min-h-screen">
@@ -365,6 +330,15 @@ Contact us to enroll:
           </div>
         </section>
       </main>
+      
+      {/* Email Report Dialog */}
+      <EmailReportDialog
+        open={emailDialogOpen}
+        onOpenChange={setEmailDialogOpen}
+        userName={state.userName}
+        reportData={getReportData()}
+      />
+      
       <Footer />
     </div>
   );
