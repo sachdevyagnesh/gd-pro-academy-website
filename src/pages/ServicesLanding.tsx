@@ -20,7 +20,8 @@ const serviceOptions = [
     ],
     cta: "Get Training Needs Analysis",
     href: "/assessment/corporate",
-    accent: "bg-secondary",
+    bgColor: "from-[#1e3a5f]/95 to-[#2c4a6f]/90",
+    iconBg: "bg-secondary",
   },
   {
     type: "individual",
@@ -36,7 +37,8 @@ const serviceOptions = [
     ],
     cta: "Take Skill Assessment",
     href: "/assessment/individual",
-    accent: "bg-accent",
+    bgColor: "from-[#0f4c75]/95 to-[#1a5a80]/90",
+    iconBg: "bg-accent",
   },
 ];
 
@@ -68,112 +70,76 @@ export default function ServicesLanding() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section - Matching main site structure */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${heroBg})` }}
-          />
-          
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80" />
+        {/* Full-screen Split Hero Section */}
+        <section className="min-h-screen flex flex-col lg:flex-row pt-24">
+          {serviceOptions.map((option, index) => (
+            <div
+              key={option.type}
+              className={`relative flex-1 flex flex-col justify-center items-center p-8 lg:p-12 xl:p-16 min-h-[50vh] lg:min-h-screen`}
+            >
+              {/* Background Image with Overlay */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${heroBg})` }}
+              />
+              <div className={`absolute inset-0 bg-gradient-to-br ${option.bgColor}`} />
+              
+              {/* Content */}
+              <div className="relative z-10 max-w-lg text-center lg:text-left w-full">
+                {/* Icon */}
+                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl ${option.iconBg} flex items-center justify-center mb-8 mx-auto lg:mx-0 shadow-lg`}>
+                  <option.icon className="w-8 h-8 md:w-10 md:h-10 text-secondary-foreground" />
+                </div>
+                
+                {/* Title */}
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
+                  {option.title}
+                </h2>
+                
+                {/* Subtitle */}
+                <p className="text-white/70 text-sm md:text-base font-medium mb-4">
+                  {option.subtitle}
+                </p>
+                
+                {/* Description */}
+                <p className="text-white/80 mb-8 text-sm md:text-base leading-relaxed">
+                  {option.description}
+                </p>
 
-          {/* Background decorations */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-          </div>
+                {/* Features */}
+                <ul className="space-y-3 mb-10">
+                  {option.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-3 text-white/90 text-sm md:text-base">
+                      <CheckCircle className="w-5 h-5 text-secondary shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 opacity-5">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" className="text-primary-foreground" />
-            </svg>
-          </div>
-
-          <div className="container mx-auto px-4 pt-32 pb-20 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 animate-fade-in-up">
-                <Award className="w-4 h-4 text-secondary" />
-                <span className="text-primary-foreground/90 text-sm font-medium">
-                  Professional Training Solutions
-                </span>
+                {/* CTA Button */}
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  asChild 
+                  className="group w-full sm:w-auto text-base px-8 py-4 h-auto"
+                >
+                  <Link to={option.href}>
+                    {option.cta}
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
               </div>
-
-              {/* Main Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight animate-fade-in-up stagger-1">
-                Choose Your{" "}
-                <span className="text-gradient-gold">Training Path</span>
-              </h1>
-
-              {/* Subheading */}
-              <p className="text-lg md:text-xl text-primary-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up stagger-2">
-                Whether you're building team capabilities or advancing your personal career, we have the right program for you
-              </p>
-
-              {/* Service Cards */}
-              <div className="grid md:grid-cols-2 gap-6 animate-fade-in-up stagger-3">
-                {serviceOptions.map((option) => (
-                  <div
-                    key={option.type}
-                    className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-8 border border-primary-foreground/20 hover:border-secondary/50 transition-all duration-300 text-left"
-                  >
-                    <div className={`w-16 h-16 rounded-xl ${option.accent} flex items-center justify-center mb-6`}>
-                      <option.icon className="w-8 h-8 text-secondary-foreground" />
-                    </div>
-                    
-                    <h2 className="text-xl md:text-2xl font-bold text-primary-foreground mb-2">
-                      {option.title}
-                    </h2>
-                    
-                    <p className="text-primary-foreground/60 text-sm font-medium mb-4">
-                      {option.subtitle}
-                    </p>
-                    
-                    <p className="text-primary-foreground/80 mb-6 text-sm leading-relaxed">
-                      {option.description}
-                    </p>
-
-                    {/* Features */}
-                    <ul className="space-y-2 mb-6">
-                      {option.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-2 text-primary-foreground/80 text-sm">
-                          <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Button 
-                      variant="hero" 
-                      size="lg" 
-                      asChild 
-                      className="group w-full"
-                    >
-                      <Link to={option.href}>
-                        {option.cta}
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </Button>
+              
+              {/* Center divider for desktop */}
+              {index === 0 && (
+                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 z-20">
+                  <div className="w-20 h-20 rounded-full bg-white shadow-2xl flex items-center justify-center">
+                    <Award className="w-10 h-10 text-primary" />
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex items-start justify-center p-2">
-              <div className="w-1.5 h-3 bg-secondary rounded-full" />
-            </div>
-          </div>
+          ))}
         </section>
 
         {/* Stats + Why Choose Us Combined Section */}
