@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Linkedin, Instagram } from "lucide-react";
-import logo from "@/assets/gd-pro-logo.png";
+import logoFooter from "@/assets/logo-footer.png";
 
 const footerLinks = {
   services: [
@@ -33,21 +33,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-6">
+            <Link to="/" className="flex items-center gap-4 mb-6">
               <img 
-                src={logo} 
+                src={logoFooter} 
                 alt="GD Pro Academy Logo" 
-                className="h-20 w-20 object-contain brightness-0 invert"
-                style={{ background: 'transparent' }}
+                className="h-24 w-auto object-contain"
               />
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl leading-tight">
-                  GD Pro Academy
-                </span>
-                <span className="text-sm text-primary-foreground/60">
-                  Training Excellence
-                </span>
-              </div>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm leading-relaxed">
               Empowering professionals and organizations with practical, result-driven training in sales, communication, and soft skills.

@@ -4,7 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/gd-pro-logo.png";
+import logoDesktop from "@/assets/logo-header-desktop.png";
+import logoMobile from "@/assets/logo-header-mobile.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -28,11 +29,13 @@ export function Header() {
     setIsMounted(true);
   }, []);
 
-  // Preload logo on mount - store in ref to prevent re-renders
+  // Preload logos on mount
   useEffect(() => {
     const img = new Image();
-    img.src = logo;
+    img.src = logoDesktop;
     logoRef.current = img;
+    const imgMobile = new Image();
+    imgMobile.src = logoMobile;
   }, []);
 
   useEffect(() => {
@@ -76,38 +79,25 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-card/95 backdrop-blur-md shadow-soft py-2"
-          : "bg-transparent py-3"
+          : "bg-primary/90 backdrop-blur-sm py-3"
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Large, prominent, transparent background */}
-          <Link to="/" className="flex items-center gap-4 group min-w-[280px]">
-            <div className="h-20 w-20 md:h-24 md:w-24 shrink-0 relative">
-              <img 
-                src={logo} 
-                alt="GD Pro Academy Logo" 
-                className="h-full w-full object-contain"
-                style={{ 
-                  filter: isScrolled ? 'none' : 'brightness(0) invert(1)',
-                  transition: 'filter 0.3s ease'
-                }}
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className={cn(
-                "font-display font-bold text-xl md:text-2xl leading-tight transition-colors",
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              )}>
-                GD Pro Academy
-              </span>
-              <span className={cn(
-                "text-sm font-medium transition-colors",
-                isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
-              )}>
-                Training Excellence
-              </span>
-            </div>
+          {/* Logo - Responsive with transparent background */}
+          <Link to="/" className="flex items-center group">
+            {/* Desktop Logo */}
+            <img 
+              src={logoDesktop} 
+              alt="GD Pro Academy Logo" 
+              className="hidden md:block h-14 lg:h-16 w-auto object-contain"
+            />
+            {/* Mobile Logo */}
+            <img 
+              src={logoMobile} 
+              alt="GD Pro Academy Logo" 
+              className="md:hidden h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -185,7 +175,7 @@ export function Header() {
               {/* Menu Header */}
               <div className="flex items-center justify-between p-4 border-b bg-background">
                 <div className="flex items-center gap-3">
-                  <img src={logo} alt="GD Pro Academy" className="h-16 w-16 object-contain" />
+                  <img src={logoMobile} alt="GD Pro Academy Logo" className="h-12 w-auto object-contain" />
                   <span className="font-display font-bold text-lg text-foreground">Menu</span>
                 </div>
                 <button
