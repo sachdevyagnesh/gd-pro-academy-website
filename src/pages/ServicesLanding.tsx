@@ -3,7 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Building2, User, ArrowRight, CheckCircle, Award, Target, Users, TrendingUp } from "lucide-react";
-import heroBg from "@/assets/hero-bg-2.jpg";
+import corporateHeroBg from "@/assets/corporate-training-hero.jpg";
+import individualHeroBg from "@/assets/individual-training-hero.jpg";
 
 const serviceOptions = [
   {
@@ -18,10 +19,12 @@ const serviceOptions = [
       "Measurable ROI & post-training support",
       "Certified & accredited training",
     ],
-    cta: "Get Training Needs Analysis",
+    cta: "Start Training Needs Discovery",
     href: "/assessment/corporate",
-    bgColor: "from-[#1e3a5f]/95 to-[#2c4a6f]/90",
+    bgImage: corporateHeroBg,
+    bgColor: "from-primary/90 to-primary/80",
     iconBg: "bg-secondary",
+    iconColor: "text-secondary-foreground",
   },
   {
     type: "individual",
@@ -37,8 +40,10 @@ const serviceOptions = [
     ],
     cta: "Take Skill Assessment",
     href: "/assessment/individual",
-    bgColor: "from-[#0f4c75]/95 to-[#1a5a80]/90",
-    iconBg: "bg-accent",
+    bgImage: individualHeroBg,
+    bgColor: "from-accent/90 to-accent/80",
+    iconBg: "bg-primary",
+    iconColor: "text-primary-foreground",
   },
 ];
 
@@ -71,70 +76,70 @@ export default function ServicesLanding() {
       <Header />
       <main>
         {/* Full-screen Split Hero Section */}
-        <section className="min-h-screen flex flex-col lg:flex-row pt-24">
+        <section className="min-h-screen flex flex-col lg:flex-row pt-28 lg:pt-0">
           {serviceOptions.map((option, index) => (
             <div
               key={option.type}
-              className={`relative flex-1 flex flex-col justify-center items-center p-8 lg:p-12 xl:p-16 min-h-[50vh] lg:min-h-screen`}
+              className="relative flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[70vh] lg:min-h-screen"
             >
               {/* Background Image with Overlay */}
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${heroBg})` }}
+                style={{ backgroundImage: `url(${option.bgImage})` }}
               />
               <div className={`absolute inset-0 bg-gradient-to-br ${option.bgColor}`} />
               
-              {/* Content */}
-              <div className="relative z-10 max-w-lg text-center lg:text-left w-full">
+              {/* Content Card */}
+              <div className="relative z-10 w-full max-w-xl mx-auto lg:mx-0">
                 {/* Icon */}
-                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl ${option.iconBg} flex items-center justify-center mb-8 mx-auto lg:mx-0 shadow-lg`}>
-                  <option.icon className="w-8 h-8 md:w-10 md:h-10 text-secondary-foreground" />
+                <div className={`w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-xl ${option.iconBg} flex items-center justify-center mb-6 shadow-lg`}>
+                  <option.icon className={`w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 ${option.iconColor}`} />
                 </div>
                 
                 {/* Title */}
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] xl:text-5xl font-bold text-white mb-3 leading-tight">
                   {option.title}
                 </h2>
                 
                 {/* Subtitle */}
-                <p className="text-white/70 text-sm md:text-base font-medium mb-4">
+                <p className="text-white/80 text-sm md:text-base lg:text-lg font-medium mb-4">
                   {option.subtitle}
                 </p>
                 
                 {/* Description */}
-                <p className="text-white/80 mb-8 text-sm md:text-base leading-relaxed">
+                <p className="text-white/75 mb-6 text-sm md:text-base lg:text-lg leading-relaxed">
                   {option.description}
                 </p>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-10">
+                <ul className="space-y-2.5 md:space-y-3 mb-8">
                   {option.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3 text-white/90 text-sm md:text-base">
                       <CheckCircle className="w-5 h-5 text-secondary shrink-0" />
-                      {feature}
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* CTA Button */}
+                {/* CTA Button - Always visible */}
                 <Button 
                   variant="hero" 
                   size="lg" 
                   asChild 
-                  className="group w-full sm:w-auto text-base px-8 py-4 h-auto"
+                  className="group w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-4 md:py-5 h-auto shadow-lg hover:shadow-xl transition-all"
                 >
                   <Link to={option.href}>
                     {option.cta}
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </div>
               
-              {/* Center divider for desktop */}
+              {/* Center divider badge for desktop */}
               {index === 0 && (
-                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 z-20">
-                  <div className="w-20 h-20 rounded-full bg-white shadow-2xl flex items-center justify-center">
-                    <Award className="w-10 h-10 text-primary" />
+                <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-20">
+                  <div className="w-16 h-16 xl:w-20 xl:h-20 rounded-full bg-white shadow-2xl flex items-center justify-center border-4 border-secondary">
+                    <User className="w-8 h-8 xl:w-10 xl:h-10 text-primary" />
                   </div>
                 </div>
               )}
@@ -143,42 +148,42 @@ export default function ServicesLanding() {
         </section>
 
         {/* Stats + Why Choose Us Combined Section */}
-        <section className="py-20 bg-muted">
+        <section className="py-16 md:py-20 bg-muted">
           <div className="container mx-auto px-4">
             {/* Stats Row */}
-            <div className="flex flex-wrap justify-center items-center gap-8 text-center mb-16 pb-12 border-b border-border">
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 text-center mb-14 pb-10 border-b border-border">
               <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary">10,000+</p>
-                <p className="text-sm text-muted-foreground">Professionals Trained</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">10,000+</p>
+                <p className="text-xs md:text-sm text-muted-foreground">Professionals Trained</p>
               </div>
-              <div className="w-px h-12 bg-border hidden md:block" />
+              <div className="w-px h-10 bg-border hidden md:block" />
               <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary">100+</p>
-                <p className="text-sm text-muted-foreground">Corporate Clients</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">100+</p>
+                <p className="text-xs md:text-sm text-muted-foreground">Corporate Clients</p>
               </div>
-              <div className="w-px h-12 bg-border hidden md:block" />
+              <div className="w-px h-10 bg-border hidden md:block" />
               <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary">12+</p>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">12+</p>
+                <p className="text-xs md:text-sm text-muted-foreground">Years Experience</p>
               </div>
-              <div className="w-px h-12 bg-border hidden md:block" />
+              <div className="w-px h-10 bg-border hidden md:block" />
               <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary">4.8/5</p>
-                <p className="text-sm text-muted-foreground">Client Rating</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">4.8/5</p>
+                <p className="text-xs md:text-sm text-muted-foreground">Client Rating</p>
               </div>
             </div>
             
             {/* Why Choose Us */}
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-foreground mb-10">
               Why Choose <span className="text-primary">GD Pro Academy</span>
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {whyChooseUs.map((item) => (
-                <div key={item.title} className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-8 h-8 text-primary" />
+                <div key={item.title} className="text-center p-4">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="w-7 h-7 md:w-8 md:h-8 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                  <h3 className="text-base md:text-lg font-semibold text-foreground mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-sm">{item.description}</p>
                 </div>
               ))}
@@ -187,18 +192,18 @@ export default function ServicesLanding() {
         </section>
 
         {/* Not Sure Section */}
-        <section className="py-16 bg-background">
+        <section className="py-14 md:py-16 bg-background">
           <div className="container mx-auto px-4 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-4">
               Not sure which program is right for you?
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto text-sm md:text-base">
               Let's discuss your goals and find the perfect training solution. Get a free consultation with our training expert.
             </p>
             <Button variant="navy" size="lg" asChild>
               <Link to="/contact">
                 Get Free Consultation
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
           </div>
