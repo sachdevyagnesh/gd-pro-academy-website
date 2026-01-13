@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Linkedin, Instagram } from "lucide-react";
-import logoFooter from "@/assets/logo-footer.png";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   services: [
@@ -35,9 +35,9 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-4 mb-6">
               <img 
-                src={logoFooter} 
+                src={logo} 
                 alt="GD Pro Academy Logo" 
-                className="h-24 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm leading-relaxed">
