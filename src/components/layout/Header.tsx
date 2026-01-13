@@ -75,8 +75,8 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-soft py-2"
-          : "bg-primary py-3"
+          ? "bg-white backdrop-blur-md shadow-soft py-2"
+          : "bg-white py-3"
       )}
     >
       <div className="container mx-auto px-4">
@@ -86,25 +86,21 @@ export function Header() {
             <img 
               src={logo} 
               alt="GD Pro Academy Logo" 
-              className="h-12 md:h-14 lg:h-16 w-auto object-contain"
+              className="h-16 md:h-20 lg:h-24 w-auto object-contain"
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden lg:flex items-center justify-center flex-1 gap-1 mx-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
                 className={cn(
-                  "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive(link.href)
-                    ? isScrolled
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-primary-foreground/20 text-primary-foreground"
-                    : isScrolled
-                    ? "text-foreground hover:bg-muted"
-                    : "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-foreground hover:bg-muted hover:text-primary"
                 )}
               >
                 {link.name}
@@ -116,15 +112,12 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:+918356837052"
-              className={cn(
-                "flex items-center gap-2 text-sm font-medium transition-colors",
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              )}
+              className="flex items-center gap-2 text-sm font-medium transition-colors text-foreground"
             >
               <Phone className="w-4 h-4" />
               <span className="hidden xl:inline">+91 8356 837052</span>
             </a>
-            <Button variant={isScrolled ? "navy" : "hero"} size="default" asChild>
+            <Button variant="navy" size="default" asChild>
               <Link to="/contact">Get in Touch</Link>
             </Button>
           </div>
@@ -136,9 +129,9 @@ export function Header() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className={cn("w-6 h-6", isScrolled ? "text-foreground" : "text-primary-foreground")} />
+              <X className="w-6 h-6 text-foreground" />
             ) : (
-              <Menu className={cn("w-6 h-6", isScrolled ? "text-foreground" : "text-primary-foreground")} />
+              <Menu className="w-6 h-6 text-foreground" />
             )}
           </button>
         </div>
