@@ -75,18 +75,21 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white backdrop-blur-md shadow-soft py-2"
-          : "bg-white py-3"
+          ? "bg-white/95 backdrop-blur-md shadow-soft py-2"
+          : "bg-black/30 backdrop-blur-sm py-4"
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group flex-shrink-0">
             <img 
               src={logo} 
               alt="GD Pro Academy Logo" 
-              className="h-16 md:h-20 lg:h-24 w-auto object-contain"
+              className={cn(
+                "w-auto object-contain transition-all duration-300",
+                isScrolled ? "h-12 md:h-14 lg:h-16" : "h-14 md:h-16 lg:h-20"
+              )}
             />
           </Link>
 
@@ -99,8 +102,12 @@ export function Header() {
                 className={cn(
                   "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive(link.href)
-                    ? "bg-primary text-primary-foreground"
-                    : "text-foreground hover:bg-muted hover:text-primary"
+                    ? isScrolled 
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-white/20 text-white"
+                    : isScrolled
+                      ? "text-foreground hover:bg-muted hover:text-primary"
+                      : "text-white/90 hover:text-white hover:bg-white/10"
                 )}
               >
                 {link.name}
@@ -108,16 +115,21 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA & Contact */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* CTA & Phone Icon */}
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:+918356837052"
-              className="flex items-center gap-2 text-sm font-medium transition-colors text-foreground"
+              className={cn(
+                "p-2 rounded-full transition-colors",
+                isScrolled 
+                  ? "text-foreground hover:bg-muted" 
+                  : "text-white hover:bg-white/10"
+              )}
+              aria-label="Call +91 8356 837052"
             >
-              <Phone className="w-4 h-4" />
-              <span className="hidden xl:inline">+91 8356 837052</span>
+              <Phone className="w-5 h-5" />
             </a>
-            <Button variant="navy" size="default" asChild>
+            <Button variant={isScrolled ? "navy" : "hero"} size="default" asChild>
               <Link to="/contact">Get in Touch</Link>
             </Button>
           </div>
@@ -129,9 +141,9 @@ export function Header() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-foreground" />
+              <X className={cn("w-6 h-6", isScrolled ? "text-foreground" : "text-white")} />
             ) : (
-              <Menu className="w-6 h-6 text-foreground" />
+              <Menu className={cn("w-6 h-6", isScrolled ? "text-foreground" : "text-white")} />
             )}
           </button>
         </div>
