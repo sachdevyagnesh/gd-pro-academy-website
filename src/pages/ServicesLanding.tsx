@@ -20,7 +20,7 @@ const serviceOptions = [
       "Certified & accredited training",
     ],
     cta: "Start Training Needs Discovery",
-    href: "/corporate-training",
+    href: "/assessment/corporate",
     bgImage: corporateHeroBg,
     bgColor: "from-primary/90 to-primary/80",
     iconBg: "bg-secondary",
