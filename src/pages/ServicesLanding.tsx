@@ -20,7 +20,7 @@ const serviceOptions = [
       "Certified & accredited training",
     ],
     cta: "Start Training Needs Discovery",
-    href: "/assessment/corporate",
+    href: "/corporate-training",
     bgImage: corporateHeroBg,
     bgColor: "from-primary/90 to-primary/80",
     iconBg: "bg-secondary",
@@ -121,18 +121,20 @@ export default function ServicesLanding() {
                   ))}
                 </ul>
 
-                {/* CTA Button - Always visible */}
-                <Button 
-                  variant="hero" 
-                  size="lg" 
-                  asChild 
-                  className="group w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-4 md:py-5 h-auto shadow-lg hover:shadow-xl transition-all"
-                >
-                  <Link to={option.href}>
-                    {option.cta}
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
+                {/* CTA Button - Always visible, aligned at bottom */}
+                <div className="mt-auto pt-4">
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    asChild 
+                    className="group w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-4 md:py-5 h-auto shadow-lg hover:shadow-xl transition-all"
+                  >
+                    <Link to={option.href}>
+                      {option.cta}
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
               
               {/* Center divider badge for desktop */}
@@ -147,32 +149,9 @@ export default function ServicesLanding() {
           ))}
         </section>
 
-        {/* Stats + Why Choose Us Combined Section */}
+        {/* Why Choose Us Section */}
         <section className="py-16 md:py-20 bg-muted">
           <div className="container mx-auto px-4">
-            {/* Stats Row */}
-            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 text-center mb-14 pb-10 border-b border-border">
-              <div>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">10,000+</p>
-                <p className="text-xs md:text-sm text-muted-foreground">Professionals Trained</p>
-              </div>
-              <div className="w-px h-10 bg-border hidden md:block" />
-              <div>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">100+</p>
-                <p className="text-xs md:text-sm text-muted-foreground">Corporate Clients</p>
-              </div>
-              <div className="w-px h-10 bg-border hidden md:block" />
-              <div>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">12+</p>
-                <p className="text-xs md:text-sm text-muted-foreground">Years Experience</p>
-              </div>
-              <div className="w-px h-10 bg-border hidden md:block" />
-              <div>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">4.8/5</p>
-                <p className="text-xs md:text-sm text-muted-foreground">Client Rating</p>
-              </div>
-            </div>
-            
             {/* Why Choose Us */}
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-foreground mb-10">
               Why Choose <span className="text-primary">GD Pro Academy</span>

@@ -4,8 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoDesktop from "@/assets/logo-header-desktop.png";
-import logoMobile from "@/assets/logo-header-mobile.png";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -29,13 +28,11 @@ export function Header() {
     setIsMounted(true);
   }, []);
 
-  // Preload logos on mount
+  // Preload logo on mount
   useEffect(() => {
     const img = new Image();
-    img.src = logoDesktop;
+    img.src = logo;
     logoRef.current = img;
-    const imgMobile = new Image();
-    imgMobile.src = logoMobile;
   }, []);
 
   useEffect(() => {
@@ -79,24 +76,17 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-card/95 backdrop-blur-md shadow-soft py-2"
-          : "bg-primary/90 backdrop-blur-sm py-3"
+          : "bg-primary py-3"
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Responsive with transparent background */}
+          {/* Logo */}
           <Link to="/" className="flex items-center group">
-            {/* Desktop Logo */}
             <img 
-              src={logoDesktop} 
+              src={logo} 
               alt="GD Pro Academy Logo" 
-              className="hidden md:block h-14 lg:h-16 w-auto object-contain"
-            />
-            {/* Mobile Logo */}
-            <img 
-              src={logoMobile} 
-              alt="GD Pro Academy Logo" 
-              className="md:hidden h-12 w-auto object-contain"
+              className="h-12 md:h-14 lg:h-16 w-auto object-contain"
             />
           </Link>
 
@@ -175,7 +165,7 @@ export function Header() {
               {/* Menu Header */}
               <div className="flex items-center justify-between p-4 border-b bg-background">
                 <div className="flex items-center gap-3">
-                  <img src={logoMobile} alt="GD Pro Academy Logo" className="h-12 w-auto object-contain" />
+                  <img src={logo} alt="GD Pro Academy Logo" className="h-10 w-auto object-contain" />
                   <span className="font-display font-bold text-lg text-foreground">Menu</span>
                 </div>
                 <button
