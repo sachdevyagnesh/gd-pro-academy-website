@@ -76,11 +76,11 @@ export default function ServicesLanding() {
       <Header />
       <main>
         {/* Full-screen Split Hero Section */}
-        <section className="min-h-screen flex flex-col lg:flex-row pt-28 lg:pt-0">
+        <section className="min-h-screen flex flex-col lg:flex-row">
           {serviceOptions.map((option, index) => (
             <div
               key={option.type}
-              className="relative flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[70vh] lg:min-h-screen"
+              className="relative flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[60vh] lg:min-h-screen pt-28 sm:pt-32 lg:pt-10"
             >
               {/* Background Image with Overlay */}
               <div 
