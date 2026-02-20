@@ -80,7 +80,7 @@ export default function ServicesLanding() {
           {serviceOptions.map((option, index) => (
             <div
               key={option.type}
-              className="relative flex-1 flex flex-col p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[60vh] lg:min-h-screen pt-28 sm:pt-32 lg:pt-24"
+              className="relative flex-1 flex flex-col justify-end p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[70vh] lg:min-h-screen pb-12 lg:pb-16 pt-28 sm:pt-32 lg:pt-24"
             >
               {/* Background Image with Overlay */}
               <div 
@@ -89,20 +89,17 @@ export default function ServicesLanding() {
               />
               <div className={`absolute inset-0 bg-gradient-to-br ${option.bgColor}`} />
               
-              {/* Spacer to push content below header */}
-              <div className="flex-1 min-h-0 lg:max-h-[15vh]" />
-              
               {/* Content Card */}
-              <div className="relative z-10 w-full max-w-xl mx-auto lg:mx-0 flex-shrink-0">
-                {/* Icon */}
-                <div className={`w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-xl ${option.iconBg} flex items-center justify-center mb-6 shadow-lg`}>
-                  <option.icon className={`w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 ${option.iconColor}`} />
+              <div className="relative z-10 w-full max-w-xl mx-auto lg:mx-0">
+                {/* Title with inline icon */}
+                <div className="flex items-center gap-4 mb-3">
+                  <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl ${option.iconBg} flex items-center justify-center shadow-lg shrink-0`}>
+                    <option.icon className={`w-6 h-6 md:w-7 md:h-7 ${option.iconColor}`} />
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] xl:text-5xl font-bold text-white leading-tight">
+                    {option.title}
+                  </h2>
                 </div>
-                
-                {/* Title */}
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] xl:text-5xl font-bold text-white mb-3 leading-tight">
-                  {option.title}
-                </h2>
                 
                 {/* Subtitle */}
                 <p className="text-white/80 text-sm md:text-base lg:text-lg font-medium mb-4">
@@ -124,24 +121,19 @@ export default function ServicesLanding() {
                   ))}
                 </ul>
 
-                {/* CTA Button - Always visible, aligned at bottom */}
-                <div className="mt-auto pt-4">
-                  <Button 
-                    variant="hero" 
-                    size="lg" 
-                    asChild 
-                    className="group w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-4 md:py-5 h-auto shadow-lg hover:shadow-xl transition-all"
-                  >
-                    <Link to={option.href}>
-                      {option.cta}
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </div>
+                {/* CTA Button */}
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  asChild 
+                  className="group w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-4 md:py-5 h-auto shadow-lg hover:shadow-xl transition-all"
+                >
+                  <Link to={option.href}>
+                    {option.cta}
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
               </div>
-              
-              {/* Bottom spacer */}
-              <div className="flex-1 min-h-0 lg:max-h-[10vh]" />
               
               {/* Center divider badge for desktop */}
               {index === 0 && (
