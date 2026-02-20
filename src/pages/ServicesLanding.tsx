@@ -80,7 +80,7 @@ export default function ServicesLanding() {
           {serviceOptions.map((option, index) => (
             <div
               key={option.type}
-              className="relative flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[60vh] lg:min-h-screen pt-40 sm:pt-44 lg:pt-32"
+              className="relative flex-1 flex flex-col p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[60vh] lg:min-h-screen pt-28 sm:pt-32 lg:pt-24"
             >
               {/* Background Image with Overlay */}
               <div 
@@ -89,8 +89,11 @@ export default function ServicesLanding() {
               />
               <div className={`absolute inset-0 bg-gradient-to-br ${option.bgColor}`} />
               
+              {/* Spacer to push content below header */}
+              <div className="flex-1 min-h-0 lg:max-h-[15vh]" />
+              
               {/* Content Card */}
-              <div className="relative z-10 w-full max-w-xl mx-auto lg:mx-0">
+              <div className="relative z-10 w-full max-w-xl mx-auto lg:mx-0 flex-shrink-0">
                 {/* Icon */}
                 <div className={`w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 rounded-xl ${option.iconBg} flex items-center justify-center mb-6 shadow-lg`}>
                   <option.icon className={`w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 ${option.iconColor}`} />
@@ -136,6 +139,9 @@ export default function ServicesLanding() {
                   </Button>
                 </div>
               </div>
+              
+              {/* Bottom spacer */}
+              <div className="flex-1 min-h-0 lg:max-h-[10vh]" />
               
               {/* Center divider badge for desktop */}
               {index === 0 && (
