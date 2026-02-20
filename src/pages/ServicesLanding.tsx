@@ -80,7 +80,7 @@ export default function ServicesLanding() {
           {serviceOptions.map((option, index) => (
             <div
               key={option.type}
-              className="relative flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[60vh] lg:min-h-screen pt-28 sm:pt-32 lg:pt-10"
+              className="relative flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-14 min-h-[60vh] lg:min-h-screen pt-32 sm:pt-36 lg:pt-28"
             >
               {/* Background Image with Overlay */}
               <div 

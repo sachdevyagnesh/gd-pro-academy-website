@@ -39,7 +39,7 @@ export function AssessmentResult({
   showSalesTestOffer = false,
 }: AssessmentResultProps) {
   const isSalesConfidenceTest = testType === "sales-confidence";
-  const showDiscount = isSalesConfidenceTest && percentage >= discountConfig.threshold && discountConfig.enabled;
+  const showDiscount = isSalesConfidenceTest && discountConfig.enabled;
 
   const getLevelIcon = () => {
     switch (range.level) {

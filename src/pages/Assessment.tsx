@@ -292,7 +292,7 @@ export default function Assessment() {
                 onDownloadPDF={handleDownloadPDF}
                 onEmailPDF={handleEmailPDF}
                 onTakeSalesTest={handleTakeSalesTest}
-                showSalesTestOffer={true}
+                showSalesTestOffer={type === "individual"}
               />
             )}
 

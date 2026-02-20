@@ -30,7 +30,7 @@ export function Header() {
 
   // Preload logo on mount
   useEffect(() => {
-    const img = new Image();
+    const img = new window.Image();
     img.src = logo;
     logoRef.current = img;
   }, []);
@@ -86,6 +86,9 @@ export function Header() {
             <img 
               src={logo} 
               alt="GD Pro Academy Logo" 
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
               className={cn(
                 "w-auto object-contain transition-all duration-300",
                 isScrolled ? "h-12 md:h-14 lg:h-16" : "h-14 md:h-16 lg:h-20"
