@@ -126,7 +126,7 @@ export function AIChatWidget() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg flex items-center justify-center transition-all hover:scale-110",
+          "fixed bottom-[100px] right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg flex items-center justify-center transition-all hover:scale-110",
           isOpen && "bg-muted text-muted-foreground from-muted to-muted"
         )}
         aria-label={isOpen ? "Close chat" : "Open chat"}
@@ -136,7 +136,7 @@ export function AIChatWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-40 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] h-[500px] max-h-[calc(100vh-200px)] flex flex-col shadow-2xl border-2">
+        <Card className="fixed bottom-[170px] right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] h-[500px] max-h-[calc(100vh-200px)] flex flex-col shadow-2xl border-2">
           {/* Header */}
           <div className="bg-primary text-primary-foreground p-4 rounded-t-lg flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
