@@ -1,4 +1,4 @@
-import { Play, CheckCircle } from "lucide-react";
+import { Play, CheckCircle, Image, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import {
@@ -33,91 +33,73 @@ interface TrainingMethodologyVideoProps {
 }
 
 export function TrainingMethodologyVideo({ 
-  videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder - replace with actual video
+  videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ",
   thumbnailUrl 
 }: TrainingMethodologyVideoProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   return (
     <section className="section-padding bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Video Section */}
-          <div className="relative group">
-            <div 
-              className="relative rounded-2xl overflow-hidden shadow-elevated cursor-pointer"
-              onClick={() => setIsVideoOpen(true)}
-            >
-              {/* Video Thumbnail / Placeholder */}
-              <div className="aspect-video bg-gradient-to-br from-primary via-primary/90 to-primary/80 flex items-center justify-center relative">
-                {thumbnailUrl ? (
-                  <img 
-                    src={thumbnailUrl} 
-                    alt="Training Methodology Video" 
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="text-center px-8">
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-2">
-                      Our Training Methodology
-                    </h3>
-                    <p className="text-primary-foreground/70 text-sm">
-                      Watch how we transform professionals
-                    </p>
-                  </div>
-                )}
-                
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-primary/20 group-hover:bg-primary/30 transition-colors">
-                  <div className="w-20 h-20 rounded-full bg-secondary flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-secondary-foreground fill-current ml-1" />
-                  </div>
-                </div>
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Section Header */}
+        <div className="text-center mb-10">
+          <div className="accent-line mx-auto mb-6" />
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            How We Train: Our Unique Methodology
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            At GD Pro Academy, we believe in learning by doing. Our training methodology combines 
+            proven frameworks with practical application.
+          </p>
+        </div>
+
+        {/* Photo + Video Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {/* Photo Placeholder 1 */}
+          <div className="aspect-[4/3] rounded-2xl border-2 border-dashed border-border bg-muted/50 flex flex-col items-center justify-center gap-3 p-6">
+            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <Image className="w-7 h-7 text-primary" />
+            </div>
+            <p className="text-sm font-medium text-muted-foreground text-center">Real Training Session Photo</p>
+            <span className="text-xs text-muted-foreground/60">Slot 1</span>
+          </div>
+
+          {/* Photo Placeholder 2 */}
+          <div className="aspect-[4/3] rounded-2xl border-2 border-dashed border-border bg-muted/50 flex flex-col items-center justify-center gap-3 p-6">
+            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <Image className="w-7 h-7 text-primary" />
+            </div>
+            <p className="text-sm font-medium text-muted-foreground text-center">Real Training Session Photo</p>
+            <span className="text-xs text-muted-foreground/60">Slot 2</span>
+          </div>
+
+          {/* Video Placeholder */}
+          <div 
+            className="aspect-[4/3] rounded-2xl border-2 border-dashed border-border bg-gradient-to-br from-primary/5 to-primary/10 flex flex-col items-center justify-center gap-3 p-6 cursor-pointer hover:border-primary/40 transition-colors md:col-span-2 lg:col-span-1"
+            onClick={() => setIsVideoOpen(true)}
+          >
+            <div className="w-14 h-14 rounded-full bg-secondary/20 flex items-center justify-center">
+              <Video className="w-7 h-7 text-secondary-foreground" />
+            </div>
+            <p className="text-sm font-medium text-muted-foreground text-center">Training Video Clip</p>
+            <Button variant="outline" size="sm" className="mt-1 gap-2">
+              <Play className="w-3 h-3" />
+              Play Video
+            </Button>
+          </div>
+        </div>
+
+        {/* Methodology Points */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {methodologyPoints.map((point, index) => (
+            <div key={index} className="bg-card rounded-xl border shadow-soft p-6">
+              <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center mb-4">
+                <CheckCircle className="w-5 h-5 text-accent" />
               </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/20 rounded-full blur-xl" />
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-accent/20 rounded-full blur-xl" />
+              <h4 className="font-semibold text-foreground mb-2">{point.title}</h4>
+              <p className="text-sm text-muted-foreground">{point.description}</p>
             </div>
-
-            <p className="text-center text-sm text-muted-foreground mt-6">
-              Click to watch the full video
-            </p>
-          </div>
-
-          {/* Content Section */}
-          <div>
-            <div className="accent-line mb-6" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              How We Train: Our Unique Methodology
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              At GD Pro Academy, we believe in learning by doing. Our training methodology combines 
-              proven frameworks with practical application, ensuring participants don't just learn – 
-              they transform.
-            </p>
-
-            <div className="space-y-5">
-              {methodologyPoints.map((point, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
-                    <CheckCircle className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">{point.title}</h4>
-                    <p className="text-sm text-muted-foreground">{point.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button variant="navy" size="lg" onClick={() => setIsVideoOpen(true)}>
-                <Play className="w-4 h-4 mr-2" />
-                Watch Full Video
-              </Button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
