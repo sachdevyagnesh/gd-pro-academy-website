@@ -53,8 +53,9 @@ export function TrainingMethodologyVideo({
           </p>
         </div>
 
-        {/* Video Thumbnail */}
-        <div className="mb-12">
+        {/* Side-by-side: Video Left + Methodology Right */}
+        <div className="grid lg:grid-cols-2 gap-10 items-start mb-12">
+          {/* Video on left */}
           <div
             className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer group border shadow-soft bg-muted"
             onClick={() => setIsVideoOpen(true)}
@@ -76,19 +77,27 @@ export function TrainingMethodologyVideo({
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Methodology Points */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {methodologyPoints.map((point, index) => (
-            <div key={index} className="bg-card rounded-xl border shadow-soft p-6">
-              <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center mb-4">
-                <CheckCircle className="w-5 h-5 text-accent" />
+          {/* Methodology points on right */}
+          <div className="space-y-5">
+            <h3 className="text-xl font-bold text-foreground mb-2">
+              30% Learning, 70% Doing
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Our signature methodology ensures participants don't just learn — they practice, apply, and master skills through immersive activities.
+            </p>
+            {methodologyPoints.map((point, index) => (
+              <div key={index} className="flex items-start gap-4">
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-accent/20 flex items-center justify-center mt-0.5">
+                  <CheckCircle className="w-5 h-5 text-accent" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">{point.title}</h4>
+                  <p className="text-sm text-muted-foreground">{point.description}</p>
+                </div>
               </div>
-              <h4 className="font-semibold text-foreground mb-2">{point.title}</h4>
-              <p className="text-sm text-muted-foreground">{point.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
