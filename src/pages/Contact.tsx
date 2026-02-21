@@ -331,6 +331,28 @@ export default function Contact() {
             </div>
           </div>
         </section>
+        {/* Calendly Embed */}
+        <section className="section-padding bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-10">
+              <div className="accent-line mx-auto mb-6" />
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Schedule a Free Consultation
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Pick a convenient time and let's discuss your training needs. This is a no-obligation 30-minute call.
+              </p>
+            </div>
+            <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden border shadow-soft">
+              <iframe
+                src="https://calendly.com/gdproacademy"
+                width="100%"
+                style={{ minHeight: "700px", border: "none" }}
+                title="Schedule a Free Consultation"
+              />
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

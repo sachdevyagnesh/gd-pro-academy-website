@@ -14,6 +14,7 @@ const footerLinks = {
     { name: "Testimonials", href: "/moments" },
     { name: "Gallery", href: "/gallery" },
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Books", href: "/books" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ],

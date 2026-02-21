@@ -25,6 +25,9 @@ export function CertificationsSection() {
     setFailedImages(prev => new Set(prev).add(companyName));
   };
 
+  // Double the logos for seamless infinite scroll
+  const marqueeLogos = [...associations, ...associations];
+
   return (
     <section className="section-padding bg-muted">
       <div className="container mx-auto px-4">
@@ -38,33 +41,34 @@ export function CertificationsSection() {
           </p>
         </div>
 
-        {/* Key Associations */}
+        {/* Key Associations — Infinite Marquee */}
         <div className="mb-16">
           <div className="flex items-center justify-center gap-3 mb-8">
             <Building2 className="w-5 h-5 text-primary" />
             <h3 className="font-semibold text-foreground">Key Associations</h3>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {associations.map((company) => (
-              <div
-                key={company.name}
-                className="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
-              >
-                {failedImages.has(company.name) ? (
-                  <span className="text-lg font-semibold text-muted-foreground">
-                    {company.name}
-                  </span>
-                ) : (
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    className="h-8 md:h-10 w-auto object-contain"
-                    onError={() => handleImageError(company.name)}
-                  />
-                )}
-              </div>
-            ))}
-            <span className="text-muted-foreground font-medium">and more...</span>
+          <div className="overflow-hidden">
+            <div className="flex items-center gap-12 md:gap-16 animate-marquee">
+              {marqueeLogos.map((company, i) => (
+                <div
+                  key={`${company.name}-${i}`}
+                  className="shrink-0 grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                >
+                  {failedImages.has(company.name) ? (
+                    <span className="text-lg font-semibold text-muted-foreground whitespace-nowrap">
+                      {company.name}
+                    </span>
+                  ) : (
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="h-8 md:h-10 w-auto object-contain"
+                      onError={() => handleImageError(company.name)}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

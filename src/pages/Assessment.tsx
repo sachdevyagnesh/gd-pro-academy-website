@@ -24,6 +24,8 @@ type AssessmentType = "corporate" | "individual";
 
 interface AssessmentState {
   userName: string;
+  userEmail: string;
+  userPhone: string;
   score: number;
   percentage: number;
   range: ScoreRange | null;
@@ -37,6 +39,8 @@ export default function Assessment() {
   const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const [state, setState] = useState<AssessmentState>({
     userName: "",
+    userEmail: "",
+    userPhone: "",
     score: 0,
     percentage: 0,
     range: null,
@@ -57,7 +61,7 @@ export default function Assessment() {
 
   const handleNameSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (state.userName.trim()) {
+    if (state.userName.trim() && state.userEmail.trim() && state.userPhone.trim()) {
       setStep("questions");
     }
   };
@@ -239,17 +243,41 @@ export default function Assessment() {
                       Let's Get Started
                     </h2>
                     <p className="text-muted-foreground mb-6 text-center">
-                      Enter your name for the personalized report
+                      Enter your details for the personalized report
                     </p>
                     <form onSubmit={handleNameSubmit} className="space-y-4">
-                      <Input
-                        placeholder="Your full name"
-                        value={state.userName}
-                        onChange={(e) => setState((prev) => ({ ...prev, userName: e.target.value }))}
-                        className="text-center"
-                        required
-                      />
-                      <div className="flex gap-3">
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-1.5">Your Full Name *</label>
+                        <Input
+                          placeholder="e.g. Grishma Sachdev"
+                          value={state.userName}
+                          onChange={(e) => setState((prev) => ({ ...prev, userName: e.target.value }))}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-1.5">Your Email *</label>
+                        <Input
+                          type="email"
+                          placeholder="you@company.com"
+                          value={state.userEmail}
+                          onChange={(e) => setState((prev) => ({ ...prev, userEmail: e.target.value }))}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-1.5">Your Phone Number *</label>
+                        <Input
+                          type="tel"
+                          placeholder="+91 98765 43210"
+                          value={state.userPhone}
+                          onChange={(e) => setState((prev) => ({ ...prev, userPhone: e.target.value }))}
+                          required
+                          pattern="[+0-9\s\-]{7,15}"
+                          title="Enter a valid phone number (7-15 digits)"
+                        />
+                      </div>
+                      <div className="flex gap-3 pt-2">
                         <Button 
                           type="button" 
                           variant="outline" 
@@ -262,7 +290,7 @@ export default function Assessment() {
                           type="submit" 
                           variant="navy" 
                           className="flex-1 gap-2"
-                          disabled={!state.userName.trim()}
+                          disabled={!state.userName.trim() || !state.userEmail.trim() || !state.userPhone.trim()}
                         >
                           Continue
                           <ArrowRight className="w-4 h-4" />
