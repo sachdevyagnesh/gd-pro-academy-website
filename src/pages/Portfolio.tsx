@@ -277,19 +277,21 @@ export default function Portfolio() {
               </p>
             </div>
 
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-              {associations.map((company) => (
-                <div
-                  key={company.name}
-                  className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all hover:scale-105"
-                >
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    className="h-12 md:h-16 w-auto object-contain"
-                  />
-                </div>
-              ))}
+            <div className="overflow-hidden">
+              <div className="flex items-center gap-12 md:gap-16 animate-marquee">
+                {[...associations, ...associations].map((company, i) => (
+                  <div
+                    key={`${company.name}-${i}`}
+                    className="shrink-0 bg-white p-4 rounded-lg shadow-sm"
+                  >
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="h-12 md:h-16 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
             <p className="text-center text-muted-foreground mt-6">and more...</p>
           </div>

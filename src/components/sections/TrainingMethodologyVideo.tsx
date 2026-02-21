@@ -1,4 +1,4 @@
-import { Play, CheckCircle, Image, Video } from "lucide-react";
+import { Play, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import {
@@ -53,39 +53,28 @@ export function TrainingMethodologyVideo({
           </p>
         </div>
 
-        {/* Photo + Video Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {/* Photo Placeholder 1 */}
-          <div className="aspect-[4/3] rounded-2xl border-2 border-dashed border-border bg-muted/50 flex flex-col items-center justify-center gap-3 p-6">
-            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-              <Image className="w-7 h-7 text-primary" />
-            </div>
-            <p className="text-sm font-medium text-muted-foreground text-center">Real Training Session Photo</p>
-            <span className="text-xs text-muted-foreground/60">Slot 1</span>
-          </div>
-
-          {/* Photo Placeholder 2 */}
-          <div className="aspect-[4/3] rounded-2xl border-2 border-dashed border-border bg-muted/50 flex flex-col items-center justify-center gap-3 p-6">
-            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-              <Image className="w-7 h-7 text-primary" />
-            </div>
-            <p className="text-sm font-medium text-muted-foreground text-center">Real Training Session Photo</p>
-            <span className="text-xs text-muted-foreground/60">Slot 2</span>
-          </div>
-
-          {/* Video Placeholder */}
-          <div 
-            className="aspect-[4/3] rounded-2xl border-2 border-dashed border-border bg-gradient-to-br from-primary/5 to-primary/10 flex flex-col items-center justify-center gap-3 p-6 cursor-pointer hover:border-primary/40 transition-colors md:col-span-2 lg:col-span-1"
+        {/* Video Thumbnail */}
+        <div className="mb-12">
+          <div
+            className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer group border shadow-soft bg-muted"
             onClick={() => setIsVideoOpen(true)}
           >
-            <div className="w-14 h-14 rounded-full bg-secondary/20 flex items-center justify-center">
-              <Video className="w-7 h-7 text-secondary-foreground" />
+            {thumbnailUrl ? (
+              <img
+                src={thumbnailUrl}
+                alt="Training methodology video"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                <p className="text-muted-foreground">Video thumbnail placeholder</p>
+              </div>
+            )}
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-secondary/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                <Play className="w-8 h-8 md:w-10 md:h-10 text-secondary-foreground ml-1" />
+              </div>
             </div>
-            <p className="text-sm font-medium text-muted-foreground text-center">Training Video Clip</p>
-            <Button variant="outline" size="sm" className="mt-1 gap-2">
-              <Play className="w-3 h-3" />
-              Play Video
-            </Button>
           </div>
         </div>
 
