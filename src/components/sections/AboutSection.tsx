@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import aboutPortrait from "@/assets/about-portrait.jpg";
 
 const highlights = [
-  { icon: BookOpen, value: "12+", label: "Years BFSI & Corporate" },
+  { icon: BookOpen, value: "14+", label: "Years BFSI & Corporate" },
   { icon: Award, value: "Certified", label: "Corporate Trainer" },
   { icon: Target, value: "Pan-India", label: "& Global Reach" },
 ];
