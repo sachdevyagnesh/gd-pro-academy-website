@@ -66,7 +66,7 @@ export default function About() {
                 About <span className="text-gradient-gold">GD Pro Academy</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
-                Empowering professionals and organizations with practical, result-driven training in sales, leadership, and soft skills for over 12 years.
+                Empowering professionals and organizations with practical, result-driven training in sales, leadership, and soft skills for over 14 years.
               </p>
             </div>
           </div>
