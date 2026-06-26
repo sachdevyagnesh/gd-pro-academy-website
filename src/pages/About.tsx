@@ -212,8 +212,57 @@ export default function About() {
           </div>
         </section>
 
-        {/* Training Philosophy */}
+        {/* From Sales to Storytelling */}
         <section className="section-padding bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-10">
+              <div className="accent-line mx-auto mb-6" />
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                From Sales to <span className="text-gradient-gold">Storytelling</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                A 14-year journey distilled into a #1 Amazon bestseller — sharing the lessons, mindset, and craft that shaped a career in sales.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden shadow-elevated max-w-sm mx-auto">
+                  <img
+                    src={bookCoverAsset.url}
+                    alt="More Than Sales — The Profession That Built Me by Grishma Sachdev"
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <span className="inline-block bg-secondary/15 text-secondary font-semibold text-sm px-3 py-1 rounded-full mb-4">
+                  #1 Amazon Bestseller
+                </span>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+                  More Than Sales: The Profession That Built Me
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-5">
+                  My first book captures the real, untold side of a sales career — purpose, impact, and growth. It reached <strong className="text-foreground">#1 in its category on Amazon Kindle</strong>, validating a story that thousands of sales professionals quietly live every day.
+                </p>
+                <div className="rounded-xl overflow-hidden border border-border shadow-soft">
+                  <img
+                    src={bestsellerAsset.url}
+                    alt="Amazon Kindle #1 Bestseller ranking screenshot for More Than Sales"
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Training Philosophy */}
+        <section className="section-padding bg-muted">
+
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <div className="accent-line mx-auto mb-6" />
