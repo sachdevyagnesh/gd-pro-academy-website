@@ -169,10 +169,9 @@ export function ProgramsSection() {
                       {program.type}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-foreground">{program.price}</span>
+                  <div className="flex items-center justify-end">
                     <Button variant="accent" size="sm" asChild>
-                      <Link to="/contact">Book Session</Link>
+                      <Link to="/contact">Enquire</Link>
                     </Button>
                   </div>
                 </CardContent>
