@@ -153,7 +153,7 @@ export default function About() {
                 <div className="grid grid-cols-3 gap-3">
                   <div className="text-center p-4 bg-muted rounded-xl border border-border">
                     <BookOpen className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-extrabold text-foreground text-lg">12+ Years</p>
+                    <p className="font-display font-extrabold text-foreground text-lg">14+ Years</p>
                     <p className="text-sm font-semibold text-muted-foreground">in BFSI</p>
                   </div>
                   <div className="text-center p-4 bg-muted rounded-xl border border-border">
