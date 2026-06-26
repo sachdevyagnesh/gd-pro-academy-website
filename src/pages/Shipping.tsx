@@ -163,7 +163,6 @@ export default function Shipping() {
                 Currently, our physical material shipping is limited to India. For international clients:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
-                <li>Digital products and e-courses: Available worldwide with instant access</li>
                 <li>Virtual training: Available globally via video conferencing</li>
                 <li>Physical materials: Contact us for custom shipping arrangements</li>
                 <li>International shipping costs and customs duties (if any) are buyer's responsibility</li>
