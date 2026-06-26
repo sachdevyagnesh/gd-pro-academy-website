@@ -56,9 +56,6 @@ const testimonials = [
 export function TestimonialsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Duplicate testimonials for seamless infinite scroll
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
-
   return (
     <section className="section-padding bg-background relative overflow-hidden">
       {/* Background decorations */}
@@ -77,14 +74,9 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Auto-scrolling Testimonials */}
-        <div className="relative overflow-hidden">
-          <div 
-            ref={scrollRef}
-            className="flex gap-6 auto-scroll hover:[animation-play-state:paused]"
-            style={{ width: 'max-content' }}
-          >
-            {duplicatedTestimonials.map((testimonial, index) => (
+        {/* Testimonials Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
                 variant="elevated"
