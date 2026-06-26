@@ -126,10 +126,9 @@ export function ProgramsSection() {
                       Certificate
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-foreground">{program.price}</span>
+                  <div className="flex items-center justify-end">
                     <Button variant="navy" size="sm" asChild>
-                      <Link to="/contact">Book Now</Link>
+                      <Link to="/contact">Enquire</Link>
                     </Button>
                   </div>
                 </CardContent>
