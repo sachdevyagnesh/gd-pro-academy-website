@@ -8,8 +8,8 @@ import aboutHero from "@/assets/about-hero.jpg";
 import aboutPortrait from "@/assets/about-portrait-new.jpg";
 
 const milestones = [
-  { year: "2013", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
-  { year: "2019", title: "Training Role Started", description: "Transitioned into professional training" },
+  { year: "2012", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
+  { year: "2018", title: "Training Role Started", description: "Transitioned into professional training" },
   { year: "2023", title: "Founded GD Pro Academy", description: "To help professionals thrive in sales" },
   { year: "2026", title: "Today", description: "24,000+ training hours delivered globally" },
 ];
@@ -66,7 +66,7 @@ export default function About() {
                 About <span className="text-gradient-gold">GD Pro Academy</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
-                Empowering professionals and organizations with practical, result-driven training in sales, leadership, and soft skills for over 12 years.
+                Empowering professionals and organizations with practical, result-driven training in sales, leadership, and soft skills for over 14 years.
               </p>
             </div>
           </div>
@@ -116,9 +116,15 @@ export default function About() {
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
                   Hi, I'm Grishma Sachdev
                 </h2>
+                <p className="text-secondary font-semibold mb-4">
+                  Sales Trainer & Mentor with 14 years of serving in the industry.
+                </p>
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
-                    A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">12 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
+                    A <strong className="text-foreground">Sales Trainer & Mentor</strong> with <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
+                  </p>
+                  <p className="italic border-l-4 border-secondary pl-4 text-foreground">
+                    "I struggled in sales because I had no one to guide me, so I became the guide I always wished I had."
                   </p>
                   <p>
                     I focus deeply on <strong className="text-foreground">people's behavior</strong>, <strong className="text-foreground">communication</strong>, and day-to-day workplace realities.
@@ -127,10 +133,10 @@ export default function About() {
                     <strong className="text-foreground">Motherhood</strong> has taught me patience and simplicity, and I bring that same calm, structured approach into every training room to create meaningful, transformative learning experiences.
                   </p>
                   <p>
-                    I started my career in 2013 in a profession that most people avoid—especially back then as a woman. Yes, I'm talking about <strong className="text-foreground">sales</strong>.
+                    I started my career in 2012 in a profession that most people avoid—especially back then as a woman. Yes, I'm talking about <strong className="text-foreground">sales</strong>.
                   </p>
                   <p>
-                    I began in the <strong className="text-foreground">BFSI (Banking, Financial Services, and Insurance)</strong> sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer-level role to a managerial position. Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, had earned respect, and everything felt smooth.
+                    I began in the <strong className="text-foreground">BFSI (Banking, Financial Services, and Insurance)</strong> sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer-level role to a managerial position. In 2018, I transitioned into a training role and eventually founded GD Pro Academy in 2023 to help others thrive in sales.
                   </p>
                   <p className="font-medium text-foreground">
                     But something still felt missing.
@@ -147,7 +153,7 @@ export default function About() {
                 <div className="grid grid-cols-3 gap-3">
                   <div className="text-center p-4 bg-muted rounded-xl border border-border">
                     <BookOpen className="w-6 h-6 text-secondary mx-auto mb-2" />
-                    <p className="font-display font-extrabold text-foreground text-lg">12+ Years</p>
+                    <p className="font-display font-extrabold text-foreground text-lg">14+ Years</p>
                     <p className="text-sm font-semibold text-muted-foreground">in BFSI</p>
                   </div>
                   <div className="text-center p-4 bg-muted rounded-xl border border-border">
@@ -181,7 +187,7 @@ export default function About() {
                     <h3 className="font-display text-2xl font-bold text-foreground">My Mission</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    To help people feel confident about working in sales. I believe everyone can excel in sales with the right training, mindset, and support.
+                    To help sales professionals improve performance, build visibility, and grow their careers through practical, experience-driven learning and mentorship.
                   </p>
                 </CardContent>
               </Card>
@@ -195,7 +201,7 @@ export default function About() {
                     <h3 className="font-display text-2xl font-bold text-foreground">My Vision</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    To prepare as many people as possible to be market-ready, to make sales a career they are proud of, and to help them succeed without fearing targets or challenges.
+                    To build the most trusted platform for sales career growth.
                   </p>
                 </CardContent>
               </Card>

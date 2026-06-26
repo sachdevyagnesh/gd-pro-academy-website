@@ -126,10 +126,9 @@ export function ProgramsSection() {
                       Certificate
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-foreground">{program.price}</span>
+                  <div className="flex items-center justify-end">
                     <Button variant="navy" size="sm" asChild>
-                      <Link to="/contact">Book Now</Link>
+                      <Link to="/contact">Enquire</Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -141,7 +140,7 @@ export function ProgramsSection() {
         {/* Individual Programs */}
         <div>
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-foreground">Individual Training</h3>
+            <h3 className="text-2xl font-bold text-foreground">Programs for Professionals</h3>
             <Button variant="ghost" asChild className="group">
               <Link to="/individual-training">
                 View All
@@ -170,10 +169,9 @@ export function ProgramsSection() {
                       {program.type}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-foreground">{program.price}</span>
+                  <div className="flex items-center justify-end">
                     <Button variant="accent" size="sm" asChild>
-                      <Link to="/contact">Book Session</Link>
+                      <Link to="/contact">Enquire</Link>
                     </Button>
                   </div>
                 </CardContent>

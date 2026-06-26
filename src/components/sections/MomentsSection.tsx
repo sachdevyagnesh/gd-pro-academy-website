@@ -71,7 +71,7 @@ export function MomentsSection() {
             <CardContent className="p-8 md:p-10 relative z-10">
               <blockquote className="text-center">
                 <p className="text-lg md:text-xl italic leading-relaxed mb-4">
-                  "My mission is simple: to help people feel confident about working in sales and prepare them to be market-ready. Where connection fuels conversion."
+                  "To help sales professionals improve performance, build visibility, and grow their careers through practical, experience-driven learning and mentorship."
                 </p>
                 <footer className="text-primary-foreground/80 font-medium">
                   — Grishma Sachdev, Founder

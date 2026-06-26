@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     question: "Do you provide online training?",
-    answer: "Yes, we offer both online and in-person training options. Our online programs include live interactive sessions, self-paced courses, and blended learning approaches to suit different preferences and schedules.",
+    answer: "Yes, we offer both online and in-person training options. Our online programs include live interactive sessions and blended learning approaches to suit different preferences and schedules.",
   },
   {
     question: "How long are the training programs?",
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     question: "What are your training fees?",
-    answer: "Training fees vary based on the program type, duration, and customization level. Corporate programs start from ₹12,000 per day, while individual sessions start from ₹5,000. Contact us for a detailed quote.",
+    answer: "Training fees vary based on the program type, duration, and customization level. Please contact us with your requirements for a detailed proposal.",
   },
 ];
 
@@ -271,8 +271,7 @@ export default function Contact() {
                     >
                       <option value="">Select training type</option>
                       <option value="corporate">Corporate Training</option>
-                      <option value="individual">Individual Training</option>
-                      <option value="e-course">E-Course</option>
+                      <option value="individual">Professional Programs</option>
                       <option value="other">Other</option>
                     </select>
                   </div>

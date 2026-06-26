@@ -30,7 +30,7 @@ const serviceOptions = [
     type: "individual",
     icon: User,
     title: "Are you a Professional?",
-    subtitle: "Individual Training Programs",
+    subtitle: "Programs for Professionals",
     description: "Accelerate your career with practical skills in sales, communication, and professional development. Join batch programs or get personalized coaching.",
     features: [
       "Batch programs (10-30 members)",
@@ -61,7 +61,7 @@ const whyChooseUs = [
   {
     icon: Users,
     title: "Expert Trainers",
-    description: "Industry veterans with 12+ years of hands-on experience"
+    description: "Industry veterans with 14+ years of hands-on experience"
   },
   {
     icon: TrendingUp,

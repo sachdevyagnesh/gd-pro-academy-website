@@ -25,7 +25,7 @@ export default function Terms() {
               <p className="text-muted-foreground mb-6">
                 Welcome to GD Pro Academy ("Company", "we", "our", "us"). These Terms and Conditions govern 
                 your use of our website located at gdproacademy.in and any related services, including 
-                training programs, e-courses, and consultations (collectively, the "Services"). By accessing 
+                training programs and consultations (collectively, the "Services"). By accessing 
                 or using our Services, you agree to be bound by these Terms. If you disagree with any part 
                 of these terms, you may not access our Services.
               </p>
@@ -34,8 +34,7 @@ export default function Terms() {
               <p className="text-muted-foreground mb-4">GD Pro Academy provides:</p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
                 <li>Corporate training programs (on-site and virtual)</li>
-                <li>Individual training and coaching sessions</li>
-                <li>Online e-courses and learning materials</li>
+                <li>Professional training programs and coaching sessions</li>
                 <li>Sales, communication, and soft skills training</li>
                 <li>Consultation services for organizations</li>
               </ul>
@@ -61,9 +60,8 @@ export default function Terms() {
                 Payment terms include:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
-                <li>Payment must be made in full before accessing e-courses</li>
                 <li>Corporate training: 50% advance, balance before program commencement</li>
-                <li>Individual training: Full payment required before first session</li>
+                <li>Professional programs: Full payment required before first session</li>
                 <li>All prices are inclusive of applicable GST as per Indian tax laws</li>
                 <li>Payments are accepted via UPI, net banking, credit/debit cards, and bank transfers</li>
               </ul>
@@ -94,7 +92,7 @@ export default function Terms() {
                 (if applicable) are the client's responsibility unless otherwise agreed in writing.
               </p>
               <p className="text-muted-foreground mb-6">
-                <strong>For Individual Training:</strong> Session schedules are confirmed upon booking. Rescheduling 
+                <strong>For Professional Programs:</strong> Session schedules are confirmed upon booking. Rescheduling 
                 is permitted with 48 hours' notice. No-shows without prior notice will be considered as a completed session.
               </p>
 

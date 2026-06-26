@@ -24,45 +24,42 @@ export default function Shipping() {
 
               <div className="bg-accent/10 border border-accent/20 rounded-xl p-6 mb-8">
                 <p className="text-foreground font-medium">
-                  GD Pro Academy primarily provides digital services including online courses, virtual training, 
-                  and on-site corporate training programs. This policy outlines the delivery of our services 
-                  and any physical materials that may be included.
+                  GD Pro Academy primarily provides training services including live virtual training and on-site corporate training programs. This policy outlines the delivery of our services and any physical materials that may be included.
                 </p>
               </div>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. Digital Products & E-Courses</h2>
+              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. Program Materials</h2>
               <p className="text-muted-foreground mb-4">
-                For online courses and digital learning materials:
+                For training program materials and resources:
               </p>
               <div className="grid md:grid-cols-2 gap-4 mb-6">
                 <div className="bg-muted rounded-xl p-5">
-                  <h4 className="font-semibold text-foreground mb-2">Instant Access</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Confirmation</h4>
                   <p className="text-sm text-muted-foreground">
-                    Access is granted immediately upon successful payment confirmation
+                    Booking confirmation is sent immediately after successful payment
                   </p>
                 </div>
                 <div className="bg-muted rounded-xl p-5">
-                  <h4 className="font-semibold text-foreground mb-2">Login Credentials</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Session Details</h4>
                   <p className="text-sm text-muted-foreground">
-                    Sent to your registered email within 30 minutes of purchase
+                    Joining details sent to your registered email ahead of the session
                   </p>
                 </div>
                 <div className="bg-muted rounded-xl p-5">
-                  <h4 className="font-semibold text-foreground mb-2">Access Duration</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Pre-reads</h4>
                   <p className="text-sm text-muted-foreground">
-                    Lifetime access for most courses; specific validity mentioned on course page
+                    Reading materials shared 2-3 days prior to the program
                   </p>
                 </div>
                 <div className="bg-muted rounded-xl p-5">
-                  <h4 className="font-semibold text-foreground mb-2">Device Access</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Certificates</h4>
                   <p className="text-sm text-muted-foreground">
-                    Access from any device with internet connection (desktop, mobile, tablet)
+                    Digital certificates of completion issued post the program
                   </p>
                 </div>
               </div>
               <p className="text-muted-foreground mb-6">
-                <strong>Note:</strong> If you don't receive access within 2 hours, please check your spam folder 
-                and then contact us at info@gdproacademy.in.
+                <strong>Note:</strong> If you don't receive your booking confirmation within 2 hours, please check your spam folder and then contact us at info@gdproacademy.in.
               </p>
 
               <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">2. Virtual Training Programs</h2>
@@ -166,7 +163,6 @@ export default function Shipping() {
                 Currently, our physical material shipping is limited to India. For international clients:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
-                <li>Digital products and e-courses: Available worldwide with instant access</li>
                 <li>Virtual training: Available globally via video conferencing</li>
                 <li>Physical materials: Contact us for custom shipping arrangements</li>
                 <li>International shipping costs and customs duties (if any) are buyer's responsibility</li>

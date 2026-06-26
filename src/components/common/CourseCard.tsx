@@ -107,11 +107,7 @@ export function CourseCard({
                 </span>
               )}
             </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-sm text-muted-foreground">Starting at</span>
-                <p className="text-2xl font-bold text-foreground">{price}</p>
-              </div>
+            <div className="flex items-center justify-end">
               <Button variant={ctaVariant} asChild>
                 <Link to={ctaLink}>{ctaLabel}</Link>
               </Button>
@@ -155,19 +151,13 @@ export function CourseCard({
                 <p className="font-semibold text-foreground">{duration}</p>
               </div>
               <div className="bg-muted rounded-xl p-4">
-                <p className="text-xs text-muted-foreground mb-1">Price</p>
-                <p className="font-semibold text-foreground">{price}</p>
+                <p className="text-xs text-muted-foreground mb-1">Format</p>
+                <p className="font-semibold text-foreground">{type || "Live training"}</p>
               </div>
               {participants && (
                 <div className="bg-muted rounded-xl p-4">
                   <p className="text-xs text-muted-foreground mb-1">Participants</p>
                   <p className="font-semibold text-foreground text-sm">{participants}</p>
-                </div>
-              )}
-              {type && (
-                <div className="bg-muted rounded-xl p-4">
-                  <p className="text-xs text-muted-foreground mb-1">Format</p>
-                  <p className="font-semibold text-foreground text-sm">{type}</p>
                 </div>
               )}
             </div>

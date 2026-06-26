@@ -60,7 +60,7 @@ export default function Books() {
                 Books by <span className="text-gradient-gold">Grishma Sachdev</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
-                Explore published works on sales mastery, soft skills development, and corporate training — distilled from 12+ years of industry experience.
+                Explore published works on sales mastery, soft skills development, and corporate training — distilled from 14+ years of industry experience.
               </p>
             </div>
           </div>
@@ -82,8 +82,7 @@ export default function Books() {
                   <CardContent className="p-6">
                     <h3 className="text-lg font-bold text-foreground mb-2">{book.title}</h3>
                     <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{book.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xl font-bold text-primary">{book.price}</span>
+                    <div className="flex items-center justify-end">
                       <Button variant="navy" size="sm" asChild>
                         <a href="#">
                           <ShoppingCart className="w-4 h-4 mr-2" />

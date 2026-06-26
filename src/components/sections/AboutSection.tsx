@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import aboutPortrait from "@/assets/about-portrait.jpg";
 
 const highlights = [
-  { icon: BookOpen, value: "12+", label: "Years BFSI & Corporate" },
+  { icon: BookOpen, value: "14+", label: "Years BFSI & Corporate" },
   { icon: Award, value: "Certified", label: "Corporate Trainer" },
   { icon: Target, value: "Pan-India", label: "& Global Reach" },
 ];
@@ -63,7 +63,10 @@ export function AboutSection() {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed mb-6">
               <p>
-                A <strong className="text-foreground">Sales & Soft Skills Trainer</strong> with over <strong className="text-foreground">12 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
+                A <strong className="text-foreground">Sales Trainer & Mentor</strong> with <strong className="text-foreground">14 years of serving in the industry</strong> across BFSI and training. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
+              </p>
+              <p className="italic border-l-4 border-secondary pl-4 text-foreground">
+                "I struggled in sales because I had no one to guide me, so I became the guide I always wished I had."
               </p>
               <p>
                 I focus deeply on <strong className="text-foreground">people's behavior</strong>, <strong className="text-foreground">communication</strong>, and day-to-day workplace realities.
@@ -72,10 +75,10 @@ export function AboutSection() {
                 <strong className="text-foreground">Motherhood</strong> has taught me patience and simplicity, and I bring that same calm, structured approach into every training room to create meaningful, transformative learning experiences.
               </p>
               <p>
-                I started my career in 2013 in a profession that most people avoid—especially back then as a woman. Yes, I'm talking about <strong className="text-foreground">sales</strong>.
+                I started my career in 2012 in a profession that most people avoid—especially back then as a woman. Yes, I'm talking about <strong className="text-foreground">sales</strong>.
               </p>
               <p>
-                I began in the <strong className="text-foreground">BFSI (Banking, Financial Services, and Insurance)</strong> sector. It wasn't easy, but I worked hard, faced challenges, and grew from an officer-level role to a managerial position. Eventually, I landed a stable and respectable job as a functional trainer in a well-known company. Life was good—I was earning well, had earned respect, and everything felt smooth.
+                I began in the <strong className="text-foreground">BFSI (Banking, Financial Services, and Insurance)</strong> sector. In 2018 I transitioned into a training role, and in 2023 I founded GD Pro Academy to help others thrive in sales.
               </p>
               <p className="font-medium text-foreground">
                 But something still felt missing.
