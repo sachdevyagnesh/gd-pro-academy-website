@@ -201,7 +201,7 @@ export default function About() {
                     <h3 className="font-display text-2xl font-bold text-foreground">My Vision</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    To prepare as many people as possible to be market-ready, to make sales a career they are proud of, and to help them succeed without fearing targets or challenges.
+                    To build the most trusted platform for sales career growth.
                   </p>
                 </CardContent>
               </Card>
