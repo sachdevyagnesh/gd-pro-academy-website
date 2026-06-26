@@ -77,38 +77,37 @@ export function TestimonialsSection() {
         {/* Testimonials Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                variant="elevated"
-                className="w-[350px] shrink-0 group transition-all duration-300 hover:shadow-gold"
-              >
-                <CardContent className="p-6">
-                  {/* Quote icon */}
-                  <Quote className="w-8 h-8 text-secondary/30 mb-3" />
+            <Card
+              key={index}
+              variant="elevated"
+              className="group transition-all duration-300 hover:shadow-gold"
+            >
+              <CardContent className="p-6">
+                {/* Quote icon */}
+                <Quote className="w-8 h-8 text-secondary/30 mb-3" />
 
-                  {/* Content */}
-                  <p className="text-foreground leading-relaxed mb-4">
-                    "{testimonial.content}"
-                  </p>
+                {/* Content */}
+                <p className="text-foreground leading-relaxed mb-4">
+                  "{testimonial.content}"
+                </p>
 
-                  {/* Author */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                      <span className="text-primary-foreground font-semibold text-sm">
-                        {testimonial.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground text-sm">{testimonial.name}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {testimonial.role}, {testimonial.company}
-                      </p>
-                    </div>
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <span className="text-primary-foreground font-semibold text-sm">
+                      {testimonial.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                    </span>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <div>
+                    <p className="font-semibold text-foreground text-sm">{testimonial.name}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {testimonial.role}, {testimonial.company}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
