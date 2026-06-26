@@ -5,7 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, BookOpen, Users, Target, Lightbulb, Heart, CheckCircle, MapPin, Eye, Crosshair } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
-import aboutPortrait from "@/assets/about-portrait-new.jpg";
+import aboutPortraitAsset from "@/assets/about-portrait-pro.jpg.asset.json";
+import bookCoverAsset from "@/assets/book-cover-more-than-sales.jpg.asset.json";
+import bestsellerAsset from "@/assets/amazon-bestseller-rank.jpg.asset.json";
+const aboutPortrait = aboutPortraitAsset.url;
 
 const milestones = [
   { year: "2012", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
