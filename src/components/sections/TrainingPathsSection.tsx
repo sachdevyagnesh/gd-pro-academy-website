@@ -22,15 +22,15 @@ const trainingPaths = [
   {
     type: "individual",
     icon: User,
-    title: "Individual Training",
+    title: "Programs for Professionals",
     subtitle: "For Professionals",
-    description: "Accelerate your career with personalized coaching and self-paced courses tailored to your goals.",
+    description: "Accelerate your career with practical, structured training programs designed around your goals.",
     features: [
       { icon: MessageSquare, text: "Communication Excellence" },
       { icon: TrendingUp, text: "Sales Skills Coaching" },
       { icon: Target, text: "Career Advancement Coaching" },
     ],
-    cta: "Explore Individual Programs",
+    cta: "Explore Professional Programs",
     href: "/individual-training",
     accent: "bg-accent",
   },
