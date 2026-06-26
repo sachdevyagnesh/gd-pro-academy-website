@@ -250,8 +250,8 @@ serve(async (req) => {
     // Map trainingType to readable format
     const trainingTypeMap: Record<string, string> = {
       'corporate': 'Corporate Training',
-      'individual': 'Individual Training',
-      'e-course': 'E-Course',
+      'individual': 'Individual Programs',
+      'e-course': 'Individual Programs',
       'other': 'Other',
     };
 
