@@ -92,7 +92,7 @@ export default function Terms() {
                 (if applicable) are the client's responsibility unless otherwise agreed in writing.
               </p>
               <p className="text-muted-foreground mb-6">
-                <strong>For Individual Training:</strong> Session schedules are confirmed upon booking. Rescheduling 
+                <strong>For Professional Programs:</strong> Session schedules are confirmed upon booking. Rescheduling 
                 is permitted with 48 hours' notice. No-shows without prior notice will be considered as a completed session.
               </p>
 
