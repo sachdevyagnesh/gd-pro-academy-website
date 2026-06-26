@@ -239,7 +239,7 @@ export default function CorporateTraining() {
                   Why Choose Our Corporate Training?
                 </h2>
                 <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                  With 12+ years of experience in BFSI and corporate training, we understand what it takes to transform team performance. Our programs are designed for real-world impact.
+                  With 14+ years of experience in BFSI and corporate training, we understand what it takes to transform team performance. Our programs are designed for real-world impact.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {benefits.map((benefit) => (
