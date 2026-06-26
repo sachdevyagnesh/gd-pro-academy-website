@@ -60,7 +60,7 @@ export default function Books() {
                 Books by <span className="text-gradient-gold">Grishma Sachdev</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
-                Explore published works on sales mastery, soft skills development, and corporate training — distilled from 12+ years of industry experience.
+                Explore published works on sales mastery, soft skills development, and corporate training — distilled from 14+ years of industry experience.
               </p>
             </div>
           </div>
