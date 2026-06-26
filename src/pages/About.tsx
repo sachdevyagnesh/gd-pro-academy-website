@@ -187,7 +187,7 @@ export default function About() {
                     <h3 className="font-display text-2xl font-bold text-foreground">My Mission</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    To help people feel confident about working in sales. I believe everyone can excel in sales with the right training, mindset, and support.
+                    To help sales professionals improve performance, build visibility, and grow their careers through practical, experience-driven learning and mentorship.
                   </p>
                 </CardContent>
               </Card>
