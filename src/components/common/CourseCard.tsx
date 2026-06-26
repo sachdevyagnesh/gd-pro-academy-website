@@ -160,12 +160,6 @@ export function CourseCard({
                   <p className="font-semibold text-foreground text-sm">{participants}</p>
                 </div>
               )}
-              {type && (
-                <div className="bg-muted rounded-xl p-4">
-                  <p className="text-xs text-muted-foreground mb-1">Format</p>
-                  <p className="font-semibold text-foreground text-sm">{type}</p>
-                </div>
-              )}
             </div>
 
             {/* Target Audience */}
