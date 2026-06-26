@@ -291,7 +291,7 @@ export default function About() {
         </section>
 
         {/* Specializations */}
-        <section className="section-padding bg-muted">
+        <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <div className="accent-line mx-auto mb-6" />
