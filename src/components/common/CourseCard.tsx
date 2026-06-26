@@ -107,11 +107,7 @@ export function CourseCard({
                 </span>
               )}
             </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-sm text-muted-foreground">Starting at</span>
-                <p className="text-2xl font-bold text-foreground">{price}</p>
-              </div>
+            <div className="flex items-center justify-end">
               <Button variant={ctaVariant} asChild>
                 <Link to={ctaLink}>{ctaLabel}</Link>
               </Button>
