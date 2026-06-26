@@ -61,7 +61,7 @@ const whyChooseUs = [
   {
     icon: Users,
     title: "Expert Trainers",
-    description: "Industry veterans with 12+ years of hands-on experience"
+    description: "Industry veterans with 14+ years of hands-on experience"
   },
   {
     icon: TrendingUp,
