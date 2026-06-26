@@ -82,8 +82,7 @@ export default function Books() {
                   <CardContent className="p-6">
                     <h3 className="text-lg font-bold text-foreground mb-2">{book.title}</h3>
                     <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{book.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xl font-bold text-primary">{book.price}</span>
+                    <div className="flex items-center justify-end">
                       <Button variant="navy" size="sm" asChild>
                         <a href="#">
                           <ShoppingCart className="w-4 h-4 mr-2" />
