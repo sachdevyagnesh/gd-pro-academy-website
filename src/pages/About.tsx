@@ -8,8 +8,8 @@ import aboutHero from "@/assets/about-hero.jpg";
 import aboutPortrait from "@/assets/about-portrait-new.jpg";
 
 const milestones = [
-  { year: "2013", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
-  { year: "2019", title: "Training Role Started", description: "Transitioned into professional training" },
+  { year: "2012", title: "Career Started in BFSI", description: "Began journey in Banking, Financial Services & Insurance sector" },
+  { year: "2018", title: "Training Role Started", description: "Transitioned into professional training" },
   { year: "2023", title: "Founded GD Pro Academy", description: "To help professionals thrive in sales" },
   { year: "2026", title: "Today", description: "24,000+ training hours delivered globally" },
 ];
