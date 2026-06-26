@@ -271,8 +271,7 @@ export default function Contact() {
                     >
                       <option value="">Select training type</option>
                       <option value="corporate">Corporate Training</option>
-                      <option value="individual">Individual Training</option>
-                      <option value="e-course">E-Course</option>
+                      <option value="individual">Professional Programs</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
