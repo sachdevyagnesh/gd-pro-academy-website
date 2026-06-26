@@ -140,7 +140,7 @@ export function ProgramsSection() {
         {/* Individual Programs */}
         <div>
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-foreground">Individual Training</h3>
+            <h3 className="text-2xl font-bold text-foreground">Programs for Professionals</h3>
             <Button variant="ghost" asChild className="group">
               <Link to="/individual-training">
                 View All
