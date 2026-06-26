@@ -158,7 +158,7 @@ export default function CorporateTraining() {
                 <span className="text-gradient-gold">Performance</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 leading-relaxed">
-                Customized training programs designed to elevate your team's capabilities in sales, soft skills, and communication. Proven results with 12+ years of corporate experience.
+                Customized training programs designed to elevate your team's capabilities in sales, soft skills, and communication. Proven results with 14+ years of industry experience.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button variant="hero" size="lg" asChild>
