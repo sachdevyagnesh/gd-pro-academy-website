@@ -151,8 +151,8 @@ export function CourseCard({
                 <p className="font-semibold text-foreground">{duration}</p>
               </div>
               <div className="bg-muted rounded-xl p-4">
-                <p className="text-xs text-muted-foreground mb-1">Price</p>
-                <p className="font-semibold text-foreground">{price}</p>
+                <p className="text-xs text-muted-foreground mb-1">Format</p>
+                <p className="font-semibold text-foreground">{type || "Live training"}</p>
               </div>
               {participants && (
                 <div className="bg-muted rounded-xl p-4">
