@@ -29,14 +29,14 @@ export default function Refund() {
                 </p>
               </div>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. E-Courses and Digital Products</h2>
+              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. Program Bookings</h2>
               <p className="text-muted-foreground mb-4">
-                For self-paced online courses and digital learning materials:
+                For program bookings and registrations:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
-                <li><strong>Within 7 days of purchase:</strong> Full refund if less than 20% of course content has been accessed</li>
-                <li><strong>After 7 days or 20% content accessed:</strong> No refund, but you may transfer enrollment to another person (one-time only)</li>
-                <li><strong>Technical issues:</strong> If you experience technical problems preventing access, contact us within 48 hours for resolution or refund</li>
+                <li><strong>Within 7 days of booking:</strong> Full refund if the program has not yet started</li>
+                <li><strong>After program commencement:</strong> No refund, but you may transfer enrollment to another person (one-time only)</li>
+                <li><strong>Technical issues:</strong> If you experience technical problems preventing access to a virtual session, contact us within 48 hours for resolution or refund</li>
               </ul>
 
               <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">2. Corporate Training Programs</h2>
