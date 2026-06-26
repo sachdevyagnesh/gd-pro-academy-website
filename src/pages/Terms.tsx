@@ -25,7 +25,7 @@ export default function Terms() {
               <p className="text-muted-foreground mb-6">
                 Welcome to GD Pro Academy ("Company", "we", "our", "us"). These Terms and Conditions govern 
                 your use of our website located at gdproacademy.in and any related services, including 
-                training programs, e-courses, and consultations (collectively, the "Services"). By accessing 
+                training programs and consultations (collectively, the "Services"). By accessing 
                 or using our Services, you agree to be bound by these Terms. If you disagree with any part 
                 of these terms, you may not access our Services.
               </p>
@@ -34,8 +34,7 @@ export default function Terms() {
               <p className="text-muted-foreground mb-4">GD Pro Academy provides:</p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
                 <li>Corporate training programs (on-site and virtual)</li>
-                <li>Individual training and coaching sessions</li>
-                <li>Online e-courses and learning materials</li>
+                <li>Professional training programs and coaching sessions</li>
                 <li>Sales, communication, and soft skills training</li>
                 <li>Consultation services for organizations</li>
               </ul>
