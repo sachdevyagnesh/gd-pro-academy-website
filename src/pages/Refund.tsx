@@ -76,9 +76,9 @@ export default function Refund() {
                 at least 7 days in advance. Subsequent rescheduling requests may incur a 10% rescheduling fee.
               </p>
 
-              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. Individual Training & Coaching</h2>
+              <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. Professional Programs & Coaching</h2>
               <p className="text-muted-foreground mb-4">
-                For one-on-one training sessions and coaching programs:
+                For batch programs and one-on-one coaching:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
                 <li><strong>Before first session:</strong> Full refund minus ₹500 processing fee</li>
