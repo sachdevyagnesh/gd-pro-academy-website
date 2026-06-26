@@ -60,9 +60,8 @@ export default function Terms() {
                 Payment terms include:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground mb-6">
-                <li>Payment must be made in full before accessing e-courses</li>
                 <li>Corporate training: 50% advance, balance before program commencement</li>
-                <li>Individual training: Full payment required before first session</li>
+                <li>Professional programs: Full payment required before first session</li>
                 <li>All prices are inclusive of applicable GST as per Indian tax laws</li>
                 <li>Payments are accepted via UPI, net banking, credit/debit cards, and bank transfers</li>
               </ul>
