@@ -5,16 +5,21 @@ import { useEffect, useState } from "react";
 import heroBg from "@/assets/hero-bg-1.jpg";
 
 const metrics = [
-  { value: 14, suffix: "+", label: "Years Experience" },
+  { value: 14, suffix: "+", label: "Years Experience", showStatic: true },
   { value: 24000, suffix: "+", label: "Training Hours" },
   { value: 4500, suffix: "+", label: "Participants Trained" },
   { value: 192, suffix: "+", label: "Sessions Delivered" },
 ];
 
-function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
+function AnimatedNumber({ value, suffix, showStatic = false }: { value: number; suffix: string; showStatic?: boolean }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    if (showStatic) {
+      setCount(value);
+      return;
+    }
+
     const duration = 2000;
     const steps = 60;
     const increment = value / steps;
@@ -31,7 +36,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [value]);
+  }, [showStatic, value]);
 
   return (
     <span className="shimmer-text">
@@ -109,7 +114,7 @@ export function HeroSection() {
                 className="bg-primary-foreground/5 backdrop-blur-sm rounded-2xl p-6 border border-primary-foreground/10"
               >
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedNumber value={metric.value} suffix={metric.suffix} />
+                  <AnimatedNumber value={metric.value} suffix={metric.suffix} showStatic={metric.showStatic} />
                 </div>
                 <p className="text-primary-foreground/70 text-sm">{metric.label}</p>
               </div>
