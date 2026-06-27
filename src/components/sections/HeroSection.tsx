@@ -6,9 +6,9 @@ import heroBg from "@/assets/hero-bg-1.jpg";
 
 const metrics = [
   { value: 14, suffix: "+", label: "Years Experience", showStatic: true },
-  { value: 24000, suffix: "+", label: "Training Hours" },
-  { value: 4500, suffix: "+", label: "Participants Trained" },
-  { value: 192, suffix: "+", label: "Sessions Delivered" },
+  { value: 24000, suffix: "+", label: "Training Hours", showStatic: true },
+  { value: 4500, suffix: "+", label: "Participants Trained", showStatic: true },
+  { value: 192, suffix: "+", label: "Sessions Delivered", showStatic: true },
 ];
 
 function AnimatedNumber({ value, suffix, showStatic = false }: { value: number; suffix: string; showStatic?: boolean }) {
