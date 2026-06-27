@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import heroBg from "@/assets/hero-bg-1.jpg";
 
 const metrics = [
-  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 14, suffix: "+", label: "Years Experience" },
   { value: 24000, suffix: "+", label: "Training Hours" },
   { value: 4500, suffix: "+", label: "Participants Trained" },
   { value: 192, suffix: "+", label: "Sessions Delivered" },
