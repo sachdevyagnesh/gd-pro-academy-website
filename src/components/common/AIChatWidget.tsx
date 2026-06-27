@@ -17,7 +17,7 @@ export function AIChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! 👋 Welcome to GD Pro Academy. What brings you here today?",
+      content: "Tell me where you are in your sales journey, and I'll guide you.",
     },
   ]);
   const [input, setInput] = useState("");
