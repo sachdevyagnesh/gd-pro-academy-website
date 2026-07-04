@@ -12,8 +12,8 @@ const trainingPaths = [
     description: "Transform your team's performance with customized training programs designed for organizational success.",
     features: [
       { icon: TrendingUp, text: "Sales Excellence Training" },
-      { icon: MessageSquare, text: "Soft Skills & Communication" },
-      { icon: Users, text: "Campus to Corporate Programs" },
+      { icon: MessageSquare, text: "Soft Skills Development" },
+      { icon: Users, text: "Campus to Corporate Training" },
     ],
     cta: "Explore Corporate Programs",
     href: "/corporate-training",
@@ -27,8 +27,8 @@ const trainingPaths = [
     description: "Accelerate your career with practical, structured training programs designed around your goals.",
     features: [
       { icon: MessageSquare, text: "Communication Excellence" },
-      { icon: TrendingUp, text: "Sales Skills Coaching" },
-      { icon: Target, text: "Career Advancement Coaching" },
+      { icon: TrendingUp, text: "Sales Skills Training" },
+      { icon: Target, text: "Career Advancement Program" },
     ],
     cta: "Explore Professional Programs",
     href: "/individual-training",

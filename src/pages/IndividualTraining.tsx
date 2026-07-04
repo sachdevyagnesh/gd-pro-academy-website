@@ -36,7 +36,7 @@ const livePrograms = [
   {
     icon: TrendingUp,
     title: "Sales Skills Training",
-    description: "Group coaching to enhance your sales abilities and boost your career in sales.",
+    description: "Group coaching to enhance your sales abilities and boost your career in sales. Draws on BFSI case studies from Grishma's banking career.",
     features: [
       "Objection handling mastery",
       "Building client relationships",
@@ -64,7 +64,7 @@ const livePrograms = [
     features: [
       "Career goal setting",
       "Skill gap analysis",
-      "Interview preparation",
+      "Personal brand positioning",
       "Salary negotiation",
     ],
     duration: "1 Day",
@@ -160,6 +160,15 @@ export default function IndividualTraining() {
               </p>
             </div>
 
+            {/* Methodology strip */}
+            <div className="max-w-3xl mx-auto mb-12 text-center">
+              <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/30 text-foreground rounded-full px-5 py-2 text-sm font-medium">
+                <Target className="w-4 h-4 text-secondary" />
+                Every program follows the 30% Learning, 70% Doing approach.
+              </div>
+            </div>
+
+
             <div className="grid md:grid-cols-2 gap-6">
               {livePrograms.map((program) => (
                 <CourseCard
@@ -183,8 +192,24 @@ export default function IndividualTraining() {
               ))}
             </div>
 
+            {/* Assessment bridge banner */}
+            <div className="mt-10">
+              <Card className="max-w-3xl mx-auto bg-primary/5 border-primary/20">
+                <CardContent className="p-6 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                  <div className="flex-1">
+                    <h3 className="font-bold text-foreground mb-1">Not sure which program fits your goals?</h3>
+                    <p className="text-sm text-muted-foreground">Take our 2-minute assessment for a personalized recommendation.</p>
+                  </div>
+                  <Button variant="navy" asChild>
+                    <Link to="/assessment/individual">Start Assessment <ArrowRight className="w-4 h-4 ml-1" /></Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
             {/* 1-on-1 Note */}
             <div className="mt-12 text-center">
+
               <Card className="max-w-2xl mx-auto bg-primary/5 border-primary/20">
                 <CardContent className="p-6">
                   <Users className="w-10 h-10 text-primary mx-auto mb-3" />

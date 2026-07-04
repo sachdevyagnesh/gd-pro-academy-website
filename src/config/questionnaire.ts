@@ -151,8 +151,8 @@ export const corporateQuestionnaire: QuestionnaireConfig = {
       level: "low",
       title: "Foundational Training Recommended",
       description: "Your team would benefit from comprehensive foundational training to build core sales and communication skills.",
-      recommendation: "We recommend our Sales Excellence Foundation program combined with Communication Basics. This will establish strong fundamentals for your team.",
-      program: "Sales Excellence Foundation + Communication Basics",
+      recommendation: "We recommend our Sales Excellence Training combined with Soft Skills Development to establish strong fundamentals for your team.",
+      program: "Sales Excellence Training + Soft Skills Development",
     },
     {
       min: 4.1,
@@ -160,8 +160,8 @@ export const corporateQuestionnaire: QuestionnaireConfig = {
       level: "medium",
       title: "Intermediate Development Recommended",
       description: "Your team has good basics but needs focused development in specific areas to reach peak performance.",
-      recommendation: "We recommend our Advanced Sales Techniques or Team Building program to address specific skill gaps and elevate performance.",
-      program: "Advanced Sales Techniques / Team Building",
+      recommendation: "We recommend our Sales Excellence Training or Team Building & Communication program to address specific skill gaps and elevate performance.",
+      program: "Sales Excellence Training / Team Building & Communication",
     },
     {
       min: 7.1,
@@ -169,10 +169,11 @@ export const corporateQuestionnaire: QuestionnaireConfig = {
       level: "high",
       title: "Advanced Mastery Recommended",
       description: "Your team is performing well! Fine-tune their skills with advanced techniques and role-play based training.",
-      recommendation: "We recommend our Executive Sales Mastery or Strategic Leadership program with intensive role-play sessions.",
-      program: "Executive Sales Mastery / Strategic Leadership",
+      recommendation: "We recommend our Sales Excellence Training with intensive role-play sessions, complemented by Team Building & Communication.",
+      program: "Sales Excellence Training / Team Building & Communication",
     },
   ],
+
 };
 
 // Individual/Professional Questionnaire
@@ -321,17 +322,17 @@ export const individualQuestionnaire: QuestionnaireConfig = {
       level: "medium",
       title: "Skill Enhancement Recommended",
       description: "You have good fundamentals! Focus on specific areas to take your career to the next level.",
-      recommendation: "We recommend our Career Advancement Program or specialized batch training to address specific skill gaps.",
-      program: "Career Advancement Program / Batch Training",
+      recommendation: "We recommend our Career Advancement Program or Sales Skills Training to address specific skill gaps.",
+      program: "Career Advancement Program / Sales Skills Training",
     },
     {
       min: 7.1,
       max: 10,
       level: "high",
       title: "Advanced Development Recommended",
-      description: "You're performing well! Fine-tune your skills with advanced techniques and personalized coaching.",
-      recommendation: "We recommend 1-on-1 coaching or our Interview Preparation Workshop for targeted, advanced skill development.",
-      program: "1-on-1 Coaching / Interview Preparation Workshop",
+      description: "You're performing well! Fine-tune your skills with advanced techniques and targeted preparation.",
+      recommendation: "We recommend our Interview Preparation Workshop or Career Advancement Program for targeted, advanced skill development.",
+      program: "Interview Preparation Workshop / Career Advancement Program",
     },
   ],
 };
@@ -404,7 +405,7 @@ export const salesConfidenceTest: QuestionnaireConfig = {
       title: "Sales Confidence Needs Work",
       description: "Your sales confidence could use a significant boost. The good news? This is a skill that can be developed!",
       recommendation: "We recommend our Sales Skills Training program with intensive role-play sessions to build your confidence from the ground up.",
-      program: "Sales Skills Training (Batch Program)",
+      program: "Sales Skills Training",
     },
     {
       min: 51,
@@ -421,8 +422,8 @@ export const salesConfidenceTest: QuestionnaireConfig = {
       level: "high",
       title: "High Sales Confidence!",
       description: "Congratulations! You show strong sales confidence. Fine-tune your skills to become even more effective.",
-      recommendation: "Consider our 1-on-1 coaching for personalized advanced techniques and strategies.",
-      program: "1-on-1 Coaching Sessions",
+      recommendation: "Consider our Interview Preparation Workshop or Career Advancement Program for advanced techniques and strategies.",
+      program: "Interview Preparation Workshop / Career Advancement Program",
     },
   ],
 };

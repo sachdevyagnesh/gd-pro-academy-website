@@ -151,18 +151,6 @@ export function AssessmentResult({
               </Link>
             </Button>
 
-            {/* Sales Test Offer for undecided users */}
-            {showSalesTestOffer && !isSalesConfidenceTest && (
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="w-full gap-2"
-                onClick={onTakeSalesTest}
-              >
-                Still Undecided? Take Sales Confidence Test
-                <Target className="w-5 h-5" />
-              </Button>
-            )}
 
             {/* Free Roleplay Session for very low scorers on sales confidence */}
             {isSalesConfidenceTest && percentage < discountConfig.threshold && (

@@ -1,15 +1,39 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 
-const navLinks = [
+type NavLink =
+  | { name: string; href: string }
+  | {
+      name: string;
+      dropdown: true;
+      href: string;
+      items: { name: string; href: string }[];
+    };
+
+const navLinks: NavLink[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
+  {
+    name: "Services",
+    href: "/services",
+    dropdown: true,
+    items: [
+      { name: "All Services", href: "/services" },
+      { name: "For Corporates", href: "/corporate-training" },
+      { name: "For Professionals", href: "/individual-training" },
+    ],
+  },
   { name: "Testimonials", href: "/moments" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Books", href: "/books" },
@@ -70,20 +94,47 @@ export function Header() {
 
           {/* Desktop Navigation - Centered */}
           <nav className="hidden lg:flex items-center justify-center flex-1 gap-1 mx-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-                  isActive(link.href)
-                    ? "bg-white/20 text-white"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if ("dropdown" in link) {
+                const active = link.items.some((i) => isActive(i.href));
+                return (
+                  <DropdownMenu key={link.name}>
+                    <DropdownMenuTrigger
+                      className={cn(
+                        "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors outline-none",
+                        active
+                          ? "bg-white/20 text-white"
+                          : "text-white/90 hover:text-white hover:bg-white/10"
+                      )}
+                    >
+                      {link.name}
+                      <ChevronDown className="w-4 h-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="center" className="min-w-[200px]">
+                      {link.items.map((item) => (
+                        <DropdownMenuItem key={item.href} asChild>
+                          <Link to={item.href}>{item.name}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={cn(
+                    "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                    isActive(link.href)
+                      ? "bg-white/20 text-white"
+                      : "text-white/90 hover:text-white hover:bg-white/10"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* CTA & Phone Icon */}
@@ -150,19 +201,43 @@ export function Header() {
 
               {/* Menu Links */}
               <nav className="p-4 space-y-1 bg-background">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className={cn(
-                      "block px-4 py-3 rounded-lg font-medium transition-colors",
-                      isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
-                    )}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  if ("dropdown" in link) {
+                    return (
+                      <div key={link.name} className="space-y-1">
+                        <div className="px-4 pt-2 pb-1 text-xs uppercase tracking-wide text-muted-foreground">
+                          {link.name}
+                        </div>
+                        {link.items.map((item) => (
+                          <Link
+                            key={item.href}
+                            to={item.href}
+                            className={cn(
+                              "block px-4 py-2 rounded-lg font-medium transition-colors",
+                              isActive(item.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
+                            )}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    );
+                  }
+                  return (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className={cn(
+                        "block px-4 py-3 rounded-lg font-medium transition-colors",
+                        isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
+                      )}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
               </nav>
 
               {/* Menu Footer */}

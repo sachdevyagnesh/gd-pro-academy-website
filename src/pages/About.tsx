@@ -18,13 +18,16 @@ const milestones = [
 ];
 
 const specializations = [
-  "Sales Excellence & Negotiation",
+  "Sales Excellence Training",
   "Soft Skills Development",
-  "Communication Skills",
-  "Team Building & Collaboration",
-  "Campus to Corporate",
-  "Career Development",
+  "Campus to Corporate Training",
+  "Team Building & Communication",
+  "Communication Excellence",
+  "Sales Skills Training",
+  "Career Advancement Program",
+  "Interview Preparation Workshop",
 ];
+
 
 const philosophy = [
   {
