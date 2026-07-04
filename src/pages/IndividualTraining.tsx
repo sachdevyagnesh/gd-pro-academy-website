@@ -192,8 +192,24 @@ export default function IndividualTraining() {
               ))}
             </div>
 
+            {/* Assessment bridge banner */}
+            <div className="mt-10">
+              <Card className="max-w-3xl mx-auto bg-primary/5 border-primary/20">
+                <CardContent className="p-6 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                  <div className="flex-1">
+                    <h3 className="font-bold text-foreground mb-1">Not sure which program fits your goals?</h3>
+                    <p className="text-sm text-muted-foreground">Take our 2-minute assessment for a personalized recommendation.</p>
+                  </div>
+                  <Button variant="navy" asChild>
+                    <Link to="/assessment/individual">Start Assessment <ArrowRight className="w-4 h-4 ml-1" /></Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
             {/* 1-on-1 Note */}
             <div className="mt-12 text-center">
+
               <Card className="max-w-2xl mx-auto bg-primary/5 border-primary/20">
                 <CardContent className="p-6">
                   <Users className="w-10 h-10 text-primary mx-auto mb-3" />
