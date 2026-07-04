@@ -405,7 +405,7 @@ export const salesConfidenceTest: QuestionnaireConfig = {
       title: "Sales Confidence Needs Work",
       description: "Your sales confidence could use a significant boost. The good news? This is a skill that can be developed!",
       recommendation: "We recommend our Sales Skills Training program with intensive role-play sessions to build your confidence from the ground up.",
-      program: "Sales Skills Training (Batch Program)",
+      program: "Sales Skills Training",
     },
     {
       min: 51,
