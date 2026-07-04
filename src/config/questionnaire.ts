@@ -422,8 +422,8 @@ export const salesConfidenceTest: QuestionnaireConfig = {
       level: "high",
       title: "High Sales Confidence!",
       description: "Congratulations! You show strong sales confidence. Fine-tune your skills to become even more effective.",
-      recommendation: "Consider our 1-on-1 coaching for personalized advanced techniques and strategies.",
-      program: "1-on-1 Coaching Sessions",
+      recommendation: "Consider our Interview Preparation Workshop or Career Advancement Program for advanced techniques and strategies.",
+      program: "Interview Preparation Workshop / Career Advancement Program",
     },
   ],
 };
