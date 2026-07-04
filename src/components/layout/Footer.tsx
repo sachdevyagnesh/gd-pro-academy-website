@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Linkedin, Instagram } from "lucide-react";
-import logo from "@/assets/logo.png";
+
 
 const footerLinks = {
   services: [
@@ -12,11 +12,11 @@ const footerLinks = {
   company: [
     { name: "About Us", href: "/about" },
     { name: "Testimonials", href: "/moments" },
-    { name: "Gallery", href: "/gallery" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Books", href: "/books" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
+
   ],
   resources: [
     { name: "FAQs", href: "/contact#faq" },
@@ -35,12 +35,11 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-4 mb-6">
-              <img 
-                src={logo} 
-                alt="GD Pro Academy Logo" 
-                className="h-20 w-auto object-contain"
-              />
+              <span className="font-display font-bold text-white text-2xl md:text-3xl tracking-tight">
+                GD Pro Academy
+              </span>
             </Link>
+
             <p className="text-primary-foreground/70 mb-6 max-w-sm leading-relaxed">
               Empowering professionals and organizations with practical, result-driven training in sales, communication, and soft skills.
             </p>
@@ -124,7 +123,8 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-primary-foreground/70">
                 <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>Mumbai, Maharashtra, India</span>
+                <span>Thane, Maharashtra, India</span>
+
               </li>
             </ul>
           </div>
