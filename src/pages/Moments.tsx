@@ -43,13 +43,13 @@ const testimonials = [
     content: "Her sales mastery workshop helped our team close deals faster than ever! 40% increase in conversions.",
   },
   {
-    name: "Priya Sharma",
+    name: "Team Lead, Fintech Startup",
     role: "Team Lead",
     company: "Fintech Startup",
     content: "The communication training was game-changing. I'm now more confident in client presentations.",
   },
   {
-    name: "Rajesh Kumar",
+    name: "Sales Manager, Insurance Company",
     role: "Sales Manager",
     company: "Insurance Company",
     content: "Grishma's approach to sales training is unique. She makes complex concepts simple and actionable.",
