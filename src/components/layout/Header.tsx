@@ -115,8 +115,6 @@ export function Header() {
         </div>
       </div>
 
-      </div>
-
       {/* Mobile Menu - rendered in a portal to avoid stacking/scroll issues on mobile */}
       {isMounted &&
         isMobileMenuOpen &&
@@ -137,10 +135,10 @@ export function Header() {
             >
               {/* Menu Header */}
               <div className="flex items-center justify-between p-4 border-b bg-background">
-                <div className="flex items-center gap-3">
-                  <img src={logo} alt="GD Pro Academy Logo" className="h-10 w-auto object-contain" />
-                  <span className="font-display font-bold text-lg text-foreground">Menu</span>
-                </div>
+                <span className="font-display font-bold text-lg" style={{ color: "#1A2A5E" }}>
+                  GD Pro Academy
+                </span>
+
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 rounded-lg hover:bg-muted transition-colors"
