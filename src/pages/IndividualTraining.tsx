@@ -36,7 +36,7 @@ const livePrograms = [
   {
     icon: TrendingUp,
     title: "Sales Skills Training",
-    description: "Group coaching to enhance your sales abilities and boost your career in sales.",
+    description: "Group coaching to enhance your sales abilities and boost your career in sales. Draws on BFSI case studies from Grishma's banking career.",
     features: [
       "Objection handling mastery",
       "Building client relationships",
