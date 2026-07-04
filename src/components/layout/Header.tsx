@@ -12,10 +12,28 @@ import {
 import { cn } from "@/lib/utils";
 
 
-const navLinks = [
+type NavLink =
+  | { name: string; href: string }
+  | {
+      name: string;
+      dropdown: true;
+      href: string;
+      items: { name: string; href: string }[];
+    };
+
+const navLinks: NavLink[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
+  {
+    name: "Services",
+    href: "/services",
+    dropdown: true,
+    items: [
+      { name: "All Services", href: "/services" },
+      { name: "For Corporates", href: "/corporate-training" },
+      { name: "For Professionals", href: "/individual-training" },
+    ],
+  },
   { name: "Testimonials", href: "/moments" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Books", href: "/books" },
