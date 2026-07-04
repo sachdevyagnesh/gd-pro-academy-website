@@ -201,19 +201,43 @@ export function Header() {
 
               {/* Menu Links */}
               <nav className="p-4 space-y-1 bg-background">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className={cn(
-                      "block px-4 py-3 rounded-lg font-medium transition-colors",
-                      isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
-                    )}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  if ("dropdown" in link) {
+                    return (
+                      <div key={link.name} className="space-y-1">
+                        <div className="px-4 pt-2 pb-1 text-xs uppercase tracking-wide text-muted-foreground">
+                          {link.name}
+                        </div>
+                        {link.items.map((item) => (
+                          <Link
+                            key={item.href}
+                            to={item.href}
+                            className={cn(
+                              "block px-4 py-2 rounded-lg font-medium transition-colors",
+                              isActive(item.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
+                            )}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    );
+                  }
+                  return (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className={cn(
+                        "block px-4 py-3 rounded-lg font-medium transition-colors",
+                        isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
+                      )}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
               </nav>
 
               {/* Menu Footer */}
