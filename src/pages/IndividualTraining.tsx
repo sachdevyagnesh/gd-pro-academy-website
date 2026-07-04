@@ -64,7 +64,7 @@ const livePrograms = [
     features: [
       "Career goal setting",
       "Skill gap analysis",
-      "Interview preparation",
+      "Personal brand positioning",
       "Salary negotiation",
     ],
     duration: "1 Day",
