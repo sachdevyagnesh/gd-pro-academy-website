@@ -11,7 +11,7 @@ const programs = [
   {
     icon: TrendingUp,
     title: "Sales Excellence Training",
-    description: "Boost conversions and win rates with modern selling strategies. Master objection handling, closing techniques, and relationship building.",
+    description: "Boost conversions and win rates with modern selling strategies. Master objection handling, closing techniques, and relationship building. Includes BFSI case studies drawn from Grishma's 12+ years in banking.",
     features: [
       "Conversation starters & rapport building",
       "Objection handling mastery",
