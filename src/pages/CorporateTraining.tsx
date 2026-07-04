@@ -185,6 +185,15 @@ export default function CorporateTraining() {
               </p>
             </div>
 
+            {/* Methodology strip */}
+            <div className="max-w-3xl mx-auto mb-12 text-center">
+              <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/30 text-foreground rounded-full px-5 py-2 text-sm font-medium">
+                <Target className="w-4 h-4 text-secondary" />
+                Every program follows the 30% Learning, 70% Doing approach.
+              </div>
+            </div>
+
+
             <div className="grid lg:grid-cols-2 gap-8">
               {programs.map((program) => (
                 <CourseCard
