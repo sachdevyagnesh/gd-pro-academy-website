@@ -129,7 +129,7 @@ export default function Terms() {
                 In case of any dispute, the parties shall first attempt to resolve the matter through mutual 
                 discussion. If unresolved within 30 days, the dispute shall be referred to arbitration under 
                 the Arbitration and Conciliation Act, 1996. The arbitration shall be conducted in English, 
-                with the seat of arbitration in Mumbai, Maharashtra.
+                with the seat of arbitration in Thane, Maharashtra, India.
               </p>
 
               <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">14. Modifications to Terms</h2>

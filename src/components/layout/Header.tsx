@@ -1,17 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo.png";
+
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Testimonials", href: "/moments" },
-  { name: "Gallery", href: "/gallery" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Books", href: "/books" },
   { name: "Blog", href: "/blog" },
@@ -19,30 +18,14 @@ const navLinks = [
 ];
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const location = useLocation();
-  const logoRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Preload logo on mount
-  useEffect(() => {
-    const img = new window.Image();
-    img.src = logo;
-    logoRef.current = img;
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -73,28 +56,16 @@ export function Header() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-soft py-2"
-          : "bg-transparent py-4"
-      )}
+      className="fixed top-0 left-0 right-0 z-50 py-3"
+      style={{ backgroundColor: "#1A2A5E" }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Wordmark */}
           <Link to="/" className="flex items-center group flex-shrink-0">
-            <img 
-              src={logo} 
-              alt="GD Pro Academy Logo" 
-              loading="eager"
-              decoding="sync"
-              fetchPriority="high"
-              className={cn(
-                "w-auto object-contain transition-all duration-300",
-                isScrolled ? "h-12 md:h-14 lg:h-16" : "h-14 md:h-16 lg:h-20"
-              )}
-            />
+            <span className="font-display font-bold text-white text-xl md:text-2xl lg:text-3xl tracking-tight">
+              GD Pro Academy
+            </span>
           </Link>
 
           {/* Desktop Navigation - Centered */}
@@ -106,12 +77,8 @@ export function Header() {
                 className={cn(
                   "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive(link.href)
-                    ? isScrolled 
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-white/20 text-white"
-                    : isScrolled
-                      ? "text-foreground hover:bg-muted hover:text-primary"
-                      : "text-white/90 hover:text-white hover:bg-white/10"
+                    ? "bg-white/20 text-white"
+                    : "text-white/90 hover:text-white hover:bg-white/10"
                 )}
               >
                 {link.name}
@@ -123,17 +90,12 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:+918356837052"
-              className={cn(
-                "p-2 rounded-full transition-colors",
-                isScrolled 
-                  ? "text-foreground hover:bg-muted" 
-                  : "text-white hover:bg-white/10"
-              )}
+              className="p-2 rounded-full text-white hover:bg-white/10 transition-colors"
               aria-label="Call +91 8356 837052"
             >
               <Phone className="w-5 h-5" />
             </a>
-            <Button variant={isScrolled ? "navy" : "hero"} size="default" asChild>
+            <Button variant="hero" size="default" asChild>
               <Link to="/contact">Get in Touch</Link>
             </Button>
           </div>
@@ -145,9 +107,9 @@ export function Header() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className={cn("w-6 h-6", isScrolled ? "text-foreground" : "text-white")} />
+              <X className="w-6 h-6 text-white" />
             ) : (
-              <Menu className={cn("w-6 h-6", isScrolled ? "text-foreground" : "text-white")} />
+              <Menu className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
@@ -173,10 +135,10 @@ export function Header() {
             >
               {/* Menu Header */}
               <div className="flex items-center justify-between p-4 border-b bg-background">
-                <div className="flex items-center gap-3">
-                  <img src={logo} alt="GD Pro Academy Logo" className="h-10 w-auto object-contain" />
-                  <span className="font-display font-bold text-lg text-foreground">Menu</span>
-                </div>
+                <span className="font-display font-bold text-lg" style={{ color: "#1A2A5E" }}>
+                  GD Pro Academy
+                </span>
+
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 rounded-lg hover:bg-muted transition-colors"

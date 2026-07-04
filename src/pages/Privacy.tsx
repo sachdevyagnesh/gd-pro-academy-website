@@ -67,7 +67,7 @@ export default function Privacy() {
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>
               <p className="text-foreground font-medium">
-                Email: gdpro.academy@gmail.com<br />
+                Email: info@gdproacademy.in<br />
                 Phone: +91 8356 837052<br />
                 Location: Thane, Maharashtra, India
               </p>

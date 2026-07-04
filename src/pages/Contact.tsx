@@ -41,10 +41,11 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    value: "Mumbai, Maharashtra",
-    href: "#",
+    value: "Thane, Maharashtra, India",
+    href: "https://www.google.com/maps/search/?api=1&query=Thane%2C+Maharashtra%2C+India",
     description: "Pan-India & Global",
   },
+
 ];
 
 const faqs = [
