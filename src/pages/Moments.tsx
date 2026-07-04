@@ -1,8 +1,9 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote, Star, Play, MessageSquare } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import heroBg from "@/assets/hero-bg-3.jpg";
+
 
 const testimonials = [
   {
@@ -55,16 +56,8 @@ const testimonials = [
   },
 ];
 
-const feedbackImagePlaceholders = Array.from({ length: 8 }, (_, i) => ({
-  id: `feedback-${i + 1}`,
-  title: `Client Feedback ${i + 1}`,
-}));
 
-const videoPlaceholders = Array.from({ length: 4 }, (_, i) => ({
-  id: `video-${i + 1}`,
-  title: `Video Testimonial ${i + 1}`,
-  client: `Client ${i + 1}`,
-}));
+
 
 export default function Moments() {
   return (
