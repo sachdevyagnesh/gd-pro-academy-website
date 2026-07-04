@@ -90,94 +90,30 @@ export default function Moments() {
           </div>
         </section>
 
-
-
-
-        {/* Feedback Images */}
-        <section className="section-padding bg-muted">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-secondary/10 rounded-full px-4 py-2 mb-4">
-                <MessageSquare className="w-4 h-4 text-secondary" />
-                <span className="text-secondary font-medium text-sm">Visual Feedback</span>
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Feedback Screenshots
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Screenshots of actual feedback received from our training participants
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-              {feedbackImagePlaceholders.map((item) => (
-                <Card 
-                  key={item.id} 
-                  className="group overflow-hidden hover:shadow-elevated transition-all cursor-pointer"
-                >
-                  <div className="aspect-[4/5] bg-gradient-to-br from-secondary/10 to-accent/10 flex flex-col items-center justify-center relative p-4">
-                    <MessageSquare className="w-10 h-10 text-secondary/30 mb-2 group-hover:scale-110 transition-transform" />
-                    <span className="text-xs text-muted-foreground text-center">
-                      Upload feedback screenshot
-                    </span>
-                    <span className="absolute bottom-2 right-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded">
-                      Placeholder
-                    </span>
-                  </div>
-                  <CardContent className="p-3">
-                    <p className="text-sm font-medium text-foreground text-center">{item.title}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Video Testimonials */}
+        {/* Testimonials Grid */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-2 mb-4">
-                <Play className="w-4 h-4 text-accent" />
-                <span className="text-accent font-medium text-sm">Video Reviews</span>
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Video Testimonials
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Watch our clients share their training experiences in their own words
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              {videoPlaceholders.map((item) => (
-                <Card 
-                  key={item.id} 
-                  className="group overflow-hidden hover:shadow-elevated transition-all cursor-pointer"
-                >
-                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex flex-col items-center justify-center relative">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                      <Play className="w-8 h-8 text-primary ml-1" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {testimonials.map((t) => (
+                <Card key={t.name} className="h-full hover:shadow-elevated transition-shadow">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <Quote className="w-8 h-8 text-secondary mb-4" />
+                    <p className="text-foreground leading-relaxed mb-6 flex-1">
+                      "{t.content}"
+                    </p>
+                    <div>
+                      <p className="font-semibold text-foreground">{t.name}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {t.role} · {t.company}
+                      </p>
                     </div>
-                    <span className="absolute bottom-2 right-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded">
-                      Placeholder
-                    </span>
-                  </div>
-                  <CardContent className="p-4">
-                    <p className="font-semibold text-foreground text-center">{item.title}</p>
-                    <p className="text-sm text-muted-foreground text-center">{item.client}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
-
-            <div className="mt-8 text-center">
-              <p className="text-sm text-muted-foreground">
-                Video testimonial slots can be expanded by adding more items to the videoPlaceholders array
-              </p>
-            </div>
           </div>
         </section>
+
 
         {/* CTA */}
         <section className="py-12 bg-primary">
