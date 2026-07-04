@@ -151,8 +151,8 @@ export const corporateQuestionnaire: QuestionnaireConfig = {
       level: "low",
       title: "Foundational Training Recommended",
       description: "Your team would benefit from comprehensive foundational training to build core sales and communication skills.",
-      recommendation: "We recommend our Sales Excellence Foundation program combined with Communication Basics. This will establish strong fundamentals for your team.",
-      program: "Sales Excellence Foundation + Communication Basics",
+      recommendation: "We recommend our Sales Excellence Training combined with Soft Skills Development to establish strong fundamentals for your team.",
+      program: "Sales Excellence Training + Soft Skills Development",
     },
     {
       min: 4.1,
@@ -160,8 +160,8 @@ export const corporateQuestionnaire: QuestionnaireConfig = {
       level: "medium",
       title: "Intermediate Development Recommended",
       description: "Your team has good basics but needs focused development in specific areas to reach peak performance.",
-      recommendation: "We recommend our Advanced Sales Techniques or Team Building program to address specific skill gaps and elevate performance.",
-      program: "Advanced Sales Techniques / Team Building",
+      recommendation: "We recommend our Sales Excellence Training or Team Building & Communication program to address specific skill gaps and elevate performance.",
+      program: "Sales Excellence Training / Team Building & Communication",
     },
     {
       min: 7.1,
@@ -169,10 +169,11 @@ export const corporateQuestionnaire: QuestionnaireConfig = {
       level: "high",
       title: "Advanced Mastery Recommended",
       description: "Your team is performing well! Fine-tune their skills with advanced techniques and role-play based training.",
-      recommendation: "We recommend our Executive Sales Mastery or Strategic Leadership program with intensive role-play sessions.",
-      program: "Executive Sales Mastery / Strategic Leadership",
+      recommendation: "We recommend our Sales Excellence Training with intensive role-play sessions, complemented by Team Building & Communication.",
+      program: "Sales Excellence Training / Team Building & Communication",
     },
   ],
+
 };
 
 // Individual/Professional Questionnaire
