@@ -218,8 +218,24 @@ export default function CorporateTraining() {
               ))}
             </div>
 
+            {/* Assessment bridge banner */}
+            <div className="mt-10">
+              <Card className="max-w-3xl mx-auto bg-primary/5 border-primary/20">
+                <CardContent className="p-6 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                  <div className="flex-1">
+                    <h3 className="font-bold text-foreground mb-1">Not sure which program fits your goals?</h3>
+                    <p className="text-sm text-muted-foreground">Take our 2-minute assessment for a personalized recommendation.</p>
+                  </div>
+                  <Button variant="navy" asChild>
+                    <Link to="/assessment/corporate">Start Assessment <ArrowRight className="w-4 h-4 ml-1" /></Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
             {/* Other Courses Available */}
             <div className="mt-12 text-center">
+
               <Card className="max-w-2xl mx-auto bg-muted/50 border-dashed">
                 <CardContent className="p-8">
                   <Briefcase className="w-12 h-12 text-secondary mx-auto mb-4" />
