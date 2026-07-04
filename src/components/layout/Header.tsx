@@ -11,7 +11,6 @@ const navLinks = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Testimonials", href: "/moments" },
-  { name: "Gallery", href: "/gallery" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Books", href: "/books" },
   { name: "Blog", href: "/blog" },
@@ -19,22 +18,14 @@ const navLinks = [
 ];
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const location = useLocation();
-  const logoRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Preload logo on mount
-  useEffect(() => {
-    const img = new window.Image();
-    img.src = logo;
-    logoRef.current = img;
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
