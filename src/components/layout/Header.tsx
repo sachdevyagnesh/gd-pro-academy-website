@@ -94,20 +94,47 @@ export function Header() {
 
           {/* Desktop Navigation - Centered */}
           <nav className="hidden lg:flex items-center justify-center flex-1 gap-1 mx-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-                  isActive(link.href)
-                    ? "bg-white/20 text-white"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if ("dropdown" in link) {
+                const active = link.items.some((i) => isActive(i.href));
+                return (
+                  <DropdownMenu key={link.name}>
+                    <DropdownMenuTrigger
+                      className={cn(
+                        "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors outline-none",
+                        active
+                          ? "bg-white/20 text-white"
+                          : "text-white/90 hover:text-white hover:bg-white/10"
+                      )}
+                    >
+                      {link.name}
+                      <ChevronDown className="w-4 h-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="center" className="min-w-[200px]">
+                      {link.items.map((item) => (
+                        <DropdownMenuItem key={item.href} asChild>
+                          <Link to={item.href}>{item.name}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={cn(
+                    "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                    isActive(link.href)
+                      ? "bg-white/20 text-white"
+                      : "text-white/90 hover:text-white hover:bg-white/10"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* CTA & Phone Icon */}
