@@ -13,9 +13,11 @@ import {
   corporateQuestionnaire, 
   individualQuestionnaire, 
   salesConfidenceTest,
+  pickRecommendedProgram,
   ScoreRange 
 } from "@/config/questionnaire";
 import { downloadPDF } from "@/lib/pdfGenerator";
+
 import { toast } from "sonner";
 import heroBg from "@/assets/hero-bg-2.jpg";
 
