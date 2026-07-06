@@ -164,9 +164,10 @@ export default function Assessment() {
       maxScore: testConfig.id === "sales-confidence" ? "100%" : "10",
       result: result.range?.title || "",
       recommendation: result.range?.recommendation || "",
-      program: result.range?.program || "",
+      program: recommendedProgram || result.range?.program || "",
     };
   };
+
 
 
   return (
