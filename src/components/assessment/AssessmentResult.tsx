@@ -25,7 +25,9 @@ interface AssessmentResultProps {
   onEmailPDF?: () => void;
   onTakeSalesTest?: () => void;
   showSalesTestOffer?: boolean;
+  programOverride?: string;
 }
+
 
 export function AssessmentResult({
   score,
