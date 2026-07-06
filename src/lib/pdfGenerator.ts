@@ -75,9 +75,14 @@ export const generateAssessmentPDF = async (content: PDFContent): Promise<Blob> 
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...lightGray);
-  doc.text('Professional Skills Assessment Report', margin + 38, yPos + 22);
+  doc.text(
+    content.reportSubtitle || 'Professional Skills Assessment Report',
+    margin + 38,
+    yPos + 22,
+  );
 
   yPos = 65;
+
 
   doc.setDrawColor(...goldColor);
   doc.setLineWidth(0.5);
