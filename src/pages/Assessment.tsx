@@ -152,7 +152,7 @@ export default function Assessment() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-12 relative overflow-hidden">
+        <section data-hero className="pt-32 pb-12 relative overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${heroBg})` }}
