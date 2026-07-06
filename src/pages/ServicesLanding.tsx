@@ -2,9 +2,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, User, ArrowRight, CheckCircle, Award, Target, Users, TrendingUp } from "lucide-react";
+import { Building2, User, ArrowRight, CheckCircle, Award, Target, Users, TrendingUp, GraduationCap } from "lucide-react";
 import corporateHeroBg from "@/assets/corporate-training-hero.jpg";
 import individualHeroBg from "@/assets/individual-training-hero.jpg";
+
 
 const serviceOptions = [
   {
