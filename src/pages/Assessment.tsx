@@ -344,7 +344,9 @@ export default function Assessment() {
                 onEmailPDF={handleEmailPDF}
                 onTakeSalesTest={handleTakeSalesTest}
                 showSalesTestOffer={type === "individual"}
+                programOverride={recommendedProgram}
               />
+
             )}
 
             {step === "sales-test" && (
