@@ -39,7 +39,9 @@ export function AssessmentResult({
   onEmailPDF,
   onTakeSalesTest,
   showSalesTestOffer = false,
+  programOverride,
 }: AssessmentResultProps) {
+
   const isSalesConfidenceTest = testType === "sales-confidence";
   const showDiscount = isSalesConfidenceTest && discountConfig.enabled;
 
