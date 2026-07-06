@@ -251,6 +251,18 @@ export default function About() {
                 <p className="text-muted-foreground leading-relaxed mb-5">
                   My first book captures the real, untold side of a sales career — purpose, impact, and growth. It reached <strong className="text-foreground">#1 in its category on Amazon Kindle</strong>, validating a story that thousands of sales professionals quietly live every day.
                 </p>
+                <div className="mb-5">
+                  <Button variant="gold" size="lg" asChild>
+                    {/* TODO: ADD REAL AMAZON ASIN LINK HERE */}
+                    <a
+                      href="https://www.amazon.in/dp/B0DXXXXXXX"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buy on Amazon Kindle
+                    </a>
+                  </Button>
+                </div>
                 <div className="rounded-xl overflow-hidden border border-border shadow-soft">
                   <img
                     src={bestsellerAsset.url}
@@ -259,6 +271,7 @@ export default function About() {
                     loading="lazy"
                   />
                 </div>
+
               </div>
             </div>
           </div>
