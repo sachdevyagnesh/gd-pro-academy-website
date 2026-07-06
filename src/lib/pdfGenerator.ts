@@ -12,7 +12,10 @@ interface PDFContent {
   description: string;
   recommendation: string;
   program: string;
+  reportSubtitle?: string; // e.g. "Corporate Training Needs Assessment Report"
+  nextStepsLine?: string;  // e.g. "Ready to build your team's skills? Contact us to schedule your program:"
 }
+
 
 // Convert image to base64
 const getBase64FromUrl = async (url: string): Promise<string> => {
