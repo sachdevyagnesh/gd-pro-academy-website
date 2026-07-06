@@ -123,8 +123,9 @@ export default function About() {
                   Hi, I'm Grishma Sachdev
                 </h2>
                 <p className="text-secondary font-semibold mb-4">
-                  Sales Trainer & Mentor with 14 years of serving in the industry.
+                  Sales Performance & Career Growth Expert | Certified Trainer | Ex-Banker | Author | Creator of the LIR Methodology.
                 </p>
+
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
                     A <strong className="text-foreground">Sales Trainer & Mentor</strong> with <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
