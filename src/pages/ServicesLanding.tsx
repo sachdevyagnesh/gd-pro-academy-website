@@ -2,9 +2,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, User, ArrowRight, CheckCircle, Award, Target, Users, TrendingUp } from "lucide-react";
+import { Building2, User, ArrowRight, CheckCircle, Award, Target, Users, TrendingUp, GraduationCap } from "lucide-react";
 import corporateHeroBg from "@/assets/corporate-training-hero.jpg";
 import individualHeroBg from "@/assets/individual-training-hero.jpg";
+
 
 const serviceOptions = [
   {
@@ -45,7 +46,27 @@ const serviceOptions = [
     iconBg: "bg-primary",
     iconColor: "text-primary-foreground",
   },
+  {
+    type: "institute",
+    icon: GraduationCap,
+    title: "For Educational Institutes",
+    subtitle: "Campus to Corporate Programs",
+    description: "Prepare your students for corporate life with our Campus to Corporate programs. Improve placement rates and graduate confidence.",
+    features: [
+      "Corporate etiquette & workplace readiness",
+      "Interview preparation and mock rounds",
+      "Communication and presentation skills",
+      "TPO-friendly delivery on campus",
+    ],
+    cta: "Explore Campus Programs",
+    href: "/corporate-training#campus-to-corporate",
+    bgImage: corporateHeroBg,
+    bgColor: "from-primary/90 to-primary/70",
+    iconBg: "bg-secondary",
+    iconColor: "text-secondary-foreground",
+  },
 ];
+
 
 const whyChooseUs = [
   {

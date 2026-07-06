@@ -17,9 +17,11 @@ export function AIChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Tell me where you are in your sales journey, and I'll guide you.",
+      content:
+        "Hi! Are you looking for training for:\n[A] your company team\n[B] your own sales career\n[C] your college/institution?",
     },
   ]);
+
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -95,6 +97,8 @@ export function AIChatWidget() {
     }
   }, []);
 
+  const [leadPromptShown, setLeadPromptShown] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
@@ -107,18 +111,32 @@ export function AIChatWidget() {
 
     try {
       await streamChat(updatedMessages.filter(m => m.role === "user" || messages.indexOf(m) > 0));
+      // After 2 user messages, once, inject a soft lead-capture prompt.
+      const userMsgCount = updatedMessages.filter(m => m.role === "user").length;
+      if (!leadPromptShown && userMsgCount >= 2) {
+        setLeadPromptShown(true);
+        setMessages(prev => [
+          ...prev,
+          {
+            role: "assistant",
+            content:
+              "To give you the most accurate recommendation, may I get your name and email so Grishma can send you a personalised program suggestion?\n\nNo worries — you can also reach us directly on WhatsApp: +91 8356 837052.",
+          },
+        ]);
+      }
     } catch (error) {
       setMessages(prev => [
         ...prev,
-        { 
-          role: "assistant", 
-          content: error instanceof Error ? error.message : "Sorry, I encountered an error. Please try again." 
+        {
+          role: "assistant",
+          content: error instanceof Error ? error.message : "Sorry, I encountered an error. Please try again."
         },
       ]);
     } finally {
       setIsLoading(false);
     }
   };
+
 
   return (
     <>

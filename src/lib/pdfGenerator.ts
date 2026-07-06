@@ -12,7 +12,10 @@ interface PDFContent {
   description: string;
   recommendation: string;
   program: string;
+  reportSubtitle?: string; // e.g. "Corporate Training Needs Assessment Report"
+  nextStepsLine?: string;  // e.g. "Ready to build your team's skills? Contact us to schedule your program:"
 }
+
 
 // Convert image to base64
 const getBase64FromUrl = async (url: string): Promise<string> => {
@@ -72,9 +75,14 @@ export const generateAssessmentPDF = async (content: PDFContent): Promise<Blob> 
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...lightGray);
-  doc.text('Professional Skills Assessment Report', margin + 38, yPos + 22);
+  doc.text(
+    content.reportSubtitle || 'Professional Skills Assessment Report',
+    margin + 38,
+    yPos + 22,
+  );
 
   yPos = 65;
+
 
   doc.setDrawColor(...goldColor);
   doc.setLineWidth(0.5);
@@ -187,8 +195,9 @@ export const generateAssessmentPDF = async (content: PDFContent): Promise<Blob> 
   yPos += recBoxHeight + 12;
 
   // === NEXT STEPS SECTION ===
+  const nextStepsHeight = 52;
   doc.setFillColor(248, 249, 250);
-  doc.roundedRect(margin, yPos, contentWidth, 42, 4, 4, 'F');
+  doc.roundedRect(margin, yPos, contentWidth, nextStepsHeight, 4, 4, 'F');
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
@@ -198,11 +207,24 @@ export const generateAssessmentPDF = async (content: PDFContent): Promise<Blob> 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
   doc.setTextColor(...textColor);
-  doc.text('Ready to enhance your skills? Contact us to enroll:', margin + 10, yPos + 23);
-  
+  doc.text(
+    content.nextStepsLine || 'Ready to enhance your skills? Contact us to enroll:',
+    margin + 10,
+    yPos + 23,
+  );
+
   doc.setFont('helvetica', 'bold');
-  doc.text('Email: info@gdproacademy.in', margin + 10, yPos + 34);
-  doc.text('Phone: +91 8356 837052', margin + 80, yPos + 34);
+  doc.text('Phone: +91 8356 837052', margin + 10, yPos + 34);
+  doc.text('Email: info@gdproacademy.in', margin + 10, yPos + 44);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...primaryColor);
+  doc.textWithLink(
+    'WhatsApp: wa.me/918356837052',
+    margin + 90,
+    yPos + 34,
+    { url: 'https://wa.me/918356837052' },
+  );
+
 
   // === FOOTER ===
   doc.setDrawColor(...goldColor);

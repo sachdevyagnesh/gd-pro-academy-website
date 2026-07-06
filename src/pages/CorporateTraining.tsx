@@ -11,7 +11,7 @@ const programs = [
   {
     icon: TrendingUp,
     title: "Sales Excellence Training",
-    description: "Boost conversions and win rates with modern selling strategies. Master objection handling, closing techniques, and relationship building. Includes BFSI case studies drawn from Grishma's 12+ years in banking.",
+    description: "Boost conversions and win rates with modern selling strategies. Master objection handling, closing techniques, and relationship building. Includes real BFSI case studies drawn from Grishma's own banking sales career.",
     features: [
       "Conversation starters & rapport building",
       "Objection handling mastery",
@@ -23,7 +23,8 @@ const programs = [
     duration: "2 Days",
     price: "₹17,999",
     participants: "10-30 participants",
-    popular: true,
+    popular: false,
+
     // Learn More details
     targetAudience: "Sales teams, business development executives, account managers, and sales managers looking to improve conversion rates.",
     learningOutcomes: [
@@ -138,7 +139,7 @@ export default function CorporateTraining() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 relative overflow-hidden">
+        <section data-hero className="pt-32 pb-20 relative overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${heroBg})` }}

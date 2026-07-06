@@ -58,7 +58,7 @@ export default function About() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-28 pb-16 relative overflow-hidden">
+        <section data-hero className="pt-28 pb-16 relative overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${aboutHero})` }}
@@ -123,8 +123,9 @@ export default function About() {
                   Hi, I'm Grishma Sachdev
                 </h2>
                 <p className="text-secondary font-semibold mb-4">
-                  Sales Trainer & Mentor with 14 years of serving in the industry.
+                  Sales Performance & Career Growth Expert | Certified Trainer | Ex-Banker | Author | Creator of the LIR Methodology.
                 </p>
+
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
                     A <strong className="text-foreground">Sales Trainer & Mentor</strong> with <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
@@ -215,7 +216,22 @@ export default function About() {
           </div>
         </section>
 
-        {/* From Sales to Storytelling */}
+
+        {/* Brand promise + mid-page CTA */}
+        <section className="py-10 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-lg md:text-xl italic text-foreground mb-6">
+                "One promise, one outcome: <span className="text-secondary font-semibold">360° Sales Career Transformation</span> for every professional I work with."
+              </p>
+              <Button variant="navy" size="lg" asChild>
+                <Link to="/contact">Book Free Consultation</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10">
@@ -250,6 +266,18 @@ export default function About() {
                 <p className="text-muted-foreground leading-relaxed mb-5">
                   My first book captures the real, untold side of a sales career — purpose, impact, and growth. It reached <strong className="text-foreground">#1 in its category on Amazon Kindle</strong>, validating a story that thousands of sales professionals quietly live every day.
                 </p>
+                <div className="mb-5">
+                  <Button variant="gold" size="lg" asChild>
+                    {/* TODO: ADD REAL AMAZON ASIN LINK HERE */}
+                    <a
+                      href="https://www.amazon.in/dp/B0DXXXXXXX"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buy on Amazon Kindle
+                    </a>
+                  </Button>
+                </div>
                 <div className="rounded-xl overflow-hidden border border-border shadow-soft">
                   <img
                     src={bestsellerAsset.url}
@@ -258,6 +286,7 @@ export default function About() {
                     loading="lazy"
                   />
                 </div>
+
               </div>
             </div>
           </div>
@@ -290,8 +319,36 @@ export default function About() {
                 </Card>
               ))}
             </div>
+
+            {/* GROWTH Framework */}
+            <div className="max-w-5xl mx-auto mt-14">
+              <div className="text-center mb-8">
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+                  The <span className="text-secondary">GROWTH Framework&trade;</span>
+                </h3>
+                <p className="text-muted-foreground">Six anchors behind every program I deliver.</p>
+              </div>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  { letter: "G", label: "Gain Confidence" },
+                  { letter: "R", label: "Read Customer Needs" },
+                  { letter: "O", label: "Overcome Objections" },
+                  { letter: "W", label: "Win More Deals" },
+                  { letter: "T", label: "Track Performance" },
+                  { letter: "H", label: "Highlight Your Value" },
+                ].map((g) => (
+                  <div key={g.letter} className="flex items-center gap-4 p-4 bg-background rounded-xl border border-border">
+                    <div className="w-12 h-12 rounded-lg bg-primary text-primary-foreground font-display font-bold text-xl flex items-center justify-center shrink-0">
+                      {g.letter}
+                    </div>
+                    <span className="font-semibold text-foreground">{g.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
+
 
         {/* Specializations */}
         <section className="section-padding bg-background">

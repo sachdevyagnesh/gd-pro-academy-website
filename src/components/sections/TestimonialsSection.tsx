@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote } from "lucide-react";
-import { useRef } from "react";
+import { Quote, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+
 const testimonials = [
   {
     name: "Corporate L&D Manager",
@@ -13,6 +15,12 @@ const testimonials = [
     role: "HR Head",
     company: "Manufacturing Company",
     content: "Grishma's training boosted our sales team's confidence and results. We booked her again without hesitation!",
+  },
+  {
+    name: "BFSI Training Head",
+    role: "Training Head",
+    company: "Banking Institution",
+    content: "Her sales mastery workshop helped our team close deals faster than ever! 40% increase in conversions.",
   },
   {
     name: "Retail Operations Head",
@@ -33,12 +41,6 @@ const testimonials = [
     content: "Practical, engaging, and impactful – our employees loved her sessions! Communication improved across teams.",
   },
   {
-    name: "BFSI Training Head",
-    role: "Training Head",
-    company: "Banking Institution",
-    content: "Her sales mastery workshop helped our team close deals faster than ever! 40% increase in conversions.",
-  },
-  {
     name: "Team Lead, Fintech Startup",
     role: "Team Lead",
     company: "Fintech Startup",
@@ -52,18 +54,20 @@ const testimonials = [
   },
 ];
 
+interface Props {
+  limit?: number;
+  showReadAll?: boolean;
+}
 
-export function TestimonialsSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+export function TestimonialsSection({ limit, showReadAll }: Props = {}) {
+  const list = typeof limit === "number" ? testimonials.slice(0, limit) : testimonials;
 
   return (
     <section className="section-padding bg-background relative overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <div className="accent-line mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -74,24 +78,18 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
+          {list.map((testimonial, index) => (
             <Card
               key={index}
               variant="elevated"
               className="group transition-all duration-300 hover:shadow-gold"
             >
               <CardContent className="p-6">
-                {/* Quote icon */}
                 <Quote className="w-8 h-8 text-secondary/30 mb-3" />
-
-                {/* Content */}
                 <p className="text-foreground leading-relaxed mb-4">
                   "{testimonial.content}"
                 </p>
-
-                {/* Author */}
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                     <span className="text-primary-foreground font-semibold text-sm">
@@ -109,6 +107,17 @@ export function TestimonialsSection() {
             </Card>
           ))}
         </div>
+
+        {showReadAll && (
+          <div className="text-center mt-10">
+            <Button variant="navy" asChild>
+              <Link to="/testimonials">
+                Read All Success Stories
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

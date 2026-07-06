@@ -113,7 +113,7 @@ export default function IndividualTraining() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 relative overflow-hidden">
+        <section data-hero className="pt-32 pb-20 relative overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${heroBg})` }}
@@ -216,14 +216,18 @@ export default function IndividualTraining() {
                   <h3 className="text-lg font-bold text-foreground mb-2">
                     Need 1-on-1 Personalized Coaching?
                   </h3>
-                  <p className="text-muted-foreground mb-4 text-sm">
+                  <p className="text-muted-foreground mb-3 text-sm">
                     For individual attention and customized coaching sessions tailored specifically to your needs, please reach out to us directly.
+                  </p>
+                  <p className="text-sm text-foreground mb-4">
+                    Every 1-on-1 engagement follows the <strong className="text-secondary">LIR Methodology&trade; (Learn, Implement, Reflect)</strong> — a coaching cycle designed to turn insight into lasting behaviour change.
                   </p>
                   <Button variant="navy" asChild>
                     <Link to="/contact">Contact for 1-on-1 Coaching</Link>
                   </Button>
                 </CardContent>
               </Card>
+
             </div>
           </div>
         </section>

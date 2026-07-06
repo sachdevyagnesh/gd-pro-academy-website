@@ -463,3 +463,82 @@ export function calculateScore(
     range,
   };
 }
+
+// Canonical program list (do not add anything outside this set)
+export const CANONICAL_PROGRAMS = [
+  "Sales Excellence Training",
+  "Soft Skills Development",
+  "Campus to Corporate Training",
+  "Team Building & Communication",
+  "Communication Excellence",
+  "Sales Skills Training",
+  "Career Advancement Program",
+  "Interview Preparation Workshop",
+] as const;
+
+// Map each question id -> the single canonical program that addresses that topic.
+export const questionProgramMap: Record<string, string> = {
+  // Corporate
+  c1: "Sales Excellence Training",           // objection handling
+  c2: "Soft Skills Development",             // communication in meetings
+  c3: "Sales Excellence Training",           // closing deals
+  c4: "Team Building & Communication",       // cross-dept collaboration
+  c5: "Soft Skills Development",             // presentations
+  c6: "Soft Skills Development",             // difficult customer conversations
+  c7: "Sales Excellence Training",           // client relationships
+  c8: "Sales Excellence Training",           // follow-ups
+  c9: "Team Building & Communication",       // adaptability / team
+  c10: "Sales Excellence Training",          // overall sales goal
+  // Individual
+  i1: "Communication Excellence",            // speaking confidence
+  i2: "Sales Skills Training",               // rejection
+  i3: "Sales Skills Training",               // relationships
+  i4: "Communication Excellence",            // communicate ideas
+  i5: "Sales Skills Training",               // closing / negotiation
+  i6: "Career Advancement Program",          // pressure / stress
+  i7: "Sales Skills Training",               // follow-up
+  i8: "Career Advancement Program",          // time management
+  i9: "Interview Preparation Workshop",      // interview & self-presentation
+  i10: "Career Advancement Program",         // career development
+  i11: "Communication Excellence",           // difficult conversations
+  i12: "Career Advancement Program",         // career goals
+};
+
+// Pick the single recommended program based on the LOWEST-scoring question.
+// Ties break to the first program encountered in the canonical order above.
+export function pickRecommendedProgram(
+  answers: Record<string, number>,
+  config: QuestionnaireConfig,
+): string {
+  const entries = Object.entries(answers);
+  if (entries.length === 0) return config.scoreRanges[0]?.program ?? CANONICAL_PROGRAMS[0];
+
+  // Find the lowest score across answered questions
+  const lowestScore = Math.min(...entries.map(([, s]) => s));
+  const lowestQuestionIds = entries.filter(([, s]) => s === lowestScore).map(([id]) => id);
+
+  // Aggregate votes by program among lowest-scoring questions
+  const programVotes = new Map<string, number>();
+  for (const qid of lowestQuestionIds) {
+    const prog = questionProgramMap[qid];
+    if (!prog) continue;
+    programVotes.set(prog, (programVotes.get(prog) ?? 0) + 1);
+  }
+
+  if (programVotes.size === 0) {
+    return config.scoreRanges[0]?.program ?? CANONICAL_PROGRAMS[0];
+  }
+
+  // Pick the program with the most votes; tie-break by canonical order
+  let best = "";
+  let bestVotes = -1;
+  for (const prog of CANONICAL_PROGRAMS) {
+    const v = programVotes.get(prog) ?? 0;
+    if (v > bestVotes) {
+      bestVotes = v;
+      best = prog;
+    }
+  }
+  return best || CANONICAL_PROGRAMS[0];
+}
+
