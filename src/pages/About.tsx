@@ -319,8 +319,36 @@ export default function About() {
                 </Card>
               ))}
             </div>
+
+            {/* GROWTH Framework */}
+            <div className="max-w-5xl mx-auto mt-14">
+              <div className="text-center mb-8">
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+                  The <span className="text-secondary">GROWTH Framework&trade;</span>
+                </h3>
+                <p className="text-muted-foreground">Six anchors behind every program I deliver.</p>
+              </div>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  { letter: "G", label: "Gain Confidence" },
+                  { letter: "R", label: "Read Customer Needs" },
+                  { letter: "O", label: "Overcome Objections" },
+                  { letter: "W", label: "Win More Deals" },
+                  { letter: "T", label: "Track Performance" },
+                  { letter: "H", label: "Highlight Your Value" },
+                ].map((g) => (
+                  <div key={g.letter} className="flex items-center gap-4 p-4 bg-background rounded-xl border border-border">
+                    <div className="w-12 h-12 rounded-lg bg-primary text-primary-foreground font-display font-bold text-xl flex items-center justify-center shrink-0">
+                      {g.letter}
+                    </div>
+                    <span className="font-semibold text-foreground">{g.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
+
 
         {/* Specializations */}
         <section className="section-padding bg-background">
