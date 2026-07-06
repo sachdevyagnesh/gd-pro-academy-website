@@ -112,9 +112,10 @@ export function AssessmentResult({
             </p>
             <div className="flex items-center gap-2 text-sm">
               <span className="font-medium text-primary">Recommended Program:</span>
-              <span className="text-foreground">{range.program}</span>
+              <span className="text-foreground">{programOverride || range.program}</span>
             </div>
           </div>
+
 
           {/* Discount Offer (for Sales Confidence Test) */}
           {showDiscount && (
