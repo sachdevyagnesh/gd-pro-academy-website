@@ -97,10 +97,27 @@ export default function Assessment() {
     return step === "sales-test" ? salesConfidenceTest : config;
   };
 
+  const isCorporate = type === "corporate";
+  const recommendedProgram =
+    step === "sales-test"
+      ? salesTestResult?.range.program
+      : state.range && Object.keys(state.answers).length
+        ? pickRecommendedProgram(state.answers, config)
+        : state.range?.program;
+
+  const reportSubtitle = isCorporate
+    ? "Corporate Training Needs Assessment Report"
+    : "Professional Skills Assessment Report";
+
+  const nextStepsLine = isCorporate
+    ? "Ready to build your team's skills? Contact us to schedule your program:"
+    : "Ready to enhance your skills? Contact us to enroll:";
+
   const handleDownloadPDF = async () => {
     const result = getCurrentResult();
     const testConfig = getCurrentConfig();
-    
+    const programForPdf = recommendedProgram || result.range?.program || "";
+
     try {
       await downloadPDF(
         {
@@ -113,7 +130,9 @@ export default function Assessment() {
           result: result.range?.title || "",
           description: result.range?.description || "",
           recommendation: result.range?.recommendation || "",
-          program: result.range?.program || "",
+          program: programForPdf,
+          reportSubtitle: step === "sales-test" ? "Sales Confidence Report" : reportSubtitle,
+          nextStepsLine: step === "sales-test" ? undefined : nextStepsLine,
         },
         `GD-Pro-Academy-Assessment-${state.userName || "Report"}.pdf`
       );
@@ -122,6 +141,7 @@ export default function Assessment() {
       toast.error("Failed to generate PDF. Please try again.");
     }
   };
+
 
   const handleEmailPDF = () => {
     setEmailDialogOpen(true);
