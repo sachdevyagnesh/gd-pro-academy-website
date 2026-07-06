@@ -213,10 +213,23 @@ export default function About() {
                 </CardContent>
               </Card>
             </div>
+        </section>
+
+        {/* Brand promise + mid-page CTA */}
+        <section className="py-10 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-lg md:text-xl italic text-foreground mb-6">
+                "One promise, one outcome: <span className="text-secondary font-semibold">360° Sales Career Transformation</span> for every professional I work with."
+              </p>
+              <Button variant="navy" size="lg" asChild>
+                <Link to="/contact">Book Free Consultation</Link>
+              </Button>
+            </div>
           </div>
         </section>
 
-        {/* From Sales to Storytelling */}
+
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10">
