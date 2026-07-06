@@ -17,9 +17,11 @@ export function AIChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Tell me where you are in your sales journey, and I'll guide you.",
+      content:
+        "Hi! Are you looking for training for:\n[A] your company team\n[B] your own sales career\n[C] your college/institution?",
     },
   ]);
+
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
