@@ -213,7 +213,9 @@ export default function About() {
                 </CardContent>
               </Card>
             </div>
+          </div>
         </section>
+
 
         {/* Brand promise + mid-page CTA */}
         <section className="py-10 bg-background">
