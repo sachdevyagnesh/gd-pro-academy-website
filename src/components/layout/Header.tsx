@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-
 
 type NavLink =
   | { name: string; href: string }
@@ -34,7 +33,7 @@ const navLinks: NavLink[] = [
       { name: "For Professionals", href: "/individual-training" },
     ],
   },
-  { name: "Testimonials", href: "/moments" },
+  { name: "Testimonials", href: "/testimonials" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Books", href: "/books" },
   { name: "Blog", href: "/blog" },
@@ -44,24 +43,54 @@ const navLinks: NavLink[] = [
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [overHero, setOverHero] = useState(false);
+  const [hasHero, setHasHero] = useState(false);
   const location = useLocation();
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  // Detect hero on current route via IntersectionObserver (no scroll listeners)
+  useEffect(() => {
+    // Wait a tick for the new route's DOM to render
+    const timer = setTimeout(() => {
+      const hero = document.querySelector<HTMLElement>("[data-hero]");
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+      if (!hero) {
+        setHasHero(false);
+        setOverHero(false);
+        return;
+      }
+      setHasHero(true);
+      setOverHero(true);
+      const obs = new IntersectionObserver(
+        ([entry]) => setOverHero(entry.isIntersecting),
+        { rootMargin: "-64px 0px 0px 0px", threshold: 0 },
+      );
+      obs.observe(hero);
+      observerRef.current = obs;
+    }, 50);
+    return () => {
+      clearTimeout(timer);
+      observerRef.current?.disconnect();
+      observerRef.current = null;
+    };
+  }, [location.pathname]);
+
   // Prevent background scroll when the mobile menu is open
   useEffect(() => {
     if (!isMounted) return;
-
     const prevBodyOverflow = document.body.style.overflow;
     const prevHtmlOverflow = document.documentElement.style.overflow;
-
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
@@ -69,7 +98,6 @@ export function Header() {
       document.body.style.overflow = prevBodyOverflow || "";
       document.documentElement.style.overflow = prevHtmlOverflow || "";
     }
-
     return () => {
       document.body.style.overflow = prevBodyOverflow || "";
       document.documentElement.style.overflow = prevHtmlOverflow || "";
@@ -78,21 +106,42 @@ export function Header() {
 
   const isActive = (href: string) => location.pathname === href;
 
+  const transparent = hasHero && overHero;
+  const headerStyle: React.CSSProperties = transparent
+    ? {
+        backgroundColor: "rgba(26,42,94,0.75)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+      }
+    : { backgroundColor: "#1A2A5E" };
+
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 py-3"
-      style={{ backgroundColor: "#1A2A5E" }}
+      className="fixed top-0 left-0 right-0 z-50 py-3 transition-colors duration-300"
+      style={headerStyle}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Wordmark */}
-          <Link to="/" className="flex items-center group flex-shrink-0">
+          <Link to="/" className="flex flex-col items-start group flex-shrink-0 leading-none">
             <span className="font-display font-bold text-white text-xl md:text-2xl lg:text-3xl tracking-tight">
               GD Pro Academy
             </span>
+            <span
+              className="hidden sm:block"
+              style={{
+                color: "#D4A017",
+                fontSize: "11px",
+                fontWeight: 300,
+                letterSpacing: "0.5px",
+                marginTop: "2px",
+              }}
+            >
+              India's Sales Career Growth Academy
+            </span>
           </Link>
 
-          {/* Desktop Navigation - Centered */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center justify-center flex-1 gap-1 mx-8">
             {navLinks.map((link) => {
               if ("dropdown" in link) {
@@ -137,7 +186,6 @@ export function Header() {
             })}
           </nav>
 
-          {/* CTA & Phone Icon */}
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:+918356837052"
@@ -151,7 +199,6 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <button
             className="lg:hidden p-2 rounded-lg"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -166,30 +213,24 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu - rendered in a portal to avoid stacking/scroll issues on mobile */}
       {isMounted &&
         isMobileMenuOpen &&
         createPortal(
           <>
-            {/* Backdrop */}
             <div
               className="fixed inset-0 bg-black/50 z-[60] lg:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-
-            {/* Menu Panel */}
             <div
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation"
               className="fixed top-0 right-0 w-full max-w-xs h-[100dvh] bg-background shadow-2xl z-[70] lg:hidden overflow-y-auto animate-fade-in"
             >
-              {/* Menu Header */}
               <div className="flex items-center justify-between p-4 border-b bg-background">
                 <span className="font-display font-bold text-lg" style={{ color: "#1A2A5E" }}>
                   GD Pro Academy
                 </span>
-
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 rounded-lg hover:bg-muted transition-colors"
@@ -198,8 +239,6 @@ export function Header() {
                   <X className="w-5 h-5 text-foreground" />
                 </button>
               </div>
-
-              {/* Menu Links */}
               <nav className="p-4 space-y-1 bg-background">
                 {navLinks.map((link) => {
                   if ("dropdown" in link) {
@@ -239,8 +278,6 @@ export function Header() {
                   );
                 })}
               </nav>
-
-              {/* Menu Footer */}
               <div className="p-4 border-t mt-4 space-y-3 bg-background">
                 <a href="tel:+918356837052" className="flex items-center gap-2 px-4 py-2 text-foreground">
                   <Phone className="w-4 h-4" />
@@ -256,7 +293,6 @@ export function Header() {
           </>,
           document.body,
         )}
-
     </header>
   );
 }
