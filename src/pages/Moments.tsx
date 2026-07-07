@@ -8,6 +8,7 @@ import { Quote, Star, ArrowRight, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import heroBg from "@/assets/hero-bg-3.jpg";
 
+import { Helmet } from "react-helmet-async";
 type Category = "Corporate" | "Individual" | "Institutes";
 
 interface Testimonial {
@@ -99,6 +100,12 @@ export default function Moments() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>Client Success Stories & Testimonials | GD Pro Academy</title>
+          <meta name="description" content="Read what corporate L&D leaders, HR heads, and professionals say about training with Grishma Sachdev and GD Pro Academy." />
+          <meta property="og:title" content="Client Success Stories & Testimonials | GD Pro Academy" />
+          <meta property="og:description" content="Read what corporate L&D leaders, HR heads, and professionals say about training with Grishma Sachdev and GD Pro Academy." />
+        </Helmet>
       <main>
         <section data-hero className="pt-32 pb-20 relative overflow-hidden">
           <div

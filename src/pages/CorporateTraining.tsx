@@ -7,6 +7,7 @@ import { Users, TrendingUp, MessageSquare, Award, CheckCircle, ArrowRight, Build
 import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/hero-bg-3.jpg";
 
+import { Helmet } from "react-helmet-async";
 const programs = [
   {
     icon: TrendingUp,
@@ -137,6 +138,12 @@ export default function CorporateTraining() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>Corporate Sales & Soft Skills Training in India | GD Pro Academy</title>
+          <meta name="description" content="Customized corporate training in sales excellence, soft skills, team building, and campus-to-corporate. Delivered pan-India, onsite or virtual." />
+          <meta property="og:title" content="Corporate Sales & Soft Skills Training in India | GD Pro Academy" />
+          <meta property="og:description" content="Customized corporate training in sales excellence, soft skills, team building, and campus-to-corporate. Delivered pan-India, onsite or virtual." />
+        </Helmet>
       <main>
         {/* Hero */}
         <section data-hero className="pt-32 pb-20 relative overflow-hidden">

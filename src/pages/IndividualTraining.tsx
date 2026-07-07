@@ -7,6 +7,7 @@ import { MessageSquare, Target, User, ArrowRight, TrendingUp, Presentation, User
 import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/about-hero.jpg";
 
+import { Helmet } from "react-helmet-async";
 // Updated to batch system (10-30 members) instead of 1-on-1
 const livePrograms = [
   {
@@ -111,6 +112,12 @@ export default function IndividualTraining() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>Sales Training & Career Coaching for Professionals | GD Pro Academy</title>
+          <meta name="description" content="1-on-1 coaching and batch programs in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
+          <meta property="og:title" content="Sales Training & Career Coaching for Professionals | GD Pro Academy" />
+          <meta property="og:description" content="1-on-1 coaching and batch programs in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
+        </Helmet>
       <main>
         {/* Hero */}
         <section data-hero className="pt-32 pb-20 relative overflow-hidden">
@@ -220,7 +227,7 @@ export default function IndividualTraining() {
                     For individual attention and customized coaching sessions tailored specifically to your needs, please reach out to us directly.
                   </p>
                   <p className="text-sm text-foreground mb-4">
-                    Every 1-on-1 engagement follows the <strong className="text-secondary">LIR Methodology&trade; (Learn, Implement, Reflect)</strong> — a coaching cycle designed to turn insight into lasting behaviour change.
+                    Every 1-on-1 engagement follows the <strong className="text-secondary">LIR Methodology (Learn, Implement, Reflect)</strong> — a coaching cycle designed to turn insight into lasting behaviour change.
                   </p>
                   <Button variant="navy" asChild>
                     <Link to="/contact">Contact for 1-on-1 Coaching</Link>

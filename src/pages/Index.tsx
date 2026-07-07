@@ -15,6 +15,11 @@ const Index = () => {
         <HeroSection />
         <TrustedLogosSection />
         <FounderQuoteSection />
+        <div className="bg-background pt-10 -mb-4 text-center">
+          <span className="inline-block text-xs md:text-sm font-semibold tracking-widest uppercase" style={{ color: "#D4A017" }}>
+            360° Sales Career Transformation
+          </span>
+        </div>
         <TrainingPathsSection />
         <TrainingMethodologyVideo />
         <TestimonialsSection limit={4} showReadAll />

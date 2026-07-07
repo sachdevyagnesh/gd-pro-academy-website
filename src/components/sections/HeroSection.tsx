@@ -91,12 +91,12 @@ export function HeroSection() {
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight animate-fade-in-up stagger-1">
-            <span className="block text-primary-foreground">From Sales Professional</span>
-            <span className="block text-gradient-gold">to Sales Leader.</span>
+            <span className="block text-primary-foreground">From Sales Professional To</span>
+            <span className="block text-gradient-gold">Sales Leader.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/85 mb-10 max-w-3xl mx-auto leading-relaxed animate-fade-in-up stagger-2">
-            Practical, experience-led training that takes sales professionals from performing to leading, and builds corporate teams that close more, communicate better, and grow together.
+            Practical training that builds confident sales professionals and high-performing teams.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up stagger-3">

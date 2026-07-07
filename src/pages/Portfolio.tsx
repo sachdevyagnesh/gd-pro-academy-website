@@ -26,6 +26,7 @@ import hrciLogo from "@/assets/hrci-approved.png";
 import proTouchLogo from "@/assets/pro-touch.png";
 import shrmLogo from "@/assets/shrm-provider.png";
 
+import { Helmet } from "react-helmet-async";
 const caseStudies = [
   {
     company: "Leading BFSI Company",
@@ -134,6 +135,12 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>Portfolio & Case Studies | GD Pro Academy Sales Training Results</title>
+          <meta name="description" content="Case studies from BFSI, IT, manufacturing, retail, and education. See how GD Pro Academy has transformed sales teams across India." />
+          <meta property="og:title" content="Portfolio & Case Studies | GD Pro Academy Sales Training Results" />
+          <meta property="og:description" content="Case studies from BFSI, IT, manufacturing, retail, and education. See how GD Pro Academy has transformed sales teams across India." />
+        </Helmet>
       <main>
         {/* Hero */}
         <section data-hero className="pt-32 pb-20 relative overflow-hidden">

@@ -28,7 +28,6 @@ const navLinks: NavLink[] = [
     href: "/services",
     dropdown: true,
     items: [
-      { name: "All Services", href: "/services" },
       { name: "For Corporates", href: "/corporate-training" },
       { name: "For Professionals", href: "/individual-training" },
     ],
@@ -106,14 +105,7 @@ export function Header() {
 
   const isActive = (href: string) => location.pathname === href;
 
-  const transparent = hasHero && overHero;
-  const headerStyle: React.CSSProperties = transparent
-    ? {
-        backgroundColor: "rgba(26,42,94,0.75)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-      }
-    : { backgroundColor: "#1A2A5E" };
+  const headerStyle: React.CSSProperties = { backgroundColor: "#1A2A5E" };
 
   return (
     <header
@@ -128,11 +120,10 @@ export function Header() {
               GD Pro Academy
             </span>
             <span
-              className="hidden sm:block"
+              className="hidden sm:block text-[11px] md:text-[13px]"
               style={{
                 color: "#D4A017",
-                fontSize: "11px",
-                fontWeight: 300,
+                fontWeight: 400,
                 letterSpacing: "0.5px",
                 marginTop: "2px",
               }}

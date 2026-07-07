@@ -2,23 +2,25 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, User, ArrowRight, CheckCircle, Award, Target, Users, TrendingUp, GraduationCap } from "lucide-react";
+import { Building2, User, ArrowRight, CheckCircle, Award, Target, Users, TrendingUp } from "lucide-react";
 import corporateHeroBg from "@/assets/corporate-training-hero.jpg";
 import individualHeroBg from "@/assets/individual-training-hero.jpg";
 
 
+import { Helmet } from "react-helmet-async";
 const serviceOptions = [
   {
     type: "corporate",
     icon: Building2,
-    title: "Are you a Company or HR Team?",
-    subtitle: "Corporate Training Solutions",
-    description: "Transform your workforce with customized training programs. Build high-performing teams, enhance sales capabilities, and develop essential soft skills across your organization.",
+    title: "Are You a Company or Educational Institution?",
+    subtitle: "Corporate & Campus Training Solutions",
+    description: "Whether you're growing a sales team or preparing students for the corporate world, we have a program built around your goals.",
     features: [
       "Customized programs for your team",
       "Pan-India delivery (onsite or virtual)",
       "Measurable ROI & post-training support",
       "Certified & accredited training",
+      "Campus to Corporate readiness for students",
     ],
     cta: "Start Training Needs Discovery",
     href: "/assessment/corporate",
@@ -45,25 +47,6 @@ const serviceOptions = [
     bgColor: "from-accent/90 to-accent/80",
     iconBg: "bg-primary",
     iconColor: "text-primary-foreground",
-  },
-  {
-    type: "institute",
-    icon: GraduationCap,
-    title: "For Educational Institutes",
-    subtitle: "Campus to Corporate Programs",
-    description: "Prepare your students for corporate life with our Campus to Corporate programs. Improve placement rates and graduate confidence.",
-    features: [
-      "Corporate etiquette & workplace readiness",
-      "Interview preparation and mock rounds",
-      "Communication and presentation skills",
-      "TPO-friendly delivery on campus",
-    ],
-    cta: "Explore Campus Programs",
-    href: "/corporate-training#campus-to-corporate",
-    bgImage: corporateHeroBg,
-    bgColor: "from-primary/90 to-primary/70",
-    iconBg: "bg-secondary",
-    iconColor: "text-secondary-foreground",
   },
 ];
 
@@ -95,6 +78,12 @@ export default function ServicesLanding() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>Sales Training Services for Companies, Institutes & Professionals | GD Pro Academy</title>
+          <meta name="description" content="Corporate sales training, campus-to-corporate programs, and career coaching for individuals. Pan-India delivery, CPD & HRCI accredited." />
+          <meta property="og:title" content="Sales Training Services for Companies, Institutes & Professionals | GD Pro Academy" />
+          <meta property="og:description" content="Corporate sales training, campus-to-corporate programs, and career coaching for individuals. Pan-India delivery, CPD & HRCI accredited." />
+        </Helmet>
       <main>
         {/* Full-screen Split Hero Section */}
         <section className="min-h-screen flex flex-col lg:flex-row">
