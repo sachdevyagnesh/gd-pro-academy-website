@@ -76,6 +76,15 @@ const whyChooseUs = [
 ];
 
 export default function ServicesLanding() {
+  const [loaded, setLoaded] = useState<Record<string, boolean>>({});
+  useEffect(() => {
+    serviceOptions.forEach((o) => {
+      const img = new Image();
+      img.src = o.bgImage;
+      img.onload = () => setLoaded((p) => ({ ...p, [o.type]: true }));
+      if (img.complete) setLoaded((p) => ({ ...p, [o.type]: true }));
+    });
+  }, []);
   return (
     <div className="min-h-screen">
       <Header />
