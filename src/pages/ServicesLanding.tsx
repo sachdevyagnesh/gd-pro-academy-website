@@ -83,8 +83,8 @@ export default function ServicesLanding() {
           <meta name="description" content="Corporate sales training, campus-to-corporate programs, and career coaching for individuals. Pan-India delivery, CPD & HRCI accredited." />
           <meta property="og:title" content="Sales Training Services for Companies, Institutes & Professionals | GD Pro Academy" />
           <meta property="og:description" content="Corporate sales training, campus-to-corporate programs, and career coaching for individuals. Pan-India delivery, CPD & HRCI accredited." />
-          <link rel="preload" as="image" href={corporateHeroBg} fetchpriority="high" />
-          <link rel="preload" as="image" href={individualHeroBg} fetchpriority="high" />
+          <link rel="preload" as="image" href={corporateHeroBg} fetchPriority="high" />
+          <link rel="preload" as="image" href={individualHeroBg} fetchPriority="high" />
         </Helmet>
       <main>
         {/* Full-screen Split Hero Section */}
