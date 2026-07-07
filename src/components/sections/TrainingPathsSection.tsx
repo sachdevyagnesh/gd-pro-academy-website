@@ -9,6 +9,8 @@ const trainingPaths = [
     icon: Building2,
     title: "Corporate Training",
     subtitle: "For Teams & Organizations",
+    trackLabel: "Corporate Track",
+    trackClass: "bg-primary text-primary-foreground",
     description: "Transform your team's performance with customized training programs designed for organizational success.",
     features: [
       { icon: TrendingUp, text: "Sales Excellence Training" },
@@ -24,6 +26,8 @@ const trainingPaths = [
     icon: User,
     title: "Programs for Professionals",
     subtitle: "For Professionals",
+    trackLabel: "Professional Track",
+    trackClass: "bg-accent text-accent-foreground",
     description: "Accelerate your career with practical, structured training programs designed around your goals.",
     features: [
       { icon: MessageSquare, text: "Communication Excellence" },
@@ -77,7 +81,10 @@ export function TrainingPathsSection() {
                 {/* Content */}
                 <div className="space-y-4 mb-8">
                   <div>
-                    <span className="text-sm font-medium text-secondary">{path.subtitle}</span>
+                    <span className={`inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${path.trackClass}`}>
+                      {path.trackLabel}
+                    </span>
+                    <span className="block text-sm font-medium text-secondary">{path.subtitle}</span>
                     <h3 className="text-2xl font-bold text-foreground mt-1">
                       {path.title}
                     </h3>
@@ -111,12 +118,6 @@ export function TrainingPathsSection() {
           ))}
         </div>
 
-        {/* Trust badge */}
-        <div className="text-center mt-16">
-          <p className="text-muted-foreground text-sm">
-            Trusted by <span className="text-foreground font-semibold">leading organizations</span> across India
-          </p>
-        </div>
       </div>
     </section>
   );

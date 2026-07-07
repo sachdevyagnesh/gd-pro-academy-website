@@ -34,7 +34,7 @@ export default function Books() {
                 Books by <span className="text-gradient-gold">Grishma Sachdev</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
-                A candid, practical read distilled from 12+ years of building a career in sales, training, and self-belief.
+                A candid, practical read distilled from 14+ years of building a career in sales, training, and self-belief.
               </p>
             </div>
           </div>

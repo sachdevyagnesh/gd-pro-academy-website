@@ -12,16 +12,18 @@ const metrics = [
 ];
 
 function AnimatedNumber({ value, suffix, run }: { value: number; suffix: string; run: boolean }) {
-  const [count, setCount] = useState(0);
+  // Default to final value so correct number shows even if animation is delayed/fails
+  const [count, setCount] = useState(value);
 
   useEffect(() => {
     if (!run) return;
     const duration = 2000;
     const start = performance.now();
     let raf = 0;
+    setCount(0);
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      const eased = 1 - Math.pow(1 - t, 3);
       setCount(Math.floor(eased * value));
       if (t < 1) raf = requestAnimationFrame(tick);
       else setCount(value);

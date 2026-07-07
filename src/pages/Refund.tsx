@@ -19,7 +19,7 @@ export default function Refund() {
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="prose prose-lg max-w-none">
-              <p className="text-muted-foreground mb-6">Last updated: December 2024</p>
+              <p className="text-muted-foreground mb-6">Last updated: July 2026</p>
 
               <div className="bg-accent/10 border border-accent/20 rounded-xl p-6 mb-8">
                 <p className="text-foreground font-medium">

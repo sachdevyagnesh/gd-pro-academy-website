@@ -23,9 +23,26 @@ const methodologyPoints = [
   },
 ];
 
-export function TrainingMethodologyVideo() {
+function MethodCard({ title, description }: { title: string; description: string }) {
   return (
-    <section className="section-padding bg-background">
+    <div className="flex items-start gap-4 p-6 bg-card border border-border rounded-2xl shadow-soft">
+      <div className="w-10 h-10 shrink-0 rounded-lg bg-accent/15 flex items-center justify-center">
+        <CheckCircle className="w-5 h-5 text-accent" />
+      </div>
+      <div>
+        <h4 className="font-semibold text-foreground mb-1">{title}</h4>
+        <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+      </div>
+    </div>
+  );
+}
+
+export function TrainingMethodologyVideo() {
+  const topRow = methodologyPoints.slice(0, 3);
+  const bottomRow = methodologyPoints.slice(3);
+
+  return (
+    <section className="py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-10">
           <div className="accent-line mx-auto mb-6" />
@@ -38,23 +55,12 @@ export function TrainingMethodologyVideo() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-5">
-          {methodologyPoints.map((point) => (
-            <div
-              key={point.title}
-              className="flex items-start gap-4 p-6 bg-card border border-border rounded-2xl shadow-soft"
-            >
-              <div className="w-10 h-10 shrink-0 rounded-lg bg-accent/15 flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-accent" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">{point.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {point.description}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* 3-2 layout: 3 cards top row, 2 centered below */}
+        <div className="grid md:grid-cols-3 gap-5 mb-5">
+          {topRow.map((p) => <MethodCard key={p.title} {...p} />)}
+        </div>
+        <div className="grid md:grid-cols-2 gap-5 md:max-w-3xl md:mx-auto">
+          {bottomRow.map((p) => <MethodCard key={p.title} {...p} />)}
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ export default function Shipping() {
         <section className="pt-32 pb-12 hero-gradient">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground text-center">
-              Shipping & Delivery Policy
+              Program Delivery Policy
             </h1>
           </div>
         </section>
@@ -20,7 +20,7 @@ export default function Shipping() {
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="prose prose-lg max-w-none">
-              <p className="text-muted-foreground mb-6">Last updated: December 2024</p>
+              <p className="text-muted-foreground mb-6">Last updated: July 2026</p>
 
               <div className="bg-accent/10 border border-accent/20 rounded-xl p-6 mb-8">
                 <p className="text-foreground font-medium">

@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 import { AIChatWidget } from "@/components/common/AIChatWidget";
@@ -38,7 +38,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<ServicesLanding />} />
-          <Route path="/moments" element={<Moments />} />
+          <Route path="/moments" element={<Navigate to="/testimonials" replace />} />
           <Route path="/testimonials" element={<Moments />} />
 
           <Route path="/gallery" element={<Gallery />} />

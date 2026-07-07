@@ -2,26 +2,24 @@ export function FounderQuoteSection() {
   return (
     <section style={{ backgroundColor: "#1A2A5E" }} className="py-[60px]">
       <div className="container mx-auto px-4">
-        <div className="max-w-[700px] mx-auto text-center relative">
+        <div className="max-w-[700px] mx-auto">
           <div
-            aria-hidden
-            className="font-display leading-none select-none"
-            style={{ color: "#D4A017", fontSize: "5rem", lineHeight: 1 }}
+            className="pl-6 border-l-4"
+            style={{ borderColor: "#D4A017" }}
           >
-            &ldquo;
+            <p
+              className="italic text-white"
+              style={{ fontSize: "clamp(20px, 2.2vw, 22px)", lineHeight: 1.5 }}
+            >
+              &ldquo;My mission is simple. Help you sell with confidence, speak with impact, and grow without limits.&rdquo;
+            </p>
+            <p
+              className="mt-6"
+              style={{ color: "#D4A017", fontSize: "14px" }}
+            >
+              — Grishma Sachdev, Founder &amp; Lead Trainer, GD Pro Academy
+            </p>
           </div>
-          <p
-            className="italic text-white"
-            style={{ fontSize: "clamp(20px, 2.2vw, 22px)", lineHeight: 1.5 }}
-          >
-            I didn't have a mentor. So I became one.
-          </p>
-          <p
-            className="mt-6 text-right"
-            style={{ color: "#D4A017", fontSize: "14px" }}
-          >
-            — Grishma Sachdev, Founder &amp; Lead Trainer, GD Pro Academy
-          </p>
         </div>
       </div>
     </section>
