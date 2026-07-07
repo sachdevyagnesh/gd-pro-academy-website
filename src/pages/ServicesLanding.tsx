@@ -106,8 +106,8 @@ export default function ServicesLanding() {
             >
               {/* Background Image with Overlay */}
               <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${option.bgImage})` }}
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500 ease-out"
+                style={{ backgroundImage: `url(${option.bgImage})`, opacity: loaded[option.type] ? 1 : 0 }}
               />
               <div className={`absolute inset-0 bg-gradient-to-br ${option.bgColor}`} />
               
