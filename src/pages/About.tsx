@@ -8,6 +8,7 @@ import aboutHero from "@/assets/about-hero.jpg";
 import aboutPortraitAsset from "@/assets/about-portrait-pro.jpg.asset.json";
 import bookCoverAsset from "@/assets/book-cover-more-than-sales.jpg.asset.json";
 import bestsellerAsset from "@/assets/amazon-bestseller-rank.jpg.asset.json";
+import { Helmet } from "react-helmet-async";
 const aboutPortrait = aboutPortraitAsset.url;
 
 const milestones = [
@@ -56,6 +57,12 @@ export default function About() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>About Grishma Sachdev | GD Pro Academy Founder & Sales Trainer</title>
+          <meta name="description" content="Meet Grishma Sachdev — BFSI veteran, certified corporate trainer, and #1 Amazon Kindle bestselling author. 12+ years transforming sales careers across India." />
+          <meta property="og:title" content="About Grishma Sachdev | GD Pro Academy Founder & Sales Trainer" />
+          <meta property="og:description" content="Meet Grishma Sachdev — BFSI veteran, certified corporate trainer, and #1 Amazon Kindle bestselling author. 12+ years transforming sales careers across India." />
+        </Helmet>
       <main>
         {/* Hero */}
         <section data-hero className="pt-28 pb-16 relative overflow-hidden">

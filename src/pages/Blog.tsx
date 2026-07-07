@@ -8,6 +8,7 @@ import { blogPostsData } from "./BlogPost";
 import heroBg from "@/assets/hero-bg-3.jpg";
 import featuredImg from "@/assets/blog-featured-sales.jpg";
 
+import { Helmet } from "react-helmet-async";
 export default function Blog() {
   const featuredPost = blogPostsData.find(p => p.featured);
   const regularPosts = blogPostsData.filter(p => !p.featured);
@@ -15,6 +16,12 @@ export default function Blog() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>Sales Training Blog & Career Insights | GD Pro Academy</title>
+          <meta name="description" content="Practical articles on sales skills, communication, career growth, and leadership from India's sales career growth academy." />
+          <meta property="og:title" content="Sales Training Blog & Career Insights | GD Pro Academy" />
+          <meta property="og:description" content="Practical articles on sales skills, communication, career growth, and leadership from India's sales career growth academy." />
+        </Helmet>
       <main>
         {/* Hero */}
         <section data-hero className="pt-32 pb-20 relative overflow-hidden">

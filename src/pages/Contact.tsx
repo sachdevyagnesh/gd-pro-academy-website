@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/accordion";
 import heroBg from "@/assets/about-hero.jpg";
 
+import { Helmet } from "react-helmet-async";
 const contactInfo = [
   {
     icon: Phone,
@@ -145,6 +146,12 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>Contact GD Pro Academy | Sales Training Thane, Mumbai, Pan India</title>
+          <meta name="description" content="Get in touch with GD Pro Academy for corporate training enquiries, career coaching, or a free consultation. Based in Thane, Maharashtra — serving India and beyond." />
+          <meta property="og:title" content="Contact GD Pro Academy | Sales Training Thane, Mumbai, Pan India" />
+          <meta property="og:description" content="Get in touch with GD Pro Academy for corporate training enquiries, career coaching, or a free consultation. Based in Thane, Maharashtra — serving India and beyond." />
+        </Helmet>
       <main>
         {/* Hero */}
         <section data-hero className="pt-28 pb-16 relative overflow-hidden">

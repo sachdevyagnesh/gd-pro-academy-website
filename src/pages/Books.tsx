@@ -6,12 +6,19 @@ import { ShoppingCart, MessageCircle } from "lucide-react";
 import heroBg from "@/assets/about-hero.jpg";
 import bookCover from "@/assets/book-cover-more-than-sales.jpg.asset.json";
 
+import { Helmet } from "react-helmet-async";
 const AMAZON_URL = "https://www.amazon.in/dp/B0H4Y4SZM3";
 
 export default function Books() {
   return (
     <div className="min-h-screen">
       <Header />
+        <Helmet>
+          <title>More Than Sales — Book by Grishma Sachdev | GD Pro Academy</title>
+          <meta name="description" content="Read 'More Than Sales: The Profession That Built Me' — a #1 Amazon Kindle bestseller by Grishma Sachdev on building a career in sales, mindset, and mentorship." />
+          <meta property="og:title" content="More Than Sales — Book by Grishma Sachdev | GD Pro Academy" />
+          <meta property="og:description" content="Read 'More Than Sales: The Profession That Built Me' — a #1 Amazon Kindle bestseller by Grishma Sachdev on building a career in sales, mindset, and mentorship." />
+        </Helmet>
       <main>
         {/* Hero */}
         <section data-hero className="pt-28 pb-16 relative overflow-hidden">
