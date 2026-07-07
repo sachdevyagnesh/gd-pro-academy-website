@@ -15,6 +15,8 @@ export function FounderQuoteSection() {
             style={{ fontSize: "clamp(20px, 2.2vw, 22px)", lineHeight: 1.5 }}
           >
             I didn't have a mentor. So I became one.
+          </p>
+          <p
             className="mt-6 text-right"
             style={{ color: "#D4A017", fontSize: "14px" }}
           >
