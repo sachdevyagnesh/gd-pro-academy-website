@@ -176,6 +176,7 @@ export default function About() {
                     <MapPin className="w-6 h-6 text-secondary mx-auto mb-2" />
                     <p className="font-display font-extrabold text-foreground text-lg">Pan-India</p>
                     <p className="text-sm font-semibold text-muted-foreground">& Global</p>
+                    <p className="text-[11px] text-muted-foreground mt-1 leading-snug">Available for online delivery globally</p>
                   </div>
                 </div>
 

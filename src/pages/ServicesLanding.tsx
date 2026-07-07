@@ -15,6 +15,8 @@ const serviceOptions = [
     icon: Building2,
     title: "Are You a Company or Educational Institution?",
     subtitle: "Corporate & Campus Training Solutions",
+    trackLabel: "Corporate Track",
+    trackClass: "bg-primary text-primary-foreground",
     description: "Whether you're growing a sales team or preparing students for the corporate world, we have a program built around your goals.",
     features: [
       "Customized programs for your team",
@@ -35,6 +37,8 @@ const serviceOptions = [
     icon: User,
     title: "Are you a Professional?",
     subtitle: "Programs for Professionals",
+    trackLabel: "Professional Track",
+    trackClass: "bg-accent text-accent-foreground",
     description: "Accelerate your career with practical skills in sales, communication, and professional development. Join batch programs or get personalized coaching.",
     features: [
       "Batch programs (10-30 members)",
@@ -113,6 +117,10 @@ export default function ServicesLanding() {
               
               {/* Content Card */}
               <div className="relative z-10 w-full max-w-xl mx-auto lg:mx-0">
+                {/* Track pill */}
+                <span className={`inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${option.trackClass}`}>
+                  {option.trackLabel}
+                </span>
                 {/* Title with inline icon */}
                 <div className="flex items-center gap-4 mb-3">
                   <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl ${option.iconBg} flex items-center justify-center shadow-lg shrink-0`}>

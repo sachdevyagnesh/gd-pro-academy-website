@@ -49,7 +49,7 @@ const programs = [
       "Time management techniques",
       "Problem-solving skills",
       "Customer service excellence",
-      "Story telling & presentations",
+      "Storytelling & presentations",
     ],
     duration: "2 Days",
     price: "₹14,999",
@@ -126,6 +126,7 @@ const programs = [
 ];
 
 const benefits = [
+  "SHRM & HRCI PDC-eligible programs",
   "Customized content for your industry",
   "Pre-training assessment and goal setting",
   "Interactive, hands-on learning approach",
@@ -204,25 +205,30 @@ export default function CorporateTraining() {
 
             <div className="grid lg:grid-cols-2 gap-8">
               {programs.map((program) => (
-                <CourseCard
-                  key={program.title}
-                  icon={program.icon}
-                  title={program.title}
-                  description={program.description}
-                  features={program.features}
-                  duration={program.duration}
-                  price={program.price}
-                  participants={program.participants}
-                  popular={program.popular}
-                  targetAudience={program.targetAudience}
-                  learningOutcomes={program.learningOutcomes}
-                  deliveryMethod={program.deliveryMethod}
-                  prerequisites={program.prerequisites}
-                  certification={program.certification}
-                  ctaLabel="Book Now"
-                  ctaLink="/contact"
-                  ctaVariant="navy"
-                />
+                <div key={program.title} className="relative">
+                  <span className="absolute -top-3 right-6 z-10 inline-flex items-center gap-1 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
+                    <Award className="w-3 h-3" />
+                    SHRM &amp; HRCI PDC-Eligible
+                  </span>
+                  <CourseCard
+                    icon={program.icon}
+                    title={program.title}
+                    description={program.description}
+                    features={program.features}
+                    duration={program.duration}
+                    price={program.price}
+                    participants={program.participants}
+                    popular={program.popular}
+                    targetAudience={program.targetAudience}
+                    learningOutcomes={program.learningOutcomes}
+                    deliveryMethod={program.deliveryMethod}
+                    prerequisites={program.prerequisites}
+                    certification={program.certification}
+                    ctaLabel="Book Now"
+                    ctaLink="/contact"
+                    ctaVariant="navy"
+                  />
+                </div>
               ))}
             </div>
 

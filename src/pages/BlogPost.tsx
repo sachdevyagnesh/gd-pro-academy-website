@@ -9,7 +9,7 @@ import heroBg from "@/assets/hero-bg-3.jpg";
 export const blogPostsData = [
   {
     slug: "essential-sales-skills-2024",
-    title: "5 Essential Sales Skills Every Professional Needs in 2024",
+    title: "5 Essential Sales Skills Every Professional Needs",
     excerpt: "Discover the key skills that separate top performers from the rest in today's competitive market.",
     date: "December 15, 2024",
     category: "Sales Training",
@@ -632,6 +632,22 @@ export default function BlogPost() {
                   if (paragraph.trim() === '') return null;
                   return <p key={index} className="mb-4">{paragraph}</p>;
                 })}
+              </div>
+
+              {/* Inline CTA */}
+              <div className="mt-10 rounded-2xl bg-primary/5 border border-primary/20 p-6 text-center">
+                <p className="text-lg font-semibold text-foreground mb-3">
+                  Ready to build these skills?
+                </p>
+                <Button variant="navy" asChild>
+                  <a
+                    href="https://wa.me/918356837052?text=Hi!%20I%20would%20like%20to%20book%20a%20free%20Sales%20Career%20Audit%20with%20Grishma."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a Free Career Audit →
+                  </a>
+                </Button>
               </div>
 
               {/* Share & CTA */}
