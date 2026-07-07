@@ -34,6 +34,7 @@ const caseStudies = [
     icon: Landmark,
     program: "Sales Excellence Training",
     participants: "120+ Sales Executives",
+    challenge: "Sales executives struggled with objection handling and stalled deal pipelines.",
     result: "40% increase in conversions within 3 months",
     quote: "The training transformed our team's approach completely. Our sales executives now have the confidence and skills to close deals effectively.",
     author: "Sales Head",
@@ -45,6 +46,7 @@ const caseStudies = [
     icon: Cpu,
     program: "Soft Skills Development",
     participants: "35 Team Managers",
+    challenge: "First-time managers lacked communication and people-management skills.",
     result: "Improved team engagement scores by 45%",
     quote: "Grishma's program helped our managers develop strategic thinking and better team management skills.",
     author: "HR Director",
@@ -56,6 +58,7 @@ const caseStudies = [
     icon: Factory,
     program: "Team Building & Communication",
     participants: "80+ Team Members",
+    challenge: "Silos between departments were slowing decisions and creating conflict.",
     result: "Reduced inter-departmental conflicts by 60%",
     quote: "The cross-functional collaboration training was exactly what we needed. Our teams now work together seamlessly.",
     author: "Operations Manager",
@@ -67,6 +70,7 @@ const caseStudies = [
     icon: GraduationCap,
     program: "Campus to Corporate",
     participants: "200+ Students",
+    challenge: "Final-year students were underprepared for corporate interviews and workplace expectations.",
     result: "85% placement rate improvement",
     quote: "Students walked out more confident and job-ready after Grishma's sessions! The transformation was visible.",
     author: "Placement Head",
@@ -78,6 +82,7 @@ const caseStudies = [
     icon: Briefcase,
     program: "Sales Excellence Training",
     participants: "50 Sales Agents",
+    challenge: "High-value policy conversions were slipping due to weak closing techniques.",
     result: "35% increase in policy closures",
     quote: "Her sales mastery workshop helped our team close deals faster than ever!",
     author: "Training Head",
@@ -89,6 +94,7 @@ const caseStudies = [
     icon: ShoppingBag,
     program: "Customer Service Excellence",
     participants: "100+ Staff",
+    challenge: "Inconsistent customer experience was pulling down store-level CSAT scores.",
     result: "Customer satisfaction up by 40%",
     quote: "Grishma connects instantly with participants and delivers real results.",
     author: "Operations Head",
@@ -219,6 +225,11 @@ export default function Portfolio() {
                         <Users className="w-4 h-4" />
                         {study.participants}
                       </div>
+
+                      {/* Challenge intro */}
+                      <p className="text-sm text-muted-foreground mb-3">
+                        <span className="font-semibold text-foreground">The Challenge:</span> {study.challenge}
+                      </p>
 
                       {/* Result - Always visible */}
                       <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 mb-4">

@@ -67,8 +67,20 @@ const faqs = [
     answer: "Our training approach follows '30% Learning, 70% Doing' - we use role-plays, simulation training, case studies, experiential learning, and gamification to ensure effective learning and real-world skill transfer.",
   },
   {
-    question: "Do you provide certificates?",
-    answer: "Yes, participants receive certificates of completion for all our training programs. Corporate clients also receive detailed training reports and assessment summaries for their records.",
+    question: "Do you offer certificates?",
+    answer: "Yes, participants receive certificates of completion for all our training programs. Many corporate programs are also SHRM and HRCI PDC-eligible. Corporate clients receive detailed training reports and assessment summaries for their records.",
+  },
+  {
+    question: "Can training be customized for our industry?",
+    answer: "Absolutely. Every corporate program is tailored to your industry, team maturity, and business goals. We build case studies, role-plays, and examples drawn from your sector — BFSI, IT, manufacturing, retail, healthcare, and more.",
+  },
+  {
+    question: "What is the minimum team size for corporate training?",
+    answer: "Our corporate batch programs typically run with 10-30 participants per session. For smaller teams, we can combine cohorts or design a shorter workshop format — please reach out and we'll recommend the best fit.",
+  },
+  {
+    question: "Is 1-on-1 coaching available?",
+    answer: "Yes. Individual coaching engagements are offered on request and follow our LIR Methodology (Learn, Implement, Reflect). Contact us via WhatsApp or the form to discuss goals, duration, and pricing.",
   },
   {
     question: "What are your training fees?",
@@ -305,6 +317,9 @@ export default function Contact() {
                       </>
                     )}
                   </Button>
+                  <p className="text-xs text-muted-foreground text-center mt-2">
+                    We usually respond within 4 working hours.
+                  </p>
                 </form>
               </div>
 
