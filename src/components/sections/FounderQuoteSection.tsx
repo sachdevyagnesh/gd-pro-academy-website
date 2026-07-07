@@ -14,9 +14,7 @@ export function FounderQuoteSection() {
             className="italic text-white"
             style={{ fontSize: "clamp(20px, 2.2vw, 22px)", lineHeight: 1.5 }}
           >
-            I struggled in sales because I had no one to guide me, so I became the guide I always wished I had.
-          </p>
-          <p
+            I didn't have a mentor. So I became one.
             className="mt-6 text-right"
             style={{ color: "#D4A017", fontSize: "14px" }}
           >
