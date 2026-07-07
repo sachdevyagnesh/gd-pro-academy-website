@@ -78,14 +78,14 @@ export function TestimonialsSection({ limit, showReadAll }: Props = {}) {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
           {list.map((testimonial, index) => (
             <Card
               key={index}
               variant="elevated"
-              className="group transition-all duration-300 hover:shadow-gold"
+              className="group transition-all duration-300 hover:shadow-gold h-full flex flex-col"
             >
-              <CardContent className="p-6">
+              <CardContent className="p-6 flex flex-col h-full">
                 <Quote className="w-8 h-8 text-secondary/30 mb-3" />
                 <p className="text-foreground leading-relaxed mb-4">
                   "{testimonial.content}"
