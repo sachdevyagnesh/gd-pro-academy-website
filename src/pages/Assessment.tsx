@@ -21,7 +21,7 @@ import { downloadPDF } from "@/lib/pdfGenerator";
 import { toast } from "sonner";
 import heroBg from "@/assets/hero-bg-2.jpg";
 
-type AssessmentStep = "intro" | "name" | "questions" | "result" | "sales-test";
+type AssessmentStep = "intro" | "questions" | "teaser" | "result" | "sales-test";
 type AssessmentType = "corporate" | "individual";
 
 interface AssessmentState {
@@ -58,13 +58,13 @@ export default function Assessment() {
   const redirectPath = type === "corporate" ? "/corporate-training" : "/individual-training";
 
   const handleStartAssessment = () => {
-    setStep("name");
+    setStep("questions");
   };
 
-  const handleNameSubmit = (e: React.FormEvent) => {
+  const handleTeaserSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (state.userName.trim() && state.userEmail.trim() && state.userPhone.trim()) {
-      setStep("questions");
+      setStep("result");
     }
   };
 
@@ -78,7 +78,7 @@ export default function Assessment() {
       ...prev,
       ...result,
     }));
-    setStep("result");
+    setStep("teaser");
   };
 
   const handleSalesTestComplete = (result: {
@@ -258,17 +258,37 @@ export default function Assessment() {
               </div>
             )}
 
-            {step === "name" && (
+            {step === "questions" && (
+              <Questionnaire
+                config={config}
+                onComplete={handleQuestionnaireComplete}
+                onBack={() => setStep("intro")}
+              />
+            )}
+
+            {step === "teaser" && (
               <div className="max-w-md mx-auto">
                 <Card>
                   <CardContent className="p-8">
-                    <h2 className="text-xl font-bold text-foreground mb-4 text-center">
-                      Let's Get Started
-                    </h2>
-                    <p className="text-muted-foreground mb-6 text-center">
-                      Enter your details for the personalized report
-                    </p>
-                    <form onSubmit={handleNameSubmit} className="space-y-4">
+                    <div className="text-center mb-6">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                        <span className="text-3xl" aria-hidden>🔒</span>
+                      </div>
+                      <h2 className="text-2xl font-bold text-foreground mb-2">
+                        Your Assessment Is Complete!
+                      </h2>
+                      <div className="my-4 p-4 rounded-xl bg-muted relative overflow-hidden">
+                        <div className="blur-sm select-none pointer-events-none text-center">
+                          <p className="text-xs text-muted-foreground">Your Score</p>
+                          <p className="text-4xl font-bold text-foreground">?? / {config.maxScore}</p>
+                          <p className="text-sm text-muted-foreground mt-1">Recommended Program: ••••••••</p>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground text-sm">
+                        Enter your details to see your personalized score, program recommendation, and download your PDF report.
+                      </p>
+                    </div>
+                    <form onSubmit={handleTeaserSubmit} className="space-y-4">
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-1.5">Your Full Name *</label>
                         <Input
@@ -300,37 +320,19 @@ export default function Assessment() {
                           title="Enter a valid phone number (7-15 digits)"
                         />
                       </div>
-                      <div className="flex gap-3 pt-2">
-                        <Button 
-                          type="button" 
-                          variant="outline" 
-                          onClick={() => setStep("intro")}
-                          className="flex-1"
-                        >
-                          Back
-                        </Button>
-                        <Button 
-                          type="submit" 
-                          variant="navy" 
-                          className="flex-1 gap-2"
-                          disabled={!state.userName.trim() || !state.userEmail.trim() || !state.userPhone.trim()}
-                        >
-                          Continue
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </div>
+                      <Button
+                        type="submit"
+                        variant="navy"
+                        className="w-full gap-2"
+                        disabled={!state.userName.trim() || !state.userEmail.trim() || !state.userPhone.trim()}
+                      >
+                        Reveal My Results
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
                     </form>
                   </CardContent>
                 </Card>
               </div>
-            )}
-
-            {step === "questions" && (
-              <Questionnaire
-                config={config}
-                onComplete={handleQuestionnaireComplete}
-                onBack={() => setStep("name")}
-              />
             )}
 
             {step === "result" && state.range && (
