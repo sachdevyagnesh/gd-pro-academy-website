@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { PenLine, Clock, ArrowRight, Calendar } from "lucide-react";
 import { blogPostsData } from "./BlogPost";
 import heroBg from "@/assets/hero-bg-3.jpg";
+import featuredImg from "@/assets/blog-featured-sales.jpg";
 
 export default function Blog() {
   const featuredPost = blogPostsData.find(p => p.featured);
@@ -47,13 +48,16 @@ export default function Blog() {
             <div className="container mx-auto px-4">
               <Card variant="elevated" className="max-w-4xl mx-auto overflow-hidden">
                 <div className="grid md:grid-cols-2">
-                  <div className="aspect-video md:aspect-auto bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center p-8">
-                    <div className="text-center">
-                      <span className="inline-block bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-medium mb-4">
-                        Featured
-                      </span>
-                      <PenLine className="w-16 h-16 text-primary-foreground/50 mx-auto" />
-                    </div>
+                  <div className="relative md:aspect-auto aspect-video overflow-hidden">
+                    <img
+                      src={featuredImg}
+                      alt={featuredPost.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <span className="absolute top-4 left-4 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                      Featured
+                    </span>
                   </div>
                   <CardContent className="p-8 flex flex-col justify-center">
                     <span className="text-xs font-medium text-secondary mb-2">{featuredPost.category}</span>
