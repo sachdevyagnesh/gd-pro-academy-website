@@ -220,7 +220,7 @@ export default function IndividualTraining() {
                     For individual attention and customized coaching sessions tailored specifically to your needs, please reach out to us directly.
                   </p>
                   <p className="text-sm text-foreground mb-4">
-                    Every 1-on-1 engagement follows the <strong className="text-secondary">LIR Methodology&trade; (Learn, Implement, Reflect)</strong> — a coaching cycle designed to turn insight into lasting behaviour change.
+                    Every 1-on-1 engagement follows the <strong className="text-secondary">LIR Methodology (Learn, Implement, Reflect)</strong> — a coaching cycle designed to turn insight into lasting behaviour change.
                   </p>
                   <Button variant="navy" asChild>
                     <Link to="/contact">Contact for 1-on-1 Coaching</Link>

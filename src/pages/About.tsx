@@ -123,15 +123,12 @@ export default function About() {
                   Hi, I'm Grishma Sachdev
                 </h2>
                 <p className="text-secondary font-semibold mb-4">
-                  Sales Performance & Career Growth Expert | Certified Trainer | Ex-Banker | Author | Creator of the LIR Methodology.
+                  Sales Performance & Career Growth Expert | Certified Trainer | Ex-Banker | Author | Developer of the LIR Methodology.
                 </p>
 
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
                     A <strong className="text-foreground">Sales Trainer & Mentor</strong> with <strong className="text-foreground">14 years of experience</strong> across the BFSI and training industries. My work is rooted in simplifying complex concepts and turning them into practical, real-world skills people can apply immediately.
-                  </p>
-                  <p className="italic border-l-4 border-secondary pl-4 text-foreground">
-                    "I struggled in sales because I had no one to guide me, so I became the guide I always wished I had."
                   </p>
                   <p>
                     I focus deeply on <strong className="text-foreground">people's behavior</strong>, <strong className="text-foreground">communication</strong>, and day-to-day workplace realities.
@@ -270,7 +267,7 @@ export default function About() {
                   <Button variant="gold" size="lg" asChild>
                     {/* TODO: ADD REAL AMAZON ASIN LINK HERE */}
                     <a
-                      href="https://www.amazon.in/dp/B0DXXXXXXX"
+                      href="https://www.amazon.in/dp/B0H4Y4SZM3"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -324,7 +321,7 @@ export default function About() {
             <div className="max-w-5xl mx-auto mt-14">
               <div className="text-center mb-8">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
-                  The <span className="text-secondary">GROWTH Framework&trade;</span>
+                  The <span className="text-secondary">GROWTH Framework</span>
                 </h3>
                 <p className="text-muted-foreground">Six anchors behind every program I deliver.</p>
               </div>

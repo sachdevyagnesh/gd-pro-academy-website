@@ -6,7 +6,7 @@ import { ShoppingCart, MessageCircle } from "lucide-react";
 import heroBg from "@/assets/about-hero.jpg";
 import bookCover from "@/assets/book-cover-more-than-sales.jpg.asset.json";
 
-const AMAZON_URL = "https://www.amazon.in/dp/B0DXXXXXXX";
+const AMAZON_URL = "https://www.amazon.in/dp/B0H4Y4SZM3";
 
 export default function Books() {
   return (
