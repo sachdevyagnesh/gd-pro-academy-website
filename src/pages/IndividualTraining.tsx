@@ -157,14 +157,22 @@ export default function IndividualTraining() {
         {/* Live Training Sessions - Now Batch Based */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <div className="accent-line mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Batch Training Programs
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Group training sessions with 10-30 participants for interactive learning and peer networking. For personalized 1-on-1 coaching, <Link to="/contact" className="text-primary underline">contact us</Link>.
+                Group training sessions for interactive learning and peer networking. For personalized 1-on-1 coaching, <Link to="/contact" className="text-primary underline">contact us</Link>.
               </p>
+            </div>
+
+            {/* Batch availability indicator */}
+            <div className="max-w-3xl mx-auto mb-8 text-center">
+              <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 text-foreground rounded-full px-5 py-2 text-sm font-medium">
+                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                Next batch: Enrolling now — reserve your seat on WhatsApp.
+              </div>
             </div>
 
             {/* Methodology strip */}
@@ -177,26 +185,34 @@ export default function IndividualTraining() {
 
 
             <div className="grid md:grid-cols-2 gap-6">
-              {livePrograms.map((program) => (
-                <CourseCard
-                  key={program.title}
-                  icon={program.icon}
-                  title={program.title}
-                  description={program.description}
-                  features={program.features}
-                  duration={program.duration}
-                  price={program.price}
-                  type={program.type}
-                  targetAudience={program.targetAudience}
-                  learningOutcomes={program.learningOutcomes}
-                  deliveryMethod={program.deliveryMethod}
-                  prerequisites={program.prerequisites}
-                  certification={program.certification}
-                  ctaLabel="Enroll"
-                  ctaLink="/contact"
-                  ctaVariant="accent"
-                />
-              ))}
+              {livePrograms.map((program) => {
+                const waHref = `https://wa.me/918356837052?text=${encodeURIComponent(
+                  `Hi! I'd like to enroll in the ${program.title} program at GD Pro Academy.`
+                )}`;
+                return (
+                  <CourseCard
+                    key={program.title}
+                    icon={program.icon}
+                    title={program.title}
+                    description={program.description}
+                    features={program.features}
+                    duration={program.duration}
+                    price={program.price}
+                    type={program.type}
+                    targetAudience={program.targetAudience}
+                    learningOutcomes={program.learningOutcomes}
+                    deliveryMethod={program.deliveryMethod}
+                    prerequisites={program.prerequisites}
+                    certification={program.certification}
+                    ctaLabel="Enroll via WhatsApp"
+                    ctaLink={waHref}
+                    ctaExternal
+                    ctaVariant="accent"
+                    secondaryCtaLabel="Contact Form"
+                    secondaryCtaLink="/contact"
+                  />
+                );
+              })}
             </div>
 
             {/* Assessment bridge banner */}
