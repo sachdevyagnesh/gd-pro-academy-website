@@ -246,15 +246,22 @@ export function Header() {
                   if ("dropdown" in link) {
                     return (
                       <div key={link.name} className="space-y-1">
-                        <div className="px-4 pt-2 pb-1 text-xs uppercase tracking-wide text-muted-foreground">
+                        <Link
+                          to={link.href}
+                          className={cn(
+                            "block px-4 py-2 rounded-lg font-medium transition-colors",
+                            isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
+                          )}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
                           {link.name}
-                        </div>
+                        </Link>
                         {link.items.map((item) => (
                           <Link
                             key={item.href}
                             to={item.href}
                             className={cn(
-                              "block px-4 py-2 rounded-lg font-medium transition-colors",
+                              "block px-4 py-2 rounded-lg font-medium transition-colors pl-8",
                               isActive(item.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
                             )}
                             onClick={() => setIsMobileMenuOpen(false)}
