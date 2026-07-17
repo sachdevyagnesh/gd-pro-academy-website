@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 import { AIChatWidget } from "@/components/common/AIChatWidget";
+import { ExitIntentModal } from "@/components/common/ExitIntentModal";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import ServicesLanding from "./pages/ServicesLanding";
