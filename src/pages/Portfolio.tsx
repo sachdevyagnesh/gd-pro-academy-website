@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu, Fuel, HeartPulse, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { Award, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu, Fuel, HeartPulse } from "lucide-react";
+
 import heroBg from "@/assets/about-portrait1.jpg";
 
 // Import association logos
