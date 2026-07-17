@@ -240,7 +240,7 @@ serve(async (req) => {
       );
     }
 
-    const { name, email, phone, company, trainingType, message, service } = validatedData;
+    const { name, email, phone, company, trainingType, message, service, enquiringFor } = validatedData;
 
     console.log('Received validated lead submission:', { name, email: email.substring(0, 3) + '***', company, trainingType, ip: clientIp.substring(0, 8) + '***' });
 
@@ -254,10 +254,14 @@ serve(async (req) => {
       'individual': 'Individual Programs',
       'e-course': 'Individual Programs',
       'other': 'Other',
+      'newsletter': 'Newsletter',
+      'myself': 'Myself',
+      'my-team': 'My Team',
+      'my-institution': 'My Institution',
     };
 
     // Build the row according to Google Sheets headers
-    // Headers: Lead ID, Date, Lead Name, Email, Mobile, Source, Status, Pipeline Stage, Temperature, Priority, Notes, Company, Training Type, Service Interested
+    // Headers: Lead ID, Date, Lead Name, Email, Mobile, Source, Status, Pipeline Stage, Temperature, Priority, Notes, Company, Training Type, Enquiring For, Service Interested
     const leadId = `WEB-${Date.now().toString(36).toUpperCase()}`;
     const row = [
       leadId,                                    // Lead ID
@@ -273,6 +277,7 @@ serve(async (req) => {
       message || '',                             // Notes
       company || '',                             // Company
       trainingTypeMap[trainingType || ''] || trainingType || '', // Training Type
+      enquiringFor || '',                        // Enquiring For
       service || '',                             // Service Interested
     ];
 
