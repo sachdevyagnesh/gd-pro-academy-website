@@ -23,84 +23,10 @@ import axisLogo from "@/assets/axis-bank.jpg";
 // Import certification logos
 import cpdLogo from "@/assets/cpd-accredited.png";
 import hrciLogo from "@/assets/hrci-approved.png";
-import proTouchLogo from "@/assets/pro-touch.png";
 import shrmLogo from "@/assets/shrm-provider.png";
 
 import { Helmet } from "react-helmet-async";
-const caseStudies = [
-  {
-    company: "Leading BFSI Company",
-    industry: "Banking & Financial Services",
-    icon: Landmark,
-    program: "Sales Excellence Training",
-    participants: "120+ Sales Executives",
-    challenge: "Sales executives struggled with objection handling and stalled deal pipelines.",
-    result: "40% increase in conversions within 3 months",
-    quote: "The training transformed our team's approach completely. Our sales executives now have the confidence and skills to close deals effectively.",
-    author: "Sales Head",
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    company: "IT Services Firm",
-    industry: "Information Technology",
-    icon: Cpu,
-    program: "Soft Skills Development",
-    participants: "35 Team Managers",
-    challenge: "First-time managers lacked communication and people-management skills.",
-    result: "Improved team engagement scores by 45%",
-    quote: "Grishma's program helped our managers develop strategic thinking and better team management skills.",
-    author: "HR Director",
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    company: "Manufacturing Company",
-    industry: "Manufacturing",
-    icon: Factory,
-    program: "Team Building & Communication",
-    participants: "80+ Team Members",
-    challenge: "Silos between departments were slowing decisions and creating conflict.",
-    result: "Reduced inter-departmental conflicts by 60%",
-    quote: "The cross-functional collaboration training was exactly what we needed. Our teams now work together seamlessly.",
-    author: "Operations Manager",
-    color: "from-orange-500 to-orange-600",
-  },
-  {
-    company: "Educational Institute",
-    industry: "Education",
-    icon: GraduationCap,
-    program: "Campus to Corporate",
-    participants: "200+ Students",
-    challenge: "Final-year students were underprepared for corporate interviews and workplace expectations.",
-    result: "85% placement rate improvement",
-    quote: "Students walked out more confident and job-ready after Grishma's sessions! The transformation was visible.",
-    author: "Placement Head",
-    color: "from-green-500 to-green-600",
-  },
-  {
-    company: "Insurance Provider",
-    industry: "Insurance",
-    icon: Briefcase,
-    program: "Sales Excellence Training",
-    participants: "50 Sales Agents",
-    challenge: "High-value policy conversions were slipping due to weak closing techniques.",
-    result: "35% increase in policy closures",
-    quote: "Her sales mastery workshop helped our team close deals faster than ever!",
-    author: "Training Head",
-    color: "from-indigo-500 to-indigo-600",
-  },
-  {
-    company: "Retail Chain",
-    industry: "Retail",
-    icon: ShoppingBag,
-    program: "Customer Service Excellence",
-    participants: "100+ Staff",
-    challenge: "Inconsistent customer experience was pulling down store-level CSAT scores.",
-    result: "Customer satisfaction up by 40%",
-    quote: "Grishma connects instantly with participants and delivers real results.",
-    author: "Operations Head",
-    color: "from-pink-500 to-pink-600",
-  },
-];
+
 
 const industries = [
   { name: "BFSI & Insurance", icon: Landmark, color: "bg-blue-500/10 text-blue-600" },
