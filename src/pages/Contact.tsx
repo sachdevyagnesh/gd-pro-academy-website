@@ -285,6 +285,22 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
+                      I am enquiring for *
+                    </label>
+                    <select
+                      required
+                      value={formData.enquiringFor}
+                      onChange={(e) => setFormData({ ...formData, enquiringFor: e.target.value })}
+                      className="w-full h-11 px-4 rounded-lg border border-input bg-card text-foreground"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="myself">Myself</option>
+                      <option value="my-team">My Team</option>
+                      <option value="my-institution">My Institution</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Training Type
                     </label>
                     <select
