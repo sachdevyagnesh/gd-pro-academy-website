@@ -645,7 +645,7 @@ export default function BlogPost() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Book a Free Career Audit →
+                    Book Free Sales CareerAudit →
                   </a>
                 </Button>
               </div>
