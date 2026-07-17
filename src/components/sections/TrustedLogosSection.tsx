@@ -31,20 +31,22 @@ export function TrustedLogosSection() {
         <p className="text-center text-xs uppercase tracking-widest text-muted-foreground mb-8">
           Trusted by leading organizations
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
-          {logos.map((l) => (
-            <div
-              key={l.name}
-              className="h-16 md:h-20 flex items-center transition-transform duration-200 hover:scale-110"
-            >
-              <img
-                src={l.src}
-                alt={l.name}
-                loading="lazy"
-                className="max-h-full max-w-[150px] md:max-w-[180px] object-contain"
-              />
-            </div>
-          ))}
+        <div className="overflow-hidden">
+          <div className="flex items-center gap-10 md:gap-14 animate-marquee">
+            {[...logos, ...logos].map((l, i) => (
+              <div
+                key={`${l.name}-${i}`}
+                className="shrink-0 h-16 md:h-20 flex items-center"
+              >
+                <img
+                  src={l.src}
+                  alt={l.name}
+                  loading="lazy"
+                  className="max-h-full max-w-[150px] md:max-w-[180px] object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
