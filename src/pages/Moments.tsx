@@ -140,8 +140,6 @@ export default function Moments() {
                 <span className="font-semibold text-foreground">4,500+ Careers Transformed</span>
                 <span className="mx-2">·</span>
                 <span className="font-semibold text-foreground">14+ Years Experience</span>
-                <span className="mx-2">·</span>
-                <span className="font-semibold text-foreground">50+ Organisations</span>
               </p>
             </div>
 
