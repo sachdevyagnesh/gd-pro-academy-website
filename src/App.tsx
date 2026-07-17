@@ -59,6 +59,7 @@ const App = () => (
         </Routes>
         <WhatsAppButton />
         <AIChatWidget />
+        <ExitIntentModal />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
