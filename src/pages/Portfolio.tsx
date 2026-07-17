@@ -130,7 +130,6 @@ const associations = [
 const certifications = [
   { name: "CPD Accredited", description: "Continuing Professional Development", logo: cpdLogo },
   { name: "HRCI Approved Provider", description: "2024 Provider", logo: hrciLogo },
-  { name: "Pro Touch Certified", description: "Training Excellence", logo: proTouchLogo },
   { name: "SHRM Recertification Provider", description: "SHRM-CP | SHRM-SCP", logo: shrmLogo },
 ];
 
