@@ -48,8 +48,21 @@ export function CourseCard({
   ctaLabel = "Enroll Now",
   ctaLink = "/contact",
   ctaVariant = "navy",
+  ctaExternal = false,
+  secondaryCtaLabel,
+  secondaryCtaLink,
 }: CourseCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const renderPrimary = () => (
+    <Button variant={ctaVariant} asChild>
+      {ctaExternal ? (
+        <a href={ctaLink} target="_blank" rel="noopener noreferrer">{ctaLabel}</a>
+      ) : (
+        <Link to={ctaLink}>{ctaLabel}</Link>
+      )}
+    </Button>
+  );
 
   return (
     <>
