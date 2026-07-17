@@ -8,7 +8,7 @@ import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/about-hero.jpg";
 
 import { Helmet } from "react-helmet-async";
-// Updated to batch system (10-30 members) instead of 1-on-1
+// Batch programs
 const livePrograms = [
   {
     icon: MessageSquare,
@@ -22,7 +22,7 @@ const livePrograms = [
     ],
     duration: "1 Day",
     price: "₹7,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Professionals looking to improve their communication skills for career advancement.",
     learningOutcomes: [
       "Speak confidently in meetings and presentations",
@@ -46,7 +46,7 @@ const livePrograms = [
     ],
     duration: "1-2 Days",
     price: "₹11,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Sales professionals, entrepreneurs, and anyone in client-facing roles.",
     learningOutcomes: [
       "Handle objections confidently and effectively",
@@ -70,7 +70,7 @@ const livePrograms = [
     ],
     duration: "1 Day",
     price: "₹9,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Professionals seeking career growth, job changers, and those planning their next career move.",
     learningOutcomes: [
       "Create a clear career roadmap",
@@ -94,7 +94,7 @@ const livePrograms = [
     ],
     duration: "Half Day",
     price: "₹4,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Job seekers, fresh graduates, and professionals preparing for interviews.",
     learningOutcomes: [
       "Answer tough interview questions confidently",
