@@ -25,6 +25,9 @@ interface CourseCardProps {
   ctaLabel?: string;
   ctaLink?: string;
   ctaVariant?: "navy" | "gold" | "accent" | "default";
+  ctaExternal?: boolean;
+  secondaryCtaLabel?: string;
+  secondaryCtaLink?: string;
 }
 
 export function CourseCard({
