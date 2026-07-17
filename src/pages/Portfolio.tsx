@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Building2, Users, TrendingUp, Award, Quote, ArrowRight, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu, Fuel, HeartPulse, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { Award, ArrowRight, Briefcase, GraduationCap, Landmark, ShoppingBag, Factory, Cpu, Fuel, HeartPulse } from "lucide-react";
+
 import heroBg from "@/assets/about-portrait1.jpg";
 
 // Import association logos
@@ -23,84 +23,10 @@ import axisLogo from "@/assets/axis-bank.jpg";
 // Import certification logos
 import cpdLogo from "@/assets/cpd-accredited.png";
 import hrciLogo from "@/assets/hrci-approved.png";
-import proTouchLogo from "@/assets/pro-touch.png";
 import shrmLogo from "@/assets/shrm-provider.png";
 
 import { Helmet } from "react-helmet-async";
-const caseStudies = [
-  {
-    company: "Leading BFSI Company",
-    industry: "Banking & Financial Services",
-    icon: Landmark,
-    program: "Sales Excellence Training",
-    participants: "120+ Sales Executives",
-    challenge: "Sales executives struggled with objection handling and stalled deal pipelines.",
-    result: "40% increase in conversions within 3 months",
-    quote: "The training transformed our team's approach completely. Our sales executives now have the confidence and skills to close deals effectively.",
-    author: "Sales Head",
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    company: "IT Services Firm",
-    industry: "Information Technology",
-    icon: Cpu,
-    program: "Soft Skills Development",
-    participants: "35 Team Managers",
-    challenge: "First-time managers lacked communication and people-management skills.",
-    result: "Improved team engagement scores by 45%",
-    quote: "Grishma's program helped our managers develop strategic thinking and better team management skills.",
-    author: "HR Director",
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    company: "Manufacturing Company",
-    industry: "Manufacturing",
-    icon: Factory,
-    program: "Team Building & Communication",
-    participants: "80+ Team Members",
-    challenge: "Silos between departments were slowing decisions and creating conflict.",
-    result: "Reduced inter-departmental conflicts by 60%",
-    quote: "The cross-functional collaboration training was exactly what we needed. Our teams now work together seamlessly.",
-    author: "Operations Manager",
-    color: "from-orange-500 to-orange-600",
-  },
-  {
-    company: "Educational Institute",
-    industry: "Education",
-    icon: GraduationCap,
-    program: "Campus to Corporate",
-    participants: "200+ Students",
-    challenge: "Final-year students were underprepared for corporate interviews and workplace expectations.",
-    result: "85% placement rate improvement",
-    quote: "Students walked out more confident and job-ready after Grishma's sessions! The transformation was visible.",
-    author: "Placement Head",
-    color: "from-green-500 to-green-600",
-  },
-  {
-    company: "Insurance Provider",
-    industry: "Insurance",
-    icon: Briefcase,
-    program: "Sales Excellence Training",
-    participants: "50 Sales Agents",
-    challenge: "High-value policy conversions were slipping due to weak closing techniques.",
-    result: "35% increase in policy closures",
-    quote: "Her sales mastery workshop helped our team close deals faster than ever!",
-    author: "Training Head",
-    color: "from-indigo-500 to-indigo-600",
-  },
-  {
-    company: "Retail Chain",
-    industry: "Retail",
-    icon: ShoppingBag,
-    program: "Customer Service Excellence",
-    participants: "100+ Staff",
-    challenge: "Inconsistent customer experience was pulling down store-level CSAT scores.",
-    result: "Customer satisfaction up by 40%",
-    quote: "Grishma connects instantly with participants and delivers real results.",
-    author: "Operations Head",
-    color: "from-pink-500 to-pink-600",
-  },
-];
+
 
 const industries = [
   { name: "BFSI & Insurance", icon: Landmark, color: "bg-blue-500/10 text-blue-600" },
@@ -130,14 +56,11 @@ const associations = [
 const certifications = [
   { name: "CPD Accredited", description: "Continuing Professional Development", logo: cpdLogo },
   { name: "HRCI Approved Provider", description: "2024 Provider", logo: hrciLogo },
-  { name: "Pro Touch Certified", description: "Training Excellence", logo: proTouchLogo },
   { name: "SHRM Recertification Provider", description: "SHRM-CP | SHRM-SCP", logo: shrmLogo },
 ];
 
 
 export default function Portfolio() {
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
-
   return (
     <div className="min-h-screen">
       <Header />
@@ -174,113 +97,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Case Studies - Modern Card Grid */}
-        <section className="section-padding bg-muted">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="accent-line mx-auto mb-6" />
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Case Studies
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Real results from real organizations we've partnered with.
-              </p>
-            </div>
-
-            {/* Modern Card Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {caseStudies.map((study, index) => {
-                const Icon = study.icon;
-                const isExpanded = expandedCard === index;
-                
-                return (
-                  <Card 
-                    key={index} 
-                    className="group overflow-hidden bg-card hover:shadow-xl transition-all duration-300 border-0"
-                  >
-                    {/* Gradient Header */}
-                    <div className={`h-2 bg-gradient-to-r ${study.color}`} />
-                    
-                    <CardContent className="p-6">
-                      {/* Icon & Industry */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${study.color} flex items-center justify-center`}>
-                          <Icon className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
-                          {study.industry}
-                        </span>
-                      </div>
-
-                      {/* Company & Program */}
-                      <h3 className="text-lg font-bold text-foreground mb-1">
-                        {study.company}
-                      </h3>
-                      <p className="text-sm text-primary font-medium mb-3">
-                        {study.program}
-                      </p>
-
-                      {/* Participants */}
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-                        <Users className="w-4 h-4" />
-                        {study.participants}
-                      </div>
-
-                      {/* Challenge intro */}
-                      <p className="text-sm text-muted-foreground mb-3">
-                        <span className="font-semibold text-foreground">The Challenge:</span> {study.challenge}
-                      </p>
-
-                      {/* Result - Always visible */}
-                      <div className="bg-accent/10 border border-accent/20 rounded-xl p-3 mb-4">
-                        <p className="text-accent font-semibold flex items-center gap-2 text-sm">
-                          <TrendingUp className="w-4 h-4 shrink-0" />
-                          {study.result}
-                        </p>
-                      </div>
-
-                      {/* Expandable Quote Section */}
-                      <button 
-                        onClick={() => setExpandedCard(isExpanded ? null : index)}
-                        className="w-full flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <span>Read testimonial</span>
-                        {isExpanded ? (
-                          <ChevronUp className="w-4 h-4" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4" />
-                        )}
-                      </button>
-
-                      {/* Collapsible Quote */}
-                      <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-40 mt-4' : 'max-h-0'}`}>
-                        <div className="relative pt-2">
-                          <Quote className="w-5 h-5 text-muted-foreground/20 absolute -top-1 -left-1" />
-                          <blockquote className="text-muted-foreground italic pl-4 text-sm">
-                            "{study.quote}"
-                          </blockquote>
-                          <p className="text-sm font-medium text-foreground mt-2 pl-4">
-                            — {study.author}
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-
-            {/* CTA */}
-            <div className="text-center mt-12">
-              <Button variant="navy" size="lg" asChild>
-                <Link to="/contact">
-                  Start Your Success Story
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
+        {/* Case studies section removed */}
 
         {/* Key Associations */}
         <section className="section-padding bg-background">

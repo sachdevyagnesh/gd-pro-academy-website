@@ -2,14 +2,54 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import { PenLine, Clock, ArrowRight, Calendar } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import { blogPostsData } from "./BlogPost";
 import heroBg from "@/assets/hero-bg-3.jpg";
 import featuredImg from "@/assets/blog-featured-sales.jpg";
 
 import { Helmet } from "react-helmet-async";
 export default function Blog() {
+  const { toast } = useToast();
+  const [subscriber, setSubscriber] = useState({ name: "", email: "" });
+  const [subscribing, setSubscribing] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubscribing(true);
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-lead`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: subscriber.name,
+            email: subscriber.email,
+            message: "Blog newsletter subscription",
+            trainingType: "newsletter",
+          }),
+        }
+      );
+      let result: { success?: boolean; error?: string } = {};
+      try { result = await res.json(); } catch { /* ignore */ }
+      if (!res.ok || !result.success) throw new Error(result.error || `Request failed (${res.status})`);
+      toast({ title: "Subscribed!", description: "You'll receive our new articles in your inbox." });
+      setSubscriber({ name: "", email: "" });
+    } catch (err) {
+      toast({
+        title: "Couldn't subscribe",
+        description: err instanceof Error ? err.message : "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubscribing(false);
+    }
+  };
+
   const featuredPost = blogPostsData.find(p => p.featured);
   const regularPosts = blogPostsData.filter(p => !p.featured);
 
@@ -143,19 +183,33 @@ export default function Blog() {
               ))}
             </div>
 
-            {/* Newsletter CTA */}
+            {/* Newsletter inline form */}
             <Card className="max-w-2xl mx-auto mt-16 bg-primary text-primary-foreground">
-              <CardContent className="p-8 text-center">
-                <h3 className="font-display text-2xl font-bold mb-3">Stay Updated</h3>
-                <p className="text-primary-foreground/80 mb-6">
-                  Get notified when we publish new articles and training tips.
+              <CardContent className="p-8">
+                <h3 className="font-display text-2xl font-bold mb-2 text-center">Stay Updated</h3>
+                <p className="text-primary-foreground/80 mb-6 text-center">
+                  Get new articles delivered to your inbox.
                 </p>
-                <Button variant="hero" size="lg" asChild>
-                  <Link to="/contact">
-                    Subscribe to Updates
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                  <Input
+                    required
+                    placeholder="Your name"
+                    value={subscriber.name}
+                    onChange={(e) => setSubscriber({ ...subscriber, name: e.target.value })}
+                    className="bg-primary-foreground text-foreground flex-1"
+                  />
+                  <Input
+                    required
+                    type="email"
+                    placeholder="you@email.com"
+                    value={subscriber.email}
+                    onChange={(e) => setSubscriber({ ...subscriber, email: e.target.value })}
+                    className="bg-primary-foreground text-foreground flex-1"
+                  />
+                  <Button type="submit" variant="hero" disabled={subscribing}>
+                    {subscribing ? "..." : "Subscribe"}
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>

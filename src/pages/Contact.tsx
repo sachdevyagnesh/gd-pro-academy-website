@@ -95,6 +95,7 @@ export default function Contact() {
     email: "",
     phone: "",
     company: "",
+    enquiringFor: "",
     trainingType: "",
     message: "",
   });
@@ -116,40 +117,42 @@ export default function Contact() {
         }
       );
 
-      const result = await response.json();
-
-      if (result.success) {
-        toast({
-          title: "Message Sent!",
-          description: "We'll get back to you within 24 hours.",
-        });
-
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          trainingType: "",
-          message: "",
-        });
-      } else {
-        throw new Error(result.error || 'Submission failed');
+      let result: { success?: boolean; error?: string } = {};
+      try {
+        result = await response.json();
+      } catch {
+        // ignore JSON parse failure — handled below
       }
-    } catch (error) {
-      console.error('Form submission error:', error);
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || `Request failed (${response.status})`);
+      }
+
       toast({
         title: "Message Sent!",
         description: "We'll get back to you within 24 hours.",
       });
-      // Reset form even on error to not block the user
+
       setFormData({
         name: "",
         email: "",
         phone: "",
         company: "",
+        enquiringFor: "",
         trainingType: "",
         message: "",
       });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Couldn't send your message",
+        description:
+          error instanceof Error && error.message
+            ? `${error.message}. Please try again or WhatsApp us at +91 8356 837052.`
+            : "Something went wrong. Please try again or WhatsApp us at +91 8356 837052.",
+        variant: "destructive",
+      });
+      // Do NOT clear the form on failure — user keeps their input.
     } finally {
       setIsSubmitting(false);
     }
@@ -279,6 +282,22 @@ export default function Contact() {
                         className="bg-card"
                       />
                     </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      I am enquiring for *
+                    </label>
+                    <select
+                      required
+                      value={formData.enquiringFor}
+                      onChange={(e) => setFormData({ ...formData, enquiringFor: e.target.value })}
+                      className="w-full h-11 px-4 rounded-lg border border-input bg-card text-foreground"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="myself">Myself</option>
+                      <option value="my-team">My Team</option>
+                      <option value="my-institution">My Institution</option>
+                    </select>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">

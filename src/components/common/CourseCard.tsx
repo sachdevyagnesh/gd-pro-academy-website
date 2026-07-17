@@ -25,6 +25,9 @@ interface CourseCardProps {
   ctaLabel?: string;
   ctaLink?: string;
   ctaVariant?: "navy" | "gold" | "accent" | "default";
+  ctaExternal?: boolean;
+  secondaryCtaLabel?: string;
+  secondaryCtaLink?: string;
 }
 
 export function CourseCard({
@@ -45,8 +48,21 @@ export function CourseCard({
   ctaLabel = "Enroll Now",
   ctaLink = "/contact",
   ctaVariant = "navy",
+  ctaExternal = false,
+  secondaryCtaLabel,
+  secondaryCtaLink,
 }: CourseCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const renderPrimary = () => (
+    <Button variant={ctaVariant} asChild>
+      {ctaExternal ? (
+        <a href={ctaLink} target="_blank" rel="noopener noreferrer">{ctaLabel}</a>
+      ) : (
+        <Link to={ctaLink}>{ctaLabel}</Link>
+      )}
+    </Button>
+  );
 
   return (
     <>
@@ -107,10 +123,13 @@ export function CourseCard({
                 </span>
               )}
             </div>
-            <div className="flex items-center justify-end">
-              <Button variant={ctaVariant} asChild>
-                <Link to={ctaLink}>{ctaLabel}</Link>
-              </Button>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2">
+              {secondaryCtaLabel && secondaryCtaLink && (
+                <Button variant="outline" asChild>
+                  <Link to={secondaryCtaLink}>{secondaryCtaLabel}</Link>
+                </Button>
+              )}
+              {renderPrimary()}
             </div>
           </div>
         </CardContent>

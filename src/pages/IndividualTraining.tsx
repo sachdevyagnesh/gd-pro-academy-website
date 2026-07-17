@@ -8,7 +8,7 @@ import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/about-hero.jpg";
 
 import { Helmet } from "react-helmet-async";
-// Updated to batch system (10-30 members) instead of 1-on-1
+// Batch programs
 const livePrograms = [
   {
     icon: MessageSquare,
@@ -22,7 +22,7 @@ const livePrograms = [
     ],
     duration: "1 Day",
     price: "₹7,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Professionals looking to improve their communication skills for career advancement.",
     learningOutcomes: [
       "Speak confidently in meetings and presentations",
@@ -46,7 +46,7 @@ const livePrograms = [
     ],
     duration: "1-2 Days",
     price: "₹11,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Sales professionals, entrepreneurs, and anyone in client-facing roles.",
     learningOutcomes: [
       "Handle objections confidently and effectively",
@@ -70,7 +70,7 @@ const livePrograms = [
     ],
     duration: "1 Day",
     price: "₹9,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Professionals seeking career growth, job changers, and those planning their next career move.",
     learningOutcomes: [
       "Create a clear career roadmap",
@@ -94,7 +94,7 @@ const livePrograms = [
     ],
     duration: "Half Day",
     price: "₹4,999",
-    type: "Batch (10-30 Members)",
+    type: "Batch Program",
     targetAudience: "Job seekers, fresh graduates, and professionals preparing for interviews.",
     learningOutcomes: [
       "Answer tough interview questions confidently",
@@ -157,14 +157,22 @@ export default function IndividualTraining() {
         {/* Live Training Sessions - Now Batch Based */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <div className="accent-line mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Batch Training Programs
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Group training sessions with 10-30 participants for interactive learning and peer networking. For personalized 1-on-1 coaching, <Link to="/contact" className="text-primary underline">contact us</Link>.
+                Group training sessions for interactive learning and peer networking. For personalized 1-on-1 coaching, <Link to="/contact" className="text-primary underline">contact us</Link>.
               </p>
+            </div>
+
+            {/* Batch availability indicator */}
+            <div className="max-w-3xl mx-auto mb-8 text-center">
+              <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 text-foreground rounded-full px-5 py-2 text-sm font-medium">
+                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                Next batch: Enrolling now — reserve your seat on WhatsApp.
+              </div>
             </div>
 
             {/* Methodology strip */}
@@ -177,26 +185,34 @@ export default function IndividualTraining() {
 
 
             <div className="grid md:grid-cols-2 gap-6">
-              {livePrograms.map((program) => (
-                <CourseCard
-                  key={program.title}
-                  icon={program.icon}
-                  title={program.title}
-                  description={program.description}
-                  features={program.features}
-                  duration={program.duration}
-                  price={program.price}
-                  type={program.type}
-                  targetAudience={program.targetAudience}
-                  learningOutcomes={program.learningOutcomes}
-                  deliveryMethod={program.deliveryMethod}
-                  prerequisites={program.prerequisites}
-                  certification={program.certification}
-                  ctaLabel="Enroll"
-                  ctaLink="/contact"
-                  ctaVariant="accent"
-                />
-              ))}
+              {livePrograms.map((program) => {
+                const waHref = `https://wa.me/918356837052?text=${encodeURIComponent(
+                  `Hi! I'd like to enroll in the ${program.title} program at GD Pro Academy.`
+                )}`;
+                return (
+                  <CourseCard
+                    key={program.title}
+                    icon={program.icon}
+                    title={program.title}
+                    description={program.description}
+                    features={program.features}
+                    duration={program.duration}
+                    price={program.price}
+                    type={program.type}
+                    targetAudience={program.targetAudience}
+                    learningOutcomes={program.learningOutcomes}
+                    deliveryMethod={program.deliveryMethod}
+                    prerequisites={program.prerequisites}
+                    certification={program.certification}
+                    ctaLabel="Enroll via WhatsApp"
+                    ctaLink={waHref}
+                    ctaExternal
+                    ctaVariant="accent"
+                    secondaryCtaLabel="Contact Form"
+                    secondaryCtaLink="/contact"
+                  />
+                );
+              })}
             </div>
 
             {/* Assessment bridge banner */}

@@ -114,7 +114,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-lg text-base font-semibold border-[1.5px] border-white text-white bg-transparent transition-colors hover:bg-white hover:text-[#1A2A5E]"
             >
-              Book a Free Career Audit
+              Book Free Sales CareerAudit
             </a>
           </div>
 
