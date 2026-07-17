@@ -2,14 +2,54 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import { PenLine, Clock, ArrowRight, Calendar } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import { blogPostsData } from "./BlogPost";
 import heroBg from "@/assets/hero-bg-3.jpg";
 import featuredImg from "@/assets/blog-featured-sales.jpg";
 
 import { Helmet } from "react-helmet-async";
 export default function Blog() {
+  const { toast } = useToast();
+  const [subscriber, setSubscriber] = useState({ name: "", email: "" });
+  const [subscribing, setSubscribing] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubscribing(true);
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-lead`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: subscriber.name,
+            email: subscriber.email,
+            message: "Blog newsletter subscription",
+            trainingType: "newsletter",
+          }),
+        }
+      );
+      let result: { success?: boolean; error?: string } = {};
+      try { result = await res.json(); } catch { /* ignore */ }
+      if (!res.ok || !result.success) throw new Error(result.error || `Request failed (${res.status})`);
+      toast({ title: "Subscribed!", description: "You'll receive our new articles in your inbox." });
+      setSubscriber({ name: "", email: "" });
+    } catch (err) {
+      toast({
+        title: "Couldn't subscribe",
+        description: err instanceof Error ? err.message : "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubscribing(false);
+    }
+  };
+
   const featuredPost = blogPostsData.find(p => p.featured);
   const regularPosts = blogPostsData.filter(p => !p.featured);
 
