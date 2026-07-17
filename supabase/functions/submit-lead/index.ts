@@ -69,9 +69,10 @@ const LeadSchema = z.object({
   email: z.string().email('Invalid email address').max(255, 'Email too long').toLowerCase(),
   phone: z.string().max(20, 'Phone number too long').optional().or(z.literal('')),
   company: z.string().max(100, 'Company name too long').trim().optional().or(z.literal('')),
-  trainingType: z.enum(['corporate', 'individual', 'e-course', 'other', '']).optional(),
+  trainingType: z.enum(['corporate', 'individual', 'e-course', 'other', 'newsletter', 'myself', 'my-team', 'my-institution', '']).optional(),
   message: z.string().max(2000, 'Message too long').trim().optional().or(z.literal('')),
   service: z.string().max(200, 'Service field too long').optional().or(z.literal('')),
+  enquiringFor: z.string().max(50, 'Enquiring for too long').trim().optional().or(z.literal('')),
   // Honeypot field - should always be empty
   website: z.string().max(0, 'Invalid submission').optional().or(z.literal('')),
 });
@@ -239,7 +240,7 @@ serve(async (req) => {
       );
     }
 
-    const { name, email, phone, company, trainingType, message, service } = validatedData;
+    const { name, email, phone, company, trainingType, message, service, enquiringFor } = validatedData;
 
     console.log('Received validated lead submission:', { name, email: email.substring(0, 3) + '***', company, trainingType, ip: clientIp.substring(0, 8) + '***' });
 
@@ -253,10 +254,14 @@ serve(async (req) => {
       'individual': 'Individual Programs',
       'e-course': 'Individual Programs',
       'other': 'Other',
+      'newsletter': 'Newsletter',
+      'myself': 'Myself',
+      'my-team': 'My Team',
+      'my-institution': 'My Institution',
     };
 
     // Build the row according to Google Sheets headers
-    // Headers: Lead ID, Date, Lead Name, Email, Mobile, Source, Status, Pipeline Stage, Temperature, Priority, Notes, Company, Training Type, Service Interested
+    // Headers: Lead ID, Date, Lead Name, Email, Mobile, Source, Status, Pipeline Stage, Temperature, Priority, Notes, Company, Training Type, Enquiring For, Service Interested
     const leadId = `WEB-${Date.now().toString(36).toUpperCase()}`;
     const row = [
       leadId,                                    // Lead ID
@@ -272,6 +277,7 @@ serve(async (req) => {
       message || '',                             // Notes
       company || '',                             // Company
       trainingTypeMap[trainingType || ''] || trainingType || '', // Training Type
+      enquiringFor || '',                        // Enquiring For
       service || '',                             // Service Interested
     ];
 
