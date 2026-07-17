@@ -123,10 +123,13 @@ export function CourseCard({
                 </span>
               )}
             </div>
-            <div className="flex items-center justify-end">
-              <Button variant={ctaVariant} asChild>
-                <Link to={ctaLink}>{ctaLabel}</Link>
-              </Button>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2">
+              {secondaryCtaLabel && secondaryCtaLink && (
+                <Button variant="outline" asChild>
+                  <Link to={secondaryCtaLink}>{secondaryCtaLabel}</Link>
+                </Button>
+              )}
+              {renderPrimary()}
             </div>
           </div>
         </CardContent>
