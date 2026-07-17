@@ -69,9 +69,10 @@ const LeadSchema = z.object({
   email: z.string().email('Invalid email address').max(255, 'Email too long').toLowerCase(),
   phone: z.string().max(20, 'Phone number too long').optional().or(z.literal('')),
   company: z.string().max(100, 'Company name too long').trim().optional().or(z.literal('')),
-  trainingType: z.enum(['corporate', 'individual', 'e-course', 'other', '']).optional(),
+  trainingType: z.enum(['corporate', 'individual', 'e-course', 'other', 'newsletter', 'myself', 'my-team', 'my-institution', '']).optional(),
   message: z.string().max(2000, 'Message too long').trim().optional().or(z.literal('')),
   service: z.string().max(200, 'Service field too long').optional().or(z.literal('')),
+  enquiringFor: z.string().max(50, 'Enquiring for too long').trim().optional().or(z.literal('')),
   // Honeypot field - should always be empty
   website: z.string().max(0, 'Invalid submission').optional().or(z.literal('')),
 });
