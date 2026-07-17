@@ -99,38 +99,6 @@ export default function Portfolio() {
 
         {/* Case studies section removed */}
 
-        {/* Key Associations */}
-        <section className="section-padding bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="accent-line mx-auto mb-6" />
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Key Associations
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Proud to have partnered with leading organizations across India
-              </p>
-            </div>
-
-            <div className="overflow-hidden">
-              <div className="flex items-center gap-12 md:gap-16 animate-marquee">
-                {[...associations, ...associations].map((company, i) => (
-                  <div
-                    key={`${company.name}-${i}`}
-                    className="shrink-0 bg-white p-4 rounded-lg shadow-sm"
-                  >
-                    <img
-                      src={company.logo}
-                      alt={company.name}
-                      className="h-12 md:h-16 w-auto object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <p className="text-center text-muted-foreground mt-6">and more...</p>
-          </div>
-        </section>
 
         {/* Certifications */}
         <section className="section-padding bg-muted">
