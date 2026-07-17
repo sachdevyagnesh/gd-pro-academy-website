@@ -135,8 +135,6 @@ const certifications = [
 
 
 export default function Portfolio() {
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
-
   return (
     <div className="min-h-screen">
       <Header />
