@@ -136,28 +136,39 @@ export function Header() {
           <nav className="hidden lg:flex items-center justify-center flex-1 gap-1 mx-8">
             {navLinks.map((link) => {
               if ("dropdown" in link) {
-                const active = link.items.some((i) => isActive(i.href));
+                const active = link.items.some((i) => isActive(i.href)) || isActive(link.href);
+                const baseClasses =
+                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors text-white/90 hover:text-white hover:bg-white/10";
+                const activeClasses = "bg-white/20 text-white";
                 return (
-                  <DropdownMenu key={link.name}>
-                    <DropdownMenuTrigger
-                      className={cn(
-                        "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors outline-none",
-                        active
-                          ? "bg-white/20 text-white"
-                          : "text-white/90 hover:text-white hover:bg-white/10"
-                      )}
+                  <div key={link.name} className="relative inline-flex items-center">
+                    <Link
+                      to={link.href}
+                      className={cn(baseClasses, active && activeClasses)}
                     >
                       {link.name}
-                      <ChevronDown className="w-4 h-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="center" className="min-w-[200px]">
-                      {link.items.map((item) => (
-                        <DropdownMenuItem key={item.href} asChild>
-                          <Link to={item.href}>{item.name}</Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                    </Link>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button
+                          className={cn(
+                            "flex items-center px-2 py-2 rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-colors outline-none",
+                            active && "text-white"
+                          )}
+                          aria-label={`${link.name} submenu`}
+                        >
+                          <ChevronDown className="w-4 h-4" />
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="center" className="min-w-[200px]">
+                        {link.items.map((item) => (
+                          <DropdownMenuItem key={item.href} asChild>
+                            <Link to={item.href}>{item.name}</Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 );
               }
               return (
@@ -235,15 +246,22 @@ export function Header() {
                   if ("dropdown" in link) {
                     return (
                       <div key={link.name} className="space-y-1">
-                        <div className="px-4 pt-2 pb-1 text-xs uppercase tracking-wide text-muted-foreground">
+                        <Link
+                          to={link.href}
+                          className={cn(
+                            "block px-4 py-2 rounded-lg font-medium transition-colors",
+                            isActive(link.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
+                          )}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
                           {link.name}
-                        </div>
+                        </Link>
                         {link.items.map((item) => (
                           <Link
                             key={item.href}
                             to={item.href}
                             className={cn(
-                              "block px-4 py-2 rounded-lg font-medium transition-colors",
+                              "block px-4 py-2 rounded-lg font-medium transition-colors pl-8",
                               isActive(item.href) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted",
                             )}
                             onClick={() => setIsMobileMenuOpen(false)}
