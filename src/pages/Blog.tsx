@@ -110,7 +110,7 @@ export default function Blog() {
                     <span className="text-xs font-medium text-secondary mb-2">{featuredPost.category}</span>
                     <h2 className="text-2xl font-bold text-foreground mb-3">{featuredPost.title}</h2>
                     <p className="text-muted-foreground mb-4">{featuredPost.excerpt}</p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground mb-6">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {featuredPost.date}
@@ -119,6 +119,11 @@ export default function Blog() {
                         <Clock className="w-4 h-4" />
                         {featuredPost.readTime}
                       </span>
+                      {featuredPost.updated && (
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-xs font-medium">
+                          {featuredPost.updated}
+                        </span>
+                      )}
                     </div>
                     <Button variant="navy" className="self-start" asChild>
                       <Link to={`/blog/${featuredPost.slug}`}>
@@ -172,6 +177,13 @@ export default function Blog() {
                         </span>
                       </div>
                     </div>
+                    {post.updated && (
+                      <div className="mt-2">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-[11px] font-medium">
+                          {post.updated}
+                        </span>
+                      </div>
+                    )}
                     <Button variant="ghost" size="sm" className="w-full mt-4 group" asChild>
                       <Link to={`/blog/${post.slug}`}>
                         Read More

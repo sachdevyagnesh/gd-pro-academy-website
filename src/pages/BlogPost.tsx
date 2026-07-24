@@ -12,6 +12,7 @@ export const blogPostsData = [
     title: "5 Essential Sales Skills Every Professional Needs",
     excerpt: "Discover the key skills that separate top performers from the rest in today's competitive market.",
     date: "December 15, 2024",
+    updated: "Updated July 2026",
     category: "Sales Training",
     readTime: "6 min read",
     author: "Grishma Sachdev",
@@ -77,6 +78,7 @@ Ready to elevate your sales skills? [Contact us](/contact) to learn about our up
     title: "How to Successfully Transition from Campus to Corporate",
     excerpt: "A comprehensive guide for fresh graduates entering the corporate world.",
     date: "December 8, 2024",
+    updated: "Updated July 2026",
     category: "Career Development",
     readTime: "8 min read",
     author: "Grishma Sachdev",
@@ -160,6 +162,7 @@ At GD Pro Academy, our Campus to Corporate program helps thousands of students e
     title: "The Power of Effective Communication in the Workplace",
     excerpt: "Learn how improving your communication skills can accelerate your career growth.",
     date: "November 28, 2024",
+    updated: "Updated July 2026",
     category: "Soft Skills",
     readTime: "5 min read",
     author: "Grishma Sachdev",
@@ -242,6 +245,7 @@ Ready to transform your communication skills? [Explore our Communication Excelle
     title: "Role-Play Training: Why It Works for Sales Teams",
     excerpt: "Discover how simulation-based training helps sales professionals overcome objections and build confidence.",
     date: "November 15, 2024",
+    updated: "Updated July 2026",
     category: "Training Methodology",
     readTime: "7 min read",
     author: "Grishma Sachdev",
@@ -339,6 +343,7 @@ Interested in role-play training for your team? [Contact us](/contact) to discus
     title: "Building High-Performance Teams: A Practical Guide",
     excerpt: "Learn the key elements of team building that actually work.",
     date: "November 1, 2024",
+    updated: "Updated July 2026",
     category: "Team Building",
     readTime: "6 min read",
     author: "Grishma Sachdev",
@@ -446,6 +451,7 @@ Want to transform your team? [Explore our Team Building programs](/corporate-tra
     title: "Overcoming the Fear of Targets: A Sales Professional's Journey",
     excerpt: "Real strategies to help sales executives embrace targets as opportunities.",
     date: "October 20, 2024",
+    updated: "Updated July 2026",
     category: "Sales Training",
     readTime: "5 min read",
     author: "Grishma Sachdev",
@@ -595,6 +601,11 @@ export default function BlogPost() {
                   <Calendar className="w-4 h-4" />
                   {post.date}
                 </span>
+                {post.updated && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/20 text-secondary text-xs font-medium">
+                    {post.updated}
+                  </span>
+                )}
                 <span className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
                   {post.readTime}
