@@ -177,6 +177,13 @@ export default function Blog() {
                         </span>
                       </div>
                     </div>
+                    {post.updated && (
+                      <div className="mt-2">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-[11px] font-medium">
+                          {post.updated}
+                        </span>
+                      </div>
+                    )}
                     <Button variant="ghost" size="sm" className="w-full mt-4 group" asChild>
                       <Link to={`/blog/${post.slug}`}>
                         Read More
