@@ -601,6 +601,11 @@ export default function BlogPost() {
                   <Calendar className="w-4 h-4" />
                   {post.date}
                 </span>
+                {post.updated && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary/20 text-secondary text-xs font-medium">
+                    {post.updated}
+                  </span>
+                )}
                 <span className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
                   {post.readTime}
