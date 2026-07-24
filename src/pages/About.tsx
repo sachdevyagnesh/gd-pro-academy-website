@@ -132,6 +132,9 @@ export default function About() {
                 <p className="text-secondary font-semibold mb-4">
                   Sales Performance & Career Growth Expert | Certified Trainer | Ex-Banker | Author | Developer of the LIR Methodology.
                 </p>
+                <p className="text-muted-foreground leading-relaxed mb-5 text-base">
+                  The LIR Methodology (Learn, Implement, Reflect) is a coaching cycle designed to turn insight into lasting behaviour change.
+                </p>
 
                 <div className="space-y-4 text-muted-foreground leading-relaxed mb-5 text-base">
                   <p>
