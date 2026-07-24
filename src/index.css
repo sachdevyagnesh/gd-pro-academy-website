@@ -128,7 +128,10 @@
 
   html {
     scroll-behavior: smooth;
-    scrollbar-gutter: stable;
+    /* Always render the vertical scrollbar so page/header width stays constant
+       when dropdowns/modals lock scroll — avoids horizontal shift without
+       reserving a scrollbar-gutter that fixed elements would leave as a gap. */
+    overflow-y: scroll;
   }
 
   body {
