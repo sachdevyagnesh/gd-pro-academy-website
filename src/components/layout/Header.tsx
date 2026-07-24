@@ -1,7 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Building2, User } from "lucide-react";
+
+const dropdownIcons: Record<string, typeof Building2> = {
+  "/corporate-training": Building2,
+  "/individual-training": User,
+};
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -171,12 +176,30 @@ export function Header() {
                           <ChevronDown className="w-4 h-4" />
                         </button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="center" className="min-w-[200px]">
-                        {link.items.map((item) => (
-                          <DropdownMenuItem key={item.href} asChild>
-                            <Link to={item.href}>{item.name}</Link>
-                          </DropdownMenuItem>
-                        ))}
+                      <DropdownMenuContent
+                        align="center"
+                        sideOffset={8}
+                        className="min-w-[240px] p-2 border-0 border-t-2 border-t-secondary shadow-xl rounded-lg bg-white data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2 data-[state=open]:duration-150"
+                      >
+                        {link.items.map((item) => {
+                          const Icon = dropdownIcons[item.href];
+                          return (
+                            <DropdownMenuItem
+                              key={item.href}
+                              asChild
+                              className="rounded-md focus:bg-primary/5 focus:text-primary cursor-pointer"
+                            >
+                              <Link to={item.href} className="flex items-center gap-3 py-2.5 px-3 text-sm font-medium text-foreground">
+                                {Icon && (
+                                  <span className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10 text-primary">
+                                    <Icon className="w-4 h-4" />
+                                  </span>
+                                )}
+                                <span>{item.name}</span>
+                              </Link>
+                            </DropdownMenuItem>
+                          );
+                        })}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
