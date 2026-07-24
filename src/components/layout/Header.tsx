@@ -1,7 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Building2, User } from "lucide-react";
+
+const dropdownIcons: Record<string, typeof Building2> = {
+  "/corporate-training": Building2,
+  "/individual-training": User,
+};
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
