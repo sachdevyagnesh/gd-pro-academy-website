@@ -105,11 +105,22 @@ export function Header() {
 
   const isActive = (href: string) => location.pathname === href;
 
-  const headerStyle: React.CSSProperties = { backgroundColor: "#1A2A5E" };
+  // Translucent gradient while over a hero image; higher-opacity navy once
+  // scrolled past the hero (or on pages without a hero) so nav stays legible
+  // over white content. Never fully transparent — header must remain readable.
+  const headerBackground = hasHero && overHero
+    ? "linear-gradient(180deg, rgba(20,41,82,0.9) 0%, rgba(20,41,82,0.8) 100%)"
+    : "linear-gradient(180deg, rgba(20,41,82,0.97) 0%, rgba(20,41,82,0.95) 100%)";
+  const headerStyle: React.CSSProperties = {
+    background: headerBackground,
+    backdropFilter: "blur(6px)",
+    WebkitBackdropFilter: "blur(6px)",
+    transition: "background 250ms ease",
+  };
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 py-3 transition-colors duration-300"
+      className="fixed top-0 left-0 right-0 z-50 py-3"
       style={headerStyle}
     >
       <div className="container mx-auto px-4">
