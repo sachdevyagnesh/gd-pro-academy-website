@@ -120,7 +120,7 @@ export function AIChatWidget() {
           {
             role: "assistant",
             content:
-              "To give you the most accurate recommendation, may I get your name and email so Grishma can send you a personalised program suggestion?\n\nNo worries — you can also reach us directly on WhatsApp: +91 8356 837052.",
+              "To give you the most accurate recommendation, may I get your name and email so Grishma can send you a personalised program suggestion?\n\nNo worries. You can also reach us directly on WhatsApp: +91 8356 837052.",
           },
         ]);
       }
