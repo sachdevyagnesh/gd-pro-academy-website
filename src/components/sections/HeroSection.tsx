@@ -106,14 +106,12 @@ export function HeroSection() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <a
-              href="https://wa.me/918356837052?text=Hi!%20I%20would%20like%20to%20book%20a%20free%20Sales%20Career%20Audit%20with%20Grishma."
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/career-audit"
               className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-lg text-base font-semibold border-[1.5px] border-white text-white bg-transparent transition-colors hover:bg-white hover:text-[#1A2A5E]"
             >
               Book Free Sales Career Audit
-            </a>
+            </Link>
           </div>
 
           <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 animate-fade-in-up stagger-4">
