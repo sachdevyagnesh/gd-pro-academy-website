@@ -336,10 +336,11 @@ export const generateAssessmentPDF = async (content: PDFContent): Promise<Blob> 
   );
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...NAVY);
-  doc.textWithLink('www.gdproacademy.in', pageW / 2, footerTop + 10, {
-    align: 'center',
+  const siteLabel = 'www.gdproacademy.in';
+  const slw = doc.getTextWidth(siteLabel);
+  doc.textWithLink(siteLabel, (pageW - slw) / 2, footerTop + 10, {
     url: 'https://www.gdproacademy.in',
-  } as never);
+  });
 
   return doc.output('blob');
 };
