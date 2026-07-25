@@ -303,13 +303,19 @@ serve(async (req) => {
     // Industry | Website | Status | Source | Course | Priority |
     // Follow-up date | Notes | Activities JSON
     const leadId = `WEB-${Date.now().toString(36).toUpperCase()}`;
+    // Force phone to be treated as plain text in Google Sheets so a leading "+"
+    // isn't parsed as a formula (which shows as #ERROR!). Prefixing with an
+    // apostrophe under valueInputOption=USER_ENTERED writes the raw string.
+    const safePhone = phone ? `'${phone}` : '';
+    // Force ISO date as literal text so Sheets doesn't reformat to M/D/YYYY.
+    const safeDate = `'${dateStr}`;
     const row = [
       leadId,               // Lead ID
-      dateStr,              // Date (ISO)
+      safeDate,             // Date (ISO YYYY-MM-DD, text)
       name || '',           // Name
       designation || '',    // Designation
       company || '',        // Company
-      phone || '',          // Contact
+      safePhone,            // Contact (text)
       email || '',          // Email
       industry || '',       // Industry
       websiteUrl || '',     // Website
