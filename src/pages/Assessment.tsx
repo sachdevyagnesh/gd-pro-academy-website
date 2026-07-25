@@ -61,11 +61,34 @@ export default function Assessment() {
     setStep("questions");
   };
 
-  const handleTeaserSubmit = (e: React.FormEvent) => {
+  const handleTeaserSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (state.userName.trim() && state.userEmail.trim() && state.userPhone.trim()) {
-      setStep("result");
+    if (!(state.userName.trim() && state.userEmail.trim() && state.userPhone.trim())) return;
+
+    // Sync assessment lead to Google Sheets (non-blocking on failure)
+    try {
+      const isCorp = type === "corporate";
+      const answered = Object.keys(state.answers).length;
+      await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-lead`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: state.userName,
+          email: state.userEmail,
+          phone: state.userPhone,
+          trainingType: isCorp ? "corporate" : "individual",
+          enquiringFor: isCorp ? "my-team" : "myself",
+          source: isCorp ? "Corporate Assessment" : "Individual Assessment",
+          course: isCorp ? "Corporate Training" : "Individual Programs",
+          service: config.title,
+          message: `Assessment completed — Score: ${state.score}/${config.maxScore} (${state.percentage}%). Result: ${state.range?.title || ""}. Questions answered: ${answered}.`,
+        }),
+      });
+    } catch (err) {
+      console.error("Assessment lead sync failed:", err);
     }
+
+    setStep("result");
   };
 
   const handleQuestionnaireComplete = (result: {
