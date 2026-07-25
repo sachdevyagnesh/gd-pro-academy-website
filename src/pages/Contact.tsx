@@ -188,16 +188,140 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* Contact Cards */}
+        {/* Contact Form (primary focus) */}
+        <section className="section-padding bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto animate-fade-in-up">
+              <div className="accent-line mb-6" />
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Send Us a Message
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                Fill out the form below and we'll get back to you within 24 hours.
+              </p>
 
-        <section className="py-12 bg-background relative -mt-10 z-10">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Full Name *
+                    </label>
+                    <Input
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your name"
+                      className="bg-card"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Email *
+                    </label>
+                    <Input
+                      required
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="your@email.com"
+                      className="bg-card"
+                    />
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Phone
+                    </label>
+                    <Input
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+91 8356 837052"
+                      className="bg-card"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Company
+                    </label>
+                    <Input
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      placeholder="Your company"
+                      className="bg-card"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    I am enquiring for *
+                  </label>
+                  <select
+                    required
+                    value={formData.enquiringFor}
+                    onChange={(e) => setFormData({ ...formData, enquiringFor: e.target.value })}
+                    className="w-full h-11 px-4 rounded-lg border border-input bg-card text-foreground"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="myself">Myself</option>
+                    <option value="my-team">My Team</option>
+                    <option value="my-institution">My Institution</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Training Type
+                  </label>
+                  <select
+                    value={formData.trainingType}
+                    onChange={(e) => setFormData({ ...formData, trainingType: e.target.value })}
+                    className="w-full h-11 px-4 rounded-lg border border-input bg-card text-foreground"
+                  >
+                    <option value="">Select training type</option>
+                    <option value="corporate">Corporate Training</option>
+                    <option value="individual">Individual Training</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Message *
+                  </label>
+                  <Textarea
+                    required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell us about your training needs..."
+                    className="bg-card min-h-[120px]"
+                  />
+                </div>
+                <Button type="submit" variant="navy" size="lg" disabled={isSubmitting} className="w-full">
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-5 h-5" />
+                    </>
+                  )}
+                </Button>
+                <p className="text-xs text-muted-foreground text-center mt-2">
+                  We usually respond within 4 working hours.
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Info Cards (secondary, staggered in) */}
+        <section className="py-14 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-              {contactInfo.map((item) => (
+              {contactInfo.map((item, i) => (
                 <a
                   key={item.title}
                   href={item.href}
-                  className="block"
+                  className={`block animate-fade-in-up stagger-${i + 1}`}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 >
@@ -217,161 +341,38 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* Contact Form & FAQ */}
+        {/* FAQ */}
         <section className="section-padding bg-muted">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Form */}
-              <div>
-                <div className="accent-line mb-6" />
-                <h2 className="text-3xl font-bold text-foreground mb-4">
-                  Send Us a Message
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Fill out the form below and we'll get back to you within 24 hours.
-                </p>
+            <div id="faq" className="max-w-3xl mx-auto">
+              <div className="accent-line mb-6" />
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                Find answers to common questions about our training programs.
+              </p>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Full Name *
-                      </label>
-                      <Input
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Your name"
-                        className="bg-card"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Email *
-                      </label>
-                      <Input
-                        required
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="your@email.com"
-                        className="bg-card"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Phone
-                      </label>
-                      <Input
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+91 8356 837052"
-                        className="bg-card"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Company
-                      </label>
-                      <Input
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        placeholder="Your company"
-                        className="bg-card"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      I am enquiring for *
-                    </label>
-                    <select
-                      required
-                      value={formData.enquiringFor}
-                      onChange={(e) => setFormData({ ...formData, enquiringFor: e.target.value })}
-                      className="w-full h-11 px-4 rounded-lg border border-input bg-card text-foreground"
-                    >
-                      <option value="">Select an option</option>
-                      <option value="myself">Myself</option>
-                      <option value="my-team">My Team</option>
-                      <option value="my-institution">My Institution</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Training Type
-                    </label>
-                    <select
-                      value={formData.trainingType}
-                      onChange={(e) => setFormData({ ...formData, trainingType: e.target.value })}
-                      className="w-full h-11 px-4 rounded-lg border border-input bg-card text-foreground"
-                    >
-                      <option value="">Select training type</option>
-                      <option value="corporate">Corporate Training</option>
-                      <option value="individual">Individual Training</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      required
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Tell us about your training needs..."
-                      className="bg-card min-h-[120px]"
-                    />
-                  </div>
-                  <Button type="submit" variant="navy" size="lg" disabled={isSubmitting} className="w-full">
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="w-5 h-5" />
-                      </>
-                    )}
-                  </Button>
-                  <p className="text-xs text-muted-foreground text-center mt-2">
-                    We usually respond within 4 working hours.
-                  </p>
-                </form>
-              </div>
-
-              {/* FAQ */}
-              <div id="faq">
-                <div className="accent-line mb-6" />
-                <h2 className="text-3xl font-bold text-foreground mb-4">
-                  Frequently Asked Questions
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Find answers to common questions about our training programs.
-                </p>
-
-                <Accordion type="single" collapsible className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <AccordionItem
-                      key={index}
-                      value={`item-${index}`}
-                      className="bg-card rounded-xl border shadow-soft px-6"
-                    >
-                      <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline py-5">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-5">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className="bg-card rounded-xl border shadow-soft px-6"
+                  >
+                    <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline py-5">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground pb-5">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>
+
 
 
       </main>
