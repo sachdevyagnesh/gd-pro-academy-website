@@ -49,8 +49,22 @@ export function Header() {
   const [isMounted, setIsMounted] = useState(false);
   const [overHero, setOverHero] = useState(false);
   const [hasHero, setHasHero] = useState(false);
+  const [isOpeningWhatsApp, setIsOpeningWhatsApp] = useState(false);
   const location = useLocation();
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const WHATSAPP_URL =
+    "https://wa.me/918356837052?text=" +
+    encodeURIComponent("Hi! I'd like to get in touch with GD Pro Academy.");
+
+  const handleGetInTouchClick = () => {
+    if (isOpeningWhatsApp) return;
+    setIsOpeningWhatsApp(true);
+    setTimeout(() => {
+      window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer");
+      setIsOpeningWhatsApp(false);
+    }, 250);
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -154,7 +168,7 @@ export function Header() {
               if ("dropdown" in link) {
                 const active = link.items.some((i) => isActive(i.href)) || isActive(link.href);
                 const baseClasses =
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors text-white/90 hover:text-white hover:bg-white/10";
+                  "px-4 py-2 rounded-lg text-base font-medium transition-colors text-white/90 hover:text-white hover:bg-white/10";
                 const activeClasses = "bg-white/20 text-white";
                 return (
                   <div key={link.name} className="relative inline-flex items-center">
@@ -210,7 +224,7 @@ export function Header() {
                   key={link.name}
                   to={link.href}
                   className={cn(
-                    "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                    "px-4 py-2 rounded-lg text-base font-medium transition-colors",
                     isActive(link.href)
                       ? "bg-white/20 text-white"
                       : "text-white/90 hover:text-white hover:bg-white/10"
@@ -230,8 +244,14 @@ export function Header() {
             >
               <Phone className="w-5 h-5" />
             </a>
-            <Button variant="hero" size="default" asChild>
-              <Link to="/contact">Get in Touch</Link>
+            <Button
+              variant="hero"
+              size="default"
+              onClick={handleGetInTouchClick}
+              disabled={isOpeningWhatsApp}
+              aria-label="Open WhatsApp"
+            >
+              {isOpeningWhatsApp ? "Opening WhatsApp…" : "Get in Touch"}
             </Button>
           </div>
 
@@ -326,10 +346,17 @@ export function Header() {
                   <Phone className="w-4 h-4" />
                   +91 8356 837052
                 </a>
-                <Button variant="navy" size="lg" asChild className="w-full">
-                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Get in Touch
-                  </Link>
+                <Button
+                  variant="navy"
+                  size="lg"
+                  className="w-full"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    handleGetInTouchClick();
+                  }}
+                  disabled={isOpeningWhatsApp}
+                >
+                  {isOpeningWhatsApp ? "Opening WhatsApp…" : "Get in Touch"}
                 </Button>
               </div>
             </div>

@@ -8,7 +8,7 @@ import { CourseCard } from "@/components/common/CourseCard";
 import heroBg from "@/assets/about-hero.jpg";
 
 import { Helmet } from "react-helmet-async";
-// Batch programs
+// On-demand programs
 const livePrograms = [
   {
     icon: MessageSquare,
@@ -22,7 +22,7 @@ const livePrograms = [
     ],
     duration: "1 Day",
     price: "₹7,999",
-    type: "Batch Program",
+    type: "On-Demand Program",
     targetAudience: "Professionals looking to improve their communication skills for career advancement.",
     learningOutcomes: [
       "Speak confidently in meetings and presentations",
@@ -30,14 +30,14 @@ const livePrograms = [
       "Handle difficult conversations with ease",
       "Listen actively and respond effectively",
     ],
-    deliveryMethod: "In-person batch training or virtual live session",
+    deliveryMethod: "In-person or virtual live session",
     prerequisites: "None",
     certification: "Certificate of Completion",
   },
   {
     icon: TrendingUp,
     title: "Sales Skills Training",
-    description: "Group coaching to enhance your sales abilities and boost your career in sales. Draws on BFSI case studies from Grishma's banking career.",
+    description: "Coaching to sharpen your sales abilities and boost your career in sales. Draws on BFSI case studies from Grishma's banking career.",
     features: [
       "Objection handling mastery",
       "Building client relationships",
@@ -46,7 +46,7 @@ const livePrograms = [
     ],
     duration: "1-2 Days",
     price: "₹11,999",
-    type: "Batch Program",
+    type: "On-Demand Program",
     targetAudience: "Sales professionals, entrepreneurs, and anyone in client-facing roles.",
     learningOutcomes: [
       "Handle objections confidently and effectively",
@@ -54,7 +54,7 @@ const livePrograms = [
       "Close deals with proven techniques",
       "Develop a winning sales mindset",
     ],
-    deliveryMethod: "In-person batch training or virtual live session",
+    deliveryMethod: "In-person or virtual live session",
     prerequisites: "Basic sales experience preferred but not required",
     certification: "Certificate of Completion",
   },
@@ -70,7 +70,7 @@ const livePrograms = [
     ],
     duration: "1 Day",
     price: "₹9,999",
-    type: "Batch Program",
+    type: "On-Demand Program",
     targetAudience: "Professionals seeking career growth, job changers, and those planning their next career move.",
     learningOutcomes: [
       "Create a clear career roadmap",
@@ -78,7 +78,7 @@ const livePrograms = [
       "Ace interviews with confidence",
       "Negotiate better compensation packages",
     ],
-    deliveryMethod: "In-person batch training or virtual session",
+    deliveryMethod: "In-person or virtual session",
     prerequisites: "None",
     certification: "Certificate of Completion + Career Action Plan",
   },
@@ -94,7 +94,7 @@ const livePrograms = [
     ],
     duration: "Half Day",
     price: "₹4,999",
-    type: "Batch Program",
+    type: "On-Demand Program",
     targetAudience: "Job seekers, fresh graduates, and professionals preparing for interviews.",
     learningOutcomes: [
       "Answer tough interview questions confidently",
@@ -114,9 +114,9 @@ export default function IndividualTraining() {
       <Header />
         <Helmet>
           <title>Sales Training & Career Coaching for Professionals | GD Pro Academy</title>
-          <meta name="description" content="1-on-1 coaching and batch programs in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
+          <meta name="description" content="On-demand individual training and 1-on-1 coaching in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
           <meta property="og:title" content="Sales Training & Career Coaching for Professionals | GD Pro Academy" />
-          <meta property="og:description" content="1-on-1 coaching and batch programs in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
+          <meta property="og:description" content="On-demand individual training and 1-on-1 coaching in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
         </Helmet>
       <main>
         {/* Hero */}
@@ -136,16 +136,16 @@ export default function IndividualTraining() {
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
-                Level Up Your{" "}
-                <span className="text-gradient-gold">Sales & Communication Skills</span>
+                Level up your{" "}
+                <span className="text-gradient-gold">Sales Skills</span>
               </h1>
               <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 leading-relaxed">
-                Practical training to help you sell better, speak confidently, and grow your career. Join our batch programs designed for ambitious professionals like you.
+                Practical training to help you sell better, speak confidently, and grow your career — on your schedule.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="lg" asChild className="group">
                   <Link to="/contact">
-                    Enroll in Batch Training
+                    Enroll Now
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
@@ -160,18 +160,18 @@ export default function IndividualTraining() {
             <div className="text-center mb-10">
               <div className="accent-line mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Batch Training Programs
+                Individual Training Programs
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Group training sessions for interactive learning and peer networking. For personalized 1-on-1 coaching, <Link to="/contact" className="text-primary underline">contact us</Link>.
+                Practical, on-demand sessions for interactive learning. For personalized 1-on-1 coaching, <Link to="/contact" className="text-primary underline">contact us</Link>.
               </p>
             </div>
 
-            {/* Batch availability indicator */}
+            {/* On-demand availability indicator */}
             <div className="max-w-3xl mx-auto mb-8 text-center">
               <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 text-foreground rounded-full px-5 py-2 text-sm font-medium">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                Next batch: Enrolling now — reserve your seat on WhatsApp.
+                Enroll anytime — start your next session within days.
               </div>
             </div>
 

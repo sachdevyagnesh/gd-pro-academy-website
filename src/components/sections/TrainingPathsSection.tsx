@@ -24,9 +24,9 @@ const trainingPaths = [
   {
     type: "individual",
     icon: User,
-    title: "Programs for Professionals",
+    title: "Individual Training",
     subtitle: "For Professionals",
-    trackLabel: "Professional Track",
+    trackLabel: "Individual Track",
     trackClass: "bg-accent text-accent-foreground",
     description: "Accelerate your career with practical, structured training programs designed around your goals.",
     features: [
@@ -34,7 +34,7 @@ const trainingPaths = [
       { icon: TrendingUp, text: "Sales Skills Training" },
       { icon: Target, text: "Career Advancement Program" },
     ],
-    cta: "Explore Professional Programs",
+    cta: "Explore Individual Training",
     href: "/individual-training",
     accent: "bg-accent",
   },
