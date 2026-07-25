@@ -154,7 +154,7 @@ export function Header() {
               if ("dropdown" in link) {
                 const active = link.items.some((i) => isActive(i.href)) || isActive(link.href);
                 const baseClasses =
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors text-white/90 hover:text-white hover:bg-white/10";
+                  "px-4 py-2 rounded-lg text-base font-medium transition-colors text-white/90 hover:text-white hover:bg-white/10";
                 const activeClasses = "bg-white/20 text-white";
                 return (
                   <div key={link.name} className="relative inline-flex items-center">
@@ -210,7 +210,7 @@ export function Header() {
                   key={link.name}
                   to={link.href}
                   className={cn(
-                    "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                    "px-4 py-2 rounded-lg text-base font-medium transition-colors",
                     isActive(link.href)
                       ? "bg-white/20 text-white"
                       : "text-white/90 hover:text-white hover:bg-white/10"
