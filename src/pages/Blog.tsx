@@ -31,6 +31,7 @@ export default function Blog() {
             email: subscriber.email,
             message: "Blog newsletter subscription",
             trainingType: "newsletter",
+            source: "Blog Newsletter",
           }),
         }
       );

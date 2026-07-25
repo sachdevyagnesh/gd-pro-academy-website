@@ -69,6 +69,9 @@ export function ExitIntentModal() {
             email: isEmail ? form.contact : "",
             phone: isEmail ? "" : form.contact,
             trainingType: form.lookingFor,
+            enquiringFor: form.lookingFor,
+            source: "Growth Journey Popup",
+            course: form.lookingFor === "myself" ? "Individual Programs" : "Corporate Training",
             message: `Growth Journey popup — Looking for training for: ${form.lookingFor}`,
           }),
         }
