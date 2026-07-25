@@ -80,13 +80,21 @@ const LeadSchema = z.object({
 // Google Sheets API helper to append rows
 async function appendToGoogleSheet(values: string[][]) {
   const serviceAccountEmail = Deno.env.get('GOOGLE_SERVICE_ACCOUNT_EMAIL');
-  const privateKey = Deno.env.get('GOOGLE_PRIVATE_KEY')?.replace(/\\n/g, '\n');
+  let privateKey = Deno.env.get('GOOGLE_PRIVATE_KEY');
   const sheetId = Deno.env.get('GOOGLE_SHEET_ID');
 
   if (!serviceAccountEmail || !privateKey || !sheetId) {
     console.error('Missing Google Sheets configuration');
     throw new Error('SERVICE_CONFIG_ERROR');
   }
+
+  // Normalize the private key: strip wrapping quotes, unescape \n sequences
+  privateKey = privateKey.trim();
+  if ((privateKey.startsWith('"') && privateKey.endsWith('"')) ||
+      (privateKey.startsWith("'") && privateKey.endsWith("'"))) {
+    privateKey = privateKey.slice(1, -1);
+  }
+  privateKey = privateKey.replace(/\\n/g, '\n');
 
   // Create JWT for Google API authentication
   const header = {
@@ -109,13 +117,27 @@ async function appendToGoogleSheet(values: string[][]) {
   const payloadB64 = btoa(JSON.stringify(payload)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
   const unsignedToken = `${headerB64}.${payloadB64}`;
 
-  // Sign the token
-  const keyData = privateKey
+  // Sign the token — extract PEM body and keep ONLY valid base64 characters
+  let keyData = privateKey
     .replace('-----BEGIN PRIVATE KEY-----', '')
     .replace('-----END PRIVATE KEY-----', '')
-    .replace(/\s/g, '');
+    .replace('-----BEGIN RSA PRIVATE KEY-----', '')
+    .replace('-----END RSA PRIVATE KEY-----', '');
+  // Strip anything that isn't part of the base64 alphabet (spaces, newlines, stray chars)
+  keyData = keyData.replace(/[^A-Za-z0-9+/=]/g, '');
 
-  const binaryKey = Uint8Array.from(atob(keyData), c => c.charCodeAt(0));
+  if (!keyData) {
+    console.error('GOOGLE_PRIVATE_KEY appears empty after normalization');
+    throw new Error('SERVICE_CONFIG_ERROR');
+  }
+
+  let binaryKey: Uint8Array;
+  try {
+    binaryKey = Uint8Array.from(atob(keyData), c => c.charCodeAt(0));
+  } catch (e) {
+    console.error('Failed to base64-decode GOOGLE_PRIVATE_KEY. Length:', keyData.length, 'Sample:', keyData.substring(0, 20));
+    throw new Error('SERVICE_CONFIG_ERROR');
+  }
 
   const cryptoKey = await crypto.subtle.importKey(
     'pkcs8',
