@@ -1,5 +1,4 @@
 import { jsPDF } from 'jspdf';
-import logoSrc from '@/assets/gd-pro-logo.png';
 
 interface PDFContent {
   title: string;
@@ -12,239 +11,335 @@ interface PDFContent {
   description: string;
   recommendation: string;
   program: string;
-  reportSubtitle?: string; // e.g. "Corporate Training Needs Assessment Report"
-  nextStepsLine?: string;  // e.g. "Ready to build your team's skills? Contact us to schedule your program:"
+  reportSubtitle?: string;
+  nextStepsLine?: string;
 }
 
+// Colors
+const NAVY: [number, number, number] = [26, 42, 94];
+const GOLD: [number, number, number] = [212, 175, 55];
+const TEXT: [number, number, number] = [45, 45, 55];
+const MUTED: [number, number, number] = [120, 120, 130];
+const RED: [number, number, number] = [200, 60, 60];
+const AMBER: [number, number, number] = [230, 160, 40];
+const GREEN: [number, number, number] = [40, 160, 90];
 
-// Convert image to base64
-const getBase64FromUrl = async (url: string): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx?.drawImage(img, 0, 0);
-      resolve(canvas.toDataURL('image/png'));
+type Band = { label: string; color: [number, number, number]; strengths: string[]; growth: string[] };
+
+function getBand(score: number, max: number): Band {
+  const pct = (score / max) * 10; // normalize to 0-10 scale
+  if (pct <= 4) {
+    return {
+      label: 'Needs Foundational Work',
+      color: RED,
+      strengths: [
+        'Willingness to self-assess and seek growth',
+        'Awareness of current skill gaps',
+      ],
+      growth: [
+        'Build core sales fundamentals: prospecting, discovery, closing',
+        'Develop confidence in handling objections',
+        'Practice structured communication frameworks',
+      ],
     };
-    img.onerror = reject;
-    img.src = url;
-  });
-};
+  }
+  if (pct <= 7) {
+    return {
+      label: 'Intermediate Development',
+      color: AMBER,
+      strengths: [
+        'Solid grasp of core sales conversations',
+        'Consistent effort and coachability',
+        'Comfortable in familiar sales scenarios',
+      ],
+      growth: [
+        'Sharpen objection handling under pressure',
+        'Elevate consultative and value-based selling',
+        'Strengthen closing techniques for larger deals',
+      ],
+    };
+  }
+  return {
+    label: 'Advanced',
+    color: GREEN,
+    strengths: [
+      'Confident, persuasive client conversations',
+      'Strong closing and negotiation instincts',
+      'High self-awareness and consistency',
+    ],
+    growth: [
+      'Move from performer to sales leader / mentor',
+      'Master enterprise / strategic account selling',
+      'Refine executive storytelling and influence',
+    ],
+  };
+}
 
 export const generateAssessmentPDF = async (content: PDFContent): Promise<Blob> => {
   const doc = new jsPDF();
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const pageHeight = doc.internal.pageSize.getHeight();
-  const margin = 20;
-  const contentWidth = pageWidth - 2 * margin;
-  let yPos = margin;
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const margin = 18;
+  const contentW = pageW - 2 * margin;
+  let y = margin;
 
-  // Colors
-  const primaryColor: [number, number, number] = [10, 36, 99];
-  const goldColor: [number, number, number] = [212, 175, 55];
-  const textColor: [number, number, number] = [51, 51, 51];
-  const lightGray: [number, number, number] = [128, 128, 128];
+  // ===== HEADER (wordmark, no icon) =====
+  doc.setDrawColor(...GOLD);
+  doc.setLineWidth(2.5);
+  doc.line(margin, 10, pageW - margin, 10);
+  doc.setLineWidth(0.6);
+  doc.line(margin, 13.5, pageW - margin, 13.5);
 
-  // === HEADER SECTION ===
-  doc.setDrawColor(...goldColor);
-  doc.setLineWidth(3);
-  doc.line(margin, 12, pageWidth - margin, 12);
-  doc.setLineWidth(1);
-  doc.line(margin, 16, pageWidth - margin, 16);
-
-  yPos = 25;
-
-  // Add logo
-  try {
-    const logoBase64 = await getBase64FromUrl(logoSrc);
-    doc.addImage(logoBase64, 'PNG', margin, yPos, 30, 30);
-  } catch (e) {
-    console.log('Logo loading failed, continuing without logo');
-  }
-
-  // Header text
+  y = 22;
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(24);
-  doc.setTextColor(...primaryColor);
-  doc.text('GD PRO ACADEMY', margin + 38, yPos + 12);
-  
-  doc.setFontSize(11);
+  doc.setFontSize(22);
+  doc.setTextColor(...NAVY);
+  doc.text('GD PRO ACADEMY', margin, y);
+
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...lightGray);
+  doc.setFontSize(10);
+  doc.setTextColor(...MUTED);
   doc.text(
     content.reportSubtitle || 'Professional Skills Assessment Report',
-    margin + 38,
-    yPos + 22,
+    margin,
+    y + 7,
   );
 
-  yPos = 65;
+  y += 16;
+  doc.setDrawColor(...GOLD);
+  doc.setLineWidth(0.4);
+  doc.line(margin, y, pageW - margin, y);
+  y += 8;
 
-
-  doc.setDrawColor(...goldColor);
-  doc.setLineWidth(0.5);
-  doc.line(margin, yPos, pageWidth - margin, yPos);
-
-  yPos += 12;
-
-  // === REPORT DETAILS BOX ===
-  const detailBoxHeight = 38;
+  // ===== REPORT DETAILS BOX =====
+  const detailH = 26;
   doc.setFillColor(248, 249, 250);
-  doc.setDrawColor(230, 230, 230);
-  doc.roundedRect(margin, yPos, contentWidth, detailBoxHeight, 4, 4, 'FD');
-  
-  const col1X = margin + 8;
-  const col2X = pageWidth / 2 + 8;
-  
-  doc.setFontSize(9);
+  doc.setDrawColor(230, 230, 232);
+  doc.roundedRect(margin, y, contentW, detailH, 3, 3, 'FD');
+
+  const col1X = margin + 6;
+  const col2X = pageW / 2 + 4;
+
+  doc.setFontSize(8);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...primaryColor);
-  doc.text('Report Details', col1X, yPos + 10);
-  
+  doc.setTextColor(...NAVY);
+  doc.text('DATE', col1X, y + 8);
+  doc.text('NAME', col1X, y + 18);
+  doc.text('ASSESSMENT', col2X, y + 8);
+
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...textColor);
-  doc.setFontSize(9);
-  
-  doc.text('Date:', col1X, yPos + 20);
-  doc.text(content.date, col1X + 25, yPos + 20);
-  
-  doc.text('Name:', col1X, yPos + 30);
-  doc.text(content.userName || 'Anonymous', col1X + 25, yPos + 30);
-  
-  doc.text('Assessment:', col2X, yPos + 20);
-  const assessmentText = doc.splitTextToSize(content.testType, contentWidth / 2 - 50);
-  doc.text(assessmentText[0] || content.testType, col2X + 38, yPos + 20);
+  doc.setFontSize(9.5);
+  doc.setTextColor(...TEXT);
+  doc.text(content.date, col1X + 22, y + 8);
+  doc.text(content.userName || 'Anonymous', col1X + 22, y + 18);
+  const assessLines = doc.splitTextToSize(content.testType, contentW / 2 - 30);
+  doc.text(assessLines[0] || content.testType, col2X + 30, y + 8);
+  if (assessLines[1]) doc.text(assessLines[1], col2X + 30, y + 14);
 
-  yPos += detailBoxHeight + 12;
+  y += detailH + 8;
 
-  // === SCORE SECTION ===
-  const scoreBoxHeight = 55;
-  doc.setFillColor(...primaryColor);
-  doc.roundedRect(margin, yPos, contentWidth, scoreBoxHeight, 4, 4, 'F');
+  // ===== SCORE GAUGE =====
+  const maxN = parseFloat(content.maxScore) || 10;
+  const band = getBand(content.score, maxN);
+  const pct = Math.max(0, Math.min(1, content.score / maxN));
 
-  doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
-  doc.setFont('helvetica', 'normal');
-  doc.text('YOUR SCORE', pageWidth / 2, yPos + 13, { align: 'center' });
+  doc.setTextColor(...NAVY);
+  doc.text('YOUR SCORE', margin, y);
 
-  doc.setFontSize(36);
   doc.setFont('helvetica', 'bold');
+  doc.setFontSize(22);
+  doc.setTextColor(...NAVY);
   const scoreStr = `${content.score}`;
-  const maxStr = `/ ${content.maxScore}`;
-  const scoreWidth = doc.getTextWidth(scoreStr);
-  const maxWidth = doc.getTextWidth(maxStr);
-  const totalScoreWidth = scoreWidth + 4 + maxWidth * 0.55;
-  const scoreStartX = (pageWidth - totalScoreWidth) / 2;
-  
-  doc.text(scoreStr, scoreStartX, yPos + 35);
-  doc.setFontSize(18);
-  doc.text(maxStr, scoreStartX + scoreWidth + 4, yPos + 35);
-
-  // Result label
+  doc.text(scoreStr, pageW - margin, y, { align: 'right' });
+  const sw = doc.getTextWidth(scoreStr);
   doc.setFontSize(11);
-  doc.setFont('helvetica', 'normal');
-  doc.text(content.result, pageWidth / 2, yPos + 48, { align: 'center' });
+  doc.setTextColor(...MUTED);
+  doc.text(` / ${content.maxScore}`, pageW - margin - sw, y, { align: 'right' });
 
-  yPos += scoreBoxHeight + 12;
+  y += 4;
 
-  // === DESCRIPTION ===
-  doc.setTextColor(...textColor);
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'normal');
-  const descLines = doc.splitTextToSize(content.description, contentWidth);
-  doc.text(descLines, margin, yPos);
+  // Gauge bar (color-banded background + filled progress)
+  const gaugeH = 8;
+  const gy = y;
+  const seg = contentW / 3;
+  doc.setDrawColor(255, 255, 255);
+  // red segment (0-4)
+  doc.setFillColor(240, 220, 220);
+  doc.rect(margin, gy, seg, gaugeH, 'F');
+  // amber segment (5-7)
+  doc.setFillColor(245, 232, 205);
+  doc.rect(margin + seg, gy, seg, gaugeH, 'F');
+  // green segment (8-10)
+  doc.setFillColor(215, 235, 220);
+  doc.rect(margin + 2 * seg, gy, seg, gaugeH, 'F');
 
-  yPos += descLines.length * 4.5 + 10;
+  // Filled progress in band color
+  const fillW = contentW * pct;
+  doc.setFillColor(...band.color);
+  doc.rect(margin, gy, fillW, gaugeH, 'F');
 
-  // === RECOMMENDATION BOX ===
-  // Calculate height dynamically based on content
-  const recLines = doc.splitTextToSize(content.recommendation, contentWidth - 20);
-  const recTextHeight = recLines.length * 4.5;
-  const programLine = `Recommended Program: ${content.program}`;
-  const programLines = doc.splitTextToSize(programLine, contentWidth - 20);
-  const recBoxHeight = 16 + recTextHeight + 8 + programLines.length * 4.5 + 10;
+  // Border
+  doc.setDrawColor(210, 210, 215);
+  doc.setLineWidth(0.3);
+  doc.rect(margin, gy, contentW, gaugeH, 'S');
 
-  doc.setDrawColor(...goldColor);
-  doc.setLineWidth(1.5);
-  doc.setFillColor(255, 251, 235);
-  doc.roundedRect(margin, yPos, contentWidth, recBoxHeight, 4, 4, 'FD');
-
+  // Band label under gauge
+  y += gaugeH + 5;
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(11);
-  doc.setTextColor(...primaryColor);
-  doc.text('OUR RECOMMENDATION', margin + 10, yPos + 12);
-
+  doc.setFontSize(10);
+  doc.setTextColor(...band.color);
+  doc.text(band.label.toUpperCase(), margin, y);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(...textColor);
-  doc.text(recLines, margin + 10, yPos + 22);
+  doc.setFontSize(8.5);
+  doc.setTextColor(...MUTED);
+  doc.text('0-4 Foundational  •  5-7 Intermediate  •  8-10 Advanced', pageW - margin, y, { align: 'right' });
 
-  const progY = yPos + 22 + recTextHeight + 4;
+  y += 8;
+
+  // ===== DESCRIPTION =====
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9.5);
+  doc.setTextColor(...TEXT);
+  const descLines = doc.splitTextToSize(content.description, contentW);
+  doc.text(descLines, margin, y);
+  y += descLines.length * 4.6 + 6;
+
+  // ===== TWO-COLUMN STRENGTHS / GROWTH =====
+  const colGap = 6;
+  const colW = (contentW - colGap) / 2;
+  const bulletList = (items: string[], x: number, startY: number, maxW: number) => {
+    let cy = startY;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(...TEXT);
+    items.forEach((it) => {
+      const lines = doc.splitTextToSize(it, maxW - 5);
+      doc.setFillColor(...GOLD);
+      doc.circle(x + 1.5, cy - 1.2, 0.9, 'F');
+      doc.text(lines, x + 5, cy);
+      cy += lines.length * 4.4 + 1.5;
+    });
+    return cy;
+  };
+
+  // Measure heights
+  const measure = (items: string[], maxW: number) => {
+    let h = 0;
+    items.forEach((it) => {
+      const lines = doc.splitTextToSize(it, maxW - 5);
+      h += lines.length * 4.4 + 1.5;
+    });
+    return h;
+  };
+  const bodyH = Math.max(measure(band.strengths, colW - 8), measure(band.growth, colW - 8));
+  const boxH = 10 + bodyH + 4;
+
+  // Left box: Strengths
+  doc.setFillColor(245, 250, 245);
+  doc.setDrawColor(215, 232, 220);
+  doc.roundedRect(margin, y, colW, boxH, 2.5, 2.5, 'FD');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(9);
-  doc.setTextColor(...primaryColor);
-  doc.text('Recommended Program:', margin + 10, progY);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...textColor);
-  const progValueLines = doc.splitTextToSize(content.program, contentWidth - 80);
-  doc.text(progValueLines, margin + 60, progY);
+  doc.setFontSize(9.5);
+  doc.setTextColor(...GREEN);
+  doc.text('YOUR STRENGTHS', margin + 5, y + 7);
+  bulletList(band.strengths, margin + 5, y + 14, colW - 8);
 
-  yPos += recBoxHeight + 12;
+  // Right box: Growth areas
+  const rx = margin + colW + colGap;
+  doc.setFillColor(252, 247, 240);
+  doc.setDrawColor(238, 220, 195);
+  doc.roundedRect(rx, y, colW, boxH, 2.5, 2.5, 'FD');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.setTextColor(...AMBER);
+  doc.text('GROWTH AREAS', rx + 5, y + 7);
+  bulletList(band.growth, rx + 5, y + 14, colW - 8);
 
-  // === NEXT STEPS SECTION ===
-  const nextStepsHeight = 52;
-  doc.setFillColor(248, 249, 250);
-  doc.roundedRect(margin, yPos, contentWidth, nextStepsHeight, 4, 4, 'F');
+  y += boxH + 8;
+
+  // ===== RECOMMENDATION BOX =====
+  const recLines = doc.splitTextToSize(content.recommendation, contentW - 12);
+  const progValueLines = doc.splitTextToSize(content.program, contentW - 12);
+  const recBoxH = 10 + recLines.length * 4.5 + 6 + progValueLines.length * 4.8 + 6;
+
+  doc.setDrawColor(...GOLD);
+  doc.setLineWidth(0.8);
+  doc.setFillColor(255, 251, 238);
+  doc.roundedRect(margin, y, contentW, recBoxH, 3, 3, 'FD');
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
-  doc.setTextColor(...primaryColor);
-  doc.text('NEXT STEPS', margin + 10, yPos + 12);
+  doc.setTextColor(...NAVY);
+  doc.text('OUR RECOMMENDATION', margin + 6, y + 8);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
-  doc.setTextColor(...textColor);
-  doc.text(
-    content.nextStepsLine || 'Ready to enhance your skills? Contact us to enroll:',
-    margin + 10,
-    yPos + 23,
-  );
+  doc.setTextColor(...TEXT);
+  doc.text(recLines, margin + 6, y + 15);
 
+  const progY = y + 15 + recLines.length * 4.5 + 4;
   doc.setFont('helvetica', 'bold');
-  doc.text('Phone: +91 8356 837052', margin + 10, yPos + 34);
-  doc.text('Email: info@gdproacademy.in', margin + 10, yPos + 44);
+  doc.setFontSize(9);
+  doc.setTextColor(...NAVY);
+  doc.text('Recommended Program:', margin + 6, progY);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...primaryColor);
-  doc.textWithLink(
-    'WhatsApp: wa.me/918356837052',
-    margin + 90,
-    yPos + 34,
-    { url: 'https://wa.me/918356837052' },
+  doc.setTextColor(...TEXT);
+  doc.text(progValueLines, margin + 6, progY + 5);
+
+  y += recBoxH + 8;
+
+  // ===== CTA BLOCK =====
+  const ctaH = 20;
+  doc.setFillColor(...NAVY);
+  doc.roundedRect(margin, y, contentW, ctaH, 3, 3, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(255, 255, 255);
+  doc.text('BOOK YOUR FREE CONSULTATION', margin + 8, y + 8);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9.5);
+  doc.setTextColor(...GOLD);
+  const waLabel = 'WhatsApp: +91 8356 837052';
+  doc.textWithLink(waLabel, margin + 8, y + 15, { url: 'https://wa.me/918356837052?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20consultation' });
+  doc.setTextColor(230, 230, 235);
+  doc.text('info@gdproacademy.in', pageW - margin - 8, y + 15, { align: 'right' });
+
+  y += ctaH + 8;
+
+  // ===== CREDIBILITY STRIP =====
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(...MUTED);
+  doc.text(
+    '12+ Years Experience  |  24,000+ Training Hours  |  CPD, HRCI & SHRM Accredited',
+    pageW / 2,
+    y,
+    { align: 'center' },
   );
 
-
-  // === FOOTER ===
-  doc.setDrawColor(...goldColor);
-  doc.setLineWidth(0.5);
-  doc.line(margin, pageHeight - 25, pageWidth - margin, pageHeight - 25);
-  doc.setLineWidth(1);
-  doc.line(margin, pageHeight - 22, pageWidth - margin, pageHeight - 22);
+  // ===== FOOTER (fixed at bottom with clearance) =====
+  const footerTop = pageH - 16;
+  doc.setDrawColor(...GOLD);
+  doc.setLineWidth(0.4);
+  doc.line(margin, footerTop, pageW - margin, footerTop);
 
   doc.setFontSize(7);
-  doc.setTextColor(...lightGray);
+  doc.setTextColor(...MUTED);
   doc.setFont('helvetica', 'normal');
   doc.text(
-    `This is an official report generated by GD Pro Academy | © ${new Date().getFullYear()} All Rights Reserved`,
-    pageWidth / 2,
-    pageHeight - 14,
-    { align: 'center' }
+    `Official report generated by GD Pro Academy  •  © ${new Date().getFullYear()} All Rights Reserved`,
+    pageW / 2,
+    footerTop + 5,
+    { align: 'center' },
   );
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...primaryColor);
-  doc.text('www.gdproacademy.in', pageWidth / 2, pageHeight - 8, { align: 'center' });
+  doc.setTextColor(...NAVY);
+  doc.textWithLink('www.gdproacademy.in', pageW / 2, footerTop + 10, {
+    align: 'center',
+    url: 'https://www.gdproacademy.in',
+  } as never);
 
   return doc.output('blob');
 };
