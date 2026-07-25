@@ -114,9 +114,9 @@ export default function IndividualTraining() {
       <Header />
         <Helmet>
           <title>Sales Training & Career Coaching for Professionals | GD Pro Academy</title>
-          <meta name="description" content="1-on-1 coaching and batch programs in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
+          <meta name="description" content="On-demand individual training and 1-on-1 coaching in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
           <meta property="og:title" content="Sales Training & Career Coaching for Professionals | GD Pro Academy" />
-          <meta property="og:description" content="1-on-1 coaching and batch programs in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
+          <meta property="og:description" content="On-demand individual training and 1-on-1 coaching in communication, sales skills, and interview preparation for professionals ready to accelerate their career." />
         </Helmet>
       <main>
         {/* Hero */}
