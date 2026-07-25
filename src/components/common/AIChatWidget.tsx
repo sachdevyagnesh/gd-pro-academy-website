@@ -18,7 +18,7 @@ export function AIChatWidget() {
     {
       role: "assistant",
       content:
-        "Hi! Are you looking for training for:\n[A] your company team\n[B] your own sales career\n[C] your college/institution?",
+        "Hi! Are you looking for training for your team, for yourself, or for your institution?",
     },
   ]);
 
