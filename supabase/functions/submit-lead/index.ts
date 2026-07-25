@@ -267,45 +267,59 @@ serve(async (req) => {
       );
     }
 
-    const { name, email, phone, company, trainingType, message, service, enquiringFor } = validatedData;
+    const { name, email, phone, company, designation, industry, websiteUrl, trainingType, message, service, source, course, enquiringFor } = validatedData;
 
-    console.log('Received validated lead submission:', { name, email: email.substring(0, 3) + '***', company, trainingType, ip: clientIp.substring(0, 8) + '***' });
+    console.log('Received validated lead submission:', { name, email: email.substring(0, 3) + '***', company, trainingType, source, ip: clientIp.substring(0, 8) + '***' });
 
-    // Format date as DD/MM/YYYY
+    // ISO date (YYYY-MM-DD)
     const now = new Date();
-    const dateStr = `${now.getDate().toString().padStart(2, '0')}/${(now.getMonth() + 1).toString().padStart(2, '0')}/${now.getFullYear()}`;
+    const dateStr = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
-    // Map trainingType to readable format
-    const trainingTypeMap: Record<string, string> = {
+    // Map trainingType to a Course value when no explicit course is provided
+    const courseMap: Record<string, string> = {
       'corporate': 'Corporate Training',
       'individual': 'Individual Programs',
       'e-course': 'Individual Programs',
-      'other': 'Other',
-      'newsletter': 'Newsletter',
-      'myself': 'Myself',
-      'my-team': 'My Team',
-      'my-institution': 'My Institution',
+      'my-team': 'Corporate Training',
+      'my-institution': 'Corporate Training',
+      'myself': 'Individual Programs',
     };
+    const resolvedCourse = (course && course.trim())
+      ? course.trim()
+      : (trainingType ? (courseMap[trainingType] || '') : '');
 
-    // Build the row according to Google Sheets headers
-    // Headers: Lead ID, Date, Lead Name, Email, Mobile, Source, Status, Pipeline Stage, Temperature, Priority, Notes, Company, Training Type, Enquiring For, Service Interested
+    // Source: short label. Fall back to a compact default rather than a sentence.
+    const resolvedSource = (source && source.trim()) ? source.trim() : 'Website';
+
+    // Build Notes: combine audience selection + message + service context
+    const noteParts: string[] = [];
+    if (enquiringFor) noteParts.push(`Enquiring for: ${enquiringFor}`);
+    if (service) noteParts.push(`Service: ${service}`);
+    if (message) noteParts.push(message);
+    const notes = noteParts.join(' | ');
+
+    // Header order:
+    // Lead ID | Date | Name | Designation | Company | Contact | Email |
+    // Industry | Website | Status | Source | Course | Priority |
+    // Follow-up date | Notes | Activities JSON
     const leadId = `WEB-${Date.now().toString(36).toUpperCase()}`;
     const row = [
-      leadId,                                    // Lead ID
-      dateStr,                                   // Date
-      name || '',                                // Lead Name
-      email || '',                               // Email
-      phone || '',                               // Mobile
-      'Website Contact Form',                    // Source
-      'New',                                     // Status
-      'New Lead',                                // Pipeline Stage
-      'HOT',                                     // Temperature - always HOT from website
-      'High',                                    // Priority - always High from website
-      message || '',                             // Notes
-      company || '',                             // Company
-      trainingTypeMap[trainingType || ''] || trainingType || '', // Training Type
-      enquiringFor || '',                        // Enquiring For
-      service || '',                             // Service Interested
+      leadId,               // Lead ID
+      dateStr,              // Date (ISO)
+      name || '',           // Name
+      designation || '',    // Designation
+      company || '',        // Company
+      phone || '',          // Contact
+      email || '',          // Email
+      industry || '',       // Industry
+      websiteUrl || '',     // Website
+      'New',                // Status
+      resolvedSource,       // Source
+      resolvedCourse,       // Course
+      'Hot',                // Priority
+      '',                   // Follow-up date
+      notes,                // Notes
+      '[]',                 // Activities JSON
     ];
 
     await appendToGoogleSheet([row]);
